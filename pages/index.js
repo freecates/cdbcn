@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
-import Image from 'next/image';
 
 export default function Home() {
     return (
@@ -12,7 +11,7 @@ export default function Home() {
 
             <h1 className={styles.title}>
                 <a href='https://www.castellersdebarcelona.cat/'>
-                    <Image
+                    <img
                         width='600'
                         height='300'
                         loading='lazy'
@@ -21,6 +20,7 @@ export default function Home() {
                     />
                 </a>
             </h1>
+
             <video className={styles.video} loop muted autoPlay width='1680' height='945'>
                 <source src='https://cdbdata.now.sh/static/3d9.mp4' type='video/mp4' />
                 <source src='https://cdbdata.now.sh/static/3d9.webm' type='video/webm' />
@@ -30,7 +30,7 @@ export default function Home() {
                     <p className={styles.description}>
                         <strong>Colla Castellers de Barcelona</strong>
                         <br />
-                        [La Colla Degaga de la Ciutat]
+                        [La Colla Degaga de la Ciutat - 1969]
                         <br />
                         <br />
                         Carrer de Bilbao, 212 - 214 08018, Barcelona

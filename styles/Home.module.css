@@ -39,9 +39,14 @@
     justify-content: center;
     align-items: center;
     padding: .5rem;
-    background: black;
+    background-color: black;
     color: white;
     margin: .5rem;
+    transition: background-color ease 1s;
+}
+
+.footer a:hover {
+    background-color: #fd0017;
 }
 
 .title a {
