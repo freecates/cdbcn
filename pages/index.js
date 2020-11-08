@@ -30,7 +30,7 @@ export default function Home() {
                     <p className={styles.description}>
                         <strong>Colla Castellers de Barcelona</strong>
                         <br />
-                        [La Colla Degaga de la Ciutat - 1969]
+                        [La Colla Degana de la Ciutat - 1969]
                         <br />
                         <br />
                         Carrer de Bilbao, 212 - 214 08018, Barcelona
