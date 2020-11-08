@@ -34,11 +34,6 @@ const Historia = () => (
                 </a>
             </Link>
         </figure>
-        <div className={styles.container}>
-            <main className={styles.main}>
-                <MDFileParser file={'1969.md'} />
-            </main>
-        </div>
         <figure className={styles.figure}>
             <Link href={'/'}>
                 <a>
@@ -55,6 +50,37 @@ const Historia = () => (
                             <small>
                                 Nico Barquet, Josep Sala Mañé, Jaume Hill, Josep Torres, Manel
                                 Pallarès i els germans José Ricardo i Ángel Moreno
+                            </small>
+                        </p>
+                    </figcaption>
+                </a>
+            </Link>
+        </figure>
+        <div className={styles.container}>
+            <main className={styles.main}>
+                <MDFileParser file={'1969.md'} />
+            </main>
+        </div>
+        <figure className={styles.figure}>
+            <Link href={'/'}>
+                <a>
+                    <Image
+                        width='445'
+                        height='641'
+                        loading='lazy'
+                        alt={
+                            'Pilar de 4 històric a la diada del 50è aniversari. El segon, Nico Barquet, és qui va fer també de segon en el pilar del 1969, just 50 anys més tard.'
+                        }
+                        src={'https://cdbdata.vercel.app/static/pilar-de-4-2019.webp'}
+                    />
+                    <figcaption className={styles.figcaption}>
+                        <p>
+                            08/06/2019
+                            <br />
+                            <small>
+                                Pilar de 4 històric a la diada del 50è aniversari. El segon, Nico
+                                Barquet, és qui va fer també de segon en el pilar del 1969, just 50
+                                anys més tard.
                             </small>
                         </p>
                     </figcaption>
