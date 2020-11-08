@@ -22,7 +22,7 @@ export default function Home() {
                         <strong>Colla Castellers de Barcelona</strong>
                         <br />
                         [La Colla Degana de la Ciutat -{' '}
-                        <Link href={'/historia'}>
+                        <Link href={'/la-colla'}>
                             <a>1969</a>
                         </Link>
                         ]
