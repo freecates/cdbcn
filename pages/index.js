@@ -1,36 +1,31 @@
-import Head from 'next/head';
-import styles from '../styles/Home.module.css';
+import Layout from '../components/Layout';
+import styles from '../styles/Home.module.scss';
+import Link from 'next/link';
 
 export default function Home() {
     return (
-        <>
-            <Head>
-                <title>Colla Castellers de Barcelona</title>
-                <link rel='icon' href='/favicon.ico' />
-            </Head>
-
-            <h1 className={styles.title}>
-                <a href='https://www.castellersdebarcelona.cat/'>
-                    <img
-                        width='600'
-                        height='300'
-                        loading='lazy'
-                        alt={'Logo de la Colla Castellers de Barcelona'}
-                        src={'/logo-castellers-de-barcelona.png'}
-                    />
-                </a>
-            </h1>
-
+        <Layout
+            title={'Colla Castellers de Barcelona'}
+            pageTitle={'La Colla Degana de la Ciutat - 1969'}
+            pageDescription={
+                'Nascuts l’any 1969, som la colla degana de la ciutat. Assajos: dimarts, dijous i divendres.'
+            }
+            home
+        >
             <video className={styles.video} loop muted autoPlay width='1680' height='945'>
-                <source src='https://cdbdata.now.sh/static/3d9.mp4' type='video/mp4' />
-                <source src='https://cdbdata.now.sh/static/3d9.webm' type='video/webm' />
+                <source src='https://cdbdata.vercel.app/static/3d9.mp4' type='video/mp4' />
+                <source src='https://cdbdata.vercel.app/static/3d9.webm' type='video/webm' />
             </video>
             <div className={styles.container}>
                 <main className={styles.main}>
                     <p className={styles.description}>
                         <strong>Colla Castellers de Barcelona</strong>
                         <br />
-                        [La Colla Degana de la Ciutat - 1969]
+                        [La Colla Degana de la Ciutat -{' '}
+                        <Link href={'/historia'}>
+                            <a>1969</a>
+                        </Link>
+                        ]
                         <br />
                         <br />
                         Carrer de Bilbao, 212 - 214 08018, Barcelona
@@ -44,14 +39,7 @@ export default function Home() {
                         </a>
                     </p>
                 </main>
-
-                <footer className={styles.footer}>
-                    <a href='https://www.instagram.com/castellersdebarcelona/'>Instagram</a>
-                    <a href='https://www.youtube.com/user/arxiucdb'>Youtube</a>
-                    <a href='https://twitter.com/cdbcn'>Twitter</a>
-                    <a href='https://www.facebook.com/castellersdebarcelona'>Facebook</a>
-                </footer>
             </div>
-        </>
+        </Layout>
     );
 }
