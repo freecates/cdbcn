@@ -21,6 +21,7 @@ const Historia = () => (
                             'Primer Pilar de 4. 8 de juny de 1969.Inaugiració de la base al Monument dels Castellers'
                         }
                         src={'https://cdbdata.vercel.app/static/pilar-de-4-1969-general.webp'}
+                        layout={'responsive'}
                     />
                     <figcaption className={styles.figcaption}>
                         <p>
@@ -43,6 +44,7 @@ const Historia = () => (
                         loading='lazy'
                         alt={'Detall del primer Pilar de 4. 8 de juny de 1969'}
                         src={'https://cdbdata.vercel.app/static/pilar-de-4-1969.webp'}
+                        layout={'responsive'}
                     />
                     <figcaption className={styles.figcaption}>
                         <p>
@@ -72,6 +74,7 @@ const Historia = () => (
                             'Pilar de 4 històric a la diada del 50è aniversari. El segon, Nico Barquet, és qui va fer també de segon en el pilar del 1969, just 50 anys més tard.'
                         }
                         src={'https://cdbdata.vercel.app/static/pilar-de-4-2019.webp'}
+                        layout={'responsive'}
                     />
                     <figcaption className={styles.figcaption}>
                         <p>

@@ -26,11 +26,12 @@ const Layout = (props) => {
                 <Link href={'/'}>
                     <a>
                         <Image
-                            width='600'
-                            height='300'
+                            width='320'
+                            height='160'
                             loading='lazy'
                             alt={'Logo de la Colla Castellers de Barcelona'}
                             src={'/logo-castellers-de-barcelona.png'}
+                            layout={'responsive'}
                         />
                     </a>
                 </Link>
