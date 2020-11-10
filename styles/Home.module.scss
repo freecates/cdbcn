@@ -82,7 +82,19 @@
     }
 }
 
-.video {
-    max-width: 100%;
-    height: auto;
+.wrapperVideo {
+    @media (min-width: 1680px) {
+        width: 1680px;
+        margin: 0 auto;
+    }
+
+    .video {
+        max-width: 100%;
+        height: auto;
+
+        @media (min-width: 1680px) {
+            width: 1680px;
+            margin: 0 auto;
+        }
+    }
 }

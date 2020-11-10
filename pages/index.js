@@ -12,10 +12,12 @@ export default function Home() {
             }
             home
         >
-            <video className={styles.video} loop muted autoPlay width='1680' height='945'>
-                <source src='https://cdbdata.vercel.app/static/3d9.mp4' type='video/mp4' />
-                <source src='https://cdbdata.vercel.app/static/3d9.webm' type='video/webm' />
-            </video>
+            <div className={styles.wrapperVideo}>
+                <video className={styles.video} loop muted autoPlay width='1680' height='945'>
+                    <source src='https://cdbdata.vercel.app/static/3d9.mp4' type='video/mp4' />
+                    <source src='https://cdbdata.vercel.app/static/3d9.webm' type='video/webm' />
+                </video>
+            </div>
             <div className={styles.container}>
                 <main className={styles.main}>
                     <p className={styles.description}>
@@ -30,7 +32,9 @@ export default function Home() {
                         <br />
                         Carrer de Bilbao, 212 - 214 08018, Barcelona
                         <br />
-                        T. 93 498 27 28
+                        T. 934 98 27 28
+                        <br />
+                        M. 608 28 72 78 [premsa]
                         <br />
                         www.castellersdebarcelona.cat
                         <br />
