@@ -21,6 +21,7 @@
 
 .figure {
     margin: 0 auto;
+    text-align: center;
 
     &:nth-child(even) {
         margin: 0rem auto 4rem auto;
@@ -31,11 +32,8 @@
     margin: 0 auto;
 }
 
-.title,
-.figure {
-    div {
-        margin: 0 auto;
-    }
+.title {
+    margin: 0 auto;
 }
 
 .title,

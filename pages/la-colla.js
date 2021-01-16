@@ -1,6 +1,6 @@
-import Layout from '../components/Layout';
-import MDFileParser from '../components/MDFileParser';
-import styles from '../styles/Home.module.scss';
+import Layout from '@components/Layout';
+import MDFileParser from '@components/MDFileParser';
+import styles from '@styles/Home.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
 

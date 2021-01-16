@@ -22,7 +22,7 @@ const Layout = (props) => {
                 <link rel='icon' href='/favicon.ico' />
             </Head>
 
-            <h1 className={styles.title}>
+            <h1 className={styles.wrapperLogo}>
                 <Link href={'/'}>
                     <a>
                         <Image

@@ -1,7 +1,5 @@
 @import 'styles/colors';
 
-
-
 .title a:hover,
 .title a:focus,
 .title a:active {
@@ -33,4 +31,10 @@
     @media (min-width: 768px) {
         padding: 2rem 1rem;
     }
+}
+
+.wrapperLogo {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
 }
