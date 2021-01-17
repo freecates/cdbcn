@@ -15,6 +15,7 @@ const LaColla = () => (
             <Link href={'/'}>
                 <a>
                     <Image
+                        quality='100'
                         width='840'
                         height='432'
                         loading='lazy'
