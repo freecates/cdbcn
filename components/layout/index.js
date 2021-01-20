@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './Layout.module.scss';
-import Footer from './Footer';
+import Footer from '@components/footer';
 
 const Layout = (props) => {
     return (

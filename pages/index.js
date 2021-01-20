@@ -1,22 +1,16 @@
-import Layout from '@components/Layout';
+import Layout from '@components/layout';
+import Video from '@components/video';
 import styles from '@styles/Home.module.scss';
+import api from '@libs/api.js';
 import Link from 'next/link';
 
-export default function Home() {
+const Home = ({ home }) => {
+    const { title, pageTitle, pageDescription } = home.meta;
+    const mainVideo = home.videos.mainVideo;
     return (
-        <Layout
-            title={'Colla Castellers de Barcelona'}
-            pageTitle={'La Colla Degana de la Ciutat - 1969'}
-            pageDescription={
-                'Nascuts l’any 1969, som la colla degana de la ciutat. Assajos: dimarts, dijous i divendres.'
-            }
-            home
-        >
+        <Layout title={title} pageTitle={pageTitle} pageDescription={pageDescription} home>
             <div className={styles.wrapperVideo}>
-                <video className={styles.video} loop muted autoPlay width='1680' height='945'>
-                    <source src='https://cdbdata.vercel.app/static/3d9.mp4' type='video/mp4' />
-                    <source src='https://cdbdata.vercel.app/static/3d9.webm' type='video/webm' />
-                </video>
+                <Video data={mainVideo} />
             </div>
             <div className={styles.container}>
                 <main className={styles.main}>
@@ -46,4 +40,15 @@ export default function Home() {
             </div>
         </Layout>
     );
-}
+};
+
+export const getStaticProps = async () => {
+    const [home] = await Promise.all([api.home.getData()]);
+    return {
+        props: {
+            home: { ...home[0] },
+        },
+    };
+};
+
+export default Home;

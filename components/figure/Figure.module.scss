@@ -1,0 +1,43 @@
+.figureComponent {
+    .figure {
+        margin: 0 auto;
+        text-align: center;
+
+        &:nth-child(even) {
+            margin: 0rem auto 4rem auto;
+        }
+
+        .figcaption {
+            text-align: center;
+        }
+    }
+    .grid {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 2rem;
+
+        @media (max-width: 600px) {
+            width: 100%;
+            flex-direction: column;
+        }
+
+        .card {
+            margin: 0;
+            flex-basis: 100%;
+            padding: 0.5rem;
+            text-align: left;
+            color: inherit;
+            text-decoration: none;
+            border: 1px solid #eaeaea;
+            border-radius: 10px;
+            width: 100%;
+
+            @media (min-width: 768px) {
+                flex-basis: 45%;
+                margin: 0 1rem;
+            }
+        }
+    }
+}

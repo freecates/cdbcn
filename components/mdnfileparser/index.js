@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import Markdown from 'markdown-to-jsx'
 
+const staticDataUrl = 'https://cdbdata.vercel.app/content';
+
 export default function MDFileParser({ file }) {
   const [content, setContent] = useState('')
   const [filename, setFilename] = useState('')
 
   useEffect(() => {
     async function updateContentFromFileName(fileName) {
-      const res = await fetch(`https://cdbdata.vercel.app/${fileName}`)
+      const res = await fetch(`${staticDataUrl}/${fileName}`)
       const filename = fileName
       const content = await res.text()
       setContent(content)

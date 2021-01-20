@@ -1,8 +1,6 @@
-import Layout from '@components/Layout';
-import MDFileParser from '@components/MDFileParser';
+import Layout from '@components/layout';
+import MDFileParser from '@components/mdnfileparser';
 import styles from '@styles/Home.module.scss';
-import Image from 'next/image';
-import Link from 'next/link';
 
 const CinquantaAnys50Tuits = () => (
     <Layout
@@ -16,7 +14,7 @@ const CinquantaAnys50Tuits = () => (
 
         <div className={`${styles.container}`}>
             <main className={styles.main}>
-                <MDFileParser file={'50-anys-50-tuits.md'} />
+                <MDFileParser file={`50-anys-50-tuits.md`} />
             </main>
         </div>
     </Layout>
