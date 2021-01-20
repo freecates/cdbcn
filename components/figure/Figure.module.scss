@@ -9,6 +9,12 @@
 
         .figcaption {
             text-align: center;
+
+            @media (min-width: 1024px) {
+                max-width: 80%;
+                margin: 0 auto;
+                padding: 0.5rem
+            }
         }
     }
     .grid {
