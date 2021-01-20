@@ -19,13 +19,15 @@ const Figure = ({ data, quality, layout }) => {
                                 src={`${staticDataUrl}/${d.src}`}
                                 layout={layout ? layout : null}
                             />
-                            <figcaption className={styles.figcaption}>
-                                <p>
-                                    {d.imageCaption.title}
-                                    <br />
-                                    <small>{d.imageCaption.description}</small>
-                                </p>
-                            </figcaption>
+                            {d.imageCaption ? (
+                                <figcaption className={styles.figcaption}>
+                                    <p>
+                                        {d.imageCaption.title}
+                                        <br />
+                                        <small>{d.imageCaption.description}</small>
+                                    </p>
+                                </figcaption>
+                            ) : null}
                         </figure>
                     ))}
                 </div>

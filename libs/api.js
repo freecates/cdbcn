@@ -15,6 +15,13 @@ const api = {
       return data;
     }
   },
+  anys50tuits: {
+    async getData() {
+      const response = await fetch(`${staticDataUrl}/data/anys50tuits.json`);
+      const data = await response.json();
+      return data;
+    }
+  },
 };
 
 

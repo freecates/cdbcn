@@ -12,6 +12,7 @@
     "next": "10.0.5",
     "react": "17.0.1",
     "react-dom": "17.0.1",
+    "react-scroll-up-button": "^1.6.4",
     "sass": "^1.29.0"
   }
 }
