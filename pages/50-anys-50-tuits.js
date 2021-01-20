@@ -14,9 +14,9 @@ const CinquantaAnys50Tuits = ({ anys50tuits }) => {
             <div className={`${styles.container}`}>
                 <main className={styles.main}>
                     <MDFileParser file={`50-anys-50-tuits.md`} />
-                    <Figure data={imageGallery} />
                 </main>
             </div>
+            <Figure data={imageGallery} />
         </Layout>
     );
 };

@@ -16,9 +16,9 @@ const LaColla = ({ colla }) => {
             <div className={`${styles.container}`}>
                 <main className={styles.main}>
                     <MDFileParser file={`1969.md`} />
-                    <Figure data={imageGallery} />
                 </main>
             </div>
+            <Figure data={imageGallery} />
         </Layout>
     );
 };
