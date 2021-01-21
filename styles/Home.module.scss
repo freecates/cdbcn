@@ -1,3 +1,5 @@
+@import 'styles/colors';
+
 .container {
     width: 100%;
     margin: 0 auto;
@@ -7,6 +9,10 @@
 @media (min-width: 768px) {
     .container {
         padding: 0 2rem;
+
+        &.withOverlay {
+            position: relative;
+        }
     }
 }
 
@@ -17,6 +23,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    @media (min-width: 768px) {
+        &.withOverlay {
+            margin-top: -3rem;
+            background-color: $white;
+        }
+    }
 }
 
 .figure {
@@ -78,6 +90,9 @@
 }
 
 .wrapperVideo {
+    @media (min-width: 768px) {
+        position: relative;
+    }
     @media (min-width: 1680px) {
         width: 1680px;
         margin: 0 auto;

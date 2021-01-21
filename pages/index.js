@@ -12,8 +12,8 @@ const Home = ({ home }) => {
             <div className={styles.wrapperVideo}>
                 <Video data={mainVideo} />
             </div>
-            <div className={styles.container}>
-                <main className={styles.main}>
+            <div className={`${styles.container} ${styles.withOverlay}`}>
+                <main className={`${styles.main} ${styles.withOverlay}`}>
                     <p className={styles.description}>
                         <strong>Colla Castellers de Barcelona</strong>
                         <br />
