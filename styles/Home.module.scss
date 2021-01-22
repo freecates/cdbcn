@@ -108,3 +108,14 @@
         }
     }
 }
+
+.summary {
+    background-color: $main-red;
+    color: $white;
+    padding: 0.5rem;
+    @media (min-width: 1024px) {
+        max-width: 60%;
+        margin: 0 auto;
+        padding: 1rem;
+    }
+}

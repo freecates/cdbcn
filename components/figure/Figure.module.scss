@@ -13,7 +13,12 @@
             @media (min-width: 1024px) {
                 max-width: 80%;
                 margin: 0 auto;
-                padding: 0.5rem
+                padding: 0.5rem;
+            }
+        }
+        &.withOverlay {
+            @media (min-width: 768px) {
+                position: relative;
             }
         }
     }
@@ -38,7 +43,7 @@
 
             @media (min-width: 768px) {
                 flex-basis: 45%;
-                padding: 0.5rem
+                padding: 0.5rem;
             }
         }
     }

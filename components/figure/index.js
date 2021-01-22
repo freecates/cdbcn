@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const staticDataUrl = 'https://cdbdata.vercel.app/static';
 
-const Figure = ({ data, quality, layout }) => {
+const Figure = ({ data, quality, layout, withType, withOverlay }) => {
     return (
         <div className={styles.figureComponent}>
             {Array.isArray(data) && (
@@ -33,23 +33,25 @@ const Figure = ({ data, quality, layout }) => {
                 </div>
             )}
             {!Array.isArray(data) && (
-                <figure className={`${styles.figure}`}>
+                <figure className={`${styles.figure} ${withOverlay && styles.withOverlay}`}>
                     <Image
                         quality={quality ? quality : null}
                         width={data.width}
                         height={data.height}
                         loading='lazy'
                         alt={data.alt}
-                        src={`${staticDataUrl}/${data.src}`}
+                        src={withType ? data.url : `${staticDataUrl}/${data.src}`}
                         layout={layout ? layout : null}
                     />
-                    <figcaption className={styles.figcaption}>
-                        <p>
-                            {data.imageCaption.title}
-                            <br />
-                            <small>{data.imageCaption.description} </small>
-                        </p>
-                    </figcaption>
+                    {data.imageCaption ? (
+                        <figcaption className={styles.figcaption}>
+                            <p>
+                                {data.imageCaption.title}
+                                <br />
+                                <small>{data.imageCaption.description} </small>
+                            </p>
+                        </figcaption>
+                    ) : null}
                 </figure>
             )}
         </div>
