@@ -4,7 +4,7 @@ import Fallback from '@components/fallback';
 import Post from '@components/post';
 import Custom404 from '../../404';
 
-const Actuacio = ({ post }) => {
+const Noticia = ({ post }) => {
     const { isFallback } = useRouter();
     if (!isFallback && !post) {
         return <Custom404 />;
@@ -15,10 +15,10 @@ const Actuacio = ({ post }) => {
     if (post === '404') {
         return <Fallback notFound />;
     }
-    const pageTitle = post.acf.titular;
+    const pageTitle = post.acf.titular_de_la_noticia;
     const mainImage = post.acf.imatge_destacada;
     const author = post._embedded.author[0].name;
-    const date = post.acf.data;
+    const date = post.acf.data_de_la_noticia;
     const { acf, type, id, slug } = post;
     return (
         <Layout>
@@ -33,14 +33,13 @@ const Actuacio = ({ post }) => {
                 author={author}
                 mainImage={mainImage}
             />
-            
         </Layout>
     );
 };
 
 export async function getStaticPaths() {
     const res = await fetch(
-        'https://cms.castellersdebarcelona.cat/wp-json/wp/v2/actuacions?per_page=100'
+        'https://cms.castellersdebarcelona.cat/wp-json/wp/v2/noticies?per_page=100'
     );
     const posts = await res.json();
 
@@ -51,7 +50,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
     const res = await fetch(
-        `https://cms.castellersdebarcelona.cat/wp-json/wp/v2/actuacions/${params.id}?_embed`
+        `https://cms.castellersdebarcelona.cat/wp-json/wp/v2/noticies/${params.id}?_embed`
     );
 
     const post = await res.json();
@@ -63,4 +62,4 @@ export async function getStaticProps({ params }) {
     }
 }
 
-export default Actuacio;
+export default Noticia;

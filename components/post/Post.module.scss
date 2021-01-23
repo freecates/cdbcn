@@ -1,0 +1,56 @@
+@import 'styles/colors';
+
+.postComponent {
+    .container {
+        width: 100%;
+        margin: 0 auto;
+        max-width: 70rem;
+        padding: 0 1rem;
+    }
+    @media (min-width: 768px) {
+        .container {
+            padding: 0 2rem;
+
+            &.withOverlay {
+                position: relative;
+            }
+        }
+    }
+
+    .main {
+        padding: 0;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        @media (min-width: 768px) {
+            &.withOverlay {
+                margin-top: -3rem;
+                background-color: $white;
+            }
+        }
+    }
+
+    .summary {
+        background-color: $main-red;
+        color: $white;
+        padding: 0.5rem;
+        @media (min-width: 1024px) {
+            max-width: 60%;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+    }
+
+    .bodyText {
+        a {
+            text-decoration: underline;
+        }
+    }
+
+    .title {
+        margin: 0 auto;
+        text-align: center;
+    }
+}

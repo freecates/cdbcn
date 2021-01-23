@@ -1,14 +1,25 @@
-import Link from 'next/link';
+import Grid from '@components/grid';
 
-const Noticies = () => (
-    <div>
-        <h1>Noticies</h1>
-        <p>
-            <Link href={`/noticies/la-primera-noticia`}>
-                <a title={`Veure la fitxa de: la primera`}>[+]</a>
-            </Link>
-        </p>
-    </div>
-);
+const Noticies = ({ data }) => {
+    return (
+        <div>
+            <h1>Notícies</h1>
+            <Grid data={data} />
+        </div>
+    );
+};
+
+export const getStaticProps = async () => {
+    const res = await fetch(
+        `https://cms.castellersdebarcelona.cat/wp-json/wp/v2/noticies?per_page=100`
+    );
+    const data = await res.json();
+    return {
+        props: {
+            data: data,
+        },
+        revalidate: 1,
+    };
+};
 
 export default Noticies;

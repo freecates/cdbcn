@@ -4,7 +4,7 @@ import styles from './Fallback.module.scss'
 const Fallback = ({ notFound }) => {
     return (
         <Layout>
-            <div className={`${styles.container}`}>
+            <div className={`${styles.fallBackComponent}`}>
                 <div className={`file${notFound ? '' : ' loading'}`}>
                     <h1>{notFound ? 'Pàgina no trobada' : '... Carregant'}</h1>
                 </div>
