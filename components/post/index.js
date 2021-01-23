@@ -78,19 +78,19 @@ const Post = ({ title, author, date, description, id, type, content, slug, mainI
                 <meta property='og:description' content={description} />
                 <meta
                     property='og:image'
-                    content={`https://castellersdebarcelona.cat/icons/og-image-aracultura-web.png`}
+                    content={imatge_destacada.sizes.large}
                 />
                 <meta property='og:image:width' content={1024} />
                 <meta property='og:image:height' content={1024} />
 
                 <meta name='twitter:card' content='summary_large_image' />
-                <meta name='twitter:site' content='aracultura' />
-                <meta name='twitter:creator' content='AdhocCultura' />
+                <meta name='twitter:site' content='cdbcn' />
+                <meta name='twitter:creator' content='Castellers de Barcelona' />
                 <meta name='twitter:title' content={title} />
                 <meta name='twitter:description' content={description} />
                 <meta
                     name='twitter:image:src'
-                    content={`https://castellersdebarcelona.cat/icons/og-image-aracultura-web.png`}
+                    content={imatge_destacada.sizes.large}
                 />
 
                 <script
