@@ -102,7 +102,7 @@ const Post = ({ title, author, date, description, id, type, content, slug, mainI
   "@type": "NewsArticle",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "${`https://castellersdebarcelona.cat/` + slug}"
+    "@id": "${`https://castellersdebarcelona.cat/` + id + '/' + type + '/' + slug}"
   },
   "author": {
     "@type": "Person",
