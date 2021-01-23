@@ -19,12 +19,13 @@ const Actuacio = ({ post }) => {
     const mainImage = post.acf.imatge_destacada;
     const author = post._embedded.author[0].name;
     const date = post.acf.data;
+    const description = post.acf.cronica_de_la_diada;
     const { acf, type, id, slug } = post;
     return (
         <Layout>
             <Post
                 title={pageTitle}
-                description={acf.descripcio}
+                description={description}
                 id={id}
                 type={type}
                 content={acf}

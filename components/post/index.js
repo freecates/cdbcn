@@ -66,7 +66,7 @@ const Post = ({ title, author, date, description, id, type, content, slug, mainI
                 <title>
                     {title} - Castelllers de Barcelona - {type}
                 </title>
-                <meta name='description' content={description} />
+                <meta name='description' content={`${description.substring(3, 240)}...`} />
 
                 <meta property='fb:app_id' content='1064356173625695' />
                 <meta
@@ -75,7 +75,7 @@ const Post = ({ title, author, date, description, id, type, content, slug, mainI
                 />
                 <meta property='og:type' content='article' />
                 <meta property='og:title' content={title} />
-                <meta property='og:description' content={description} />
+                <meta property='og:description' content={`${description.substring(3, 240)}...`} />
                 <meta
                     property='og:image'
                     content={imatge_destacada.sizes.large}
@@ -87,7 +87,7 @@ const Post = ({ title, author, date, description, id, type, content, slug, mainI
                 <meta name='twitter:site' content='cdbcn' />
                 <meta name='twitter:creator' content='Castellers de Barcelona' />
                 <meta name='twitter:title' content={title} />
-                <meta name='twitter:description' content={description} />
+                <meta name='twitter:description' content={`${description.substring(3, 240)}...`} />
                 <meta
                     name='twitter:image:src'
                     content={imatge_destacada.sizes.large}

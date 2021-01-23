@@ -19,12 +19,13 @@ const Noticia = ({ post }) => {
     const mainImage = post.acf.imatge_destacada;
     const author = post._embedded.author[0].name;
     const date = post.acf.data_de_la_noticia;
+    const description = post.acf.cos_de_text_de_la_noticia;
     const { acf, type, id, slug } = post;
     return (
         <Layout>
             <Post
                 title={pageTitle}
-                description={acf.descripcio}
+                description={description}
                 id={id}
                 type={type}
                 content={acf}
