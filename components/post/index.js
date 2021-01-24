@@ -6,7 +6,6 @@ import SocialSharer from '@components/socialsharer';
 import { FaFlickr, FaYoutube } from 'react-icons/fa';
 
 const Galeria = ({ urlFlickr, urlYoutube, title }) => {
-    console.log('urlYoutube ', urlYoutube);
     return (
         <>
             {urlFlickr === null && urlYoutube === null ? null : (
