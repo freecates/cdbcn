@@ -18,7 +18,7 @@ const Noticia = ({ post }) => {
     const pageTitle = post.acf.titular_de_la_noticia;
     const mainImage = post.acf.imatge_destacada;
     const author = post._embedded.author[0].name;
-    const date = post.acf.data_de_la_noticia;
+    const date = post.acf.data;
     const description = post.acf.cos_de_text_de_la_noticia;
     const { acf, type, id, slug } = post;
     return (

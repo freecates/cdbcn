@@ -1,0 +1,22 @@
+.gridComponent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    max-width: 960px;
+    margin-top: 3rem;
+
+    .card {
+        margin: 1rem;
+        flex-basis: 45%;
+        color: inherit;
+        text-decoration: none;
+        @media (max-width: 567px) {
+            flex-basis: 100%;
+        }
+        header {
+            text-align: center;
+        }
+    }
+}

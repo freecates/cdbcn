@@ -22,6 +22,20 @@ const api = {
       return data;
     }
   },
+  actuacions: {
+    async getData() {
+      const response = await fetch(`${staticDataUrl}/data/actuacions.json`);
+      const data = await response.json();
+      return data;
+    }
+  },
+  noticies: {
+    async getData() {
+      const response = await fetch(`${staticDataUrl}/data/noticies.json`);
+      const data = await response.json();
+      return data;
+    }
+  },
 };
 
 

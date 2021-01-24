@@ -1,34 +1,38 @@
 import Link from 'next/link';
+import styles from './Grid.module.scss';
 
-const thumbnailWidth = 'thumbnail-width';
-const thumbnailHeight = 'thumbnail-height'
+const thumbnailWidth = 300;
+const thumbnailHeight = 300;
 
 const Grid = ({ data }) => {
+    console.log(new Date(data[0].acf.data));
     return (
-        <>
+        <div className={styles.gridComponent}>
             {data
                 .sort((a, b) => {
-                    if (a.date > b.date) {
+                    if (a.acf.data > b.acf.data) {
                         return -1;
                     }
-                    if (a.date < b.date) {
+                    if (a.acf.data < b.acf.data) {
                         return 1;
                     }
                     return 0;
                 })
                 .map((c, id) => (
-                    <div key={c.id} id={id}>
+                    <div key={c.id} id={id} className={styles.card}>
                         <div>
                             <header>
                                 {!c.acf.imatge_destacada ? null : (
                                     <img
                                         loading='lazy'
-                                        src={c.acf.imatge_destacada.sizes.thumbnail}
+                                        src={c.acf.imatge_destacada.sizes.medium}
                                         alt={c.title.rendered}
-                                        width={c.acf.imatge_destacada.sizes.thumbnailWidth}
-                                        height={c.acf.imatge_destacada.sizes.thumbnailHeight}
+                                        width={thumbnailWidth}
+                                        height={thumbnailHeight}
                                     />
                                 )}
+                            </header>
+                            <main>
                                 <Link href={`/${c.type}/${c.id}/${c.slug}`}>
                                     <a title={`Veure la fitxa de: ${c.title.rendered}`}>
                                         <h3>
@@ -41,11 +45,16 @@ const Grid = ({ data }) => {
                                         </h3>
                                     </a>
                                 </Link>
-                            </header>
+                                <p>
+                                    <small>
+                                        {c._embedded.author[0].name} | {c.acf.data}
+                                    </small>
+                                </p>
+                            </main>
                         </div>
                     </div>
                 ))}
-        </>
+        </div>
     );
 };
 
