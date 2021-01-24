@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import styles from './Grid.module.scss';
 
-const thumbnailWidth = 300;
-const thumbnailHeight = 300;
+const thumbnailWidth = 768;
+const thumbnailHeight = 768;
 
 const Grid = ({ data }) => {
     console.log(new Date(data[0].acf.data));
@@ -23,13 +23,17 @@ const Grid = ({ data }) => {
                         <div>
                             <header>
                                 {!c.acf.imatge_destacada ? null : (
-                                    <img
-                                        loading='lazy'
-                                        src={c.acf.imatge_destacada.sizes.medium}
-                                        alt={c.title.rendered}
-                                        width={thumbnailWidth}
-                                        height={thumbnailHeight}
-                                    />
+                                    <Link href={`/${c.type}/${c.id}/${c.slug}`}>
+                                        <a title={`Veure la fitxa de: ${c.title.rendered}`}>
+                                            <img
+                                                loading='lazy'
+                                                src={c.acf.imatge_destacada.sizes.medium_large}
+                                                alt={c.title.rendered}
+                                                width={thumbnailWidth}
+                                                height={thumbnailHeight}
+                                            />
+                                        </a>
+                                    </Link>
                                 )}
                             </header>
                             <main>

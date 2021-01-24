@@ -8,7 +8,7 @@ const Actuacions = ({ data, actuacions }) => {
     return (
         <Layout pageTitle={pageTitle} title={title} pageDescription={pageDescription}>
             <h1 className={styles.title}>{pageTitle}</h1>
-            <div className={`${styles.container}`}>
+            <div className={`${styles.container} ${styles.noPadding}`}>
                 <main className={styles.main}>
                     <Grid data={data} />
                 </main>
