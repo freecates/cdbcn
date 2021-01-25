@@ -4,11 +4,18 @@ import styles from '@styles/Home.module.scss';
 import api from '@libs/api.js';
 import Link from 'next/link';
 
-const Home = ({ home }) => {
+const Home = ({ home, footer }) => {
     const { title, pageTitle, pageDescription } = home.meta;
+    const { routes: footerLinks } = footer;
     const mainVideo = home.videos.mainVideo;
     return (
-        <Layout title={title} pageTitle={pageTitle} pageDescription={pageDescription} home>
+        <Layout
+            title={title}
+            pageTitle={pageTitle}
+            pageDescription={pageDescription}
+            home
+            footerLinks={footerLinks}
+        >
             <div className={styles.wrapperVideo}>
                 <Video data={mainVideo} />
             </div>
@@ -44,9 +51,11 @@ const Home = ({ home }) => {
 
 export const getStaticProps = async () => {
     const [home] = await Promise.all([api.home.getData()]);
+    const [footer] = await Promise.all([api.footer.getData()]);
     return {
         props: {
             home: { ...home[0] },
+            footer: { ...footer[0] },
         },
     };
 };

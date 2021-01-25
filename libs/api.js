@@ -36,6 +36,27 @@ const api = {
       return data;
     }
   },
+  avisLegal: {
+    async getData() {
+      const response = await fetch(`${staticDataUrl}/data/avisLegal.json`);
+      const data = await response.json();
+      return data;
+    }
+  },
+  politicaDeCookies: {
+    async getData() {
+      const response = await fetch(`${staticDataUrl}/data/politicaDeCookies.json`);
+      const data = await response.json();
+      return data;
+    }
+  },
+  footer: {
+    async getData() {
+      const response = await fetch(`${staticDataUrl}/data/footer.json`);
+      const data = await response.json();
+      return data;
+    }
+  },
 };
 
 

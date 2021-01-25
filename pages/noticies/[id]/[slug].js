@@ -3,8 +3,9 @@ import Layout from '@components/layout';
 import Fallback from '@components/fallback';
 import Post from '@components/post';
 import Custom404 from '../../404';
+import api from '@libs/api.js';
 
-const Noticia = ({ post }) => {
+const Noticia = ({ post, footer }) => {
     const { isFallback } = useRouter();
     if (!isFallback && !post) {
         return <Custom404 />;
@@ -21,8 +22,9 @@ const Noticia = ({ post }) => {
     const date = post.acf.data;
     const description = post.acf.cos_de_text_de_la_noticia;
     const { acf, type, id, slug } = post;
+    const { routes: footerLinks } = footer;
     return (
-        <Layout>
+        <Layout footerLinks={footerLinks}>
             <Post
                 title={pageTitle}
                 description={description}
@@ -56,8 +58,10 @@ export async function getStaticProps({ params }) {
 
     const post = await res.json();
 
+    const [footer] = await Promise.all([api.footer.getData()]);
+
     if (!post.data) {
-        return { props: { post }, revalidate: 1 };
+        return { props: { post, footer: { ...footer[0] } }, revalidate: 1 };
     } else {
         return { props: { post: '404' } };
     }
