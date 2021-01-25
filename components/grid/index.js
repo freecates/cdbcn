@@ -5,7 +5,6 @@ const thumbnailWidth = 768;
 const thumbnailHeight = 768;
 
 const Grid = ({ data }) => {
-    console.log(new Date(data[0].acf.data));
     return (
         <div className={styles.gridComponent}>
             {data

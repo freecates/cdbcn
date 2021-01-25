@@ -175,7 +175,7 @@ const Post = ({ title, author, date, description, id, type, content, slug, mainI
                 <SocialSharer type={type} id={id} slug={slug} title={title} />
                 <h3>
                     <Link href={`/${type}`}>
-                        <a className={'button'}>&larr; Tornar</a>
+                        <a className={'button'}>&larr; Tornar a "{type}"</a>
                     </Link>
                 </h3>
             </div>

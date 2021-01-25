@@ -3,9 +3,10 @@ import MDFileParser from '@components/mdnfileparser';
 import styles from '@styles/Home.module.scss';
 import Figure from '@components/figure';
 import api from '@libs/api.js';
+import OtherRoutes from '@components/otherroutes';
 
 const LaColla = ({ colla }) => {
-    const { title, pageTitle, pageDescription } = colla.meta;
+    const { title, pageTitle, pageDescription, otherRoutes } = colla.meta;
     const mainImage = colla.images.mainImage;
     const imageGallery = colla.images.imageGallery;
     return (
@@ -19,6 +20,9 @@ const LaColla = ({ colla }) => {
                 </main>
             </div>
             <Figure data={imageGallery} />
+            <div className={styles.container}>
+                <OtherRoutes routes={otherRoutes} />
+            </div>
         </Layout>
     );
 };
