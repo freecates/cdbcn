@@ -38,14 +38,14 @@ const Grid = ({ data }) => {
                             <main>
                                 <Link href={`/${c.type}/${c.id}/${c.slug}`}>
                                     <a title={`Veure la fitxa de: ${c.title.rendered}`}>
-                                        <h3>
+                                        <h2>
                                             <span
                                                 dangerouslySetInnerHTML={{
                                                     __html: c.title.rendered,
                                                 }}
                                             />
                                             &rarr;
-                                        </h3>
+                                        </h2>
                                     </a>
                                 </Link>
                                 <p>
