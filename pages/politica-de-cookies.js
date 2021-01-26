@@ -1,9 +1,11 @@
 import Layout from '@components/layout';
-import MDFileParser from '@components/mdnfileparser';
+import MDFileContent from '@components/mdncontentparser';
 import styles from '@styles/Home.module.scss';
 import api from '@libs/api.js';
 
-const PoliticaDeCookies = ({ politicaDeCookies, footer }) => {
+const staticDataUrl = process.env.STATIC_DATA_URL;
+
+const PoliticaDeCookies = ({ politicaDeCookies, footer, mdFileContent }) => {
     const { title, pageTitle, pageDescription } = politicaDeCookies.meta;
     const { routes: footerLinks } = footer;
     return (
@@ -17,7 +19,7 @@ const PoliticaDeCookies = ({ politicaDeCookies, footer }) => {
 
             <div className={`${styles.container}`}>
                 <main className={styles.main}>
-                    <MDFileParser file={`politica-de-cookies.md`} />
+                    <MDFileContent content={mdFileContent} />
                 </main>
             </div>
         </Layout>
@@ -27,10 +29,13 @@ const PoliticaDeCookies = ({ politicaDeCookies, footer }) => {
 export const getStaticProps = async () => {
     const [politicaDeCookies] = await Promise.all([api.politicaDeCookies.getData()]);
     const [footer] = await Promise.all([api.footer.getData()]);
+    const res = await fetch(`${staticDataUrl}/content/politica-de-cookies.md`);
+    const mdFileContent = await res.text();
     return {
         props: {
             politicaDeCookies: { ...politicaDeCookies[0] },
             footer: { ...footer[0] },
+            mdFileContent: mdFileContent,
         },
     };
 };

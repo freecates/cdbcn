@@ -5,6 +5,8 @@ import Post from '@components/post';
 import Custom404 from '../../404';
 import api from '@libs/api.js';
 
+const wordPressApiUrl = process.env.WORDPRESS_API_URL;
+
 const Actuacio = ({ post, footer }) => {
     const { isFallback } = useRouter();
     if (!isFallback && !post) {
@@ -42,7 +44,7 @@ const Actuacio = ({ post, footer }) => {
 
 export async function getStaticPaths() {
     const res = await fetch(
-        'https://cms.castellersdebarcelona.cat/wp-json/wp/v2/actuacions?per_page=100'
+        `${wordPressApiUrl}/wp/v2/actuacions?per_page=100`
     );
     const posts = await res.json();
 
@@ -53,7 +55,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
     const res = await fetch(
-        `https://cms.castellersdebarcelona.cat/wp-json/wp/v2/actuacions/${params.id}?_embed`
+        `${wordPressApiUrl}/wp/v2/actuacions/${params.id}?_embed`
     );
 
     const post = await res.json();

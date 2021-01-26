@@ -3,6 +3,8 @@ import Layout from '@components/layout';
 import api from '@libs/api.js';
 import styles from '@styles/Home.module.scss';
 
+const wordPressApiUrl = process.env.WORDPRESS_API_URL;
+
 const Noticies = ({ data, noticies, footer }) => {
     const { title, pageTitle, pageDescription } = noticies.meta;
     const { routes: footerLinks} = footer;
@@ -20,7 +22,7 @@ const Noticies = ({ data, noticies, footer }) => {
 
 export const getStaticProps = async () => {
     const res = await fetch(
-        `https://cms.castellersdebarcelona.cat/wp-json/wp/v2/noticies?per_page=100&_embed`
+        `${wordPressApiUrl}/wp/v2/noticies?per_page=100&_embed`
     );
     const data = await res.json();
     const [noticies] = await Promise.all([api.noticies.getData()]);
