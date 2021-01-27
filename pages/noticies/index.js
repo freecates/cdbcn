@@ -5,11 +5,17 @@ import styles from '@styles/Home.module.scss';
 
 const wordPressApiUrl = process.env.WORDPRESS_API_URL;
 
-const Noticies = ({ data, noticies, footer }) => {
+const Noticies = ({ data, noticies, footer, routes }) => {
     const { title, pageTitle, pageDescription } = noticies.meta;
-    const { routes: footerLinks} = footer;
+    const { routes: footerLinks } = footer;
     return (
-        <Layout pageTitle={pageTitle} title={title} pageDescription={pageDescription} footerLinks={footerLinks}>
+        <Layout
+            pageTitle={pageTitle}
+            title={title}
+            pageDescription={pageDescription}
+            footerLinks={footerLinks}
+            navRoutes={routes}
+        >
             <h1 className={styles.title}>{pageTitle}</h1>
             <div className={`${styles.container} ${styles.noPadding}`}>
                 <main className={styles.main}>
@@ -21,17 +27,19 @@ const Noticies = ({ data, noticies, footer }) => {
 };
 
 export const getStaticProps = async () => {
-    const res = await fetch(
-        `${wordPressApiUrl}/wp/v2/noticies?per_page=100&_embed`
-    );
+    const res = await fetch(`${wordPressApiUrl}/wp/v2/noticies?per_page=100&_embed`);
     const data = await res.json();
-    const [noticies] = await Promise.all([api.noticies.getData()]);
-    const [footer] = await Promise.all([api.footer.getData()]);
+    const [noticies, footer, routes] = await Promise.all([
+        api.noticies.getData(),
+        api.footer.getData(),
+        api.routes.getData(),
+    ]);
     return {
         props: {
             data: data,
             noticies: { ...noticies[0] },
             footer: { ...footer[0] },
+            routes,
         },
         revalidate: 1,
     };

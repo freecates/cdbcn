@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styles from './Layout.module.scss';
 import Footer from '@components/footer';
+import Nav from '@components/nav';
 import { TinyButton as ScrollUpButton } from 'react-scroll-up-button';
 
 const Layout = (props) => {
@@ -37,6 +38,7 @@ const Layout = (props) => {
                     </a>
                 </Link>
             </h1>
+            {props.navRoutes ? <Nav navRoutes={props.navRoutes} /> : null}
             <ScrollUpButton
                 style={{ backgroundColor: '#ffffff', fill: 'rgb(217, 0, 29)', right: '15px' }}
             />

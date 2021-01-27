@@ -36,23 +36,25 @@
             }
         }
     }
-}
-
-.container {
-    width: 100%;
-    margin: 0 auto;
-    max-width: 70rem;
-    padding: 0 1rem;
-    &.noPadding {
-        padding: 0;
-    }
-}
-@media (min-width: 768px) {
     .container {
-        padding: 0 2rem;
-
-        &.withOverlay {
-            position: relative;
+        width: 100%;
+        margin: 0 auto;
+        max-width: 70rem;
+        padding: 0 1rem;
+        &.noPadding {
+            padding: 0;
         }
+    }
+    @media (min-width: 768px) {
+        .container {
+            padding: 0 2rem;
+
+            &.withOverlay {
+                position: relative;
+            }
+        }
+    }
+    .alignCenter {
+        text-align: center;
     }
 }

@@ -15,6 +15,13 @@ const api = {
       return data;
     }
   },
+  vuitDeJuny1969: {
+    async getData() {
+      const response = await fetch(`${staticDataUrl}/data/vuitDeJuny1969.json`);
+      const data = await response.json();
+      return data;
+    }
+  },
   anys50tuits: {
     async getData() {
       const response = await fetch(`${staticDataUrl}/data/anys50tuits.json`);
@@ -53,6 +60,13 @@ const api = {
   footer: {
     async getData() {
       const response = await fetch(`${staticDataUrl}/data/footer.json`);
+      const data = await response.json();
+      return data;
+    }
+  },
+  routes: {
+    async getData() {
+      const response = await fetch(`${staticDataUrl}/data/routes.json`);
       const data = await response.json();
       return data;
     }
