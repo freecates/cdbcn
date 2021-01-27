@@ -9,7 +9,7 @@ const Figure = ({ data, quality, layout, withType, withOverlay }) => {
             {Array.isArray(data) && (
                 <div className={styles.grid}>
                     {data.map((d, index) => (
-                        <figure key={index - d.src} className={`${styles.figure} ${styles.card}`}>
+                        <figure key={index + d.src} className={`${styles.figure} ${styles.card}`}>
                             <Image
                                 quality={quality ? quality : null}
                                 width={d.width}
