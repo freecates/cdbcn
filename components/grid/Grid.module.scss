@@ -1,6 +1,6 @@
 .gridComponent {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     flex-wrap: wrap;
 
@@ -8,16 +8,16 @@
     margin-top: 3rem;
 
     .card {
-        margin: 1rem;
-        flex-basis: 45%;
+        flex-basis: 44%;
         color: inherit;
         text-decoration: none;
+        margin: 1rem;
+        main {
+            margin: 1rem;
+        }
         @media (max-width: 567px) {
             flex-basis: 100%;
             margin: 0;
-            main {
-                margin: 1rem;
-            }
         }
         header {
             text-align: center;
