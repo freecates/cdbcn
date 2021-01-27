@@ -21,7 +21,7 @@ const Actuacions = ({ data, actuacions, footer, routes }) => {
             <h1 className={styles.title}>{pageTitle}</h1>
             <div className={`${styles.container} ${styles.noPadding}`}>
                 <main className={styles.main}>
-                    <Grid data={data} />
+                    <Grid data={data} isThree />
                 </main>
             </div>
         </Layout>

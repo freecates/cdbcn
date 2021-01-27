@@ -32,6 +32,21 @@ const LaColla = ({ colla, footer, routes, mdFileContent }) => {
             </div>
 
             <Figure data={mainImage} quality={100} />
+
+            <div className={styles.container}>
+                <OtherRoutes routes={otherRoutes} />
+                <p>
+                    <small>
+                        Els textos d'aquestes seccions estan extrets del LLibre: Esteves, R.,
+                        Cervera, R., Cortijo, D. (2020).{' '}
+                        <em>
+                            Barcelona Terra de Castells - 50è Aniversari dels Castellers de
+                            Barcelona
+                        </em>
+                        , Barcelona, Espanya, Ajuntament de Barcelona.
+                    </small>
+                </p>
+            </div>
         </Layout>
     );
 };

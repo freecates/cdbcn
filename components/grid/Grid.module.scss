@@ -7,6 +7,10 @@
     max-width: 960px;
     margin-top: 3rem;
 
+    @media (min-width: 1360px) {
+        max-width: 1253px;
+    }
+
     .card {
         flex-basis: 44%;
         color: inherit;
@@ -21,6 +25,12 @@
         }
         header {
             text-align: center;
+        }
+
+        @media (min-width: 1360px) {
+            &.three {
+                flex-basis: 30%;
+            }
         }
     }
 }

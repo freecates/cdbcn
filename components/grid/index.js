@@ -4,7 +4,7 @@ import styles from './Grid.module.scss';
 const thumbnailWidth = 768;
 const thumbnailHeight = 768;
 
-const Grid = ({ data }) => {
+const Grid = ({ data, isThree }) => {
     return (
         <div className={styles.gridComponent}>
             {data
@@ -18,7 +18,11 @@ const Grid = ({ data }) => {
                     return 0;
                 })
                 .map((c, id) => (
-                    <div key={c.id} id={id} className={styles.card}>
+                    <div
+                        key={c.id}
+                        id={id}
+                        className={`${styles.card} ${isThree ? styles.three : null}`}
+                    >
                         <div>
                             <header>
                                 {!c.acf.imatge_destacada ? null : (
