@@ -6,8 +6,6 @@ import { motion } from 'framer-motion';
 
 const wordPressApiUrl = process.env.WORDPRESS_API_URL;
 
-console.log('wordPressApiUrl ', wordPressApiUrl);
-
 const Actuacions = ({ data, actuacions, footer, routes }) => {
     const { title, pageTitle, pageDescription } = actuacions.meta;
     const { routes: footerLinks } = footer;
