@@ -3,6 +3,7 @@ import Layout from '@components/layout';
 import api from '@libs/api.js';
 import styles from '@styles/Home.module.scss';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 const wordPressApiUrl = process.env.WORDPRESS_API_URL;
 
@@ -12,32 +13,45 @@ const Actualitat = ({ actuacionsData, noticiesData, footer, routes }) => {
     const pageDescription = "Recull de l'Actualitat dels Castellers de Barcelona";
     const { routes: footerLinks } = footer;
     return (
-        <Layout
-            pageTitle={pageTitle}
-            title={title}
-            pageDescription={pageDescription}
-            footerLinks={footerLinks}
-            navRoutes={routes}
-        >
-            <h1 className={styles.title}>{pageTitle}</h1>
-            <div className={`${styles.container} ${styles.noPadding}`}>
-                <main className={styles.main}>
-                    <Grid data={actuacionsData} />
-                    <p>
-                        <Link href={`/${actuacionsData[0].type}`}>
-                            <a className={styles.more} title={`Anar a "${actuacionsData[0].type}"`}>[+]</a>
-                        </Link>
-                    </p>
-                    <hr />
-                    <Grid data={noticiesData} />
-                    <p>
-                        <Link href={`/${noticiesData[0].type}`}>
-                            <a className={styles.more} title={`Anar a "${noticiesData[0].type}"`}>[+]</a>
-                        </Link>
-                    </p>
-                </main>
-            </div>
-        </Layout>
+        <motion.div initial='initial' animate='animate' exit={{ opacity: 0 }}>
+            <Layout
+                pageTitle={pageTitle}
+                title={title}
+                pageDescription={pageDescription}
+                footerLinks={footerLinks}
+                navRoutes={routes}
+            >
+                <h1 className={styles.title}>{pageTitle}</h1>
+                <div className={`${styles.container} ${styles.noPadding}`}>
+                    <main className={styles.main}>
+                        <Grid data={actuacionsData} />
+                        <p>
+                            <Link href={`/${actuacionsData[0].type}`}>
+                                <a
+                                    className={styles.more}
+                                    title={`Anar a "${actuacionsData[0].type}"`}
+                                >
+                                    [+]
+                                </a>
+                            </Link>
+                        </p>
+
+                        <hr className={styles.hr} />
+                        <Grid data={noticiesData} />
+                        <p>
+                            <Link href={`/${noticiesData[0].type}`}>
+                                <a
+                                    className={styles.more}
+                                    title={`Anar a "${noticiesData[0].type}"`}
+                                >
+                                    [+]
+                                </a>
+                            </Link>
+                        </p>
+                    </main>
+                </div>
+            </Layout>
+        </motion.div>
     );
 };
 

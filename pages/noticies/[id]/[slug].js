@@ -4,19 +4,32 @@ import Fallback from '@components/fallback';
 import Post from '@components/post';
 import Custom404 from '../../404';
 import api from '@libs/api.js';
+import { motion } from 'framer-motion';
 
 const wordPressApiUrl = process.env.WORDPRESS_API_URL;
 
 const Noticia = ({ post, footer }) => {
     const { isFallback } = useRouter();
     if (!isFallback && !post) {
-        return <Custom404 />;
+        return (
+            <motion.div initial='initial' animate='animate' exit={{ opacity: 0 }}>
+                <Custom404 />
+            </motion.div>
+        );
     }
     if (isFallback) {
-        return <Fallback />;
+        return (
+            <motion.div initial='initial' animate='animate' exit={{ opacity: 0 }}>
+                <Fallback />
+            </motion.div>
+        );
     }
     if (post === '404') {
-        return <Fallback notFound />;
+        return (
+            <motion.div initial='initial' animate='animate' exit={{ opacity: 0 }}>
+                <Fallback notFound />
+            </motion.div>
+        );
     }
     const pageTitle = post.acf.titular_de_la_noticia;
     const mainImage = post.acf.imatge_destacada;
@@ -26,26 +39,26 @@ const Noticia = ({ post, footer }) => {
     const { acf, type, id, slug } = post;
     const { routes: footerLinks } = footer;
     return (
-        <Layout footerLinks={footerLinks}>
-            <Post
-                title={pageTitle}
-                description={description}
-                id={id}
-                type={type}
-                content={acf}
-                slug={slug}
-                date={date}
-                author={author}
-                mainImage={mainImage}
-            />
-        </Layout>
+        <motion.div initial='initial' animate='animate' exit={{ opacity: 0 }}>
+            <Layout footerLinks={footerLinks}>
+                <Post
+                    title={pageTitle}
+                    description={description}
+                    id={id}
+                    type={type}
+                    content={acf}
+                    slug={slug}
+                    date={date}
+                    author={author}
+                    mainImage={mainImage}
+                />
+            </Layout>
+        </motion.div>
     );
 };
 
 export async function getStaticPaths() {
-    const res = await fetch(
-        `${wordPressApiUrl}/wp/v2/noticies?per_page=100`
-    );
+    const res = await fetch(`${wordPressApiUrl}/wp/v2/noticies?per_page=100`);
     const posts = await res.json();
 
     const paths = posts.map((post) => `/${post.type}/${post.id}/${post.slug}`);
@@ -54,9 +67,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-    const res = await fetch(
-        `${wordPressApiUrl}/wp/v2/noticies/${params.id}?_embed`
-    );
+    const res = await fetch(`${wordPressApiUrl}/wp/v2/noticies/${params.id}?_embed`);
 
     const post = await res.json();
 

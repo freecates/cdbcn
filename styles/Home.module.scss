@@ -32,12 +32,6 @@
             background-color: $white;
         }
     }
-    hr {
-        width: 50%;
-        margin: 0 auto;
-        height: 0;
-        border: 1px solid $gray;
-    }
     .more {
         padding: 0.15rem 0.5rem;
         color: inherit;
@@ -141,4 +135,11 @@
     a {
         text-decoration: underline;
     }
+}
+
+.hr {
+    width: 50%;
+    margin: 0 auto;
+    height: 0;
+    border: 1px solid $gray;
 }

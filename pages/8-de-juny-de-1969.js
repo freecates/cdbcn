@@ -4,6 +4,7 @@ import Figure from '@components/figure';
 import api from '@libs/api.js';
 import OtherRoutes from '@components/otherroutes';
 import MDFileContent from '@components/mdncontentparser';
+import { motion } from 'framer-motion';
 
 const staticDataUrl = process.env.STATIC_DATA_URL;
 
@@ -13,26 +14,28 @@ const VuitDeJunyDe1969 = ({ vuitDeJuny1969, footer, mdFileContent, routes }) => 
     const mainImage = vuitDeJuny1969.images.mainImage;
     const imageGallery = vuitDeJuny1969.images.imageGallery;
     return (
-        <Layout
-            pageTitle={pageTitle}
-            title={title}
-            pageDescription={pageDescription}
-            footerLinks={footerLinks}
-            navRoutes={routes}
-        >
-            <h1 className={styles.title}>La Colla</h1>
-            <Figure data={mainImage} quality={100} />
+        <motion.div initial='initial' animate='animate' exit={{ opacity: 0 }}>
+            <Layout
+                pageTitle={pageTitle}
+                title={title}
+                pageDescription={pageDescription}
+                footerLinks={footerLinks}
+                navRoutes={routes}
+            >
+                <h1 className={styles.title}>La Colla</h1>
+                <Figure data={mainImage} quality={100} />
 
-            <div className={`${styles.container}`}>
-                <main className={styles.main}>
-                    <MDFileContent content={mdFileContent} />
-                </main>
-            </div>
-            <Figure data={imageGallery} />
-            <div className={styles.container}>
-                <OtherRoutes routes={otherRoutes} isButton />
-            </div>
-        </Layout>
+                <div className={`${styles.container}`}>
+                    <main className={styles.main}>
+                        <MDFileContent content={mdFileContent} />
+                    </main>
+                </div>
+                <Figure data={imageGallery} />
+                <div className={styles.container}>
+                    <OtherRoutes routes={otherRoutes} isButton />
+                </div>
+            </Layout>
+        </motion.div>
     );
 };
 

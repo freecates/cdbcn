@@ -4,34 +4,36 @@ import Figure from '@components/figure';
 import api from '@libs/api.js';
 import MDFileContent from '@components/mdncontentparser';
 import OtherRoutes from '@components/otherroutes';
+import { motion } from 'framer-motion';
 
 const staticDataUrl = process.env.STATIC_DATA_URL;
 
 const CinquantaAnys50Tuits = ({ anys50tuits, footer, mdFileContent, routes }) => {
-
     const { title, pageTitle, pageDescription, otherRoutes } = anys50tuits.meta;
     const { routes: footerLinks } = footer;
     const imageGallery = anys50tuits.images.imageGallery;
     return (
-        <Layout
-            pageTitle={pageTitle}
-            title={title}
-            navRoutes={routes}
-            pageDescription={pageDescription}
-            footerLinks={footerLinks}
-        >
-            <h1 className={styles.title}>La Colla</h1>
+        <motion.div initial='initial' animate='animate' exit={{ opacity: 0 }}>
+            <Layout
+                pageTitle={pageTitle}
+                title={title}
+                navRoutes={routes}
+                pageDescription={pageDescription}
+                footerLinks={footerLinks}
+            >
+                <h1 className={styles.title}>La Colla</h1>
 
-            <div className={`${styles.container}`}>
-                <main className={styles.main}>
-                    <MDFileContent content={mdFileContent} />
-                </main>
-            </div>
-            <Figure data={imageGallery} />
-            <div className={styles.container}>
-                <OtherRoutes routes={otherRoutes} isButton />
-            </div>
-        </Layout>
+                <div className={`${styles.container}`}>
+                    <main className={styles.main}>
+                        <MDFileContent content={mdFileContent} />
+                    </main>
+                </div>
+                <Figure data={imageGallery} />
+                <div className={styles.container}>
+                    <OtherRoutes routes={otherRoutes} isButton />
+                </div>
+            </Layout>
+        </motion.div>
     );
 };
 
