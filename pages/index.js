@@ -3,14 +3,14 @@ import Video from '@components/video';
 import styles from '@styles/Home.module.scss';
 import api from '@libs/api.js';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+
 
 const Home = ({ home, footer }) => {
     const { title, pageTitle, pageDescription } = home.meta;
     const { routes: footerLinks } = footer;
     const mainVideo = home.videos.mainVideo;
     return (
-        <motion.div initial='initial' animate='animate' exit={{ opacity: 0 }}>
+        
             <Layout
                 title={title}
                 pageTitle={pageTitle}
@@ -48,7 +48,7 @@ const Home = ({ home, footer }) => {
                     </main>
                 </div>
             </Layout>
-        </motion.div>
+        
     );
 };
 

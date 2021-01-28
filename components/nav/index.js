@@ -14,7 +14,9 @@ const Nav = ({ navRoutes }) => {
                         {routesNav.map((r, index) => (
                             <li
                                 key={index}
-                                className={`${router.pathname == r.route ? styles.active : ''}`}
+                                className={`${
+                                    router.pathname.includes(r.route) ? styles.active : ''
+                                }`}
                             >
                                 <Link href={r.route}>
                                     <a>{r.name}</a>

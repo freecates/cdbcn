@@ -4,7 +4,7 @@ import Figure from '@components/figure';
 import api from '@libs/api.js';
 import OtherRoutes from '@components/otherroutes';
 import MDFileContent from '@components/mdncontentparser';
-import { motion } from 'framer-motion';
+
 
 const staticDataUrl = process.env.STATIC_DATA_URL;
 
@@ -14,7 +14,7 @@ const VuitDeJunyDe1969 = ({ vuitDeJuny1969, footer, mdFileContent, routes }) => 
     const mainImage = vuitDeJuny1969.images.mainImage;
     const imageGallery = vuitDeJuny1969.images.imageGallery;
     return (
-        <motion.div initial='initial' animate='animate' exit={{ opacity: 0 }}>
+        
             <Layout
                 pageTitle={pageTitle}
                 title={title}
@@ -35,7 +35,7 @@ const VuitDeJunyDe1969 = ({ vuitDeJuny1969, footer, mdFileContent, routes }) => 
                     <OtherRoutes routes={otherRoutes} isButton />
                 </div>
             </Layout>
-        </motion.div>
+        
     );
 };
 

@@ -4,7 +4,7 @@ import Fallback from '@components/fallback';
 import Post from '@components/post';
 import Custom404 from '../../404';
 import api from '@libs/api.js';
-import { motion } from 'framer-motion';
+
 
 const wordPressApiUrl = process.env.WORDPRESS_API_URL;
 
@@ -12,23 +12,23 @@ const Noticia = ({ post, footer }) => {
     const { isFallback } = useRouter();
     if (!isFallback && !post) {
         return (
-            <motion.div initial='initial' animate='animate' exit={{ opacity: 0 }}>
+            
                 <Custom404 />
-            </motion.div>
+            
         );
     }
     if (isFallback) {
         return (
-            <motion.div initial='initial' animate='animate' exit={{ opacity: 0 }}>
+            
                 <Fallback />
-            </motion.div>
+            
         );
     }
     if (post === '404') {
         return (
-            <motion.div initial='initial' animate='animate' exit={{ opacity: 0 }}>
+            
                 <Fallback notFound />
-            </motion.div>
+            
         );
     }
     const pageTitle = post.acf.titular_de_la_noticia;
@@ -39,7 +39,7 @@ const Noticia = ({ post, footer }) => {
     const { acf, type, id, slug } = post;
     const { routes: footerLinks } = footer;
     return (
-        <motion.div initial='initial' animate='animate' exit={{ opacity: 0 }}>
+        
             <Layout footerLinks={footerLinks}>
                 <Post
                     title={pageTitle}
@@ -53,7 +53,7 @@ const Noticia = ({ post, footer }) => {
                     mainImage={mainImage}
                 />
             </Layout>
-        </motion.div>
+        
     );
 };
 

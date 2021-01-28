@@ -4,7 +4,7 @@ import Figure from '@components/figure';
 import api from '@libs/api.js';
 import MDFileContent from '@components/mdncontentparser';
 import OtherRoutes from '@components/otherroutes';
-import { motion } from 'framer-motion';
+
 
 const staticDataUrl = process.env.STATIC_DATA_URL;
 
@@ -13,7 +13,7 @@ const CinquantaAnys50Tuits = ({ anys50tuits, footer, mdFileContent, routes }) =>
     const { routes: footerLinks } = footer;
     const imageGallery = anys50tuits.images.imageGallery;
     return (
-        <motion.div initial='initial' animate='animate' exit={{ opacity: 0 }}>
+        
             <Layout
                 pageTitle={pageTitle}
                 title={title}
@@ -33,7 +33,7 @@ const CinquantaAnys50Tuits = ({ anys50tuits, footer, mdFileContent, routes }) =>
                     <OtherRoutes routes={otherRoutes} isButton />
                 </div>
             </Layout>
-        </motion.div>
+        
     );
 };
 

@@ -4,7 +4,7 @@ import Figure from '@components/figure';
 import api from '@libs/api.js';
 import OtherRoutes from '@components/otherroutes';
 import MDFileContent from '@components/mdncontentparser';
-import { motion } from 'framer-motion';
+
 
 const staticDataUrl = process.env.STATIC_DATA_URL;
 
@@ -13,7 +13,7 @@ const LaColla = ({ colla, footer, routes, mdFileContent }) => {
     const mainImage = colla.images.mainImage;
     const { routes: footerLinks } = footer;
     return (
-        <motion.div initial='initial' animate='animate' exit={{ opacity: 0 }}>
+        
             <Layout
                 pageTitle={pageTitle}
                 title={title}
@@ -52,7 +52,7 @@ const LaColla = ({ colla, footer, routes, mdFileContent }) => {
                     </p>
                 </div>
             </Layout>
-        </motion.div>
+        
     );
 };
 

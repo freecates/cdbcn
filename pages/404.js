@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import Layout from '@components/layout';
 import styles from '@styles/Home.module.scss';
-import { motion } from 'framer-motion';
+
 
 export default function Custom404() {
     return (
-        <motion.div initial='initial' animate='animate' exit={{ opacity: 0 }}>
+        
             <Layout>
                 <div className={`${styles.container}`}>
                     <main className={styles.main}>
@@ -24,6 +24,6 @@ export default function Custom404() {
                     </main>
                 </div>
             </Layout>
-        </motion.div>
+        
     );
 }
