@@ -41,7 +41,7 @@ const LaColla = ({ colla, footer, routes, mdFileContent }) => {
                     <OtherRoutes routes={otherRoutes} />
                     <p>
                         <small>
-                            Els textos d'aquestes seccions estan extrets del LLibre: Esteves, R.,
+                            Els textos i les imatges d'aquestes seccions estan extrets del LLibre: Esteves, R.,
                             Cervera, R., Cortijo, D. (2020).{' '}
                             <em>
                                 Barcelona Terra de Castells - 50è Aniversari dels Castellers de
