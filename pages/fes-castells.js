@@ -4,7 +4,6 @@ import api from '@libs/api.js';
 import Figure from '@components/figure';
 
 const Home = ({ footer, routes, fesCastells }) => {
-    console.log('fesCastells ', fesCastells);
     const { title, pageTitle, pageDescription } = fesCastells.meta;
     const { routes: footerLinks } = footer;
     const mainImage = fesCastells.images.mainImage;
