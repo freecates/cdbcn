@@ -5,7 +5,7 @@ import api from '@libs/api.js';
 import Link from 'next/link';
 
 
-const Home = ({ home, footer }) => {
+const Home = ({ home, footer, routes }) => {
     const { title, pageTitle, pageDescription } = home.meta;
     const { routes: footerLinks } = footer;
     const mainVideo = home.videos.mainVideo;
@@ -15,6 +15,7 @@ const Home = ({ home, footer }) => {
                 title={title}
                 pageTitle={pageTitle}
                 pageDescription={pageDescription}
+                navRoutes={routes}
                 home
                 footerLinks={footerLinks}
             >
@@ -53,12 +54,13 @@ const Home = ({ home, footer }) => {
 };
 
 export const getStaticProps = async () => {
-    const [home] = await Promise.all([api.home.getData()]);
-    const [footer] = await Promise.all([api.footer.getData()]);
+    const [home, footer, routes] = await Promise.all([api.home.getData(), api.footer.getData(), 
+        api.routes.getData(),]);
     return {
         props: {
             home: { ...home[0] },
             footer: { ...footer[0] },
+            routes
         },
     };
 };

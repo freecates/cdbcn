@@ -21,7 +21,6 @@ const CinquantaAnys50Tuits = ({ anys50tuits, footer, mdFileContent, routes }) =>
                 pageDescription={pageDescription}
                 footerLinks={footerLinks}
             >
-                <h1 className={styles.title}>La Colla</h1>
 
                 <div className={`${styles.container}`}>
                     <main className={styles.main}>

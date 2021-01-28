@@ -22,7 +22,6 @@ const VuitDeJunyDe1969 = ({ vuitDeJuny1969, footer, mdFileContent, routes }) => 
                 footerLinks={footerLinks}
                 navRoutes={routes}
             >
-                <h1 className={styles.title}>La Colla</h1>
                 <Figure data={mainImage} quality={100} />
 
                 <div className={`${styles.container}`}>

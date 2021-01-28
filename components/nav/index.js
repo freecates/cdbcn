@@ -8,8 +8,6 @@ const Nav = ({ navRoutes }) => {
 
     return (
         <nav className={styles.nav}>
-            <ul className={styles.main}>
-                <li>
                     <ul className={styles.secondary}>
                         {routesNav.map((r, index) => (
                             <li
@@ -24,8 +22,6 @@ const Nav = ({ navRoutes }) => {
                             </li>
                         ))}
                     </ul>
-                </li>
-            </ul>
         </nav>
     );
 };

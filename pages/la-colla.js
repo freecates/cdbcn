@@ -27,8 +27,8 @@ const LaColla = ({ colla, footer, routes, mdFileContent }) => {
                     <OtherRoutes routes={otherRoutes} />
                 </div>
 
-                <div className={`${styles.container}`}>
-                    <main className={styles.main}>
+                <div className={`${styles.container} ${styles.withOverlay}`}>
+                    <main className={`${styles.main} ${styles.withUnderlay}`}>
                         <MDFileContent content={mdFileContent} />
                     </main>
                 </div>

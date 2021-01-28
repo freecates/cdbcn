@@ -15,6 +15,20 @@ const api = {
       return data;
     }
   },
+  contacte: {
+    async getData() {
+      const response = await fetch(`${staticDataUrl}/data/contacte.json`);
+      const data = await response.json();
+      return data;
+    }
+  },
+  fesCastells: {
+    async getData() {
+      const response = await fetch(`${staticDataUrl}/data/fesCastells.json`);
+      const data = await response.json();
+      return data;
+    }
+  },
   vuitDeJuny1969: {
     async getData() {
       const response = await fetch(`${staticDataUrl}/data/vuitDeJuny1969.json`);
