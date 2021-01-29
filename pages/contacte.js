@@ -3,9 +3,21 @@ import styles from '@styles/Home.module.scss';
 import api from '@libs/api.js';
 import Figure from '@components/figure';
 import { FaMapSigns } from 'react-icons/fa';
+import { MailruIcon } from 'react-share';
 
 const Home = ({ contacte, footer, routes }) => {
-    const { title, pageTitle, pageDescription, map } = contacte.meta;
+    const {
+        title,
+        pageTitle,
+        pageDescription,
+        name,
+        address,
+        phone,
+        mobile,
+        web,
+        email,
+        map,
+    } = contacte.meta;
     const mainImage = contacte.images.mainImage;
     const { routes: footerLinks } = footer;
     return (
@@ -20,20 +32,18 @@ const Home = ({ contacte, footer, routes }) => {
             <div className={`${styles.container} ${styles.withOverlay}`}>
                 <main className={`${styles.main} ${styles.withUnderlay}`}>
                     <p className={styles.description}>
-                        <strong>Colla Castellers de Barcelona</strong>
+                        <strong>{name}</strong>
                         <br />
                         <br />
-                        Carrer de Bilbao, 212 - 214 08018, Barcelona
+                        {address}
                         <br />
-                        T. 934 98 27 28
+                        T. <a href={phone.href}>{phone.number}</a>
                         <br />
-                        M. 608 28 72 78 [premsa]
+                        M. <a href={mobile.href}>{mobile.number}</a> [premsa]
                         <br />
-                        www.castellersdebarcelona.cat
+                        {web}
                         <br />
-                        <a href={'mailto:colla@castellersdebarcelona.cat'}>
-                            colla@castellersdebarcelona.cat
-                        </a>
+                        <a href={MailruIcon.href}>{email.address}</a>
                         <br />
                         <a
                             title={map.title}

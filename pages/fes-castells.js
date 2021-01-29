@@ -2,9 +2,10 @@ import Layout from '@components/layout';
 import styles from '@styles/Home.module.scss';
 import api from '@libs/api.js';
 import Figure from '@components/figure';
+import { FaMapSigns } from 'react-icons/fa';
 
 const Home = ({ footer, routes, fesCastells }) => {
-    const { title, pageTitle, pageDescription } = fesCastells.meta;
+    const { title, pageTitle, pageDescription, map } = fesCastells.meta;
     const { routes: footerLinks } = footer;
     const mainImage = fesCastells.images.mainImage;
     return (
@@ -18,7 +19,22 @@ const Home = ({ footer, routes, fesCastells }) => {
             <div className={`${styles.container} ${styles.withOverlay}`}>
                 <main className={`${styles.main} ${styles.withUnderlay}`}>
                     <h1>... Arribaran!</h1>
-                    <h2 className={styles.title}>{pageDescription}</h2>
+                    <h2
+                        className={styles.title}
+                        dangerouslySetInnerHTML={{
+                            __html: pageDescription,
+                        }}
+                    />
+                    <h3 className={styles.title}>
+                        <a
+                            title={map.title}
+                            target={'_blank'}
+                            rel={'noopener norefer'}
+                            href={map.url}
+                        >
+                            <FaMapSigns />
+                        </a>
+                    </h3>
                     <p>(quan la COVID-19 deixi d'emprenyar)</p>
                 </main>
             </div>

@@ -54,7 +54,7 @@ const Grid = ({ data, isThree }) => {
                                 </Link>
                                 <p>
                                     <small>
-                                        {c._embedded.author[0].name} | {c.acf.data}
+                                        {c._embedded.author[0].name} | {c.acf.data} | [{c.type}]
                                     </small>
                                 </p>
                             </main>

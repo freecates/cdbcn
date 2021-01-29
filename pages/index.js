@@ -4,63 +4,65 @@ import styles from '@styles/Home.module.scss';
 import api from '@libs/api.js';
 import Link from 'next/link';
 
-
-const Home = ({ home, footer, routes }) => {
+const Home = ({ home, contacte, footer, routes }) => {
     const { title, pageTitle, pageDescription } = home.meta;
+    const { name, address, phone, mobile, web, email, map } = contacte.meta;
     const { routes: footerLinks } = footer;
     const mainVideo = home.videos.mainVideo;
     return (
-        
-            <Layout
-                title={title}
-                pageTitle={pageTitle}
-                pageDescription={pageDescription}
-                navRoutes={routes}
-                home
-                footerLinks={footerLinks}
-            >
-                <div className={styles.wrapperVideo}>
-                    <Video data={mainVideo} />
-                </div>
-                <div className={`${styles.container} ${styles.withOverlay}`}>
-                    <main className={`${styles.main} ${styles.withOverlay}`}>
-                        <p className={styles.description}>
-                            <strong>Colla Castellers de Barcelona</strong>
-                            <br />
-                            [La Colla Degana de la Ciutat -{' '}
-                            <Link href={'/la-colla'}>
-                                <a>1969</a>
-                            </Link>
-                            ]
-                            <br />
-                            <br />
-                            Carrer de Bilbao, 212 - 214 08018, Barcelona
-                            <br />
-                            T. 934 98 27 28
-                            <br />
-                            M. 608 28 72 78 [premsa]
-                            <br />
-                            www.castellersdebarcelona.cat
-                            <br />
-                            <a href={'mailto:colla@castellersdebarcelona.cat'}>
-                                colla@castellersdebarcelona.cat
-                            </a>
-                        </p>
-                    </main>
-                </div>
-            </Layout>
-        
+        <Layout
+            title={title}
+            pageTitle={pageTitle}
+            pageDescription={pageDescription}
+            navRoutes={routes}
+            home
+            footerLinks={footerLinks}
+        >
+            <div className={styles.wrapperVideo}>
+                <Video data={mainVideo} />
+            </div>
+            <div className={`${styles.container} ${styles.withOverlay}`}>
+                <main className={`${styles.main} ${styles.withOverlay}`}>
+                    <p className={styles.description}>
+                        <strong>{name}</strong>
+                        <br />
+                        [La Colla Degana de la Ciutat -{' '}
+                        <Link href={'/la-colla'}>
+                            <a>1969</a>
+                        </Link>
+                        ]
+                        <br />
+                        <br />
+                        {address}
+                        <br />
+                        T. <a href={phone.href}>{phone.number}</a>
+                        <br />
+                        M. <a href={mobile.href}>{mobile.number}</a> [premsa]
+                        <br />
+                        {web}
+                        <br />
+                        <a href={email.href}>{email.address}</a>
+                        <br />
+                    </p>
+                </main>
+            </div>
+        </Layout>
     );
 };
 
 export const getStaticProps = async () => {
-    const [home, footer, routes] = await Promise.all([api.home.getData(), api.footer.getData(), 
-        api.routes.getData(),]);
+    const [home, contacte, footer, routes] = await Promise.all([
+        api.home.getData(),
+        api.contacte.getData(),
+        api.footer.getData(),
+        api.routes.getData(),
+    ]);
     return {
         props: {
             home: { ...home[0] },
+            contacte: { ...contacte[0] },
             footer: { ...footer[0] },
-            routes
+            routes,
         },
     };
 };
