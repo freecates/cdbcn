@@ -6,7 +6,7 @@ const Fallback = ({ notFound }) => {
         <Layout>
             <div className={`${styles.fallBackComponent}`}>
                 <div className={`file${notFound ? '' : ' loading'}`}>
-                    <h1>{notFound ? 'Pàgina no trobada' : '... Carregant'}</h1>
+                    <h1>{notFound ? 'Pàgina no trobada o no disponible en aquest moment' : '... Carregant'}</h1>
                 </div>
                 <style jsx>{`
                     .loading {

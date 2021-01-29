@@ -7,6 +7,7 @@ import styles from '@styles/Home.module.scss';
 const wordPressApiUrl = process.env.WORDPRESS_API_URL;
 
 const Actuacions = ({ data, actuacions, footer, routes }) => {
+    console.log('data ', data);
     const { title, pageTitle, pageDescription } = actuacions.meta;
     const { routes: footerLinks } = footer;
     return (
