@@ -48,7 +48,7 @@ const Grid = ({ data, isThree }) => {
                         const itemImg = c.acf.imatge_destacada;
                         const imgSrc = itemImg.sizes.medium_large;
                         const type = c.type;
-                        const itemUrl = `/${type}/${id}/${slug}`;
+                        const itemUrl = `/${type}/${itemId}/${slug}`;
                         return (
                             <div
                                 key={itemId}
