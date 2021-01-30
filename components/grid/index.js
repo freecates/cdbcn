@@ -112,17 +112,15 @@ const Grid = ({ data, isThree }) => {
                                 <div>
                                     <header>
                                         {!itemImg ? null : (
-                                            <Link href={itemUrl}>
-                                                <a title={`Veure la fitxa de: ${title}`}>
-                                                    <img
-                                                        loading='lazy'
-                                                        src={imgSrc}
-                                                        alt={title}
-                                                        width={thumbnailWidth}
-                                                        height={thumbnailHeight}
-                                                    />
-                                                </a>
-                                            </Link>
+                                            <a href={itemUrl} title={`Veure la fitxa de: ${title}`}>
+                                                <img
+                                                    loading='lazy'
+                                                    src={imgSrc}
+                                                    alt={title}
+                                                    width={thumbnailWidth}
+                                                    height={thumbnailHeight}
+                                                />
+                                            </a>
                                         )}
                                     </header>
                                     <main>
