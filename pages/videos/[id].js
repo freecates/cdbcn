@@ -5,79 +5,81 @@ import Post from '@components/post';
 import Custom404 from '@pages/404';
 import api from '@libs/api.js';
 
+const youtubeApiUrl = process.env.YOUTUBE_API_URL;
+const youtubeApiKey = process.env.YOUTUBE_API_KEY;
+const youtubeChannelId = process.env.YOUTUBE_CHANNEL_ID;
+const type = 'videos';
 
-const wordPressApiUrl = process.env.WORDPRESS_API_URL;
+const Actuacio = ({ post, videoDetails, footer }) => {
 
-const Actuacio = ({ post, footer }) => {
     const { isFallback } = useRouter();
     if (!isFallback && !post) {
-        return (
-            
-                <Custom404 />
-            
-        );
+        return <Custom404 />;
     }
     if (isFallback) {
-        return (
-            
-                <Fallback />
-            
-        );
+        return <Fallback />;
     }
-    if (post === '404') {
-        return (
-            
-                <Fallback notFound />
-            
-        );
+    if (post === 'error') {
+        return <Fallback notFound />;
     }
-    const pageTitle = post.acf.titular;
-    const mainImage = post.acf.imatge_destacada;
-    const author = post._embedded.author[0].name;
-    const date = post.acf.data;
-    const description = post.acf.cronica_de_la_diada;
-    const { acf, type, id, slug } = post;
+    const videoPlayer = post.items[0].player;
+    const video = videoDetails.items[0].snippet;
+    const pageTitle = video.title;
+    const mainImage = video.thumbnails.maxres;
+    const author = video.channelTitle;
+    const date = video.publishedAt;
+    const description = video.description;
+    const { embedHtml } = videoPlayer;
+    const id = post.items[0].id;
     const { routes: footerLinks } = footer;
     return (
-        
-            <Layout footerLinks={footerLinks}>
-                <Post
-                    title={pageTitle}
-                    description={description}
-                    id={id}
-                    type={type}
-                    content={acf}
-                    slug={slug}
-                    date={date}
-                    author={author}
-                    mainImage={mainImage}
-                />
-            </Layout>
-        
+        <Layout footerLinks={footerLinks}>
+            <Post
+                title={pageTitle}
+                description={description}
+                id={id}
+                type={type}
+                content={video}
+                date={date}
+                author={author}
+                mainImage={mainImage}
+                player={embedHtml}
+            />{' '}
+        </Layout>
     );
 };
 
 export async function getStaticPaths() {
-    const type = 'videos';
-    const res = await fetch(`${wordPressApiUrl}/wp/v2/actuacions?per_page=100`);
-    const posts = await res.json();
+    const req = await fetch(
+        `${youtubeApiUrl}/search?part=snippet&channelId=${youtubeChannelId}&maxResults=30&order=date&type=video&key=${youtubeApiKey}`
+    );
+    const res = await req.json();
 
-    const paths = posts.map((post) => `/${type}/${post.id}`);
+    const videos = res.items;
+
+    const paths = videos.map((v) => `/${type}/${v.id}`);
 
     return { paths, fallback: true };
 }
 
 export async function getStaticProps({ params }) {
-    const res = await fetch(`${wordPressApiUrl}/wp/v2/actuacions/${params.id}?_embed`);
+    const res = await fetch(
+        `${youtubeApiUrl}/videos?part=player&id=${params.id}&key=${youtubeApiKey}`
+    );
 
     const post = await res.json();
 
+    const res2 = await fetch(
+        `${youtubeApiUrl}/videos?part=snippet&id=${params.id}&key=${youtubeApiKey}`
+    );
+    const videoDetails = await res2.json();
+
     const [footer] = await Promise.all([api.footer.getData()]);
 
-    if (!post.data) {
-        return { props: { post, footer: { ...footer[0] } }, revalidate: 1 };
+    if (!post.error) {
+        return { props: { post, videoDetails, footer: { ...footer[0] } }, revalidate: 1 };
     } else {
-        return { props: { post: '404' } };
+        return { props: { post: 'error' } };
     }
 }
 

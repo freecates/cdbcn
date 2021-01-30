@@ -97,7 +97,7 @@ const Grid = ({ data, isThree }) => {
                     if (c.kind === 'youtube#searchResult') {
                         const date = c.snippet.publishedAt;
                         const title = c.snippet.title;
-                        const itemId = c.id.ivideoId;
+                        const itemId = c.id.videoId;
                         const author = c.snippet.channelTitle;
                         const itemImg = c.snippet.thumbnails.high;
                         const imgSrc = itemImg.url;

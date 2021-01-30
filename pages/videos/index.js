@@ -8,12 +8,12 @@ const youtubeApiUrl = process.env.YOUTUBE_API_URL;
 const youtubeApiKey = process.env.YOUTUBE_API_KEY;
 const youtubeChannelId = process.env.YOUTUBE_CHANNEL_ID;
 
-const Actuacions = ({ data, actuacions, footer, routes }) => {
+const Videos = ({ data, footer, routes }) => {
     const videosData = data.items;
     if (data === 'error') {
         return <Fallback notFound />;
     }
-    const { title, pageTitle, pageDescription } = actuacions.meta;
+    const { title, pageTitle, pageDescription } = data.meta;
     const { routes: footerLinks } = footer;
     return (
         <Layout
@@ -38,9 +38,10 @@ export const getStaticProps = async () => {
         `${youtubeApiUrl}/search?part=snippet&channelId=${youtubeChannelId}&maxResults=30&order=date&type=video&key=${youtubeApiKey}`
     );
     const data = await res.json(); */
-    const [actuacions, videos, footer, routes] = await Promise.all([
-        api.actuacions.getData(),
+    const [videos] = await Promise.all([
         api.videos.getData(),
+    ]);
+    const [footer, routes] = await Promise.all([
         api.footer.getData(),
         api.routes.getData(),
     ]);
@@ -48,12 +49,11 @@ export const getStaticProps = async () => {
     return {
         props: {
             data: { ...videos[0] },
-            actuacions: { ...actuacions[0] },
             footer: { ...footer[0] },
             routes,
         },
         revalidate: 1,
-    };    
+    };
 
     /* if (!data.error) {
         return {
@@ -70,4 +70,4 @@ export const getStaticProps = async () => {
     } */
 };
 
-export default Actuacions;
+export default Videos;
