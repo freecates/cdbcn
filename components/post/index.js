@@ -124,7 +124,7 @@ const Post = ({ title, author, date, description, id, type, content, slug, mainI
                                 />
                             </div>
                         )}
-                        <SocialSharer type={type} id={id} title={title} />
+                        <SocialSharer type={type} id={id} slug={null} title={title} />
                         <h1 className={styles.title}>
                             <span>{title && title}</span>
                         </h1>
@@ -162,7 +162,7 @@ const Post = ({ title, author, date, description, id, type, content, slug, mainI
                 </div>
 
                 <div className={styles.container}>
-                    <SocialSharer type={type} id={id} title={title} />
+                    <SocialSharer type={type} id={id} slug={null} title={title} />
                     <h3>
                         <Link href={`/${type}`}>
                             <a className={'button'}>&larr; Tornar a "{type}"</a>

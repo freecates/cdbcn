@@ -12,7 +12,7 @@ const Video = ({ post, videoDetails, footer }) => {
     const videoPlayer = post.items[0].player;
     const video = videoDetails.items[0].snippet;
     const pageTitle = video.title;
-    const mainImage = video.thumbnails.maxres;
+    const mainImage = video.thumbnails.maxres.url;
     const author = video.channelTitle;
     const date = video.publishedAt;
     const description = video.description;
