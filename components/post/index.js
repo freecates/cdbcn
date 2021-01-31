@@ -114,16 +114,16 @@ const Post = ({ title, author, date, description, id, type, content, slug, mainI
                     />
                 </Head>
 
+                {player && (
+                    <div className={'root'}>
+                        <div
+                            className={'videoWrapper'}
+                            dangerouslySetInnerHTML={{ __html: player }}
+                        />
+                    </div>
+                )}
                 <div className={`${styles.container}`}>
                     <main className={`${styles.main}`}>
-                        {player && (
-                            <div className={'root'}>
-                                <div
-                                    className={'videoWrapper'}
-                                    dangerouslySetInnerHTML={{ __html: player }}
-                                />
-                            </div>
-                        )}
                         <SocialSharer type={type} id={id} slug={null} title={title} />
                         <h1 className={styles.title}>
                             <span>{title && title}</span>
@@ -139,27 +139,28 @@ const Post = ({ title, author, date, description, id, type, content, slug, mainI
                                 dangerouslySetInnerHTML={{ __html: description }}
                             />
                         )}
-                        
                     </main>
-                    <style jsx>{`
-                        .root {
-                            width:100%;
-                        }
-                        .videoWrapper {
-                            position: relative;
-                            padding-bottom: 56.25%; /* 16:9 */
-                            padding-top: 25px;
-                            height: 0;
-                        }
-                        .root > :global(.videoWrapper iframe) {
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            width: 100%;
-                            height: 100%;
-                        }
-                    `}</style>
                 </div>
+                <style jsx>{`
+                    .root {
+                        width: 100%;
+                        max-width: 1680px;
+                        margin: 0 auto;
+                    }
+                    .videoWrapper {
+                        position: relative;
+                        padding-bottom: 56.25%; /* 16:9 */
+                        padding-top: 25px;
+                        height: 0;
+                    }
+                    .root > :global(.videoWrapper iframe) {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                    }
+                `}</style>
 
                 <div className={styles.container}>
                     <SocialSharer type={type} id={id} slug={null} title={title} />
@@ -243,7 +244,9 @@ const Post = ({ title, author, date, description, id, type, content, slug, mainI
        }
       }, 
       "description": "${
-          type === 'actuacions' ? cronica_de_la_diada.substring(3, 120) : null //cos_de_text_de_la_noticia.substring(3, 120)
+          type === 'actuacions'
+              ? cronica_de_la_diada.substring(3, 120)
+              : cos_de_text_de_la_noticia.substring(3, 120)
       }...",
       "image": "${imatge_destacada.sizes.large}",
       "datePublished": "${date}",
