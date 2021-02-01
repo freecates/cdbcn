@@ -8,7 +8,7 @@ const youtubeApiUrl = process.env.YOUTUBE_API_URL;
 const youtubeApiKey = process.env.YOUTUBE_API_KEY;
 const youtubeChannelId = process.env.YOUTUBE_CHANNEL_ID;
 const type = 'videos';
-const QUERY_FIVE = `${youtubeApiUrl}/search?part=snippet&channelId=${youtubeChannelId}&maxResults=5&order=date&type=video&key=${youtubeApiKey}`;
+const QUERY = `${youtubeApiUrl}/search?part=snippet&channelId=${youtubeChannelId}&maxResults=100&order=date&type=video&key=${youtubeApiKey}`;
 
 const Video = ({ post, videoDetails, footer }) => {
     const { isFallback } = useRouter();
@@ -50,7 +50,7 @@ const Video = ({ post, videoDetails, footer }) => {
 };
 
 export async function getStaticPaths() {
-    const res = await fetch(QUERY_FIVE);
+    const res = await fetch(QUERY);
     const data = await res.json();
     const items = data.items;
 
