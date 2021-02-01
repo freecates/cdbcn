@@ -9,8 +9,6 @@ const youtubeApiKey = process.env.YOUTUBE_API_KEY;
 const youtubeChannelId = process.env.YOUTUBE_CHANNEL_ID;
 const type = 'videos';
 const QUERY_FIVE = `${youtubeApiUrl}/search?part=snippet&channelId=${youtubeChannelId}&maxResults=5&order=date&type=video&key=${youtubeApiKey}`;
-const QUERY_PLAYER = `${youtubeApiUrl}/videos?part=player&id=${id}&key=${youtubeApiKey}`;
-const QUERY_SNIPPET = `${youtubeApiUrl}/videos?part=snippet&id=${id}&key=${youtubeApiKey}`;
 
 const Video = ({ post, videoDetails, footer }) => {
     const { isFallback } = useRouter();
@@ -54,7 +52,6 @@ const Video = ({ post, videoDetails, footer }) => {
 export async function getStaticPaths() {
     const res = await fetch(QUERY_FIVE);
     const data = await res.json();
-
     const items = data.items;
 
     const paths = items.map((i) => `/${type}/${i.id.videoId}`);
@@ -64,14 +61,11 @@ export async function getStaticPaths() {
 
 export const getStaticProps = async ({ params }) => {
     const id = params.id;
-    const res = await fetch(QUERY_PLAYER);
+    const res = await fetch(`${youtubeApiUrl}/videos?part=player&id=${id}&key=${youtubeApiKey}`);
     const post = await res.json();
 
-    const res2 = await fetch(QUERY_SNIPPET);
+    const res2 = await fetch(`${youtubeApiUrl}/videos?part=snippet&id=${id}&key=${youtubeApiKey}`);
     const videoDetails = await res2.json();
-
-    console.log('post ', post);
-    console.log('videoDetails ', videoDetails);
 
     const [footer] = await Promise.all([api.footer.getData()]);
 
