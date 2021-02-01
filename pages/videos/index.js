@@ -8,6 +8,7 @@ import { FaYoutube } from 'react-icons/fa';
 const youtubeApiUrl = process.env.YOUTUBE_API_URL;
 const youtubeApiKey = process.env.YOUTUBE_API_KEY;
 const youtubeChannelId = process.env.YOUTUBE_CHANNEL_ID;
+const QUERY = `${youtubeApiUrl}/search?part=snippet&channelId=${youtubeChannelId}&maxResults=100&order=date&type=video&key=${youtubeApiKey}`;
 
 const Videos = ({ data, footer, routes, videos }) => {
     if (data === 'error') {
@@ -48,13 +49,10 @@ const Videos = ({ data, footer, routes, videos }) => {
 };
 
 export const getStaticProps = async () => {
-    const res = await fetch(
-        `${youtubeApiUrl}/search?part=snippet&channelId=${youtubeChannelId}&maxResults=100&order=date&type=video&key=${youtubeApiKey}`
-    );
+    const res = await fetch(QUERY);
     const data = await res.json();
     const [videos] = await Promise.all([api.videos.getData()]);
     const [footer, routes] = await Promise.all([api.footer.getData(), api.routes.getData()]);
-    
 
     /* return {
         props: {
@@ -73,7 +71,7 @@ export const getStaticProps = async () => {
                 footer: { ...footer[0] },
                 routes,
             },
-            revalidate: 1,
+            revalidate: 3600,
         };
     } else {
         return { props: { data: 'error' } };
