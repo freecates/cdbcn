@@ -10,10 +10,10 @@ const youtubeApiKey = process.env.YOUTUBE_API_KEY;
 const youtubeChannelId = process.env.YOUTUBE_CHANNEL_ID;
 
 const Videos = ({ data, footer, routes, videos }) => {
-    const videosData = data.items;
     if (data === 'error') {
         return <Fallback notFound />;
     }
+    const videosData = data.items;
     const { title, pageTitle, pageDescription } = videos.meta;
     const { routes: footerLinks } = footer;
     return (
@@ -49,11 +49,12 @@ const Videos = ({ data, footer, routes, videos }) => {
 
 export const getStaticProps = async () => {
     const res = await fetch(
-        `${youtubeApiUrl}/search?part=snippet&channelId=${youtubeChannelId}&maxResults=30&order=date&type=video&key=${youtubeApiKey}`
+        `${youtubeApiUrl}/search?part=snippet&channelId=${youtubeChannelId}&maxResults=100&order=date&type=video&key=${youtubeApiKey}`
     );
     const data = await res.json();
     const [videos] = await Promise.all([api.videos.getData()]);
     const [footer, routes] = await Promise.all([api.footer.getData(), api.routes.getData()]);
+    
 
     /* return {
         props: {
