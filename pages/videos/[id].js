@@ -25,7 +25,9 @@ const Video = ({ post, videoDetails, footer }) => {
     const videoPlayer = post.items[0].player;
     const video = videoDetails.items[0].snippet;
     const pageTitle = video.title;
-    const mainImage = video.thumbnails.maxres.url;
+    const mainImage = video.thumbnails.maxres
+        ? video.thumbnails.maxres.url
+        : video.thumbnails.standard.url;
     const author = video.channelTitle;
     const date = video.publishedAt;
     const description = video.description;
@@ -54,8 +56,6 @@ export async function getStaticPaths() {
     const data = await res.json();
     const items = data.items;
 
-    console.log('data ', data);
-
     const paths = items.map((i) => `/${type}/${i.id.videoId}`);
 
     return { paths, fallback: true };
@@ -65,7 +65,6 @@ export const getStaticProps = async ({ params }) => {
     const id = params.id;
     const res = await fetch(`${youtubeApiUrl}/videos?part=player&id=${id}&key=${youtubeApiKey}`);
     const post = await res.json();
-
     const res2 = await fetch(`${youtubeApiUrl}/videos?part=snippet&id=${id}&key=${youtubeApiKey}`);
     const videoDetails = await res2.json();
 
