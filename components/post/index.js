@@ -46,6 +46,118 @@ const Galeria = ({ urlFlickr, urlYoutube, title }) => {
 };
 
 const Post = ({ title, author, date, description, id, type, content, slug, mainImage, player }) => {
+    if (type === 'fotos') {
+        return (
+            <div className={styles.postComponent}>
+                <Head>
+                    <title>
+                        {title} - Castelllers de Barcelona - {type}
+                    </title>
+                    <meta name='description' content={`${description}...`} />
+
+                    <meta property='fb:app_id' content='1064356173625695' />
+                    <meta
+                        property='og:url'
+                        content={`https://castellersdebarcelona.cat/${type}/${id}`}
+                    />
+                    <meta property='og:type' content='article' />
+                    <meta property='og:title' content={title} />
+                    <meta property='og:description' content={`${description}...`} />
+                    <meta property='og:image' content={mainImage[0].source} />
+                    <meta property='og:image:width' content={1024} />
+                    <meta property='og:image:height' content={1024} />
+
+                    <meta name='twitter:card' content='summary_large_image' />
+                    <meta name='twitter:site' content='cdbcn' />
+                    <meta name='twitter:creator' content='Castellers de Barcelona' />
+                    <meta name='twitter:title' content={title} />
+                    <meta name='twitter:description' content={`${description}...`} />
+                    <meta name='twitter:image:src' content={mainImage[0].source} />
+
+                    <script
+                        type='application/ld+json'
+                        dangerouslySetInnerHTML={{
+                            __html: `
+{
+  "@context": "http://schema.org",
+  "@type": "NewsArticle",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "${`https://castellersdebarcelona.cat/` + type + '/' + id}"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "${author}"
+  },
+  "publisher": {
+   "@type": "Organization",
+   "name": "Castellers de Barcelona",
+   "logo": {
+     "@type": "ImageObject",
+     "url": "https://castellersdebarcelona.cat/logo-castellers-de-barcelona.png"
+   }
+  }, 
+  "description": "${description}...",
+  "image": "${mainImage[0].source}",
+  "datePublished": "${date}",
+  "headline": "${title}"
+}`,
+                        }}
+                    />
+                </Head>
+
+                <Figure data={mainImage[0]} quality={100} type={type} withOverlay withType />
+                <div className={`${styles.container}`}>
+                    <main className={`${styles.main}`}>
+                        <SocialSharer type={type} id={id} slug={null} title={title} />
+                        <h1 className={styles.title}>
+                            <span>{title && title}</span>
+                        </h1>
+                        <p>
+                            <small>
+                                {author} | {date}
+                            </small>
+                        </p>
+                        {description && (
+                            <div
+                                className={styles.bodyText}
+                                dangerouslySetInnerHTML={{ __html: description }}
+                            />
+                        )}
+                    </main>
+                </div>
+                <style jsx>{`
+                    .root {
+                        width: 100%;
+                        max-width: 1680px;
+                        margin: 0 auto;
+                    }
+                    .videoWrapper {
+                        position: relative;
+                        padding-bottom: 56.25%; /* 16:9 */
+                        padding-top: 25px;
+                        height: 0;
+                    }
+                    .root > :global(.videoWrapper iframe) {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                    }
+                `}</style>
+
+                <div className={styles.container}>
+                    <SocialSharer type={type} id={id} slug={null} title={title} />
+                    <h3>
+                        <Link href={`/${type}`}>
+                            <a className={'button'}>&larr; Tornar a "{type}"</a>
+                        </Link>
+                    </h3>
+                </div>
+            </div>
+        );
+    }
     if (type === 'videos') {
         const { title, description } = content;
 

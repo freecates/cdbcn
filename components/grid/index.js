@@ -5,6 +5,7 @@ const thumbnailWidth = 768;
 const thumbnailHeight = 768;
 
 const Grid = ({ data, isThree }) => {
+    console.log('data ', data);
     return (
         <div className={styles.gridComponent}>
             {data
@@ -26,6 +27,20 @@ const Grid = ({ data, isThree }) => {
                     if (a.kind === 'youtube#searchResult') {
                         const dateA = a.snippet.publishedAt;
                         const dateB = b.snippet.publishedAt;
+
+                        {
+                            if (dateA > dateB) {
+                                return -1;
+                            }
+                            if (dateA < dateB) {
+                                return 1;
+                            }
+                            return 0;
+                        }
+                    }
+                    if (a.media === 'photo') {
+                        const dateA = a.dateupload;
+                        const dateB = b.dateupload;
 
                         {
                             if (dateA > dateB) {
@@ -139,6 +154,50 @@ const Grid = ({ data, isThree }) => {
                                         <p>
                                             <small>
                                                 {author} | {date} | [{type}]
+                                            </small>
+                                        </p>
+                                    </main>
+                                </div>
+                            </div>
+                        );
+                    }
+                    if (c.media === 'photo') {
+                        const date = c.datetaken;
+                        const title = c.title;
+                        const itemId = c.id;
+                        const author = c.title;
+                        const imgSrc = c.url_m;
+                        const type = 'fotos';
+                        const itemUrl = `/${type}/${itemId}`;
+                        return (
+                            <div
+                                key={itemId}
+                                id={id}
+                                className={`${styles.card} ${isThree ? styles.three : null}`}
+                            >
+                                <div>
+                                    <header>
+                                        {!imgSrc ? null : (
+                                            <Link href={itemUrl}>
+                                                <a
+                                                    href={itemUrl}
+                                                    title={`Veure la fitxa de: ${title}`}
+                                                >
+                                                    <img
+                                                        loading='lazy'
+                                                        src={imgSrc}
+                                                        alt={title}
+                                                        width={thumbnailWidth}
+                                                        height={thumbnailHeight}
+                                                    />
+                                                </a>
+                                            </Link>
+                                        )}
+                                    </header>
+                                    <main>
+                                        <p>
+                                            <small>
+                                                {title} | {date} | [{type}]
                                             </small>
                                         </p>
                                     </main>

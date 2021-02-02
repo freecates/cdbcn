@@ -29,6 +29,13 @@ const api = {
       return data;
     }
   },
+  fotos: {
+    async getData() {
+      const response = await fetch(`${staticDataUrl}/data/fotos.json`);
+      const data = await response.json();
+      return data;
+    }
+  },
   fesCastells: {
     async getData() {
       const response = await fetch(`${staticDataUrl}/data/fesCastells.json`);
