@@ -70,7 +70,7 @@ export const getStaticProps = async ({ params }) => {
     const [footer] = await Promise.all([api.footer.getData()]);
 
     if (!post.error && !videoDetails.error) {
-        return { props: { post, videoDetails, footer: { ...footer[0] } }, revalidate: 60 };
+        return { props: { post, videoDetails, footer: { ...footer[0] } }, revalidate: 3600 };
     } else {
         return { props: { post: 'error', videoDetails: 'error' } };
     }
