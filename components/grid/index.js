@@ -5,7 +5,6 @@ const thumbnailWidth = 768;
 const thumbnailHeight = 768;
 
 const Grid = ({ data, isThree }) => {
-    console.log('data ', data);
     return (
         <div className={styles.gridComponent}>
             {data
