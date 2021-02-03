@@ -16,7 +16,7 @@ const SocialSharer = ({ type, id, slug, title }) => {
     return (
         <div className={`${styles.socialShareComponent}`}>
             <div className={styles.PostSomeNetwork}>
-                {type === 'videos' ? (
+                {type === 'videos' || type === 'fotos' ? (
                     <FacebookShareButton
                         url={`https://castellersdebarcelona.cat/${type}/${id}`}
                         className='Post__some-network__share-button'
@@ -34,7 +34,7 @@ const SocialSharer = ({ type, id, slug, title }) => {
             </div>
 
             <div className={styles.PostSomeNetwork}>
-                {type === 'videos' ? (
+                {type === 'videos' || type === 'fotos' ? (
                     <TwitterShareButton
                         url={`https://castellersdebarcelona.cat/${type}/${id}`}
                         title={title}
@@ -58,7 +58,7 @@ const SocialSharer = ({ type, id, slug, title }) => {
             </div>
 
             <div className={styles.PostSomeNetwork}>
-                {type === 'videos' ? (
+                {type === 'videos' || type === 'fotos' ? (
                     <LinkedinShareButton
                         url={`https://castellersdebarcelona.cat/${type}/${id}`}
                         title={title}
@@ -78,7 +78,7 @@ const SocialSharer = ({ type, id, slug, title }) => {
             </div>
 
             <div className={styles.PostSomeNetwork}>
-                {type === 'videos' ? (
+                {type === 'videos' || type === 'fotos' ? (
                     <WhatsappShareButton
                         url={`https://castellersdebarcelona.cat/${type}/${id}`}
                         title={title}
@@ -98,7 +98,7 @@ const SocialSharer = ({ type, id, slug, title }) => {
             </div>
 
             <div className={styles.PostSomeNetwork}>
-                {type === 'videos' ? (
+                {type === 'videos' || type === 'fotos' ? (
                     <EmailShareButton
                         url={`https://castellersdebarcelona.cat/${type}/${id}`}
                         subject={title}

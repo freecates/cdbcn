@@ -22,6 +22,7 @@ const Layout = (props) => {
                     }
                 />
                 <link rel='icon' href='/favicon.ico' />
+                <link rel='preconnect' href='https://fonts.gstatic.com/' crossOrigin='true' />
             </Head>
 
             <h1 className={styles.wrapperLogo}>
