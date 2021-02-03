@@ -1,33 +1,46 @@
 import Layout from '@components/layout';
 import styles from '@styles/Home.module.scss';
 import api from '@libs/api.js';
+import OtherRoutes from '@components/otherroutes';
+import Figure from '@components/figure';
 
-const Home = ({ footer, routes }) => {
+const Home = ({ galeria, footer, routes }) => {
+    const { title, pageTitle, pageDescription, otherRoutes } = galeria.meta;
     const { routes: footerLinks } = footer;
+    const mainImage = galeria.images.mainImage;
     return (
         <Layout
-            title={'Galeria'}
-            pageTitle={'Galeria de Flick i Youtube'}
-            pageDescription={'La Galeria de Flickr i Youtube dels Castellers de Barcelona'}
+            title={title}
+            pageTitle={pageTitle}
+            pageDescription={pageDescription}
             navRoutes={routes}
             footerLinks={footerLinks}
         >
+            <div className={styles.container}>
+                <OtherRoutes routes={otherRoutes} />
+            </div>
             <div className={`${styles.container} ${styles.withOverlay}`}>
                 <main className={`${styles.main} ${styles.withUnderlay}`}>
-                    <h1>... ;-)</h1>
+                    <p>{pageDescription}</p>
                 </main>
+            </div>
+            <Figure data={mainImage} quality={100} />
+            <div className={styles.container}>
+                <OtherRoutes routes={otherRoutes} />
             </div>
         </Layout>
     );
 };
 
 export const getStaticProps = async () => {
-    const [footer, routes] = await Promise.all([
+    const [galeria, footer, routes] = await Promise.all([
+        api.galeria.getData(),
         api.footer.getData(),
         api.routes.getData(),
     ]);
     return {
         props: {
+            galeria: { ...galeria[0] },
             footer: { ...footer[0] },
             routes,
         },

@@ -22,6 +22,13 @@ const api = {
       return data;
     }
   },
+  galeria: {
+    async getData() {
+      const response = await fetch(`${staticDataUrl}/data/galeria.json`);
+      const data = await response.json();
+      return data;
+    }
+  },
   videos: {
     async getData() {
       const response = await fetch(`${staticDataUrl}/data/videos.json`);
