@@ -1,0 +1,31 @@
+@import 'styles/colors';
+
+.boardListComponent {
+    h2 {
+        color: $main-red;
+        text-align: center;
+    }
+    dl {
+        display: flex;
+        flex-direction: column;
+        @media (min-width: 1024px) {
+            flex-direction: row;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        div {
+            display: flex;
+            margin: .5rem .75rem;
+        }
+
+        dt {
+            font-weight: 700;
+        }
+
+        dd {
+            color: $main-red;
+            margin: 0 0 0 .5rem;
+        }
+    }
+}

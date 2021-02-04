@@ -10,10 +10,8 @@
         align-items: center;
         text-transform: uppercase;
         font-size: 0.75rem;
-        flex-direction: column;
 
         @media (min-width: 768px) {
-            flex-direction: row;
             padding: 1rem 0;
         }
 
@@ -25,11 +23,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 0.15rem 0.5rem;
+            padding: 0.2rem 0.4rem 0.1rem 0.4rem;
             background-color: $black;
             color: $white;
             margin: 0.5rem;
             transition: background-color ease 1s;
+            border-radius: 20%;
 
             &:hover {
                 background-color: $main-red;

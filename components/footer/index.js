@@ -1,5 +1,6 @@
 import styles from './Footer.module.scss';
 import OtherRoutes from '@components/otherroutes';
+import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 
 const Footer = ({ footerLinks }) => {
     const currentYear = new Date().getFullYear();
@@ -16,24 +17,24 @@ const Footer = ({ footerLinks }) => {
                     rel={'noopener nofollow'}
                     href='https://www.instagram.com/castellersdebarcelona/'
                 >
-                    <small>Instagram</small>
+                    <span><FaInstagram/></span>
                 </a>
                 <a
                     target='_blank'
                     rel={'noopener nofollow'}
                     href='https://www.youtube.com/user/arxiucdb'
                 >
-                    <small>Youtube</small>
+                    <span><FaYoutube/></span>
                 </a>
                 <a target='_blank' rel={'noopener nofollow'} href='https://twitter.com/cdbcn'>
-                    <small>Twitter</small>
+                    <span><FaTwitter/></span>
                 </a>
                 <a
                     target='_blank'
                     rel={'noopener nofollow'}
                     href='https://www.facebook.com/castellersdebarcelona'
                 >
-                    <small>Facebook</small>
+                    <span><FaFacebook/></span>
                 </a>
             </div>
             <div className={styles.container}>

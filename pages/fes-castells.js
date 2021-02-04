@@ -4,7 +4,7 @@ import api from '@libs/api.js';
 import Figure from '@components/figure';
 import { FaMapSigns } from 'react-icons/fa';
 
-const Home = ({ footer, routes, fesCastells }) => {
+const FesCastells = ({ footer, routes, fesCastells }) => {
     const { title, pageTitle, pageDescription, map } = fesCastells.meta;
     const { routes: footerLinks } = footer;
     const mainImage = fesCastells.images.mainImage;
@@ -58,4 +58,4 @@ export const getStaticProps = async () => {
     };
 };
 
-export default Home;
+export default FesCastells;

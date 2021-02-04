@@ -15,6 +15,13 @@ const api = {
       return data;
     }
   },
+  juntaITecnica: {
+    async getData() {
+      const response = await fetch(`${staticDataUrl}/data/juntaITecnica.json`);
+      const data = await response.json();
+      return data;
+    }
+  },
   contacte: {
     async getData() {
       const response = await fetch(`${staticDataUrl}/data/contacte.json`);
