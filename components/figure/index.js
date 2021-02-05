@@ -43,7 +43,7 @@ const Figure = ({ data, quality, layout, withType, withOverlay, type }) => {
                         src={
                             withType
                                 ? type !== 'fotos'
-                                    ? data.url
+                                    ? `${data.url.replace('/uploads/','/uploads-webpc/uploads/')}.webp`
                                     : data.source
                                 : `${staticDataUrl}/${data.src}`
                         }

@@ -60,7 +60,7 @@ const Grid = ({ data, isThree }) => {
                         const slug = c.slug;
                         const author = c._embedded.author[0].name;
                         const itemImg = c.acf.imatge_destacada;
-                        const imgSrc = itemImg.sizes.medium_large;
+                        const imgSrc = itemImg.sizes.medium_large.replace('/uploads/','/uploads-webpc/uploads/');
                         const type = c.type;
                         const itemUrl = `/${type}/${itemId}/${slug}`;
                         return (
@@ -76,7 +76,7 @@ const Grid = ({ data, isThree }) => {
                                                 <a title={`Veure la fitxa de: ${title}`}>
                                                     <img
                                                         loading='lazy'
-                                                        src={imgSrc}
+                                                        src={imgSrc + '.webp'}
                                                         alt={title}
                                                         width={thumbnailWidth}
                                                         height={thumbnailHeight}
