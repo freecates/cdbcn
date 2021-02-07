@@ -1,3 +1,5 @@
+@import 'styles/colors';
+
 .gridComponent {
     display: flex;
     align-items: flex-start;
@@ -17,7 +19,25 @@
         text-decoration: none;
         margin: 1rem;
         main {
-            margin: 1rem;
+            margin-top: -0.5rem;
+
+            div {
+                background: $secondary-red;
+                padding: 1rem;
+                border-bottom: 10px solid;
+                border-image-slice: 1;
+                border-width: 5px;
+                border-image-source: linear-gradient(to left, $black, $main-red);
+            }
+        }
+        .cardTitle {
+            color: $white;
+            span {
+                color: $white;
+            }
+        }
+        .author {
+            color: $white;
         }
         @media (max-width: 567px) {
             flex-basis: 100%;

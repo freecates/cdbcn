@@ -20,12 +20,16 @@ const SocialSharer = ({ type, id, slug, title }) => {
                     <FacebookShareButton
                         url={`https://castellersdebarcelona.cat/${type}/${id}`}
                         className='Post__some-network__share-button'
+                        quote={title}
+                        hashtag={'#BeneidaBogeria'}
                     >
                         <FacebookIcon size={25} round />
                     </FacebookShareButton>
                 ) : (
                     <FacebookShareButton
                         url={`https://castellersdebarcelona.cat/${type}/${id}/${slug}`}
+                        quote={title}
+                        hashtag={'#BeneidaBogeria'}
                         className='Post__some-network__share-button'
                     >
                         <FacebookIcon size={25} round />

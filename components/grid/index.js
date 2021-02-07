@@ -60,7 +60,10 @@ const Grid = ({ data, isThree }) => {
                         const slug = c.slug;
                         const author = c._embedded.author[0].name;
                         const itemImg = c.acf.imatge_destacada;
-                        const imgSrc = itemImg.sizes.medium_large.replace('/uploads/','/uploads-webpc/uploads/');
+                        const imgSrc = itemImg.sizes.medium_large.replace(
+                            '/uploads/',
+                            '/uploads-webpc/uploads/'
+                        );
                         const type = c.type;
                         const itemUrl = `/${type}/${itemId}/${slug}`;
                         return (
@@ -86,23 +89,25 @@ const Grid = ({ data, isThree }) => {
                                         )}
                                     </header>
                                     <main>
-                                        <Link href={itemUrl}>
-                                            <a title={`Veure la fitxa de: ${title}`}>
-                                                <h2>
-                                                    <span
-                                                        dangerouslySetInnerHTML={{
-                                                            __html: title,
-                                                        }}
-                                                    />
-                                                    &rarr;
-                                                </h2>
-                                            </a>
-                                        </Link>
-                                        <p>
-                                            <small>
-                                                {author} | {date} | [{type}]
-                                            </small>
-                                        </p>
+                                        <div>
+                                            <Link href={itemUrl}>
+                                                <a title={`Veure la fitxa de: ${title}`}>
+                                                    <h2 className={styles.cardTitle}>
+                                                        <span
+                                                            dangerouslySetInnerHTML={{
+                                                                __html: title,
+                                                            }}
+                                                        />
+                                                        &rarr;
+                                                    </h2>
+                                                </a>
+                                            </Link>
+                                            <p className={styles.author}>
+                                                <small>
+                                                    {author} | {date} | [{type}]
+                                                </small>
+                                            </p>
+                                        </div>
                                     </main>
                                 </div>
                             </div>
