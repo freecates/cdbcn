@@ -5,7 +5,7 @@ import Figure from '@components/figure';
 import { FaMapSigns } from 'react-icons/fa';
 import { MailruIcon } from 'react-share';
 
-const Home = ({ contacte, footer, routes }) => {
+const Contacte = ({ contacte, footer, routes }) => {
     const {
         title,
         pageTitle,
@@ -19,7 +19,7 @@ const Home = ({ contacte, footer, routes }) => {
         map,
     } = contacte.meta;
     const mainImage = contacte.images.mainImage;
-    const { routes: footerLinks } = footer;
+    const { routes: footerLinks, supporters } = footer;
     return (
         <Layout
             title={title}
@@ -28,6 +28,7 @@ const Home = ({ contacte, footer, routes }) => {
             contacte
             navRoutes={routes}
             footerLinks={footerLinks}
+            supporters={supporters}
         >
             <div className={`${styles.container} ${styles.withOverlay}`}>
                 <main className={`${styles.main} ${styles.withUnderlay}`}>
@@ -76,4 +77,4 @@ export const getStaticProps = async () => {
     };
 };
 
-export default Home;
+export default Contacte;

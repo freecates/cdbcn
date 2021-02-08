@@ -10,7 +10,7 @@ const Actualitat = ({ actuacionsData, noticiesData, footer, routes }) => {
     const pageTitle = 'Actualitat';
     const title = 'Actualitat dels Castellers de Barcelona';
     const pageDescription = "Recull de l'Actualitat dels Castellers de Barcelona";
-    const { routes: footerLinks } = footer;
+    const { routes: footerLinks, supporters } = footer;
     return (
         <Layout
             pageTitle={pageTitle}
@@ -18,6 +18,7 @@ const Actualitat = ({ actuacionsData, noticiesData, footer, routes }) => {
             pageDescription={pageDescription}
             footerLinks={footerLinks}
             navRoutes={routes}
+            supporters={supporters}
         >
             <h1 className={styles.title}>{pageTitle}</h1>
             <div className={`${styles.container} ${styles.noPadding}`}>

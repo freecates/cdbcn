@@ -8,7 +8,7 @@ const staticDataUrl = process.env.STATIC_DATA_URL;
 
 const PoliticaDeCookies = ({ politicaDeCookies, footer, mdFileContent }) => {
     const { title, pageTitle, pageDescription } = politicaDeCookies.meta;
-    const { routes: footerLinks } = footer;
+    const { routes: footerLinks, supporters } = footer;
     return (
         
             <Layout
@@ -16,6 +16,7 @@ const PoliticaDeCookies = ({ politicaDeCookies, footer, mdFileContent }) => {
                 title={title}
                 pageDescription={pageDescription}
                 footerLinks={footerLinks}
+                supporters={supporters}
             >
                 <h1 className={styles.title}>{title}</h1>
 

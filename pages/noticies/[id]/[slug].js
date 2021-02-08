@@ -5,31 +5,18 @@ import Post from '@components/post';
 import Custom404 from '../../404';
 import api from '@libs/api.js';
 
-
 const wordPressApiUrl = process.env.WORDPRESS_API_URL;
 
 const Noticia = ({ post, footer }) => {
     const { isFallback } = useRouter();
     if (!isFallback && !post) {
-        return (
-            
-                <Custom404 />
-            
-        );
+        return <Custom404 />;
     }
     if (isFallback) {
-        return (
-            
-                <Fallback />
-            
-        );
+        return <Fallback />;
     }
     if (post === '404') {
-        return (
-            
-                <Fallback notFound />
-            
-        );
+        return <Fallback notFound />;
     }
     const pageTitle = post.acf.titular_de_la_noticia;
     const mainImage = post.acf.imatge_destacada;
@@ -37,23 +24,21 @@ const Noticia = ({ post, footer }) => {
     const date = post.acf.data;
     const description = post.acf.cos_de_text_de_la_noticia;
     const { acf, type, id, slug } = post;
-    const { routes: footerLinks } = footer;
+    const { routes: footerLinks, supporters } = footer;
     return (
-        
-            <Layout footerLinks={footerLinks}>
-                <Post
-                    title={pageTitle}
-                    description={description}
-                    id={id}
-                    type={type}
-                    content={acf}
-                    slug={slug}
-                    date={date}
-                    author={author}
-                    mainImage={mainImage}
-                />
-            </Layout>
-        
+        <Layout footerLinks={footerLinks} supporters={supporters}>
+            <Post
+                title={pageTitle}
+                description={description}
+                id={id}
+                type={type}
+                content={acf}
+                slug={slug}
+                date={date}
+                author={author}
+                mainImage={mainImage}
+            />
+        </Layout>
     );
 };
 

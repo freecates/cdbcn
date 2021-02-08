@@ -46,7 +46,7 @@ const Layout = (props) => {
 
             <div>{props.children}</div>
             <div className={styles.container}>
-                <Footer footerLinks={props.footerLinks} />
+                <Footer footerLinks={props.footerLinks} supporters={props.supporters} />
             </div>
         </>
     );

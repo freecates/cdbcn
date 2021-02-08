@@ -10,7 +10,7 @@ const staticDataUrl = process.env.STATIC_DATA_URL;
 
 const VuitDeJunyDe1969 = ({ vuitDeJuny1969, footer, mdFileContent, routes }) => {
     const { title, pageTitle, pageDescription, otherRoutes } = vuitDeJuny1969.meta;
-    const { routes: footerLinks } = footer;
+    const { routes: footerLinks, supporters } = footer;
     const mainImage = vuitDeJuny1969.images.mainImage;
     const imageGallery = vuitDeJuny1969.images.imageGallery;
     return (
@@ -20,6 +20,7 @@ const VuitDeJunyDe1969 = ({ vuitDeJuny1969, footer, mdFileContent, routes }) => 
                 title={title}
                 pageDescription={pageDescription}
                 footerLinks={footerLinks}
+                supporters={supporters}
                 navRoutes={routes}
             >
                 <Figure data={mainImage} quality={100} />

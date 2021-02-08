@@ -10,7 +10,7 @@ const staticDataUrl = process.env.STATIC_DATA_URL;
 
 const CinquantaAnys50Tuits = ({ anys50tuits, footer, mdFileContent, routes }) => {
     const { title, pageTitle, pageDescription, otherRoutes } = anys50tuits.meta;
-    const { routes: footerLinks } = footer;
+    const { routes: footerLinks, supporters } = footer;
     const imageGallery = anys50tuits.images.imageGallery;
     return (
         
@@ -20,6 +20,7 @@ const CinquantaAnys50Tuits = ({ anys50tuits, footer, mdFileContent, routes }) =>
                 navRoutes={routes}
                 pageDescription={pageDescription}
                 footerLinks={footerLinks}
+                supporters={supporters}
             >
 
                 <div className={`${styles.container}`}>

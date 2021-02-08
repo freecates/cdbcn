@@ -11,7 +11,7 @@ const staticDataUrl = process.env.STATIC_DATA_URL;
 const LaColla = ({ colla, footer, routes, mdFileContent }) => {
     const { title, pageTitle, pageDescription, otherRoutes } = colla.meta;
     const mainImage = colla.images.mainImage;
-    const { routes: footerLinks } = footer;
+    const { routes: footerLinks, supporters } = footer;
     return (
         
             <Layout
@@ -20,6 +20,7 @@ const LaColla = ({ colla, footer, routes, mdFileContent }) => {
                 pageDescription={pageDescription}
                 footerLinks={footerLinks}
                 navRoutes={routes}
+                supporters={supporters}
             >
                 <h1 className={styles.title}>La Colla</h1>
 

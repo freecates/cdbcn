@@ -6,7 +6,7 @@ import Figure from '@components/figure';
 
 const Home = ({ galeria, footer, routes }) => {
     const { title, pageTitle, pageDescription, otherRoutes } = galeria.meta;
-    const { routes: footerLinks } = footer;
+    const { routes: footerLinks, supporters } = footer;
     const mainImage = galeria.images.mainImage;
     return (
         <Layout
@@ -15,6 +15,7 @@ const Home = ({ galeria, footer, routes }) => {
             pageDescription={pageDescription}
             navRoutes={routes}
             footerLinks={footerLinks}
+            supporters={supporters}
         >
             <div className={styles.container}>
                 <OtherRoutes routes={otherRoutes} />

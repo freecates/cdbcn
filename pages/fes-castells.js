@@ -6,7 +6,7 @@ import { FaMapSigns } from 'react-icons/fa';
 
 const FesCastells = ({ footer, routes, fesCastells }) => {
     const { title, pageTitle, pageDescription, map } = fesCastells.meta;
-    const { routes: footerLinks } = footer;
+    const { routes: footerLinks, supporters } = footer;
     const mainImage = fesCastells.images.mainImage;
     return (
         <Layout
@@ -15,6 +15,7 @@ const FesCastells = ({ footer, routes, fesCastells }) => {
             pageDescription={pageDescription}
             navRoutes={routes}
             footerLinks={footerLinks}
+            supporters={supporters}
         >
             <div className={`${styles.container} ${styles.withOverlay}`}>
                 <main className={`${styles.main} ${styles.withUnderlay}`}>

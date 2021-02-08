@@ -16,7 +16,7 @@ const Fotos = ({ data, footer, routes, fotos }) => {
     }
     const fotosData = data.photos.photo;
     const { title, pageTitle, pageDescription } = fotos.meta;
-    const { routes: footerLinks } = footer;
+    const { routes: footerLinks, supporters } = footer;
     return (
         <Layout
             pageTitle={pageTitle}
@@ -24,6 +24,7 @@ const Fotos = ({ data, footer, routes, fotos }) => {
             pageDescription={pageDescription}
             footerLinks={footerLinks}
             navRoutes={routes}
+            supporters={supporters}
         >
             <h1 className={styles.title}>{pageTitle}</h1>
             <div className={`${styles.container} ${styles.noPadding}`}>

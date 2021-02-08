@@ -8,7 +8,7 @@ const wordPressApiUrl = process.env.WORDPRESS_API_URL;
 
 const Actuacions = ({ data, actuacions, footer, routes }) => {
     const { title, pageTitle, pageDescription } = actuacions.meta;
-    const { routes: footerLinks } = footer;
+    const { routes: footerLinks, supporters } = footer;
     return (
         
             <Layout
@@ -17,6 +17,7 @@ const Actuacions = ({ data, actuacions, footer, routes }) => {
                 pageDescription={pageDescription}
                 footerLinks={footerLinks}
                 navRoutes={routes}
+                supporters={supporters}
             >
                 <h1 className={styles.title}>{pageTitle}</h1>
                 <div className={`${styles.container} ${styles.noPadding}`}>

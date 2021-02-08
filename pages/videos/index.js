@@ -16,7 +16,7 @@ const Videos = ({ data, footer, routes, videos }) => {
     }
     const videosData = data.items;
     const { title, pageTitle, pageDescription } = videos.meta;
-    const { routes: footerLinks } = footer;
+    const { routes: footerLinks, supporters } = footer;
     return (
         <Layout
             pageTitle={pageTitle}
@@ -24,6 +24,7 @@ const Videos = ({ data, footer, routes, videos }) => {
             pageDescription={pageDescription}
             footerLinks={footerLinks}
             navRoutes={routes}
+            supporters={supporters}
         >
             <h1 className={styles.title}>{pageTitle}</h1>
             <div className={`${styles.container} ${styles.noPadding}`}>

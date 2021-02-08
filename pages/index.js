@@ -7,7 +7,7 @@ import Link from 'next/link';
 const Home = ({ home, contacte, footer, routes }) => {
     const { title, pageTitle, pageDescription } = home.meta;
     const { name, address, phone, mobile, web, email, map } = contacte.meta;
-    const { routes: footerLinks } = footer;
+    const { routes: footerLinks, supporters } = footer;
     const mainVideo = home.videos.mainVideo;
     return (
         <Layout
@@ -17,6 +17,7 @@ const Home = ({ home, contacte, footer, routes }) => {
             navRoutes={routes}
             home
             footerLinks={footerLinks}
+            supporters={supporters}
         >
             <div className={styles.wrapperVideo}>
                 <Video data={mainVideo} />

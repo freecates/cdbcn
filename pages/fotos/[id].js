@@ -22,7 +22,6 @@ const Video = ({ post, fotoSizes, footer }) => {
         return <Fallback notFound />;
     }
 
-    
     const foto = post.photo;
     const pageTitle = post.photo.title._content;
     const mainImage = fotoSizes.size.filter((x) => x.label === 'Original');
@@ -30,9 +29,9 @@ const Video = ({ post, fotoSizes, footer }) => {
     const date = post.photo.dates.taken;
     const description = post.photo.description._content;
     const id = post.photo.id;
-    const { routes: footerLinks } = footer;
+    const { routes: footerLinks, supporters } = footer;
     return (
-        <Layout footerLinks={footerLinks}>
+        <Layout footerLinks={footerLinks} supporters={supporters}>
             <Post
                 title={pageTitle}
                 description={description}

@@ -8,7 +8,7 @@ const JuntaITecnica = ({ footer, routes, juntaITecnica }) => {
     const { title, pageTitle, pageDescription } = juntaITecnica.meta;
     const boardMembers = juntaITecnica.members.boardMembers;
     const techMembers = juntaITecnica.members.techMembers;
-    const { routes: footerLinks } = footer;
+    const { routes: footerLinks, supporters } = footer;
     const mainImage = juntaITecnica.images.mainImage;
     return (
         <Layout
@@ -17,6 +17,7 @@ const JuntaITecnica = ({ footer, routes, juntaITecnica }) => {
             pageDescription={pageDescription}
             navRoutes={routes}
             footerLinks={footerLinks}
+            supporters={supporters}
         >
             <div className={`${styles.container} ${styles.withOverlay}`}>
                 <main className={`${styles.main} ${styles.withUnderlay}`}>

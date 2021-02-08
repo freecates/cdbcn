@@ -33,9 +33,9 @@ const Video = ({ post, videoDetails, footer }) => {
     const description = video.description;
     const { embedHtml } = videoPlayer;
     const id = post.items[0].id;
-    const { routes: footerLinks } = footer;
+    const { routes: footerLinks, supporters } = footer;
     return (
-        <Layout footerLinks={footerLinks}>
+        <Layout footerLinks={footerLinks} supporters={supporters}>
             <Post
                 title={pageTitle}
                 description={description}
