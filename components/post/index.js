@@ -184,15 +184,17 @@ const Post = ({ title, author, date, description, id, type, content, slug, mainI
                     <meta property='og:image:width' content={1024} />
                     <meta property='og:image:height' content={1024} />
 
-                    <meta name='twitter:card' content='summary_large_image' />
-                    <meta name='twitter:site' content='cdbcn' />
-                    <meta name='twitter:creator' content='Castellers de Barcelona' />
+                    <meta name='twitter:card' content='player' />
+                    <meta name='twitter:site' content='@cdbcn' />
                     <meta name='twitter:title' content={title} />
                     <meta
                         name='twitter:description'
                         content={`${description.substring(3, 240)}...`}
                     />
                     <meta name='twitter:image:src' content={mainImage} />
+                    <meta name="twitter:player" content={`https://www.youtube.com/embed/${id}`} />
+	                <meta name="twitter:player:width" content="480" />
+	                <meta name="twitter:player:height" content="360" />
 
                     <script
                         type='application/ld+json'
