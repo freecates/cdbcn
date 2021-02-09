@@ -19,3 +19,8 @@ You can start editing the page by modifying `pages/index.js`. The page auto-upda
 The website is deployed to Vercel, the easiest way to deploy a Next.js app: [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme).
 
 Check out the [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+## Integrate with github and deploy
+
+Once deployed to Vercel, you can integrate your furhter deployments with Github from all successful commits.
