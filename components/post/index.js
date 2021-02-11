@@ -106,7 +106,7 @@ const Post = ({ title, author, date, description, id, type, content, slug, mainI
                     />
                 </Head>
 
-                <Figure data={mainImage[0]} quality={100} type={type} layout={'intrinsic'} withOverlay withType />
+                <Figure data={mainImage[0]} quality={100} type={type} layout={'responsive'} withType />
                 <div className={`${styles.container}`}>
                     <main className={`${styles.main}`}>
                         <SocialSharer type={type} id={id} slug={null} title={title} />
