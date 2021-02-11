@@ -369,7 +369,7 @@ const Post = ({ title, author, date, description, id, type, content, slug, mainI
                         }}
                     />
                 </Head>
-                <Figure data={mainImage} quality={100} withType withOverlay />
+                <Figure data={mainImage} quality={100} withType withOverlay layout={'responsive'} />
 
                 <div className={`${styles.container} ${styles.withOverlay}`}>
                     <main className={`${styles.main} ${styles.withOverlay}`}>

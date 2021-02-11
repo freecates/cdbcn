@@ -23,7 +23,7 @@ const VuitDeJunyDe1969 = ({ vuitDeJuny1969, footer, mdFileContent, routes }) => 
                 supporters={supporters}
                 navRoutes={routes}
             >
-                <Figure data={mainImage} quality={100} />
+                <Figure data={mainImage} quality={100} layout={'responsive'} />
 
                 <div className={`${styles.container}`}>
                     <main className={styles.main}>
