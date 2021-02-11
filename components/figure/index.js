@@ -33,7 +33,7 @@ const Figure = ({ data, quality, layout, withType, withOverlay, type }) => {
                 </div>
             )}
             {!Array.isArray(data) && (
-                <figure className={`${styles.figure} ${withOverlay && styles.withOverlay}`}>
+                <figure className={`${styles.figure}${withOverlay ? ' ' + styles.withOverlay : ''}`}>
                     <Image
                         quality={quality ? quality : null}
                         width={data.width}
