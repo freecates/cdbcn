@@ -17,6 +17,7 @@ const Supporters = ({ supporters }) => {
                                     width={120}
                                     height={120}
                                     title={l.name}
+                                    loading={'lazy'}
                                 />
                             </li>
                         ))}
