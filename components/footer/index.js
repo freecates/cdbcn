@@ -17,6 +17,7 @@ const Footer = ({ footerLinks, supporters }) => {
                     target='_blank'
                     rel={'noopener nofollow'}
                     href='https://www.instagram.com/castellersdebarcelona/'
+                    title={"Anar a l'Instagram de la Colla"}
                 >
                     <span>
                         <FaInstagram />
@@ -26,12 +27,18 @@ const Footer = ({ footerLinks, supporters }) => {
                     target='_blank'
                     rel={'noopener nofollow'}
                     href='https://www.youtube.com/user/arxiucdb'
+                    title={'Anar al Youtube de la Colla'}
                 >
                     <span>
                         <FaYoutube />
                     </span>
                 </a>
-                <a target='_blank' rel={'noopener nofollow'} href='https://twitter.com/cdbcn'>
+                <a
+                    target='_blank'
+                    rel={'noopener nofollow'}
+                    href='https://twitter.com/cdbcn'
+                    title={'Anar al Twitter de la Colla'}
+                >
                     <span>
                         <FaTwitter />
                     </span>
@@ -40,6 +47,7 @@ const Footer = ({ footerLinks, supporters }) => {
                     target='_blank'
                     rel={'noopener nofollow'}
                     href='https://www.facebook.com/castellersdebarcelona'
+                    title={'Anar al Facebook de la Colla'}
                 >
                     <span>
                         <FaFacebook />
