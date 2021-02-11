@@ -23,4 +23,4 @@ Check out the [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## Integrate with github and deploy
 
-Once deployed to Vercel, you can integrate your furhter deployments with Github from all successful commits.
+Once deployed to Vercel, you can integrate your further deployments with Github from all successful commits.
