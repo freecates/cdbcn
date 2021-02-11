@@ -25,7 +25,7 @@ const Home = ({ galeria, footer, routes }) => {
                     <p>{pageDescription}</p>
                 </main>
             </div>
-            <Figure data={mainImage} quality={100} />
+            <Figure data={mainImage} quality={100} layout={'responsive'} />
             <div className={styles.container}>
                 <OtherRoutes routes={otherRoutes} />
             </div>

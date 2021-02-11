@@ -24,7 +24,7 @@ const JuntaITecnica = ({ footer, routes, juntaITecnica }) => {
                     <h1>{title}</h1>
                 </main>
             </div>
-            <Figure data={mainImage} quality={100} />
+            <Figure data={mainImage} quality={100} layout={'responsive'} />
             <div className={styles.container}>
                 <BoardList title={'Junta'} data={boardMembers} />
                 <BoardList title={'Tècnica'} data={techMembers} />

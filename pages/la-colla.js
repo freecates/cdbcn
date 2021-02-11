@@ -34,7 +34,7 @@ const LaColla = ({ colla, footer, routes, mdFileContent }) => {
                     </main>
                 </div>
 
-                <Figure data={mainImage} quality={100} />
+                <Figure data={mainImage} quality={100} layout={'responsive'} />
 
                 <hr className={styles.hr} />
 

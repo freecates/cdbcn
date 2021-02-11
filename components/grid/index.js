@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import styles from './Grid.module.scss';
+import Image from 'next/image';
 
 const thumbnailWidth = 768;
 const thumbnailHeight = 768;
@@ -60,10 +61,12 @@ const Grid = ({ data, isThree }) => {
                         const slug = c.slug;
                         const author = c._embedded.author[0].name;
                         const itemImg = c.acf.imatge_destacada;
-                        const imgSrc = itemImg.sizes.medium_large.replace(
+                        const imgSrc = itemImg.url.replace(
                             '/uploads/',
                             '/uploads-webpc/uploads/'
                         );
+                        const width = itemImg.width;
+                        const height = itemImg.height;
                         const type = c.type;
                         const itemUrl = `/${type}/${itemId}/${slug}`;
                         return (
@@ -77,12 +80,13 @@ const Grid = ({ data, isThree }) => {
                                         {!itemImg ? null : (
                                             <Link href={itemUrl}>
                                                 <a title={`Veure la fitxa de: ${title}`}>
-                                                    <img
+                                                    <Image
                                                         loading='lazy'
                                                         src={imgSrc + '.webp'}
                                                         alt={title}
-                                                        width={thumbnailWidth}
-                                                        height={thumbnailHeight}
+                                                        width={width}
+                                                        height={height}
+                                                        layout={'responsive'}
                                                     />
                                                 </a>
                                             </Link>
@@ -171,6 +175,8 @@ const Grid = ({ data, isThree }) => {
                         const itemId = c.id;
                         const author = c.title;
                         const imgSrc = c.url_m;
+                        const width = c.width_m;
+                        const height = c.height_m;
                         const type = 'fotos';
                         const itemUrl = `/${type}/${itemId}`;
                         return (
@@ -187,12 +193,13 @@ const Grid = ({ data, isThree }) => {
                                                     href={itemUrl}
                                                     title={`Veure la fitxa de: ${title}`}
                                                 >
-                                                    <img
+                                                    <Image
                                                         loading='lazy'
                                                         src={imgSrc}
                                                         alt={title}
-                                                        width={thumbnailWidth}
-                                                        height={thumbnailHeight}
+                                                        width={width}
+                                                        height={height}
+                                                        layout={'responsive'}
                                                     />
                                                 </a>
                                             </Link>
