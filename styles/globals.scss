@@ -548,6 +548,14 @@ img {
     height: auto;
 }
 
+blockquote {
+    font-style: oblique;
+    color: $main-red;
+    border-left: 5px solid $secondary-red;
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+}
+
 *,
 ::after,
 ::before {

@@ -15,6 +15,13 @@ const api = {
       return data;
     }
   },
+  unaCollaSingularIPionera: {
+    async getData() {
+      const response = await fetch(`${staticDataUrl}/data/unaCollaSingularIPionera.json`);
+      const data = await response.json();
+      return data;
+    }
+  },
   juntaITecnica: {
     async getData() {
       const response = await fetch(`${staticDataUrl}/data/juntaITecnica.json`);
