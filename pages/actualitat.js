@@ -59,17 +59,9 @@ const Actualitat = ({ actuacionsData, noticiesData, footer, routes }) => {
 };
 
 export const getStaticProps = async () => {
-    const res = await fetch(`${wordPressApiUrl}/wp/v2/actuacions?per_page=2&_embed`, {
-        headers: new Headers({
-            Authorization: 'Bearer '+bearerToken,
-        }),
-    });
+    const res = await fetch(`${wordPressApiUrl}/wp/v2/actuacions?per_page=2&_embed`);
     const actuacionsData = await res.json();
-    const res2 = await fetch(`${wordPressApiUrl}/wp/v2/noticies?per_page=2&_embed`, {
-        headers: new Headers({
-            Authorization: 'Bearer '+bearerToken,
-        }),
-    });
+    const res2 = await fetch(`${wordPressApiUrl}/wp/v2/noticies?per_page=2&_embed`);
     const noticiesData = await res2.json();
     const [footer, routes] = await Promise.all([api.footer.getData(), api.routes.getData()]);
     return {

@@ -44,11 +44,7 @@ const Noticia = ({ post, footer }) => {
 };
 
 export async function getStaticPaths() {
-    const res = await fetch(`${wordPressApiUrl}/wp/v2/noticies?per_page=100`, {
-        headers: new Headers({
-            Authorization: 'Bearer '+bearerToken,
-        }),
-    });
+    const res = await fetch(`${wordPressApiUrl}/wp/v2/noticies?per_page=100`);
     const posts = await res.json();
 
     const paths = posts.map((post) => `/${post.type}/${post.id}/${post.slug}`);
@@ -57,11 +53,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-    const res = await fetch(`${wordPressApiUrl}/wp/v2/noticies/${params.id}?_embed`, {
-        headers: new Headers({
-            Authorization: 'Bearer '+bearerToken,
-        }),
-    });
+    const res = await fetch(`${wordPressApiUrl}/wp/v2/noticies/${params.id}?_embed`);
 
     const post = await res.json();
 
