@@ -5,6 +5,7 @@ import styles from '@styles/Home.module.scss';
 import Link from 'next/link';
 
 const wordPressApiUrl = process.env.WORDPRESS_API_URL;
+const bearerToken = process.env.BEARER_TOKEN;
 
 const Actualitat = ({ actuacionsData, noticiesData, footer, routes }) => {
     const pageTitle = 'Actualitat';
@@ -58,9 +59,17 @@ const Actualitat = ({ actuacionsData, noticiesData, footer, routes }) => {
 };
 
 export const getStaticProps = async () => {
-    const res = await fetch(`${wordPressApiUrl}/wp/v2/actuacions?per_page=2&_embed`);
+    const res = await fetch(`${wordPressApiUrl}/wp/v2/actuacions?per_page=2&_embed`, {
+        headers: new Headers({
+            Authorization: 'Bearer '+bearerToken,
+        }),
+    });
     const actuacionsData = await res.json();
-    const res2 = await fetch(`${wordPressApiUrl}/wp/v2/noticies?per_page=2&_embed`);
+    const res2 = await fetch(`${wordPressApiUrl}/wp/v2/noticies?per_page=2&_embed`, {
+        headers: new Headers({
+            Authorization: 'Bearer '+bearerToken,
+        }),
+    });
     const noticiesData = await res2.json();
     const [footer, routes] = await Promise.all([api.footer.getData(), api.routes.getData()]);
     return {

@@ -6,6 +6,7 @@ import Custom404 from '../../404';
 import api from '@libs/api.js';
 
 const wordPressApiUrl = process.env.WORDPRESS_API_URL;
+const bearerToken = process.env.BEARER_TOKEN;
 
 const Actuacio = ({ post, footer }) => {
     const { isFallback } = useRouter();
@@ -43,7 +44,11 @@ const Actuacio = ({ post, footer }) => {
 };
 
 export async function getStaticPaths() {
-    const res = await fetch(`${wordPressApiUrl}/wp/v2/actuacions?per_page=100`);
+    const res = await fetch(`${wordPressApiUrl}/wp/v2/actuacions?per_page=100`, {
+        headers: new Headers({
+            Authorization: 'Bearer '+bearerToken,
+        }),
+    });
     const posts = await res.json();
 
     const paths = posts.map((post) => `/${post.type}/${post.id}/${post.slug}`);
@@ -52,7 +57,11 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-    const res = await fetch(`${wordPressApiUrl}/wp/v2/actuacions/${params.id}?_embed`);
+    const res = await fetch(`${wordPressApiUrl}/wp/v2/actuacions/${params.id}?_embed`, {
+        headers: new Headers({
+            Authorization: 'Bearer '+bearerToken,
+        }),
+    });
 
     const post = await res.json();
 

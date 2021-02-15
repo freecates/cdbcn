@@ -5,6 +5,7 @@ import styles from '@styles/Home.module.scss';
 
 
 const wordPressApiUrl = process.env.WORDPRESS_API_URL;
+const bearerToken = process.env.BEARER_TOKEN;
 
 const Noticies = ({ data, noticies, footer, routes }) => {
     const { title, pageTitle, pageDescription } = noticies.meta;
@@ -31,7 +32,11 @@ const Noticies = ({ data, noticies, footer, routes }) => {
 };
 
 export const getStaticProps = async () => {
-    const res = await fetch(`${wordPressApiUrl}/wp/v2/noticies?per_page=100&_embed`);
+    const res = await fetch(`${wordPressApiUrl}/wp/v2/noticies?per_page=100&_embed`, {
+        headers: new Headers({
+            Authorization: 'Bearer '+bearerToken,
+        }),
+    });
     const data = await res.json();
     const [noticies, footer, routes] = await Promise.all([
         api.noticies.getData(),

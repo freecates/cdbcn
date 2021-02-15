@@ -5,6 +5,7 @@ import styles from '@styles/Home.module.scss';
 
 
 const wordPressApiUrl = process.env.WORDPRESS_API_URL;
+const bearerToken = process.env.BEARER_TOKEN;
 
 const Actuacions = ({ data, actuacions, footer, routes }) => {
     const { title, pageTitle, pageDescription } = actuacions.meta;
@@ -31,7 +32,11 @@ const Actuacions = ({ data, actuacions, footer, routes }) => {
 };
 
 export const getStaticProps = async () => {
-    const res = await fetch(`${wordPressApiUrl}/wp/v2/actuacions?per_page=100&_embed`);
+    const res = await fetch(`${wordPressApiUrl}/wp/v2/actuacions?per_page=100&_embed`, {
+        headers: new Headers({
+            Authorization: 'Bearer '+bearerToken,
+        }),
+    });
     const data = await res.json();
     const [actuacions, footer, routes] = await Promise.all([
         api.actuacions.getData(),
