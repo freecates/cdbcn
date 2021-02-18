@@ -25,21 +25,6 @@ const Actualitat = ({ actuacionsData, noticiesData, footer, routes }) => {
             <div className={`${styles.container} ${styles.noPadding}`}>
                 <main className={styles.main}>
                     <h2>
-                        <Link href={`/${actuacionsData[0].type}`}>
-                            <a>[{actuacionsData[0].type}]</a>
-                        </Link>
-                    </h2>
-                    <Grid data={actuacionsData} />
-                    <p>
-                        <Link href={`/${actuacionsData[0].type}`}>
-                            <a className={styles.more} title={`Anar a "${actuacionsData[0].type}"`}>
-                                [+]
-                            </a>
-                        </Link>
-                    </p>
-
-                    <hr className={styles.hr} />
-                    <h2>
                         <Link href={`/${noticiesData[0].type}`}>
                             <a>[{noticiesData[0].type}]</a>
                         </Link>
@@ -48,6 +33,20 @@ const Actualitat = ({ actuacionsData, noticiesData, footer, routes }) => {
                     <p>
                         <Link href={`/${noticiesData[0].type}`}>
                             <a className={styles.more} title={`Anar a "${noticiesData[0].type}"`}>
+                                [+]
+                            </a>
+                        </Link>
+                    </p>
+                    <hr className={styles.hr} />
+                    <h2>
+                        <Link href={`/${actuacionsData[0].type}`}>
+                            <a>[{actuacionsData[0].type}]</a>
+                        </Link>
+                    </h2>
+                    <Grid data={actuacionsData} />
+                    <p>
+                        <Link href={`/${actuacionsData[0].type}`}>
+                            <a className={styles.more} title={`Anar a "${actuacionsData[0].type}"`}>
                                 [+]
                             </a>
                         </Link>
