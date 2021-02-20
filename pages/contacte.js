@@ -44,7 +44,7 @@ const Contacte = ({ contacte, footer, routes }) => {
                         <br />
                         {web}
                         <br />
-                        <a href={MailruIcon.href}>{email.address}</a>
+                        <a href={email.href}>{email.address}</a>
                         <br />
                         <a
                             title={map.title}

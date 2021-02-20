@@ -1,3 +1,5 @@
+@import 'styles/colors';
+
 .title a:hover,
 .title a:focus,
 .title a:active {
@@ -35,4 +37,11 @@
     width: 100%;
     max-width: 320px;
     margin: 0 auto;
+}
+
+.hr {
+    width: 50%;
+    margin: 0 auto 2rem;
+    height: 0;
+    border: 1px solid $gray;
 }

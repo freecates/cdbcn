@@ -36,6 +36,13 @@ const api = {
       return data;
     }
   },
+  participa: {
+    async getData() {
+      const response = await fetch(`${staticDataUrl}/data/participa.json`);
+      const data = await response.json();
+      return data;
+    }
+  },
   galeria: {
     async getData() {
       const response = await fetch(`${staticDataUrl}/data/galeria.json`);

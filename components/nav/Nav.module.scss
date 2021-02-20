@@ -3,6 +3,22 @@
 .nav {
     max-width: 100%;
     margin: 0 auto;
+    font-size: 1em;
+
+    &.small {
+        font-size: 0.75rem;
+
+        .secondary {
+            flex-direction: row;
+            li {
+                padding: .25rem;
+            }
+
+            @media (min-width: 768px) {
+                padding: 0.5rem 0;
+            }
+        }
+    }
 
     .secondary {
         display: flex;
@@ -53,10 +69,10 @@
             a {
                 padding: 0.25rem 0;
                 transition: color ease 1s;
-                font-size: 0.75rem;
+                font-size: 0.75em;
 
                 @media (min-width: 768px) {
-                    font-size: 0.85rem;
+                    font-size: 0.85em;
                 }
 
                 &:hover {

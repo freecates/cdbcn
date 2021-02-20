@@ -2,12 +2,13 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styles from './Nav.module.scss';
 
-const Nav = ({ navRoutes }) => {
+const Nav = ({ navRoutes, small }) => {
+    console.log('small ', small);
     const routesNav = navRoutes.filter((x) => x.route !== '/');
     const router = useRouter();
 
     return (
-        <nav className={styles.nav}>
+        <nav className={`${styles.nav} ${small ? styles.small : ''}`}>
                     <ul className={styles.secondary}>
                         {routesNav.map((r, index) => (
                             <li

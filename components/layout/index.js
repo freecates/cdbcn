@@ -30,7 +30,7 @@ const Layout = (props) => {
                     <a>
                         <Image
                             width='320'
-                            height='160'
+                            height='128'
                             loading='lazy'
                             alt={'Logo de la Colla Castellers de Barcelona'}
                             src={'/logo-castellers-de-barcelona.png'}
@@ -41,12 +41,23 @@ const Layout = (props) => {
             </h1>
             {props.navRoutes ? <Nav navRoutes={props.navRoutes} /> : null}
             <ScrollUpButton
-                style={{ backgroundColor: '#ffffff', fill: 'rgb(217, 0, 29)', right: '15px' }}
+                style={{
+                    backgroundColor: '#ffffff',
+                    fill: 'rgb(217, 0, 29)',
+                    right: '40px',
+                    padding: '.25rem',
+                    width: '30px',
+                    height: '30px',
+                    border: 'none',
+                    bottom: '10px',
+                }}
             />
 
             <div>{props.children}</div>
+
             <div className={styles.container}>
                 <Footer footerLinks={props.footerLinks} supporters={props.supporters} />
+                {props.navRoutes ? <Nav navRoutes={props.navRoutes} small /> : null}
             </div>
         </>
     );

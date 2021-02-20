@@ -5,7 +5,7 @@ import Image from 'next/image';
 const thumbnailWidth = 768;
 const thumbnailHeight = 768;
 
-const Grid = ({ data, isThree }) => {
+const Grid = ({ data, isThree, isOne }) => {
     return (
         <div className={styles.gridComponent}>
             {data
@@ -73,7 +73,7 @@ const Grid = ({ data, isThree }) => {
                             <div
                                 key={itemId}
                                 id={id}
-                                className={`${styles.card} ${isThree ? styles.three : null}`}
+                                className={`${styles.card} ${isThree ? styles.three : null} ${isOne ? styles.one : null}`}
                             >
                                 <div>
                                     <header>
@@ -130,7 +130,7 @@ const Grid = ({ data, isThree }) => {
                             <div
                                 key={itemId}
                                 id={id}
-                                className={`${styles.card} ${isThree ? styles.three : null}`}
+                                className={`${styles.card} ${isThree ? styles.three : null} ${isOne ? styles.one : null}`}
                             >
                                 <div>
                                     <header>
@@ -183,7 +183,7 @@ const Grid = ({ data, isThree }) => {
                             <div
                                 key={itemId}
                                 id={id}
-                                className={`${styles.card} ${isThree ? styles.three : null}`}
+                                className={`${styles.card} ${isThree ? styles.three : null} ${isOne ? styles.one : null}`}
                             >
                                 <div>
                                     <header>

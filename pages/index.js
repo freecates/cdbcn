@@ -1,10 +1,14 @@
+import Grid from '@components/grid';
 import Layout from '@components/layout';
 import Video from '@components/video';
 import styles from '@styles/Home.module.scss';
 import api from '@libs/api.js';
 import Link from 'next/link';
 
-const Home = ({ home, contacte, footer, routes }) => {
+const wordPressApiUrl = process.env.WORDPRESS_API_URL;
+const bearerToken = process.env.BEARER_TOKEN;
+
+const Home = ({ noticiesData, home, contacte, footer, routes }) => {
     const { title, pageTitle, pageDescription } = home.meta;
     const { name, address, phone, mobile, web, email, map } = contacte.meta;
     const { routes: footerLinks, supporters } = footer;
@@ -22,7 +26,7 @@ const Home = ({ home, contacte, footer, routes }) => {
             <div className={styles.wrapperVideo}>
                 <Video data={mainVideo} />
             </div>
-            <div className={`${styles.container} ${styles.withOverlay}`}>
+            <div className={`${styles.container} ${styles.withOverlay} ${styles.noPadding}`}>
                 <main className={`${styles.main} ${styles.withOverlay}`}>
                     <p className={styles.description}>
                         <strong>{name}</strong>
@@ -44,7 +48,12 @@ const Home = ({ home, contacte, footer, routes }) => {
                         <br />
                         <a href={email.href}>{email.address}</a>
                         <br />
+                        <Link href={'/participa'}>
+                            <a className={styles.button}>CONTRACTA'NS</a>
+                        </Link>
                     </p>
+                    <hr className={styles.hr} />
+                    <Grid data={noticiesData} isThree />
                 </main>
             </div>
         </Layout>
@@ -52,6 +61,9 @@ const Home = ({ home, contacte, footer, routes }) => {
 };
 
 export const getStaticProps = async () => {
+    const res2 = await fetch(`${wordPressApiUrl}/wp/v2/noticies?per_page=3&_embed`);
+    const noticiesData = await res2.json();
+
     const [home, contacte, footer, routes] = await Promise.all([
         api.home.getData(),
         api.contacte.getData(),
@@ -60,6 +72,7 @@ export const getStaticProps = async () => {
     ]);
     return {
         props: {
+            noticiesData: noticiesData,
             home: { ...home[0] },
             contacte: { ...contacte[0] },
             footer: { ...footer[0] },

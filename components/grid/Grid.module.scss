@@ -7,7 +7,6 @@
     flex-wrap: wrap;
 
     max-width: 960px;
-    margin-top: 3rem;
 
     @media (min-width: 1360px) {
         max-width: 1253px;
@@ -38,6 +37,9 @@
         }
         .author {
             color: $white;
+        }
+        &.one {
+            flex-basis: 100%;
         }
         @media (max-width: 567px) {
             flex-basis: 100%;
