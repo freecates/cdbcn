@@ -3,13 +3,13 @@ import Image from 'next/image';
 
 const staticDataUrl = 'https://cdbdata.vercel.app/static';
 
-const Figure = ({ data, quality, layout, withType, withOverlay, type }) => {
+const Figure = ({ data, quality, layout, withType, withOverlay, type, isOne }) => {
     return (
         <div className={styles.figureComponent}>
             {Array.isArray(data) && (
                 <div className={styles.grid}>
                     {data.map((d, index) => (
-                        <figure key={index + d.src} className={`${styles.figure} ${styles.card}`}>
+                        <figure key={index + d.src} className={`${styles.figure} ${styles.card} ${isOne ? styles.one : null}`}>
                             <Image
                                 quality={quality ? quality : null}
                                 width={d.width}

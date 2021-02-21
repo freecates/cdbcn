@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 import styles from './Nav.module.scss';
 
 const Nav = ({ navRoutes, small }) => {
-    console.log('small ', small);
     const routesNav = navRoutes.filter((x) => x.route !== '/');
     const router = useRouter();
 

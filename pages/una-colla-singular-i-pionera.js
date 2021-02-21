@@ -3,35 +3,37 @@ import styles from '@styles/Home.module.scss';
 import api from '@libs/api.js';
 import OtherRoutes from '@components/otherroutes';
 import MDFileContent from '@components/mdncontentparser';
-
+import Figure from '@components/figure';
 
 const staticDataUrl = process.env.STATIC_DATA_URL;
 
 const unaCollaSingularIPionera = ({ unaCollaSingularIPionera, footer, mdFileContent, routes }) => {
     const { title, pageTitle, pageDescription, otherRoutes } = unaCollaSingularIPionera.meta;
+    const mainImage = unaCollaSingularIPionera.images.mainImage;
+    const imageGallery = unaCollaSingularIPionera.images.imageGallery;
     const { routes: footerLinks, supporters } = footer;
     return (
-        
-            <Layout
-                pageTitle={pageTitle}
-                title={title}
-                pageDescription={pageDescription}
-                footerLinks={footerLinks}
-                supporters={supporters}
-                navRoutes={routes}
-            >
+        <Layout
+            pageTitle={pageTitle}
+            title={title}
+            pageDescription={pageDescription}
+            footerLinks={footerLinks}
+            supporters={supporters}
+            navRoutes={routes}
+        >
+            <Figure data={mainImage} quality={100} layout={'responsive'} />
 
-                <div className={`${styles.container}`}>
-                    <main className={styles.main}>
-                        <h1>{title}</h1>
-                        <MDFileContent content={mdFileContent} />
-                    </main>
-                </div>
-                <div className={styles.container}>
-                    <OtherRoutes routes={otherRoutes} isButton />
-                </div>
-            </Layout>
-        
+            <div className={`${styles.container}`}>
+                <main className={styles.main}>
+                    <h1>{title}</h1>
+                    <MDFileContent content={mdFileContent} />
+                </main>
+            </div>
+            <Figure data={imageGallery} isOne />
+            <div className={styles.container}>
+                <OtherRoutes routes={otherRoutes} isButton />
+            </div>
+        </Layout>
     );
 };
 
