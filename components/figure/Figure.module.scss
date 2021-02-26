@@ -1,9 +1,15 @@
+@import 'styles/colors';
+
 .figureComponent {
     max-width: 1680px;
     margin: 0 auto;
     .figure {
         margin: 0 auto;
         text-align: center;
+
+        img {
+            background: lighten($black, 95%);
+        }
 
         &:nth-child(even) {
             margin: 0rem auto 4rem auto;
