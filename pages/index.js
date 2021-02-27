@@ -22,6 +22,7 @@ const Home = ({ noticiesData, home, contacte, footer, routes }) => {
             home
             footerLinks={footerLinks}
             supporters={supporters}
+            videoPreload={mainVideo}
         >
             <div className={styles.wrapperVideo}>
                 <Video data={mainVideo} />

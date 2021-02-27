@@ -6,6 +6,8 @@ import Footer from '@components/footer';
 import Nav from '@components/nav';
 import { TinyButton as ScrollUpButton } from 'react-scroll-up-button';
 
+const staticDataUrl = 'https://cdbdata.vercel.app';
+
 const Layout = (props) => {
     return (
         <>
@@ -22,6 +24,14 @@ const Layout = (props) => {
                     }
                 />
                 <link rel='icon' href='/favicon.ico' />
+                {props.videoPreload ? (
+                    <link
+                        rel='preload'
+                        as='video'
+                        href={`${staticDataUrl}/sttic/${props.videoPreload.srcSet[1].src}`}
+                        type={props.videoPreload.srcSet[1].type}
+                    />
+                ) : null}
                 <link rel='preconnect' href='https://fonts.gstatic.com/' crossOrigin='true' />
             </Head>
 
