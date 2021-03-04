@@ -17,6 +17,14 @@
         color: inherit;
         text-decoration: none;
         margin: 1rem;
+        
+        header {
+
+            img {
+                background: lighten($black, 95%);
+            }
+        }
+
         main {
             margin-top: -0.5rem;
 
