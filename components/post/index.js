@@ -106,7 +106,13 @@ const Post = ({ title, author, date, description, id, type, content, slug, mainI
                     />
                 </Head>
 
-                <Figure data={mainImage[0]} quality={100} type={type} layout={'responsive'} withType />
+                <Figure
+                    data={mainImage[0]}
+                    quality={100}
+                    type={type}
+                    layout={'responsive'}
+                    withType
+                />
                 <div className={`${styles.container}`}>
                     <main className={`${styles.main}`}>
                         <SocialSharer type={type} id={id} slug={null} title={title} />
@@ -192,9 +198,9 @@ const Post = ({ title, author, date, description, id, type, content, slug, mainI
                         content={`${description.substring(3, 240)}...`}
                     />
                     <meta name='twitter:image:src' content={mainImage} />
-                    <meta name="twitter:player" content={`https://www.youtube.com/embed/${id}`} />
-	                <meta name="twitter:player:width" content="480" />
-	                <meta name="twitter:player:height" content="360" />
+                    <meta name='twitter:player' content={`https://www.youtube.com/embed/${id}`} />
+                    <meta name='twitter:player:width' content='480' />
+                    <meta name='twitter:player:height' content='360' />
 
                     <script
                         type='application/ld+json'

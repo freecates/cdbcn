@@ -56,7 +56,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
     const res = await fetch(`${wordPressApiUrl}/wp/v2/noticies/${params.id}?_embed`, {
-        headers: { 'Cache-Control': 'no-cache' },
+        headers: { 'Cache-Control': 'no-store, max-age=0' },
     });
 
     const post = await res.json();
