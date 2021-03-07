@@ -59,8 +59,6 @@ export async function getStaticProps({ params }) {
         headers: { 'Cache-Control': 'no-cache' },
     });
 
-    console.log(res.headers.raw());
-
     const post = await res.json();
 
     const [footer] = await Promise.all([api.footer.getData()]);

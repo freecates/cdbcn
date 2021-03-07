@@ -29,7 +29,7 @@ const Actuacions = ({ data, actuacions, footer, routes }) => {
 };
 
 export const getStaticProps = async () => {
-    const res = await fetch(`${wordPressApiUrl}/wp/v2/actuacions?per_page=100&_embed`, {
+    const res = await fetch(`${wordPressApiUrl}/wp/v2/actuacions?per_page=99&_embed`, {
         headers: { 'Cache-Control': 'no-cache' },
     });
     const data = await res.json();
