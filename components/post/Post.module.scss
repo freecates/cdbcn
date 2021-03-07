@@ -47,6 +47,11 @@
         a {
             text-decoration: underline;
         }
+        iframe {
+            width: 100%;
+            max-width: 840px;
+            margin: 0 auto;
+        }
     }
 
     .title {
