@@ -62,7 +62,9 @@ const Home = ({ noticiesData, home, contacte, footer, routes }) => {
 };
 
 export const getStaticProps = async () => {
-    const res2 = await fetch(`${wordPressApiUrl}/wp/v2/noticies?per_page=3&_embed`);
+    const res2 = await fetch(`${wordPressApiUrl}/wp/v2/noticies?per_page=3&_embed`, {
+        headers: { 'Cache-Control': 'no-cache' },
+    });
     const noticiesData = await res2.json();
 
     const [home, contacte, footer, routes] = await Promise.all([
