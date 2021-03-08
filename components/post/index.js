@@ -72,7 +72,11 @@ const Post = ({ title, author, date, description, id, type, content, slug, mainI
                     <meta name='twitter:creator' content='Castellers de Barcelona' />
                     <meta name='twitter:title' content={title} />
                     <meta name='twitter:description' content={`${description}...`} />
-                    <meta name='twitter:image:src' content={mainImage[0].source} />
+
+                    <link
+                        rel='canonical'
+                        href={`https://castellersdebarcelona.cat/${type}/${id}`}
+                    />
 
                     <script
                         type='application/ld+json'
@@ -201,6 +205,11 @@ const Post = ({ title, author, date, description, id, type, content, slug, mainI
                     <meta name='twitter:player' content={`https://www.youtube.com/embed/${id}`} />
                     <meta name='twitter:player:width' content='480' />
                     <meta name='twitter:player:height' content='360' />
+
+                    <link
+                        rel='canonical'
+                        href={`https://castellersdebarcelona.cat/${type}/${id}`}
+                    />
 
                     <script
                         type='application/ld+json'
@@ -339,6 +348,11 @@ const Post = ({ title, author, date, description, id, type, content, slug, mainI
                         content={`${description.substring(3, 240)}...`}
                     />
                     <meta name='twitter:image:src' content={imatge_destacada.sizes.large} />
+
+                    <link
+                        rel='canonical'
+                        href={`https://castellersdebarcelona.cat/${type}/${id}/${slug}`}
+                    />
 
                     <script
                         type='application/ld+json'
