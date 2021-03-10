@@ -8,7 +8,7 @@ import { FaYoutube } from 'react-icons/fa';
 const youtubeApiUrl = process.env.YOUTUBE_API_URL;
 const youtubeApiKey = process.env.YOUTUBE_API_KEY;
 const youtubeChannelId = process.env.YOUTUBE_CHANNEL_ID;
-const QUERY = `${youtubeApiUrl}/search?part=snippet&channelId=${youtubeChannelId}&maxResults=50&order=date&type=video&key=${youtubeApiKey}`;
+const QUERY = `${youtubeApiUrl}/search?part=snippet&channelId=${youtubeChannelId}&maxResults=50&order=date&type=video&publishedAfter=2020-01-01T00:00:00Z&key=${youtubeApiKey}`;
 
 const Videos = ({ data, footer, routes, videos }) => {
     if (data === 'error') {
