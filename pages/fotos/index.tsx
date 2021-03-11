@@ -4,6 +4,7 @@ import api from '@libs/api.js';
 import styles from '@styles/Home.module.scss';
 import Fallback from '@components/fallback';
 import { FaFlickr } from 'react-icons/fa';
+import { GetStaticProps } from 'next';
 
 const flickrApiUrl = process.env.FLICKR_API_URL;
 const flickrApiKey = process.env.FLICKR_APY_KEY;
@@ -49,7 +50,7 @@ const Fotos = ({ data, footer, routes, fotos }) => {
     );
 };
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
     const res = await fetch(QUERY);
     const data = await res.json();
     const [fotos] = await Promise.all([api.fotos.getData()]);
