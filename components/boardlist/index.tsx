@@ -1,6 +1,11 @@
 import styles from './BoardList.module.scss';
 
-const BoardList = ({ title, data }) => {
+type Props = {
+    data: IData;
+    title: string;
+};
+
+const BoardList: React.FC<Props> = ({ title, data }) => {
     return (
         <div className={styles.boardListComponent}>
             <h2>{title}</h2>
@@ -15,5 +20,11 @@ const BoardList = ({ title, data }) => {
         </div>
     );
 };
+
+interface IData {
+    map(arg0: (d: any, index: any) => JSX.Element): import('react').ReactNode;
+    name: string;
+    title: string;
+}
 
 export default BoardList;

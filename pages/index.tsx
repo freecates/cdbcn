@@ -4,6 +4,7 @@ import Video from '@components/video';
 import styles from '@styles/Home.module.scss';
 import api from '@libs/api.js';
 import Link from 'next/link';
+import { GetStaticProps } from 'next';
 
 const wordPressApiUrl = process.env.WORDPRESS_API_URL;
 const bearerToken = process.env.BEARER_TOKEN;
@@ -61,13 +62,13 @@ const Home = ({ noticiesData, home, contacte, footer, routes }) => {
     );
 };
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
     const res2 = await fetch(`${wordPressApiUrl}/wp/v2/noticies?per_page=3&_embed`, {
         headers: { 'Cache-Control': 'no-cache' },
     });
     const noticiesData = await res2.json();
 
-    const [home, contacte, footer, routes] = await Promise.all([
+    const [ home, contacte, footer, routes ] = await Promise.all([
         api.home.getData(),
         api.contacte.getData(),
         api.footer.getData(),
@@ -76,9 +77,9 @@ export const getStaticProps = async () => {
     return {
         props: {
             noticiesData: noticiesData,
-            home: { ...home[0] },
-            contacte: { ...contacte[0] },
-            footer: { ...footer[0] },
+            home: { ...home[ 0 ] },
+            contacte: { ...contacte[ 0 ] },
+            footer: { ...footer[ 0 ] },
             routes,
         },
     };

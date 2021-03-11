@@ -3,6 +3,7 @@ import styles from '@styles/Home.module.scss';
 import api from '@libs/api.js';
 import OtherRoutes from '@components/otherroutes';
 import Figure from '@components/figure';
+import { GetStaticProps } from 'next';
 
 const Home = ({ galeria, footer, routes }) => {
     const { title, pageTitle, pageDescription, otherRoutes } = galeria.meta;
@@ -33,7 +34,7 @@ const Home = ({ galeria, footer, routes }) => {
     );
 };
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
     const [galeria, footer, routes] = await Promise.all([
         api.galeria.getData(),
         api.footer.getData(),

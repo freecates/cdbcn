@@ -2,6 +2,7 @@ import Layout from '@components/layout';
 import MDFileContent from '@components/mdncontentparser';
 import styles from '@styles/Home.module.scss';
 import api from '@libs/api.js';
+import { GetStaticProps } from 'next';
 
 
 const staticDataUrl = process.env.STATIC_DATA_URL;
@@ -30,7 +31,7 @@ const PoliticaDeCookies = ({ politicaDeCookies, footer, mdFileContent }) => {
     );
 };
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
     const [politicaDeCookies] = await Promise.all([api.politicaDeCookies.getData()]);
     const [footer] = await Promise.all([api.footer.getData()]);
     const res = await fetch(`${staticDataUrl}/content/politica-de-cookies.md`);

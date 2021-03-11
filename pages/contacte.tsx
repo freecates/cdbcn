@@ -3,30 +3,49 @@ import styles from '@styles/Home.module.scss';
 import api from '@libs/api.js';
 import Figure from '@components/figure';
 import { FaMapSigns } from 'react-icons/fa';
+import { GetStaticProps } from 'next';
 
-const FesCastells = ({ footer, routes, fesCastells }) => {
-    const { title, pageTitle, pageDescription, map } = fesCastells.meta;
+const Contacte = ({ contacte, footer, routes }) => {
+    const {
+        title,
+        pageTitle,
+        pageDescription,
+        name,
+        address,
+        phone,
+        mobile,
+        web,
+        email,
+        map,
+    } = contacte.meta;
+    const mainImage = contacte.images.mainImage;
     const { routes: footerLinks, supporters } = footer;
-    const mainImage = fesCastells.images.mainImage;
     return (
         <Layout
             title={title}
             pageTitle={pageTitle}
             pageDescription={pageDescription}
+            contacte
             navRoutes={routes}
             footerLinks={footerLinks}
             supporters={supporters}
         >
             <div className={`${styles.container} ${styles.withOverlay}`}>
                 <main className={`${styles.main} ${styles.withUnderlay}`}>
-                    <h1>... Arribaran!</h1>
-                    <h2
-                        className={styles.title}
-                        dangerouslySetInnerHTML={{
-                            __html: pageDescription,
-                        }}
-                    />
-                    <h3 className={styles.title}>
+                    <p className={styles.description}>
+                        <strong>{name}</strong>
+                        <br />
+                        <br />
+                        {address}
+                        <br />
+                        T. <a href={phone.href}>{phone.number}</a>
+                        <br />
+                        M. <a href={mobile.href}>{mobile.number}</a> [premsa]
+                        <br />
+                        {web}
+                        <br />
+                        <a href={email.href}>{email.address}</a>
+                        <br />
                         <a
                             title={map.title}
                             target={'_blank'}
@@ -35,8 +54,7 @@ const FesCastells = ({ footer, routes, fesCastells }) => {
                         >
                             <FaMapSigns />
                         </a>
-                    </h3>
-                    <p>(quan la COVID-19 deixi d'emprenyar)</p>
+                    </p>
                 </main>
             </div>
             <Figure data={mainImage} quality={100} layout={'responsive'} />
@@ -44,19 +62,19 @@ const FesCastells = ({ footer, routes, fesCastells }) => {
     );
 };
 
-export const getStaticProps = async () => {
-    const [fesCastells, footer, routes] = await Promise.all([
-        api.fesCastells.getData(),
+export const getStaticProps: GetStaticProps = async () => {
+    const [contacte, footer, routes] = await Promise.all([
+        api.contacte.getData(),
         api.footer.getData(),
         api.routes.getData(),
     ]);
     return {
         props: {
+            contacte: { ...contacte[0] },
             footer: { ...footer[0] },
-            fesCastells: { ...fesCastells[0] },
             routes,
         },
     };
 };
 
-export default FesCastells;
+export default Contacte;

@@ -3,6 +3,7 @@ import styles from '@styles/Home.module.scss';
 import api from '@libs/api.js';
 import Figure from '@components/figure';
 import BoardList from '@components/boardlist';
+import { GetStaticProps } from 'next';
 
 const JuntaITecnica = ({ footer, routes, juntaITecnica }) => {
     const { title, pageTitle, pageDescription } = juntaITecnica.meta;
@@ -33,7 +34,7 @@ const JuntaITecnica = ({ footer, routes, juntaITecnica }) => {
     );
 };
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
     const [juntaITecnica, footer, routes] = await Promise.all([
         api.juntaITecnica.getData(),
         api.footer.getData(),

@@ -3,6 +3,7 @@ import Layout from '@components/layout';
 import api from '@libs/api.js';
 import styles from '@styles/Home.module.scss';
 import Link from 'next/link';
+import { GetStaticProps } from 'next';
 
 const wordPressApiUrl = process.env.WORDPRESS_API_URL;
 const bearerToken = process.env.BEARER_TOKEN;
@@ -57,7 +58,7 @@ const Actualitat = ({ actuacionsData, noticiesData, footer, routes }) => {
     );
 };
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
     const res = await fetch(`${wordPressApiUrl}/wp/v2/actuacions?per_page=2&_embed`, {
         headers: { 'Cache-Control': 'no-cache' },
     });

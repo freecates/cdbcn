@@ -3,6 +3,7 @@ import styles from '@styles/Home.module.scss';
 import api from '@libs/api.js';
 import Figure from '@components/figure';
 import MDFileContent from '@components/mdncontentparser';
+import { GetStaticProps } from 'next';
 
 const staticDataUrl = process.env.STATIC_DATA_URL;
 
@@ -50,7 +51,7 @@ const Participa = ({ footer, routes, participa, mdFileContent }) => {
     );
 };
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
     const [participa, footer, routes] = await Promise.all([
         api.participa.getData(),
         api.footer.getData(),

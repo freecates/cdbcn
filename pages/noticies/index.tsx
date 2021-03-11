@@ -2,12 +2,13 @@ import Grid from '@components/grid';
 import Layout from '@components/layout';
 import api from '@libs/api.js';
 import styles from '@styles/Home.module.scss';
+import { GetStaticProps } from 'next';
 
 const wordPressApiUrl = process.env.WORDPRESS_API_URL;
 const bearerToken = process.env.BEARER_TOKEN;
 
-const Actuacions = ({ data, actuacions, footer, routes }) => {
-    const { title, pageTitle, pageDescription } = actuacions.meta;
+const Noticies = ({ data, noticies, footer, routes }) => {
+    const { title, pageTitle, pageDescription } = noticies.meta;
     const { routes: footerLinks, supporters } = footer;
     return (
         <Layout
@@ -28,20 +29,21 @@ const Actuacions = ({ data, actuacions, footer, routes }) => {
     );
 };
 
-export const getStaticProps = async () => {
-    const res = await fetch(`${wordPressApiUrl}/wp/v2/actuacions?per_page=99&_embed`, {
+export const getStaticProps: GetStaticProps = async () => {
+    const res = await fetch(`${wordPressApiUrl}/wp/v2/noticies?per_page=99&_embed`, {
         headers: { 'Cache-Control': 'no-cache' },
     });
     const data = await res.json();
-    const [actuacions, footer, routes] = await Promise.all([
-        api.actuacions.getData(),
+    
+    const [noticies, footer, routes] = await Promise.all([
+        api.noticies.getData(),
         api.footer.getData(),
         api.routes.getData(),
     ]);
     return {
         props: {
             data: data,
-            actuacions: { ...actuacions[0] },
+            noticies: { ...noticies[0] },
             footer: { ...footer[0] },
             routes,
         },
@@ -49,4 +51,4 @@ export const getStaticProps = async () => {
     };
 };
 
-export default Actuacions;
+export default Noticies;

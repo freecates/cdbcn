@@ -4,6 +4,7 @@ import Figure from '@components/figure';
 import api from '@libs/api.js';
 import OtherRoutes from '@components/otherroutes';
 import MDFileContent from '@components/mdncontentparser';
+import { GetStaticProps } from 'next';
 
 const staticDataUrl = process.env.STATIC_DATA_URL;
 
@@ -48,13 +49,13 @@ const LaColla = ({ colla, footer, routes, mdFileContent }) => {
                         , Barcelona, Espanya, Ajuntament de Barcelona.
                     </small>
                 </p>
-                <OtherRoutes routes={otherRoutes} />
+                <OtherRoutes routes={otherRoutes} isButton={false} />
             </div>
         </Layout>
     );
 };
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
     const [colla, footer, routes] = await Promise.all([
         api.colla.getData(),
         api.footer.getData(),

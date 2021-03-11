@@ -3,19 +3,20 @@ import Layout from '@components/layout';
 import api from '@libs/api.js';
 import styles from '@styles/Home.module.scss';
 import Fallback from '@components/fallback';
-import { FaFlickr } from 'react-icons/fa';
+import { FaYoutube } from 'react-icons/fa';
+import { GetStaticProps } from 'next';
 
-const flickrApiUrl = process.env.FLICKR_API_URL;
-const flickrApiKey = process.env.FLICKR_APY_KEY;
-const flickrApiUserId = process.env.FLICKR_API_USER_ID;
-const QUERY = `${flickrApiUrl}?method=flickr.photos.search&format=json&nojsoncallback=?&api_key=${flickrApiKey}&user_id=${flickrApiUserId}&extras=description,url_m,date_upload,date_taken,media&per_page=200&content_type=1`;
+const youtubeApiUrl = process.env.YOUTUBE_API_URL;
+const youtubeApiKey = process.env.YOUTUBE_API_KEY;
+const youtubeChannelId = process.env.YOUTUBE_CHANNEL_ID;
+const QUERY = `${youtubeApiUrl}/search?part=snippet&channelId=${youtubeChannelId}&maxResults=50&order=date&type=video&publishedAfter=2020-01-01T00:00:00Z&key=${youtubeApiKey}`;
 
-const Fotos = ({ data, footer, routes, fotos }) => {
+const Videos = ({ data, footer, routes, videos }) => {
     if (data === 'error') {
         return <Fallback notFound />;
     }
-    const fotosData = data.photos.photo;
-    const { title, pageTitle, pageDescription } = fotos.meta;
+    const videosData = data.items;
+    const { title, pageTitle, pageDescription } = videos.meta;
     const { routes: footerLinks, supporters } = footer;
     return (
         <Layout
@@ -29,17 +30,17 @@ const Fotos = ({ data, footer, routes, fotos }) => {
             <h1 className={styles.title}>{pageTitle}</h1>
             <div className={`${styles.container} ${styles.noPadding}`}>
                 <main className={styles.main}>
-                    <Grid data={fotosData} isThree />
+                    <Grid data={videosData} isThree />
                     <hr />
                     <p>
                         <small>
-                            Més fotos al nostre canal de{' '}
+                            Més videos al nostre canal de{' '}
                             <a
                                 target='_blank'
                                 rel={'noopener nofollow'}
-                                href='https://www.flickr.com/photos/105597577@N08/'
+                                href='https://www.youtube.com/user/arxiucdb'
                             >
-                                <FaFlickr /> Flickr
+                                <FaYoutube /> Youtube
                             </a>
                         </small>
                     </p>
@@ -49,15 +50,15 @@ const Fotos = ({ data, footer, routes, fotos }) => {
     );
 };
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
     const res = await fetch(QUERY);
     const data = await res.json();
-    const [fotos] = await Promise.all([api.fotos.getData()]);
+    const [videos] = await Promise.all([api.videos.getData()]);
     const [footer, routes] = await Promise.all([api.footer.getData(), api.routes.getData()]);
 
     /* return {
         props: {
-            data: { ...fotos[0] },
+            data: { ...videos[0] },
             footer: { ...footer[0] },
             routes,
         },
@@ -68,7 +69,7 @@ export const getStaticProps = async () => {
         return {
             props: {
                 data: data,
-                fotos: { ...fotos[0] },
+                videos: { ...videos[0] },
                 footer: { ...footer[0] },
                 routes,
             },
@@ -79,4 +80,4 @@ export const getStaticProps = async () => {
     }
 };
 
-export default Fotos;
+export default Videos;

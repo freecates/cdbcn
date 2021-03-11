@@ -1,7 +1,12 @@
 import Link from 'next/link';
 import styles from './OtherRoutes.module.scss';
 
-const OtherRoutes = ({ routes, isButton }) => {
+type Props = {
+    routes: IRoute
+    isButton?: boolean
+  }
+
+const OtherRoutes: React.FC<Props> = ({ routes, isButton }) => {
     return (
         <p className={styles.otherRoutesComponent}>
             <small>
@@ -21,5 +26,11 @@ const OtherRoutes = ({ routes, isButton }) => {
         </p>
     );
 };
+
+interface IRoute {
+    map(arg0: (r: any, id: any) => JSX.Element): import("react").ReactNode;
+    route: string
+    name: string
+}
 
 export default OtherRoutes;
