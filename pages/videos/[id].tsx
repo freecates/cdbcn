@@ -29,7 +29,9 @@ const Video = ({ post, videoDetails, footer }) => {
     const pageTitle = video.title;
     const mainImage = video.thumbnails.maxres
         ? video.thumbnails.maxres.url
-        : video.thumbnails.standard.url;
+        : video.thumbnails.standard
+        ? video.thumbnails.standard.url
+        : video.thumbnails.high.url;
     const author = video.channelTitle;
     const date = video.publishedAt;
     const description = video.description;
