@@ -3,13 +3,29 @@ import Image from 'next/image';
 
 const staticDataUrl = 'https://cdbdata.vercel.app/static';
 
-const Figure = ({ data, quality, layout, withType, withOverlay, type, isOne }) => {
+type Props = {
+    data: IData;
+    quality: number;
+    layout: any;
+    withType?: boolean;
+    withOverlay?: boolean;
+    type?: string;
+    isOne?: boolean;
+};
+
+const Figure: React.FC<Props> = ({ data, quality, layout, withType, withOverlay, type, isOne }) => {
+    console.log('data ', data);
     return (
         <div className={styles.figureComponent}>
             {Array.isArray(data) && (
                 <div className={styles.grid}>
                     {data.map((d, index) => (
-                        <figure key={index + d.src} className={`${styles.figure} ${styles.card} ${isOne ? styles.one : null}`}>
+                        <figure
+                            key={index + d.src}
+                            className={`${styles.figure} ${styles.card} ${
+                                isOne ? styles.one : null
+                            }`}
+                        >
                             <Image
                                 quality={quality ? quality : null}
                                 width={d.width}
@@ -33,7 +49,10 @@ const Figure = ({ data, quality, layout, withType, withOverlay, type, isOne }) =
                 </div>
             )}
             {!Array.isArray(data) && (
-                <figure className={`${styles.figure}${withOverlay ? ' ' + styles.withOverlay : ''}`} style={type === 'fotos' ? {maxWidth:data.width} : null}>
+                <figure
+                    className={`${styles.figure}${withOverlay ? ' ' + styles.withOverlay : ''}`}
+                    style={type === 'fotos' ? { maxWidth: data.width } : null}
+                >
                     <Image
                         quality={quality ? quality : null}
                         width={data.width}
@@ -43,7 +62,10 @@ const Figure = ({ data, quality, layout, withType, withOverlay, type, isOne }) =
                         src={
                             withType
                                 ? type !== 'fotos'
-                                    ? `${data.url.replace('/uploads/','/uploads-webpc/uploads/')}.webp`
+                                    ? `${data.url.replace(
+                                          '/uploads/',
+                                          '/uploads-webpc/uploads/'
+                                      )}.webp`
                                     : data.source
                                 : `${staticDataUrl}/${data.src}`
                         }
@@ -63,5 +85,15 @@ const Figure = ({ data, quality, layout, withType, withOverlay, type, isOne }) =
         </div>
     );
 };
+
+interface IData {
+    width: string;
+    height: string;
+    src: string;
+    alt: string;
+    url: string;
+    source: string;
+    imageCaption: { title: string; description: string };
+}
 
 export default Figure;

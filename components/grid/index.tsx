@@ -5,7 +5,13 @@ import Image from 'next/image';
 const thumbnailWidth = 768;
 const thumbnailHeight = 768;
 
-const Grid = ({ data, isThree, isOne }) => {
+type Props = {
+    isThree?: boolean;
+    isOne?: boolean;
+    data: any;
+};
+
+const Grid: React.FC<Props> = ({ data, isThree, isOne }) => {
     return (
         <div className={styles.gridComponent}>
             {data
@@ -61,10 +67,7 @@ const Grid = ({ data, isThree, isOne }) => {
                         const slug = c.slug;
                         const author = c._embedded.author[0].name;
                         const itemImg = c.acf.imatge_destacada;
-                        const imgSrc = itemImg.url.replace(
-                            '/uploads/',
-                            '/uploads-webpc/uploads/'
-                        );
+                        const imgSrc = itemImg.url.replace('/uploads/', '/uploads-webpc/uploads/');
                         const width = itemImg.width;
                         const height = itemImg.height;
                         const type = c.type;
@@ -73,7 +76,9 @@ const Grid = ({ data, isThree, isOne }) => {
                             <div
                                 key={itemId}
                                 id={id}
-                                className={`${styles.card} ${isThree ? styles.three : null} ${isOne ? styles.one : null}`}
+                                className={`${styles.card} ${isThree ? styles.three : null} ${
+                                    isOne ? styles.one : null
+                                }`}
                             >
                                 <div>
                                     <header>
@@ -130,7 +135,9 @@ const Grid = ({ data, isThree, isOne }) => {
                             <div
                                 key={itemId}
                                 id={id}
-                                className={`${styles.card} ${isThree ? styles.three : null} ${isOne ? styles.one : null}`}
+                                className={`${styles.card} ${isThree ? styles.three : null} ${
+                                    isOne ? styles.one : null
+                                }`}
                             >
                                 <div>
                                     <header>
@@ -183,7 +190,9 @@ const Grid = ({ data, isThree, isOne }) => {
                             <div
                                 key={itemId}
                                 id={id}
-                                className={`${styles.card} ${isThree ? styles.three : null} ${isOne ? styles.one : null}`}
+                                className={`${styles.card} ${isThree ? styles.three : null} ${
+                                    isOne ? styles.one : null
+                                }`}
                             >
                                 <div>
                                     <header>
