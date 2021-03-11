@@ -3,6 +3,8 @@ import Post from '@components/post';
 import api from '@libs/api.js';
 import Fallback from '@components/fallback';
 import { useRouter } from 'next/router';
+import Custom404 from '../404';
+import { GetStaticProps, GetStaticPaths } from 'next';
 
 const youtubeApiUrl = process.env.YOUTUBE_API_URL;
 const youtubeApiKey = process.env.YOUTUBE_API_KEY;
@@ -51,7 +53,7 @@ const Video = ({ post, videoDetails, footer }) => {
     );
 };
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
     const res = await fetch(QUERY);
     const data = await res.json();
     const items = data.items;
@@ -59,9 +61,9 @@ export async function getStaticPaths() {
     const paths = items.map((i) => `/${type}/${i.id.videoId}`);
 
     return { paths, fallback: true };
-}
+};
 
-export const getStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
     const id = params.id;
     const res = await fetch(`${youtubeApiUrl}/videos?part=player&id=${id}&key=${youtubeApiKey}`);
     const post = await res.json();

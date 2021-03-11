@@ -5,7 +5,13 @@ import Figure from '@components/figure';
 import SocialSharer from '@components/socialsharer';
 import { FaFlickr, FaYoutube } from 'react-icons/fa';
 
-const Galeria = ({ urlFlickr, urlYoutube, title }) => {
+type GaleriaProps = {
+    urlFlickr: string;
+    urlYoutube: string;
+    title: string;
+};
+
+const Galeria: React.FC<GaleriaProps> = ({ urlFlickr, urlYoutube, title }) => {
     return (
         <>
             {urlFlickr === null && urlYoutube === null ? null : (
@@ -19,8 +25,7 @@ const Galeria = ({ urlFlickr, urlYoutube, title }) => {
                                         target={`_blank`}
                                         title={`Veure la galeria de fotos de: "${title}"`}
                                         href={urlFlickr}
-                                        rel='noopener'
-                                        rel='noreferrer'
+                                        rel='noopener, noreferrer'
                                     >
                                         <FaFlickr size={30} />
                                     </a>
@@ -30,8 +35,7 @@ const Galeria = ({ urlFlickr, urlYoutube, title }) => {
                                         target={`_blank`}
                                         title={`Veure la galeria de vídeos de: "${title}"`}
                                         href={urlYoutube}
-                                        rel='noopener'
-                                        rel='noreferrer'
+                                        rel='noopener, noreferrer'
                                     >
                                         <FaYoutube size={30} />
                                     </a>
@@ -45,7 +49,31 @@ const Galeria = ({ urlFlickr, urlYoutube, title }) => {
     );
 };
 
-const Post = ({ title, author, date, description, id, type, content, slug, mainImage, player }) => {
+type PostProps = {
+    content: IContent;
+    title: string;
+    author: string;
+    date: string;
+    description: string;
+    type: string;
+    slug?: string;
+    id: string;
+    player?: string;
+    mainImage: any;
+};
+
+const Post: React.FC<PostProps> = ({
+    title,
+    author,
+    date,
+    description,
+    id,
+    type,
+    content,
+    slug,
+    mainImage,
+    player,
+}) => {
     if (type === 'fotos') {
         return (
             <div className={styles.postComponent}>
@@ -64,8 +92,8 @@ const Post = ({ title, author, date, description, id, type, content, slug, mainI
                     <meta property='og:title' content={title} />
                     <meta property='og:description' content={`${description}...`} />
                     <meta property='og:image' content={mainImage[0].source} />
-                    <meta property='og:image:width' content={1024} />
-                    <meta property='og:image:height' content={1024} />
+                    <meta property='og:image:width' content={'1024'} />
+                    <meta property='og:image:height' content={'1024'} />
 
                     <meta name='twitter:card' content='summary_large_image' />
                     <meta name='twitter:site' content='cdbcn' />
@@ -191,8 +219,8 @@ const Post = ({ title, author, date, description, id, type, content, slug, mainI
                         content={`${description.substring(3, 240)}...`}
                     />
                     <meta property='og:image' content={mainImage} />
-                    <meta property='og:image:width' content={1024} />
-                    <meta property='og:image:height' content={1024} />
+                    <meta property='og:image:width' content={'1024'} />
+                    <meta property='og:image:height' content={'1024'} />
 
                     <meta name='twitter:card' content='player' />
                     <meta name='twitter:site' content='@cdbcn' />
@@ -336,8 +364,8 @@ const Post = ({ title, author, date, description, id, type, content, slug, mainI
                         content={`${description.substring(3, 240)}...`}
                     />
                     <meta property='og:image' content={imatge_destacada.sizes.large} />
-                    <meta property='og:image:width' content={1024} />
-                    <meta property='og:image:height' content={1024} />
+                    <meta property='og:image:width' content={'1024'} />
+                    <meta property='og:image:height' content={'1024'} />
 
                     <meta name='twitter:card' content='summary_large_image' />
                     <meta name='twitter:site' content='cdbcn' />
@@ -445,5 +473,21 @@ const Post = ({ title, author, date, description, id, type, content, slug, mainI
         );
     }
 };
+
+interface IContent {
+    nom_de_la_diada: string;
+    titular: string;
+    titular_de_la_noticia: string;
+    peu_de_foto_de_la_imatge_destacada: string;
+    cronica_de_la_diada: string;
+    cos_de_text_de_la_noticia: string;
+    enllac_galeria_de_fotos: string;
+    enllac_galeria_de_videos: string;
+    subtitol_de_la_diada: string;
+    imatge_destacada: { sizes: { large: string } };
+    resum_de_la_diada: string;
+    title: string;
+    description: string;
+}
 
 export default Post;

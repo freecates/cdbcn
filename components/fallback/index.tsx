@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './Fallback.module.scss';
 
 type Props = {
-    notFound: boolean;
+    notFound?: boolean;
 };
 
 const Fallback: React.FC<Props> = ({ notFound }) => {

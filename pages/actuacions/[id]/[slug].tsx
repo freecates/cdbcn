@@ -4,6 +4,7 @@ import Fallback from '@components/fallback';
 import Post from '@components/post';
 import Custom404 from '../../404';
 import api from '@libs/api.js';
+import { GetStaticProps, GetStaticPaths } from 'next';
 
 const wordPressApiUrl = process.env.WORDPRESS_API_URL;
 const bearerToken = process.env.BEARER_TOKEN;
@@ -43,7 +44,7 @@ const Actuacio = ({ post, footer }) => {
     );
 };
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
     const res = await fetch(`${wordPressApiUrl}/wp/v2/actuacions?per_page=100`, {
         headers: { 'Cache-Control': 'no-cache' },
     });
@@ -54,7 +55,7 @@ export async function getStaticPaths() {
     return { paths, fallback: true };
 }
 
-export async function getStaticProps({ params }) {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
     const res = await fetch(`${wordPressApiUrl}/wp/v2/actuacions/${params.id}?_embed`, {
         headers: { 'Cache-Control': 'no-cache' },
     });

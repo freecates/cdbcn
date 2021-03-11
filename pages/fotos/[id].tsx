@@ -3,6 +3,8 @@ import Post from '@components/post';
 import api from '@libs/api.js';
 import Fallback from '@components/fallback';
 import { useRouter } from 'next/router';
+import Custom404 from '../404';
+import { GetStaticProps, GetStaticPaths } from 'next';
 
 const flickrApiUrl = process.env.FLICKR_API_URL;
 const flickrApiKey = process.env.FLICKR_APY_KEY;
@@ -10,7 +12,7 @@ const flickrApiUserId = process.env.FLICKR_API_USER_ID;
 const type = 'fotos';
 const QUERY = `${flickrApiUrl}?method=flickr.photos.search&format=json&nojsoncallback=?&api_key=${flickrApiKey}&user_id=${flickrApiUserId}&extras=description,url_m,date_upload,date_taken,media&per_page=200&content_type=1`;
 
-const Video = ({ post, fotoSizes, footer }) => {
+const Foto = ({ post, fotoSizes, footer }) => {
     const { isFallback } = useRouter();
     if (!isFallback && !post) {
         return <Custom404 />;
@@ -46,7 +48,7 @@ const Video = ({ post, fotoSizes, footer }) => {
     );
 };
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
     const res = await fetch(QUERY);
     const data = await res.json();
     const items = data.photos.photo;
@@ -54,9 +56,9 @@ export async function getStaticPaths() {
     const paths = items.map((i) => `/${type}/${i.id}`);
 
     return { paths, fallback: true };
-}
+};
 
-export const getStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
     const id = params.id;
     const res = await fetch(
         `${flickrApiUrl}/?method=flickr.photos.getInfo&format=json&nojsoncallback=?&api_key=${flickrApiKey}&photo_id=${id}`
@@ -77,17 +79,4 @@ export const getStaticProps = async ({ params }) => {
     }
 };
 
-/* Video.getInitialProps = async function (context) {
-    const { id } = context.query
-    const res = await fetch(`${youtubeApiUrl}/videos?part=player&id=${id}&key=${youtubeApiKey}`);
-    const post = await res.json();
-
-    const res2 = await fetch(`${youtubeApiUrl}/videos?part=snippet&id=${id}&key=${youtubeApiKey}`);
-    const fotoDetails = await res2.json();
-
-    const [footer] = await Promise.all([api.footer.getData()]);
-
-    return { post, fotoDetails, footer: { ...footer[0] } };
-}; */
-
-export default Video;
+export default Foto;
