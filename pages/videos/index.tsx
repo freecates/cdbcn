@@ -4,6 +4,7 @@ import api from '@libs/api.js';
 import styles from '@styles/Home.module.scss';
 import Fallback from '@components/fallback';
 import { FaYoutube } from 'react-icons/fa';
+import { GetStaticProps } from 'next';
 
 const youtubeApiUrl = process.env.YOUTUBE_API_URL;
 const youtubeApiKey = process.env.YOUTUBE_API_KEY;
@@ -49,7 +50,7 @@ const Videos = ({ data, footer, routes, videos }) => {
     );
 };
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
     const res = await fetch(QUERY);
     const data = await res.json();
     const [videos] = await Promise.all([api.videos.getData()]);

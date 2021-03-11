@@ -1,7 +1,12 @@
 import Layout from '@components/layout';
+import React from 'react';
 import styles from './Fallback.module.scss';
 
-const Fallback = ({ notFound }) => {
+type Props = {
+    notFound: boolean;
+};
+
+const Fallback: React.FC<Props> = ({ notFound }) => {
     return (
         <Layout
             title={notFound ? '404' : '... carregant'}
