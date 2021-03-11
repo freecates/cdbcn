@@ -14,7 +14,6 @@ type Props = {
 };
 
 const Figure: React.FC<Props> = ({ data, quality, layout, withType, withOverlay, type, isOne }) => {
-    console.log('data ', data);
     return (
         <div className={styles.figureComponent}>
             {Array.isArray(data) && (
