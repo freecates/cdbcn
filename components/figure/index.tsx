@@ -5,8 +5,8 @@ const staticDataUrl = 'https://cdbdata.vercel.app/static';
 
 type Props = {
     data: IData;
-    quality: number;
-    layout: any;
+    quality?: number;
+    layout?: any;
     withType?: boolean;
     withOverlay?: boolean;
     type?: string;

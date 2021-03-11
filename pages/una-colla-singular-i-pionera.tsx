@@ -4,6 +4,7 @@ import api from '@libs/api.js';
 import OtherRoutes from '@components/otherroutes';
 import MDFileContent from '@components/mdncontentparser';
 import Figure from '@components/figure';
+import { GetStaticProps } from 'next';
 
 const staticDataUrl = process.env.STATIC_DATA_URL;
 
@@ -37,7 +38,7 @@ const unaCollaSingularIPionera = ({ unaCollaSingularIPionera, footer, mdFileCont
     );
 };
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
     const [unaCollaSingularIPionera, footer, routes] = await Promise.all([
         api.unaCollaSingularIPionera.getData(),
         api.footer.getData(),
