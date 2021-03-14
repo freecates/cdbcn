@@ -4,6 +4,7 @@ import styles from '@components/post/Post.module.scss';
 import Figure from '@components/figure';
 import SocialSharer from '@components/socialsharer';
 import { FaFlickr, FaYoutube } from 'react-icons/fa';
+import { IContent } from '@interfaces/index';
 
 type GaleriaProps = {
     urlFlickr: string;
@@ -197,7 +198,6 @@ const Post: React.FC<PostProps> = ({
         );
     }
     if (type === 'videos') {
-        const { title, description } = content;
 
         return (
             <div className={styles.postComponent}>
@@ -205,7 +205,7 @@ const Post: React.FC<PostProps> = ({
                     <title>
                         {title} - Castelllers de Barcelona - {type}
                     </title>
-                    <meta name='description' content={`${description.substring(3, 240)}...`} />
+                    <meta name='description' content={`${description.substring(0, 240)}...`} />
 
                     <meta property='fb:app_id' content='1064356173625695' />
                     <meta
@@ -216,7 +216,7 @@ const Post: React.FC<PostProps> = ({
                     <meta property='og:title' content={title} />
                     <meta
                         property='og:description'
-                        content={`${description.substring(3, 240)}...`}
+                        content={`${description.substring(0, 240)}...`}
                     />
                     <meta property='og:image' content={mainImage} />
                     <meta property='og:image:width' content={'1024'} />
@@ -227,7 +227,7 @@ const Post: React.FC<PostProps> = ({
                     <meta name='twitter:title' content={title} />
                     <meta
                         name='twitter:description'
-                        content={`${description.substring(3, 240)}...`}
+                        content={`${description.substring(0, 240)}...`}
                     />
                     <meta name='twitter:image:src' content={mainImage} />
                     <meta name='twitter:player' content={`https://www.youtube.com/embed/${id}`} />
@@ -262,7 +262,7 @@ const Post: React.FC<PostProps> = ({
      "url": "https://castellersdebarcelona.cat/logo-castellers-de-barcelona.png"
    }
   }, 
-  "description": "${description.substring(3, 120)}...",
+  "description": "${description.substring(0, 120)}...",
   "image": "${mainImage}",
   "datePublished": "${date}",
   "headline": "${title}"
@@ -473,21 +473,5 @@ const Post: React.FC<PostProps> = ({
         );
     }
 };
-
-interface IContent {
-    nom_de_la_diada: string;
-    titular: string;
-    titular_de_la_noticia: string;
-    peu_de_foto_de_la_imatge_destacada: string;
-    cronica_de_la_diada: string;
-    cos_de_text_de_la_noticia: string;
-    enllac_galeria_de_fotos: string;
-    enllac_galeria_de_videos: string;
-    subtitol_de_la_diada: string;
-    imatge_destacada: { sizes: { large: string } };
-    resum_de_la_diada: string;
-    title: string;
-    description: string;
-}
 
 export default Post;

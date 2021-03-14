@@ -19,6 +19,9 @@
     "jsx": "preserve",
     "baseUrl": "./",
     "paths": {
+      "@interfaces/*": [
+        "interfaces/*"
+      ],
       "@components/*": [
         "components/*"
       ],

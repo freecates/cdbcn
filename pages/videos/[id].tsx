@@ -5,6 +5,7 @@ import Fallback from '@components/fallback';
 import { useRouter } from 'next/router';
 import Custom404 from '../404';
 import { GetStaticProps, GetStaticPaths } from 'next';
+import { IItem, IRoute, ISupporter } from '@interfaces/index';
 
 const youtubeApiUrl = process.env.YOUTUBE_API_URL;
 const youtubeApiKey = process.env.YOUTUBE_API_KEY;
@@ -12,7 +13,13 @@ const youtubeChannelId = process.env.YOUTUBE_CHANNEL_ID;
 const type = 'videos';
 const QUERY = `${youtubeApiUrl}/search?part=snippet&channelId=${youtubeChannelId}&maxResults=5&order=date&type=video&key=${youtubeApiKey}`;
 
-const Video = ({ post, videoDetails, footer }) => {
+type VideoProps = {
+    post: { items: IItem[] };
+    videoDetails: { items: IItem[] };
+    footer: { routes: IRoute[]; supporters: ISupporter[] };
+};
+
+const Video: React.FC<VideoProps> = ({ post, videoDetails, footer }) => {
     const { isFallback } = useRouter();
     if (!isFallback && !post) {
         return <Custom404 />;
@@ -20,6 +27,7 @@ const Video = ({ post, videoDetails, footer }) => {
     if (isFallback) {
         return <Fallback />;
     }
+    // @ts-ignore
     if (post === 'error') {
         return <Fallback notFound />;
     }
@@ -45,7 +53,7 @@ const Video = ({ post, videoDetails, footer }) => {
                 description={description}
                 id={id}
                 type={type}
-                content={video}
+                content={null}
                 date={date}
                 author={author}
                 mainImage={mainImage}
