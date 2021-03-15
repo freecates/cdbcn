@@ -13,7 +13,7 @@ const Actuacions = ({ data, actuacions, footer, routes }) => {
     return (
         <Layout
             pageTitle={pageTitle}
-            title={title}
+            titlePage={title}
             pageDescription={pageDescription}
             footerLinks={footerLinks}
             navRoutes={routes}

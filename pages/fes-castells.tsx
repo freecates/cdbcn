@@ -11,7 +11,7 @@ const FesCastells = ({ footer, routes, fesCastells }) => {
     const mainImage = fesCastells.images.mainImage;
     return (
         <Layout
-            title={title}
+            titlePage={title}
             pageTitle={pageTitle}
             pageDescription={pageDescription}
             navRoutes={routes}

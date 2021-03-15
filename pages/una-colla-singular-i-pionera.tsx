@@ -16,7 +16,7 @@ const unaCollaSingularIPionera = ({ unaCollaSingularIPionera, footer, mdFileCont
     return (
         <Layout
             pageTitle={pageTitle}
-            title={title}
+            titlePage={title}
             pageDescription={pageDescription}
             footerLinks={footerLinks}
             supporters={supporters}

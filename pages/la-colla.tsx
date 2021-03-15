@@ -15,7 +15,7 @@ const LaColla = ({ colla, footer, routes, mdFileContent }) => {
     return (
         <Layout
             pageTitle={pageTitle}
-            title={title}
+            titlePage={title}
             pageDescription={pageDescription}
             footerLinks={footerLinks}
             navRoutes={routes}

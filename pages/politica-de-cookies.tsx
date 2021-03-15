@@ -14,10 +14,11 @@ const PoliticaDeCookies = ({ politicaDeCookies, footer, mdFileContent }) => {
         
             <Layout
                 pageTitle={pageTitle}
-                title={title}
+                titlePage={title}
                 pageDescription={pageDescription}
                 footerLinks={footerLinks}
                 supporters={supporters}
+                navRoutes={null}
             >
                 <h1 className={styles.title}>{title}</h1>
 

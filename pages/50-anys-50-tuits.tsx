@@ -17,7 +17,7 @@ const CinquantaAnys50Tuits = ({ anys50tuits, footer, mdFileContent, routes }) =>
         
             <Layout
                 pageTitle={pageTitle}
-                title={title}
+                titlePage={title}
                 navRoutes={routes}
                 pageDescription={pageDescription}
                 footerLinks={footerLinks}

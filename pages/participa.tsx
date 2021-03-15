@@ -13,7 +13,7 @@ const Participa = ({ footer, routes, participa, mdFileContent }) => {
     const mainImage = participa.images.mainImage;
     return (
         <Layout
-            title={title}
+            titlePage={title}
             pageTitle={pageTitle}
             pageDescription={pageDescription}
             navRoutes={routes}

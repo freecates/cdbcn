@@ -5,31 +5,49 @@ import styles from './Layout.module.scss';
 import Footer from '@components/footer';
 import Nav from '@components/nav';
 import { TinyButton as ScrollUpButton } from 'react-scroll-up-button';
+import { IRoute, ISupporter } from '@interfaces/index';
 
 const staticDataUrl = 'https://cdbdata.vercel.app';
 
-const Layout = (props) => {
+type Props = {
+    home?: boolean;
+    pageTitle: string;
+    titlePage: string;
+    pageDescription: string;
+    videoPreload?: { srcSet: { src: string; type: string } };
+    children: any;
+    navRoutes: string[];
+    footerLinks: IRoute[];
+    supporters: ISupporter[];
+};
+
+const Layout: React.FC<Props> = ({
+    home,
+    pageTitle,
+    titlePage,
+    pageDescription,
+    videoPreload,
+    children,
+    navRoutes,
+    footerLinks,
+    supporters,
+}) => {
     return (
         <>
             <Head>
-                <title>
-                    {!props.home ? props.pageTitle + ' | ' + props.title : props.pageTitle}
-                </title>
+                <title>{!home ? pageTitle + ' | ' + titlePage : pageTitle}</title>
                 <meta
                     name='description'
-                    content={
-                        !props.home
-                            ? props.pageDescription + ' | ' + props.title
-                            : props.pageDescription
-                    }
+                    content={!home ? pageDescription + ' | ' + titlePage : pageDescription}
                 />
+                {home && <link rel='canonical' href={`https://castellersdebarcelona.cat/`} />}
                 <link rel='icon' href='/favicon.ico' />
-                {props.videoPreload ? (
+                {videoPreload ? (
                     <link
                         rel='preload'
                         as='video'
-                        href={`${staticDataUrl}/sttic/${props.videoPreload.srcSet[1].src}`}
-                        type={props.videoPreload.srcSet[1].type}
+                        href={`${staticDataUrl}/sttic/${videoPreload.srcSet[1].src}`}
+                        type={videoPreload.srcSet[1].type}
                     />
                 ) : null}
                 <link rel='preconnect' href='https://fonts.gstatic.com/' crossOrigin='true' />
@@ -49,7 +67,7 @@ const Layout = (props) => {
                     </a>
                 </Link>
             </h1>
-            {props.navRoutes ? <Nav navRoutes={props.navRoutes} /> : null}
+            {navRoutes ? <Nav small={false} navRoutes={navRoutes} /> : null}
             <ScrollUpButton
                 style={{
                     backgroundColor: '#ffffff',
@@ -63,11 +81,11 @@ const Layout = (props) => {
                 }}
             />
 
-            <div>{props.children}</div>
+            <div>{children}</div>
 
             <div className={styles.container}>
-                <Footer footerLinks={props.footerLinks} supporters={props.supporters} />
-                {props.navRoutes ? <Nav navRoutes={props.navRoutes} small /> : null}
+                <Footer footerLinks={footerLinks} supporters={supporters} />
+                {navRoutes ? <Nav navRoutes={navRoutes} small /> : null}
             </div>
         </>
     );

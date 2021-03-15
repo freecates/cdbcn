@@ -11,12 +11,12 @@ const bearerToken = process.env.BEARER_TOKEN;
 
 const Home = ({ noticiesData, home, contacte, footer, routes }) => {
     const { title, pageTitle, pageDescription } = home.meta;
-    const { name, address, phone, mobile, web, email, map } = contacte.meta;
+    const { name, address, phone, mobile, web, email } = contacte.meta;
     const { routes: footerLinks, supporters } = footer;
     const mainVideo = home.videos.mainVideo;
     return (
         <Layout
-            title={title}
+            titlePage={title}
             pageTitle={pageTitle}
             pageDescription={pageDescription}
             navRoutes={routes}

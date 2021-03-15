@@ -47,7 +47,14 @@ const Video: React.FC<VideoProps> = ({ post, videoDetails, footer }) => {
     const id = post.items[0].id;
     const { routes: footerLinks, supporters } = footer;
     return (
-        <Layout footerLinks={footerLinks} supporters={supporters}>
+        <Layout
+            footerLinks={footerLinks}
+            supporters={supporters}
+            pageTitle={null}
+            pageDescription={null}
+            titlePage={null}
+            navRoutes={null}
+        >
             <Post
                 title={pageTitle}
                 description={description}

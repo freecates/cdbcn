@@ -13,7 +13,7 @@ const JuntaITecnica = ({ footer, routes, juntaITecnica }) => {
     const mainImage = juntaITecnica.images.mainImage;
     return (
         <Layout
-            title={title}
+            titlePage={title}
             pageTitle={pageTitle}
             pageDescription={pageDescription}
             navRoutes={routes}

@@ -18,7 +18,7 @@ const VuitDeJunyDe1969 = ({ vuitDeJuny1969, footer, mdFileContent, routes }) => 
         
             <Layout
                 pageTitle={pageTitle}
-                title={title}
+                titlePage={title}
                 pageDescription={pageDescription}
                 footerLinks={footerLinks}
                 supporters={supporters}

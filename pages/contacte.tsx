@@ -22,10 +22,9 @@ const Contacte = ({ contacte, footer, routes }) => {
     const { routes: footerLinks, supporters } = footer;
     return (
         <Layout
-            title={title}
+            titlePage={title}
             pageTitle={pageTitle}
             pageDescription={pageDescription}
-            contacte
             navRoutes={routes}
             footerLinks={footerLinks}
             supporters={supporters}

@@ -16,7 +16,7 @@ const Actualitat = ({ actuacionsData, noticiesData, footer, routes }) => {
     return (
         <Layout
             pageTitle={pageTitle}
-            title={title}
+            titlePage={title}
             pageDescription={pageDescription}
             footerLinks={footerLinks}
             navRoutes={routes}

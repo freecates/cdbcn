@@ -11,7 +11,7 @@ const Home = ({ galeria, footer, routes }) => {
     const mainImage = galeria.images.mainImage;
     return (
         <Layout
-            title={title}
+            titlePage={title}
             pageTitle={pageTitle}
             pageDescription={pageDescription}
             navRoutes={routes}

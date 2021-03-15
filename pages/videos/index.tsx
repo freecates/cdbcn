@@ -21,7 +21,7 @@ const Videos = ({ data, footer, routes, videos }) => {
     return (
         <Layout
             pageTitle={pageTitle}
-            title={title}
+            titlePage={title}
             pageDescription={pageDescription}
             footerLinks={footerLinks}
             navRoutes={routes}

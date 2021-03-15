@@ -28,7 +28,14 @@ const Actuacio = ({ post, footer }) => {
     const { acf, type, id, slug } = post;
     const { routes: footerLinks, supporters } = footer;
     return (
-        <Layout footerLinks={footerLinks} supporters={supporters}>
+        <Layout
+            footerLinks={footerLinks}
+            supporters={supporters}
+            pageTitle={null}
+            pageDescription={null}
+            titlePage={null}
+            navRoutes={null}
+        >
             <Post
                 title={pageTitle}
                 description={description}
@@ -53,7 +60,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     const paths = posts.map((post) => `/${post.type}/${post.id}/${post.slug}`);
 
     return { paths, fallback: true };
-}
+};
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
     const res = await fetch(`${wordPressApiUrl}/wp/v2/actuacions/${params.id}?_embed`, {
@@ -69,6 +76,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     } else {
         return { props: { post: '404' } };
     }
-}
+};
 
 export default Actuacio;
