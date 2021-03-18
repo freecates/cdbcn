@@ -5,11 +5,23 @@ import Post from '@components/post';
 import Custom404 from '../../404';
 import api from '@libs/api.js';
 import { GetStaticProps, GetStaticPaths } from 'next';
+import { IContent, IRoute, ISupporter } from '@interfaces/index';
 
 const wordPressApiUrl = process.env.WORDPRESS_API_URL;
 const bearerToken = process.env.BEARER_TOKEN;
 
-const Actuacio = ({ post, footer }) => {
+type ActuacioProps = {
+    post: {
+        acf: IContent;
+        _embedded: { author: { name: string } };
+        type: string;
+        id: string;
+        slug: string;
+    };
+    footer: { routes: IRoute[]; supporters: ISupporter[] };
+};
+
+const Actuacio: React.FC<ActuacioProps> = ({ post, footer }) => {
     const { isFallback } = useRouter();
     if (!isFallback && !post) {
         return <Custom404 />;
@@ -17,7 +29,7 @@ const Actuacio = ({ post, footer }) => {
     if (isFallback) {
         return <Fallback />;
     }
-    if (post === '404') {
+    if (post === null) {
         return <Fallback notFound />;
     }
     const pageTitle = post.acf.titular;
@@ -74,7 +86,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     if (!post.data) {
         return { props: { post, footer: { ...footer[0] } }, revalidate: 1 };
     } else {
-        return { props: { post: '404' } };
+        return { props: { post: null } };
     }
 };
 

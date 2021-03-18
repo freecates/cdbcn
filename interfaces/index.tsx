@@ -26,6 +26,7 @@ export interface IContent {
     resum_de_la_diada: string;
     title: string;
     description: string;
+    data: string;
 }
 
 export interface IRoute {

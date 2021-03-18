@@ -27,8 +27,7 @@ const Video: React.FC<VideoProps> = ({ post, videoDetails, footer }) => {
     if (isFallback) {
         return <Fallback />;
     }
-    // @ts-ignore
-    if (post === 'error') {
+    if (post === null) {
         return <Fallback notFound />;
     }
 
@@ -92,21 +91,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     if (!post.error && !videoDetails.error) {
         return { props: { post, videoDetails, footer: { ...footer[0] } }, revalidate: 3600 };
     } else {
-        return { props: { post: 'error', videoDetails: 'error' } };
+        return { props: { post: null, videoDetails: null } };
     }
 };
-
-/* Video.getInitialProps = async function (context) {
-    const { id } = context.query
-    const res = await fetch(`${youtubeApiUrl}/videos?part=player&id=${id}&key=${youtubeApiKey}`);
-    const post = await res.json();
-
-    const res2 = await fetch(`${youtubeApiUrl}/videos?part=snippet&id=${id}&key=${youtubeApiKey}`);
-    const videoDetails = await res2.json();
-
-    const [footer] = await Promise.all([api.footer.getData()]);
-
-    return { post, videoDetails, footer: { ...footer[0] } };
-}; */
 
 export default Video;
