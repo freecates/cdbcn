@@ -412,7 +412,7 @@ const Post: React.FC<PostProps> = ({
       }...",
       "image": "${imatge_destacada.sizes.large}",
       "datePublished": "${date}",
-      "headline": "${title}"
+      "headline": "${title.replace(/['"]+/g, '')}"
     }`,
                         }}
                     />

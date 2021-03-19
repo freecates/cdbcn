@@ -3,11 +3,19 @@ import Layout from '@components/layout';
 import api from '@libs/api.js';
 import styles from '@styles/Home.module.scss';
 import { GetStaticProps } from 'next';
+import { IData, IRoute, ISupporter, IMeta } from '@interfaces/index';
 
 const wordPressApiUrl = process.env.WORDPRESS_API_URL;
 const bearerToken = process.env.BEARER_TOKEN;
 
-const Actuacions = ({ data, actuacions, footer, routes }) => {
+type ActuacionsProps = {
+    data: IData;
+    actuacions: { meta: IMeta };
+    footer: { routes: IRoute[]; supporters: ISupporter[] };
+    routes: IRoute[];
+};
+
+const Actuacions: React.FC<ActuacionsProps> = ({ data, actuacions, footer, routes }) => {
     const { title, pageTitle, pageDescription } = actuacions.meta;
     const { routes: footerLinks, supporters } = footer;
     return (

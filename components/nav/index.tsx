@@ -1,8 +1,14 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styles from './Nav.module.scss';
+import { IRoute } from '@interfaces/index';
 
-const Nav = ({ navRoutes, small }) => {
+type NavProps = {
+    navRoutes: IRoute[];
+    small: boolean;
+};
+
+const Nav: React.FC<NavProps> = ({ navRoutes, small }) => {
     const routesNav = navRoutes.filter((x) => x.route !== '/');
     const router = useRouter();
 

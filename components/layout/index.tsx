@@ -16,7 +16,7 @@ type Props = {
     pageDescription: string;
     videoPreload?: { srcSet: { src: string; type: string } };
     children: any;
-    navRoutes: string[];
+    navRoutes: IRoute[];
     footerLinks: IRoute[];
     supporters: ISupporter[];
 };

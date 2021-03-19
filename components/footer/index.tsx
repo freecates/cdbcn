@@ -2,8 +2,14 @@ import styles from './Footer.module.scss';
 import OtherRoutes from '@components/otherroutes';
 import Supporters from '@components/supporters';
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
+import { IRoute, ISupporter } from '@interfaces/index';
 
-const Footer = ({ footerLinks, supporters }) => {
+type FooterProps = {
+    footerLinks: IRoute[];
+    supporters: ISupporter[];
+};
+
+const Footer: React.FC<FooterProps> = ({ footerLinks, supporters }) => {
     const currentYear = new Date().getFullYear();
     return (
         <footer className={styles.footer}>

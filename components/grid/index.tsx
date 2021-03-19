@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import styles from './Grid.module.scss';
 import Image from 'next/image';
+import { IData } from '@interfaces/index';
 
 const thumbnailWidth = 768;
 const thumbnailHeight = 768;
@@ -229,45 +230,5 @@ const Grid: React.FC<Props> = ({ data, isThree, isOne }) => {
         </div>
     );
 };
-
-interface IData {
-    sort(arg0: (a: any, b: any) => 0 | 1 | -1);
-    acf: {
-        data: string;
-        imatge_destacada: {
-            widht: string;
-            height: string;
-        };
-    };
-    type: string;
-    kind: string;
-    media: string;
-    snippet: {
-        publishedAt: string;
-        title: string;
-        channelTitle: string;
-        thumbnails: {
-            high: {
-                url: string;
-            };
-        };
-    };
-    dateupload: string;
-    title:
-        | string
-        | {
-              rendered: string;
-          };
-    id:
-        | string
-        | {
-              videoId: string;
-          };
-    slug: string
-    datetaken: string
-    url_m: string
-    width_m: string
-    height_m: string
-}
 
 export default Grid;

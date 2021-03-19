@@ -3,11 +3,19 @@ import Layout from '@components/layout';
 import api from '@libs/api.js';
 import styles from '@styles/Home.module.scss';
 import { GetStaticProps } from 'next';
+import { IData, IRoute, ISupporter, IMeta } from '@interfaces/index';
 
 const wordPressApiUrl = process.env.WORDPRESS_API_URL;
 const bearerToken = process.env.BEARER_TOKEN;
 
-const Noticies = ({ data, noticies, footer, routes }) => {
+type NoticiesProps = {
+    data: IData;
+    noticies: { meta: IMeta };
+    footer: { routes: IRoute[]; supporters: ISupporter[] };
+    routes: IRoute[];
+};
+
+const Noticies: React.FC<NoticiesProps> = ({ data, noticies, footer, routes }) => {
     const { title, pageTitle, pageDescription } = noticies.meta;
     const { routes: footerLinks, supporters } = footer;
     return (
@@ -34,7 +42,7 @@ export const getStaticProps: GetStaticProps = async () => {
         headers: { 'Cache-Control': 'no-cache' },
     });
     const data = await res.json();
-    
+
     const [noticies, footer, routes] = await Promise.all([
         api.noticies.getData(),
         api.footer.getData(),

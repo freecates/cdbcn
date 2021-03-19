@@ -5,14 +5,22 @@ import styles from '@styles/Home.module.scss';
 import Fallback from '@components/fallback';
 import { FaYoutube } from 'react-icons/fa';
 import { GetStaticProps } from 'next';
+import { IData, IRoute, ISupporter, IMeta } from '@interfaces/index';
 
 const youtubeApiUrl = process.env.YOUTUBE_API_URL;
 const youtubeApiKey = process.env.YOUTUBE_API_KEY;
 const youtubeChannelId = process.env.YOUTUBE_CHANNEL_ID;
 const QUERY = `${youtubeApiUrl}/search?part=snippet&channelId=${youtubeChannelId}&maxResults=50&order=date&type=video&publishedAfter=2020-01-01T00:00:00Z&key=${youtubeApiKey}`;
 
-const Videos = ({ data, footer, routes, videos }) => {
-    if (data === 'error') {
+type VideosProps = {
+    data: { items: IData };
+    videos: { meta: IMeta };
+    footer: { routes: IRoute[]; supporters: ISupporter[] };
+    routes: IRoute[];
+};
+
+const Videos: React.FC<VideosProps> = ({ data, footer, routes, videos }) => {
+    if (data === null) {
         return <Fallback notFound />;
     }
     const videosData = data.items;
@@ -76,7 +84,7 @@ export const getStaticProps: GetStaticProps = async () => {
             revalidate: 3600,
         };
     } else {
-        return { props: { data: 'error' } };
+        return { props: { data: null } };
     }
 };
 

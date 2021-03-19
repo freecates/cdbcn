@@ -4,11 +4,24 @@ import api from '@libs/api.js';
 import styles from '@styles/Home.module.scss';
 import Link from 'next/link';
 import { GetStaticProps } from 'next';
+import { IData, IRoute, ISupporter } from '@interfaces/index';
 
 const wordPressApiUrl = process.env.WORDPRESS_API_URL;
 const bearerToken = process.env.BEARER_TOKEN;
 
-const Actualitat = ({ actuacionsData, noticiesData, footer, routes }) => {
+type ActualitatProps = {
+    actuacionsData: IData;
+    noticiesData: IData;
+    footer: { routes: IRoute[]; supporters: ISupporter[] };
+    routes: IRoute[];
+};
+
+const Actualitat: React.FC<ActualitatProps> = ({
+    actuacionsData,
+    noticiesData,
+    footer,
+    routes,
+}) => {
     const pageTitle = 'Actualitat';
     const title = 'Actualitat dels Castellers de Barcelona';
     const pageDescription = "Recull de l'Actualitat dels Castellers de Barcelona";
