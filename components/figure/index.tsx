@@ -1,10 +1,11 @@
 import styles from './Figure.module.scss';
 import Image from 'next/image';
+import { IDataFigure } from '@interfaces/index';
 
 const staticDataUrl = 'https://cdbdata.vercel.app/static';
 
 type Props = {
-    data: IData;
+    data: IDataFigure;
     quality?: number;
     layout?: any;
     withType?: boolean;
@@ -84,15 +85,5 @@ const Figure: React.FC<Props> = ({ data, quality, layout, withType, withOverlay,
         </div>
     );
 };
-
-interface IData {
-    width: string;
-    height: string;
-    src: string;
-    alt: string;
-    url: string;
-    source: string;
-    imageCaption: { title: string; description: string };
-}
 
 export default Figure;

@@ -10,8 +10,8 @@ export interface IItem {
             high: {
                 url: string;
             };
-            maxres,
-            standard
+            maxres;
+            standard;
         };
         description: string;
     };
@@ -33,11 +33,11 @@ export interface IData extends IItem {
         | {
               rendered: string;
           };
-    slug: string
-    datetaken: string
-    url_m: string
-    width_m: string
-    height_m: string
+    slug: string;
+    datetaken: string;
+    url_m: string;
+    width_m: string;
+    height_m: string;
 }
 
 export interface IContent {
@@ -58,7 +58,7 @@ export interface IContent {
 }
 
 export interface IRoute {
-    map(arg0: (r: any, id: any) => JSX.Element): import("react").ReactNode;
+    map(arg0: (r: any, id: any) => JSX.Element): import('react').ReactNode;
     name: string;
     route: string;
 }
@@ -72,4 +72,14 @@ export interface IMeta {
     title: string;
     pageTitle: string;
     pageDescription: string;
+}
+
+export interface IDataFigure {
+    width: string;
+    height: string;
+    src: string;
+    alt: string;
+    url: string;
+    source: string;
+    imageCaption: { title: string; description: string };
 }

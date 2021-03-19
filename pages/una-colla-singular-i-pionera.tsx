@@ -5,10 +5,21 @@ import OtherRoutes from '@components/otherroutes';
 import MDFileContent from '@components/mdncontentparser';
 import Figure from '@components/figure';
 import { GetStaticProps } from 'next';
+import { IMeta, IRoute, ISupporter, IDataFigure } from '@interfaces/index';
 
 const staticDataUrl = process.env.STATIC_DATA_URL;
 
-const unaCollaSingularIPionera = ({ unaCollaSingularIPionera, footer, mdFileContent, routes }) => {
+type UnaCollaSingularIPioneraProps = {
+    unaCollaSingularIPionera: {
+        meta: IMeta & { otherRoutes: IRoute[] };
+        images: { mainImage: IDataFigure; imageGallery: IDataFigure };
+    };
+    footer: { routes: IRoute[]; supporters: ISupporter[] };
+    routes: IRoute[];
+    mdFileContent: string;
+};
+
+const UnaCollaSingularIPionera: React.FC<UnaCollaSingularIPioneraProps> = ({ unaCollaSingularIPionera, footer, mdFileContent, routes }) => {
     const { title, pageTitle, pageDescription, otherRoutes } = unaCollaSingularIPionera.meta;
     const mainImage = unaCollaSingularIPionera.images.mainImage;
     const imageGallery = unaCollaSingularIPionera.images.imageGallery;
@@ -56,4 +67,4 @@ export const getStaticProps: GetStaticProps = async () => {
     };
 };
 
-export default unaCollaSingularIPionera;
+export default UnaCollaSingularIPionera;

@@ -4,10 +4,24 @@ import api from '@libs/api.js';
 import Figure from '@components/figure';
 import MDFileContent from '@components/mdncontentparser';
 import { GetStaticProps } from 'next';
+import { IMeta, IRoute, ISupporter, IDataFigure } from '@interfaces/index';
 
 const staticDataUrl = process.env.STATIC_DATA_URL;
 
-const Participa = ({ footer, routes, participa, mdFileContent }) => {
+type ParticipaProps = {
+    participa: {
+        meta: IMeta & {
+            mobile: { href: string; number: string; name: string };
+            email: { href: string; address: string };
+        };
+        images: { mainImage: IDataFigure };
+    };
+    footer: { routes: IRoute[]; supporters: ISupporter[] };
+    routes: IRoute[];
+    mdFileContent: string;
+};
+
+const Participa: React.FC<ParticipaProps> = ({ footer, routes, participa, mdFileContent }) => {
     const { title, pageTitle, pageDescription, mobile, email } = participa.meta;
     const { routes: footerLinks, supporters } = footer;
     const mainImage = participa.images.mainImage;

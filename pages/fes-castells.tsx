@@ -4,8 +4,19 @@ import api from '@libs/api.js';
 import Figure from '@components/figure';
 import { FaMapSigns } from 'react-icons/fa';
 import { GetStaticProps } from 'next';
+import { IMeta, IRoute, ISupporter, IDataFigure } from '@interfaces/index';
 
-const FesCastells = ({ footer, routes, fesCastells }) => {
+type FesCastellsProps = {
+    fesCastells: {
+        meta: IMeta & { map: { title: string; url: string } };
+        images: { mainImage: IDataFigure };
+    };
+    footer: { routes: IRoute[]; supporters: ISupporter[] };
+    routes: IRoute[];
+    mdFileContent: string;
+};
+
+const FesCastells: React.FC<FesCastellsProps> = ({ footer, routes, fesCastells }) => {
     const { title, pageTitle, pageDescription, map } = fesCastells.meta;
     const { routes: footerLinks, supporters } = footer;
     const mainImage = fesCastells.images.mainImage;

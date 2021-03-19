@@ -5,10 +5,21 @@ import api from '@libs/api.js';
 import OtherRoutes from '@components/otherroutes';
 import MDFileContent from '@components/mdncontentparser';
 import { GetStaticProps } from 'next';
+import { IMeta, IRoute, ISupporter, IDataFigure } from '@interfaces/index';
 
 const staticDataUrl = process.env.STATIC_DATA_URL;
 
-const LaColla = ({ colla, footer, routes, mdFileContent }) => {
+type LaCollaProps = {
+    colla: {
+        meta: IMeta & { otherRoutes: IRoute[] };
+        images: { mainImage: IDataFigure; };
+    };
+    footer: { routes: IRoute[]; supporters: ISupporter[] };
+    routes: IRoute[];
+    mdFileContent: string;
+};
+
+const LaColla: React.FC<LaCollaProps> = ({ colla, footer, routes, mdFileContent }) => {
     const { title, pageTitle, pageDescription, otherRoutes } = colla.meta;
     const mainImage = colla.images.mainImage;
     const { routes: footerLinks, supporters } = footer;

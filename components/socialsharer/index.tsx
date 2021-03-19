@@ -12,7 +12,14 @@ import {
 } from 'react-share';
 import styles from './SocialSharer.module.scss';
 
-const SocialSharer = ({ type, id, slug, title }) => {
+type SocialShareProps = {
+    type: string;
+    id: string;
+    slug: string;
+    title: string;
+};
+
+const SocialSharer: React.FC<SocialShareProps> = ({ type, id, slug, title }) => {
     return (
         <div className={`${styles.socialShareComponent}`}>
             <div className={styles.PostSomeNetwork}>
