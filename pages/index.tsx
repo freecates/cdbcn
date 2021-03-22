@@ -5,11 +5,42 @@ import styles from '@styles/Home.module.scss';
 import api from '@libs/api.js';
 import Link from 'next/link';
 import { GetStaticProps } from 'next';
+import { IData, IRoute, ISupporter, IMeta } from '@interfaces/index';
 
 const wordPressApiUrl = process.env.WORDPRESS_API_URL;
 const bearerToken = process.env.BEARER_TOKEN;
 
-const Home = ({ noticiesData, home, contacte, footer, routes }) => {
+type HomeProps = {
+    home: {
+        meta: IMeta;
+        videos: {
+            mainVideo: {
+                width: string;
+                height: string;
+                srcSet: {
+                    src: string;
+                    type: string;
+                    map(arg0: (d: any, index: any) => JSX.Element): import('react').ReactNode;
+                };
+            };
+        };
+    };
+    noticiesData: IData;
+    footer: { routes: IRoute[]; supporters: ISupporter[] };
+    routes: IRoute[];
+    contacte: {
+        meta: {
+            name: string;
+            address: string;
+            phone: { href: string; number: string };
+            mobile: { href: string; number: string };
+            web: string;
+            email: { href: string; address: string };
+        };
+    };
+};
+
+const Home: React.FC<HomeProps> = ({ noticiesData, home, contacte, footer, routes }) => {
     const { title, pageTitle, pageDescription } = home.meta;
     const { name, address, phone, mobile, web, email } = contacte.meta;
     const { routes: footerLinks, supporters } = footer;
@@ -68,7 +99,7 @@ export const getStaticProps: GetStaticProps = async () => {
     });
     const noticiesData = await res2.json();
 
-    const [ home, contacte, footer, routes ] = await Promise.all([
+    const [home, contacte, footer, routes] = await Promise.all([
         api.home.getData(),
         api.contacte.getData(),
         api.footer.getData(),
@@ -77,9 +108,9 @@ export const getStaticProps: GetStaticProps = async () => {
     return {
         props: {
             noticiesData: noticiesData,
-            home: { ...home[ 0 ] },
-            contacte: { ...contacte[ 0 ] },
-            footer: { ...footer[ 0 ] },
+            home: { ...home[0] },
+            contacte: { ...contacte[0] },
+            footer: { ...footer[0] },
             routes,
         },
     };
