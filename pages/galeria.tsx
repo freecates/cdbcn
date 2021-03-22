@@ -1,11 +1,21 @@
 import Layout from '@components/layout';
-import styles from '@styles/Home.module.scss';
+import styles from '@styles/Galeria.module.scss';
 import api from '@libs/api.js';
 import OtherRoutes from '@components/otherroutes';
 import Figure from '@components/figure';
 import { GetStaticProps } from 'next';
+import { IMeta, IRoute, ISupporter, IDataFigure } from '@interfaces/index';
 
-const Home = ({ galeria, footer, routes }) => {
+type GaleriaProps = {
+    galeria: {
+        meta: IMeta & { otherRoutes: IRoute[] };
+        images: { mainImage: IDataFigure; imageGallery: IDataFigure };
+    };
+    footer: { routes: IRoute[]; supporters: ISupporter[] };
+    routes: IRoute[];
+};
+
+const Galeria: React.FC<GaleriaProps> = ({ galeria, footer, routes }) => {
     const { title, pageTitle, pageDescription, otherRoutes } = galeria.meta;
     const { routes: footerLinks, supporters } = footer;
     const mainImage = galeria.images.mainImage;
@@ -49,4 +59,4 @@ export const getStaticProps: GetStaticProps = async () => {
     };
 };
 
-export default Home;
+export default Galeria;

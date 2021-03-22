@@ -17,9 +17,8 @@
         color: inherit;
         text-decoration: none;
         margin: 1rem;
-        
-        header {
 
+        header {
             img {
                 background: lighten($black, 95%);
             }
@@ -59,7 +58,19 @@
 
         @media (min-width: 1360px) {
             &.three {
-                flex-basis: 30%;
+
+                flex-basis: 33.33%;
+                padding: .5rem;
+                margin: 0;
+    
+                &:nth-child(4),
+                &:nth-child(5n + 4),
+                &:nth-child(5),
+                &:nth-child(5n + 5) {
+                    flex-basis: 50%;
+                    padding: .5rem;
+                    margin: 0;
+                }
             }
         }
     }
