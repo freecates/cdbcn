@@ -1,5 +1,5 @@
 import Layout from '@components/layout';
-import styles from '@styles/Galeria.module.scss';
+import styles from '@styles/Home.module.scss';
 import api from '@libs/api.js';
 import OtherRoutes from '@components/otherroutes';
 import Figure from '@components/figure';
