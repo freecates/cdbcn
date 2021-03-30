@@ -51,7 +51,7 @@ const FesCastells: React.FC<FesCastellsProps> = ({ footer, routes, fesCastells }
                     <p>(quan la COVID-19 deixi d'emprenyar)</p>
                 </main>
             </div>
-            <Figure data={mainImage} quality={100} layout={'responsive'} />
+            <Figure data={mainImage} quality={75} layout={'responsive'} />
         </Layout>
     );
 };

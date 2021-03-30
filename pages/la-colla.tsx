@@ -44,7 +44,7 @@ const LaColla: React.FC<LaCollaProps> = ({ colla, footer, routes, mdFileContent 
                 </main>
             </div>
 
-            <Figure data={mainImage} quality={100} layout={'responsive'} />
+            <Figure data={mainImage} quality={75} layout={'responsive'} />
 
             <hr className={styles.hr} />
 

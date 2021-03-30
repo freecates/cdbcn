@@ -56,7 +56,7 @@ const Contacte = ({ contacte, footer, routes }) => {
                     </p>
                 </main>
             </div>
-            <Figure data={mainImage} quality={100} layout={'responsive'} />
+            <Figure data={mainImage} quality={75} layout={'responsive'} />
         </Layout>
     );
 };

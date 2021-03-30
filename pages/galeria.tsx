@@ -36,7 +36,7 @@ const Galeria: React.FC<GaleriaProps> = ({ galeria, footer, routes }) => {
                     <p>{pageDescription}</p>
                 </main>
             </div>
-            <Figure data={mainImage} quality={100} layout={'responsive'} />
+            <Figure data={mainImage} quality={75} layout={'responsive'} />
             <div className={styles.container}>
                 <OtherRoutes routes={otherRoutes} />
             </div>

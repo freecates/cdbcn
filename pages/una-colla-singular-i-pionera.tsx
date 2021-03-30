@@ -33,7 +33,7 @@ const UnaCollaSingularIPionera: React.FC<UnaCollaSingularIPioneraProps> = ({ una
             supporters={supporters}
             navRoutes={routes}
         >
-            <Figure data={mainImage} quality={100} layout={'responsive'} />
+            <Figure data={mainImage} quality={75} layout={'responsive'} />
 
             <div className={`${styles.container}`}>
                 <main className={styles.main}>

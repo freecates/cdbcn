@@ -55,7 +55,7 @@ const Participa: React.FC<ParticipaProps> = ({ footer, routes, participa, mdFile
                     </p>
                 </main>
             </div>
-            <Figure data={mainImage} quality={100} layout={'responsive'} />
+            <Figure data={mainImage} quality={75} layout={'responsive'} />
             <div className={`${styles.container}`}>
                 <main className={`${styles.main}`}>
                     <MDFileContent content={mdFileContent} />
