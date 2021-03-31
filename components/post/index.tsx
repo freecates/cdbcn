@@ -417,7 +417,7 @@ const Post: React.FC<PostProps> = ({
                         }}
                     />
                 </Head>
-                <Figure data={mainImage} quality={100} withType withOverlay layout={'responsive'} />
+                <Figure data={mainImage} withType withOverlay layout={'responsive'} />
 
                 <div className={`${styles.container} ${styles.withOverlay}`}>
                     <main className={`${styles.main} ${styles.withOverlay}`}>
