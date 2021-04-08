@@ -14,9 +14,6 @@ module.exports = withPWA({
         locales: ['ca'],
         defaultLocale: 'ca',
     },
-    future: {
-        webpack5: true,
-    },
     pwa: {
         dest: 'public',
         runtimeCaching,

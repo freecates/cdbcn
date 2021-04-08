@@ -1,8 +1,8 @@
 {
   "name": "Castellers de Barcelona Web App",
   "short_name": "CdB PWA",
-  "theme_color": "#ffffff",
-  "background_color": "#d9001d",
+  "theme_color": "#d9001d",
+  "background_color": "#ffffff",
   "display": "fullscreen",
   "orientation": "portrait",
   "scope": "/",
