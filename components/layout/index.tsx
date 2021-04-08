@@ -40,6 +40,8 @@ const Layout: React.FC<Props> = ({
                 name="viewport"
                 content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
                 />
+                <meta name="theme-color" content="#ffffff"/>
+                <link rel="apple-touch-icon" href="/icons/icon-192x192.png"></link>
                 <link rel="manifest" href="/manifest.json" />
                 <title>{!home ? pageTitle + ' | ' + titlePage : pageTitle}</title>
                 <meta
