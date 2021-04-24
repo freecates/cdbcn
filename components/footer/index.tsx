@@ -13,11 +13,6 @@ const Footer: React.FC<FooterProps> = ({ footerLinks, supporters }) => {
     const currentYear = new Date().getFullYear();
     return (
         <footer className={styles.footer}>
-            {footerLinks ? (
-                <div className={styles.container}>
-                    <OtherRoutes routes={footerLinks} isButton />
-                </div>
-            ) : null}
             <div className={styles.wrapper}>
                 <a
                     target='_blank'
@@ -60,6 +55,11 @@ const Footer: React.FC<FooterProps> = ({ footerLinks, supporters }) => {
                     </span>
                 </a>
             </div>
+            {footerLinks ? (
+                <div className={styles.container}>
+                    <OtherRoutes routes={footerLinks} isButton />
+                </div>
+            ) : null}
             <div className={styles.container}>
                 <Supporters supporters={supporters} />
             </div>
