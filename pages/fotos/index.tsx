@@ -37,7 +37,7 @@ const Fotos = ({ data, footer, routes, fotos }) => {
                             Més fotos al nostre canal de{' '}
                             <a
                                 target='_blank'
-                                rel={'noopener nofollow'}
+                                rel={'noopener nofollow noreferrer'}
                                 href='https://www.flickr.com/photos/105597577@N08/'
                             >
                                 <FaFlickr /> Flickr

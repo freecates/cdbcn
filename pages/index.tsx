@@ -82,7 +82,7 @@ const Home: React.FC<HomeProps> = ({ noticiesData, home, contacte, footer, route
                         <a href={email.href}>{email.address}</a>
                         <br />
                         <Link href={'/participa'}>
-                            <a className={styles.button}>CONTRACTA'NS</a>
+                            <a className={styles.button}>CONTRACTA&apos;NS</a>
                         </Link>
                     </p>
                     <hr className={styles.hr} />

@@ -144,6 +144,7 @@ const Grid: React.FC<Props> = ({ data, isThree, isOne }) => {
                                     <header>
                                         {!itemImg ? null : (
                                             <a href={itemUrl} title={`Veure la fitxa de: ${title}`}>
+                                                {/* eslint-disable-next-line @next/next/no-img-element */}
                                                 <img
                                                     loading='lazy'
                                                     src={imgSrc}

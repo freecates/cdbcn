@@ -11,6 +11,7 @@ const Supporters = ({ supporters }) => {
                     <ul>
                         {s.list.map((l, i) => (
                             <li key={l.name}>
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
                                 <img
                                     alt={l.name}
                                     src={`${staticDataUrl}${l.logo}`}

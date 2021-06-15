@@ -17,12 +17,12 @@ export default function Custom404() {
             <div className={`${styles.container}`}>
                 <main className={styles.main}>
                     <h1 className={styles.title}>
-                        S'ha produït un error 404
+                        S&apos;ha produït un error 404
                         <br />
                         <small>[Pàgina no trobada]</small>
                     </h1>
                     <p>
-                        Si us plau, torna a la pàgina d'
+                        Si us plau, torna a la pàgina d&apos;
                         <Link href='/'>
                             <a>Inici</a>
                         </Link>
