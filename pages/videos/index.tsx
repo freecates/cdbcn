@@ -45,7 +45,7 @@ const Videos: React.FC<VideosProps> = ({ data, footer, routes, videos }) => {
                             Més videos al nostre canal de{' '}
                             <a
                                 target='_blank'
-                                rel={'noopener nofollow'}
+                                rel={'noopener nofollow noreferrer'}
                                 href='https://www.youtube.com/user/arxiucdb'
                             >
                                 <FaYoutube /> Youtube

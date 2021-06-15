@@ -12,7 +12,7 @@ const staticDataUrl = process.env.STATIC_DATA_URL;
 type LaCollaProps = {
     colla: {
         meta: IMeta & { otherRoutes: IRoute[] };
-        images: { mainImage: IDataFigure; };
+        images: { mainImage: IDataFigure };
     };
     footer: { routes: IRoute[]; supporters: ISupporter[] };
     routes: IRoute[];
@@ -51,7 +51,7 @@ const LaColla: React.FC<LaCollaProps> = ({ colla, footer, routes, mdFileContent 
             <div className={styles.container}>
                 <p>
                     <small>
-                        Els textos i les imatges d'aquestes seccions estan extrets del LLibre:
+                        Els textos i les imatges d&apos;aquestes seccions estan extrets del LLibre:
                         Esteves, R., Cervera, R., Cortijo, D. (2020).{' '}
                         <em>
                             Barcelona Terra de Castells - 50è Aniversari dels Castellers de

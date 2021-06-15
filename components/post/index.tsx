@@ -20,7 +20,7 @@ const Galeria: React.FC<GaleriaProps> = ({ urlFlickr, urlYoutube, title }) => {
                     <p>
                         <strong>
                             <small>
-                                Veure la galeria de: "{title}"<br />
+                                Veure la galeria de: &quot;{title}&quot;<br />
                                 {urlFlickr && (
                                     <a
                                         target={`_blank`}
@@ -190,7 +190,7 @@ const Post: React.FC<PostProps> = ({
                     <SocialSharer type={type} id={id} slug={null} title={title} />
                     <h3>
                         <Link href={`/${type}`}>
-                            <a className={'button'}>&larr; Anar a "{type}"</a>
+                            <a className={'button'}>&larr; Anar a &quot;{type}&quot;</a>
                         </Link>
                     </h3>
                 </div>
@@ -323,7 +323,7 @@ const Post: React.FC<PostProps> = ({
                     <SocialSharer type={type} id={id} slug={null} title={title} />
                     <h3>
                         <Link href={`/${type}`}>
-                            <a className={'button'}>&larr; Anar a "{type}"</a>
+                            <a className={'button'}>&larr; Anar a &quot;{type}&quot;</a>
                         </Link>
                     </h3>
                 </div>
@@ -465,7 +465,7 @@ const Post: React.FC<PostProps> = ({
                     <SocialSharer type={type} id={id} slug={slug} title={title} />
                     <h3>
                         <Link href={`/${type}`}>
-                            <a className={'button'}>&larr; Anar a "{type}"</a>
+                            <a className={'button'}>&larr; Anar a &quot;{type}&quot;</a>
                         </Link>
                     </h3>
                 </div>

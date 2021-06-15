@@ -48,7 +48,7 @@ const Contacte = ({ contacte, footer, routes }) => {
                         <a
                             title={map.title}
                             target={'_blank'}
-                            rel={'noopener norefer'}
+                            rel={'noopener noreferrer'}
                             href={map.url}
                         >
                             <FaMapSigns />

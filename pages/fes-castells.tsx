@@ -42,13 +42,13 @@ const FesCastells: React.FC<FesCastellsProps> = ({ footer, routes, fesCastells }
                         <a
                             title={map.title}
                             target={'_blank'}
-                            rel={'noopener norefer'}
+                            rel={'noopener noreferrer'}
                             href={map.url}
                         >
                             <FaMapSigns />
                         </a>
                     </h3>
-                    <p>(quan la COVID-19 deixi d'emprenyar)</p>
+                    <p>(quan la COVID-19 deixi d&apos;emprenyar)</p>
                 </main>
             </div>
             <Figure data={mainImage} quality={75} layout={'responsive'} />

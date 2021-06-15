@@ -16,7 +16,7 @@ const Footer: React.FC<FooterProps> = ({ footerLinks, supporters }) => {
             <div className={styles.wrapper}>
                 <a
                     target='_blank'
-                    rel={'noopener nofollow'}
+                    rel={'noopener nofollow noreferrer'}
                     href='https://www.instagram.com/castellersdebarcelona/'
                     title={"Anar a l'Instagram de la Colla"}
                 >
@@ -26,7 +26,7 @@ const Footer: React.FC<FooterProps> = ({ footerLinks, supporters }) => {
                 </a>
                 <a
                     target='_blank'
-                    rel={'noopener nofollow'}
+                    rel={'noopener nofollow noreferrer'}
                     href='https://www.youtube.com/user/arxiucdb'
                     title={'Anar al Youtube de la Colla'}
                 >
@@ -36,7 +36,7 @@ const Footer: React.FC<FooterProps> = ({ footerLinks, supporters }) => {
                 </a>
                 <a
                     target='_blank'
-                    rel={'noopener nofollow'}
+                    rel={'noopener nofollow noreferrer'}
                     href='https://twitter.com/cdbcn'
                     title={'Anar al Twitter de la Colla'}
                 >
@@ -46,7 +46,7 @@ const Footer: React.FC<FooterProps> = ({ footerLinks, supporters }) => {
                 </a>
                 <a
                     target='_blank'
-                    rel={'noopener nofollow'}
+                    rel={'noopener nofollow noreferrer'}
                     href='https://www.facebook.com/castellersdebarcelona'
                     title={'Anar al Facebook de la Colla'}
                 >
@@ -67,9 +67,9 @@ const Footer: React.FC<FooterProps> = ({ footerLinks, supporters }) => {
                 <p className={styles.alignCenter}>
                     <small>
                         &copy; {currentYear} Associació Colla Castellers de Barcelona. Entitat
-                        d'Utilitat Pública (
+                        d&apos;Utilitat Pública (
                         <a
-                            rel={'noopener nofollow'}
+                            rel={'noopener nofollow noreferrer'}
                             href='http://dogc.gencat.cat/ca/pdogc_canals_interns/pdogc_resultats_fitxa/?action=fitxa&amp;mode=single&amp;documentId=580319&amp;language=ca_ES'
                             target='_blank'
                         >
