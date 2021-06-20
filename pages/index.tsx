@@ -36,13 +36,14 @@ type HomeProps = {
             mobile: { href: string; number: string };
             web: string;
             email: { href: string; address: string };
+            map: { title: string; url: string };
         };
     };
 };
 
 const Home: React.FC<HomeProps> = ({ noticiesData, home, contacte, footer, routes }) => {
     const { title, pageTitle, pageDescription } = home.meta;
-    const { name, address, phone, mobile, web, email } = contacte.meta;
+    const { name, address, phone, mobile, web, email, map } = contacte.meta;
     const { routes: footerLinks, supporters } = footer;
     const mainVideo = home.videos.mainVideo;
     return (
@@ -71,7 +72,14 @@ const Home: React.FC<HomeProps> = ({ noticiesData, home, contacte, footer, route
                         ]
                         <br />
                         <br />
-                        {address}
+                        <a
+                            title={map.title}
+                            target={'_blank'}
+                            rel={'noopener noreferrer'}
+                            href={map.url}
+                        >
+                            {address}
+                        </a>
                         <br />
                         T. <a href={phone.href}>{phone.number}</a>
                         <br />
