@@ -6,7 +6,8 @@
     "dev": "next dev -p 3001",
     "build": "next build",
     "postbuild": "next-sitemap",
-    "start": "next start"
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
     "markdown-to-jsx": "^7.0.1",
