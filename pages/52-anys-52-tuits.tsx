@@ -65,6 +65,7 @@ export const getStaticProps: GetStaticProps = async () => {
             mdFileContent: mdFileContent,
             routes,
         },
+        revalidate: 60,
     };
 };
 
