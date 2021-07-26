@@ -10,8 +10,8 @@ import { IMeta, IRoute, ISupporter, IDataFigure } from '@interfaces/index';
 
 const staticDataUrl = process.env.STATIC_DATA_URL;
 
-type CinquantaAnys50TuitsProps = {
-    anys50tuits: {
+type CinquantaDosAnys52TuitsProps = {
+    anys52tuits: {
         meta: IMeta & { otherRoutes: IRoute[] };
         images: { imageGallery: IDataFigure };
     };
@@ -20,10 +20,10 @@ type CinquantaAnys50TuitsProps = {
     mdFileContent: string;
 };
 
-const CinquantaAnys50Tuits: React.FC<CinquantaAnys50TuitsProps> = ({ anys50tuits, footer, mdFileContent, routes }) => {
-    const { title, pageTitle, pageDescription, otherRoutes } = anys50tuits.meta;
+const CinquantaDosAnys52Tuits: React.FC<CinquantaDosAnys52TuitsProps> = ({ anys52tuits, footer, mdFileContent, routes }) => {
+    const { title, pageTitle, pageDescription, otherRoutes } = anys52tuits.meta;
     const { routes: footerLinks, supporters } = footer;
-    const imageGallery = anys50tuits.images.imageGallery;
+    const imageGallery = anys52tuits.images.imageGallery;
     return (
         
             <Layout
@@ -50,17 +50,17 @@ const CinquantaAnys50Tuits: React.FC<CinquantaAnys50TuitsProps> = ({ anys50tuits
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-    const [anys50tuits, footer, routes] = await Promise.all([
-        api.anys50tuits.getData(),
+    const [anys52tuits, footer, routes] = await Promise.all([
+        api.anys52tuits.getData(),
         api.footer.getData(),
         api.routes.getData(),
     ]);
-    const res = await fetch(`${staticDataUrl}/content/50-anys-50-tuits.md`);
+    const res = await fetch(`${staticDataUrl}/content/52-anys-52-tuits.md`);
     const mdFileContent = await res.text();
 
     return {
         props: {
-            anys50tuits: { ...anys50tuits[0] },
+            anys52tuits: { ...anys52tuits[0] },
             footer: { ...footer[0] },
             mdFileContent: mdFileContent,
             routes,
@@ -68,4 +68,4 @@ export const getStaticProps: GetStaticProps = async () => {
     };
 };
 
-export default CinquantaAnys50Tuits;
+export default CinquantaDosAnys52Tuits;
