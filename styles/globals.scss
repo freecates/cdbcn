@@ -516,10 +516,10 @@ body {
     font-size: 20px;
 }
 body {
-    background: url('/mosaic-mobile-castellers-de-barcelona.png') no-repeat right bottom;
+    background: url('/mosaic-mobile-castellers-de-barcelona.webp') no-repeat right bottom;
 
     @media (min-width: 768px) {
-        background: url('/mosaic-castellers-de-barcelona.png') no-repeat right bottom;
+        background: url('/mosaic-castellers-de-barcelona.webp') no-repeat right bottom;
         overflow-x: hidden;
     }
 }
