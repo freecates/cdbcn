@@ -57,7 +57,7 @@ const Figure: React.FC<Props> = ({ data, quality, layout, withType, withOverlay,
                         quality={quality ? quality : null}
                         width={data.width}
                         height={data.height}
-                        loading='lazy'
+                        priority
                         alt={data.alt}
                         src={
                             withType
