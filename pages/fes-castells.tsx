@@ -8,7 +8,13 @@ import { IMeta, IRoute, ISupporter, IDataFigure } from '@interfaces/index';
 
 type FesCastellsProps = {
     fesCastells: {
-        meta: IMeta & { map: { title: string; url: string } };
+        meta: IMeta & {
+            map: { title: string; url: string };
+            location: {
+                address: { addressLocality: string; postalCode: string; streetAddres: string };
+                alternateName: string;
+            };
+        };
         images: { mainImage: IDataFigure };
     };
     footer: { routes: IRoute[]; supporters: ISupporter[] };
@@ -17,7 +23,7 @@ type FesCastellsProps = {
 };
 
 const FesCastells: React.FC<FesCastellsProps> = ({ footer, routes, fesCastells }) => {
-    const { title, pageTitle, pageDescription, map } = fesCastells.meta;
+    const { title, pageTitle, pageDescription, map, location } = fesCastells.meta;
     const { routes: footerLinks, supporters } = footer;
     const mainImage = fesCastells.images.mainImage;
     return (
@@ -48,6 +54,12 @@ const FesCastells: React.FC<FesCastellsProps> = ({ footer, routes, fesCastells }
                             <FaMapSigns />
                         </a>
                     </h3>
+                    <p>
+                        {' '}
+                        Ens trobaràs a {location.alternateName}, {location.address.streetAddres},{' '}
+                        {location.address.postalCode} {location.address.addressLocality}
+                    </p>
+
                     <p>(quan la COVID-19 deixi d&apos;emprenyar)</p>
                 </main>
             </div>
