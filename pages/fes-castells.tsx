@@ -37,7 +37,7 @@ const FesCastells: React.FC<FesCastellsProps> = ({ footer, routes, fesCastells }
         >
             <div className={`${styles.container} ${styles.withOverlay}`}>
                 <main className={`${styles.main} ${styles.withUnderlay}`}>
-                    <h1>... Arribaran!</h1>
+                    <h1>Hem tornat!</h1>
                     <h2
                         className={styles.title}
                         dangerouslySetInnerHTML={{
@@ -60,7 +60,7 @@ const FesCastells: React.FC<FesCastellsProps> = ({ footer, routes, fesCastells }
                         {location.address.postalCode} {location.address.addressLocality}
                     </p>
 
-                    <p>(quan la COVID-19 deixi d&apos;emprenyar)</p>
+                    <p>[la COVID-19 ha deixat gairebé d&apos;emprenyar ;-)]</p>
                 </main>
             </div>
             <Figure data={mainImage} quality={75} layout={'responsive'} />
