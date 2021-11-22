@@ -34,6 +34,8 @@ type HomeProps = {
             address: string;
             phone: { href: string; number: string };
             mobile: { href: string; number: string };
+            mobile2: { href: string; number: string };
+            mobile3: { href: string; number: string };
             web: string;
             email: { href: string; address: string };
             map: { title: string; url: string };
@@ -43,7 +45,7 @@ type HomeProps = {
 
 const Home: React.FC<HomeProps> = ({ noticiesData, home, contacte, footer, routes }) => {
     const { title, pageTitle, pageDescription } = home.meta;
-    const { name, address, phone, mobile, web, email, map } = contacte.meta;
+    const { name, address, phone, mobile, mobile2, mobile3, web, email, map } = contacte.meta;
     const { routes: footerLinks, supporters } = footer;
     const mainVideo = home.videos.mainVideo;
     return (
@@ -81,7 +83,9 @@ const Home: React.FC<HomeProps> = ({ noticiesData, home, contacte, footer, route
                             {address}
                         </a>
                         <br />
-                        T. <a href={phone.href}>{phone.number}</a>
+                        T. <a href={phone.href}>{phone.number}</a> | M. <a href={mobile2.href}>{mobile2.number}</a>
+                        <br />
+                        M. <a href={mobile3.href}>{mobile3.number}</a> [contractacions]
                         <br />
                         M. <a href={mobile.href}>{mobile.number}</a> [premsa]
                         <br />
