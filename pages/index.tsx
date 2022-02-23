@@ -25,7 +25,7 @@ type HomeProps = {
             };
         };
     };
-    noticiesData: IData;
+    actiucionsData: IData;
     footer: { routes: IRoute[]; supporters: ISupporter[] };
     routes: IRoute[];
     contacte: {
@@ -43,7 +43,7 @@ type HomeProps = {
     };
 };
 
-const Home: React.FC<HomeProps> = ({ noticiesData, home, contacte, footer, routes }) => {
+const Home: React.FC<HomeProps> = ({ actiucionsData, home, contacte, footer, routes }) => {
     const { title, pageTitle, pageDescription } = home.meta;
     const { name, address, phone, mobile, mobile2, mobile3, web, email, map } = contacte.meta;
     const { routes: footerLinks, supporters } = footer;
@@ -98,7 +98,7 @@ const Home: React.FC<HomeProps> = ({ noticiesData, home, contacte, footer, route
                         </Link>
                     </p>
                     <hr className={styles.hr} />
-                    <Grid data={noticiesData} isThree />
+                    <Grid data={actiucionsData} isThree />
                 </main>
             </div>
         </Layout>
@@ -106,10 +106,10 @@ const Home: React.FC<HomeProps> = ({ noticiesData, home, contacte, footer, route
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-    const res2 = await fetch(`${wordPressApiUrl}/wp/v2/noticies?per_page=3&_embed`, {
+    const res2 = await fetch(`${wordPressApiUrl}/wp/v2/actuacions?per_page=3&_embed`, {
         headers: { 'Cache-Control': 'no-cache' },
     });
-    const noticiesData = await res2.json();
+    const actiucionsData = await res2.json();
 
     const [home, contacte, footer, routes] = await Promise.all([
         api.home.getData(),
@@ -119,13 +119,12 @@ export const getStaticProps: GetStaticProps = async () => {
     ]);
     return {
         props: {
-            noticiesData: noticiesData,
+            actiucionsData: actiucionsData,
             home: { ...home[0] },
             contacte: { ...contacte[0] },
             footer: { ...footer[0] },
             routes,
         },
-        revalidate: 1,
     };
 };
 

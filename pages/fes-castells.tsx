@@ -2,9 +2,12 @@ import Layout from '@components/layout';
 import styles from '@styles/Home.module.scss';
 import api from '@libs/api.js';
 import Figure from '@components/figure';
+import MDFileContent from '@components/mdncontentparser';
 import { FaMapSigns } from 'react-icons/fa';
 import { GetStaticProps } from 'next';
 import { IMeta, IRoute, ISupporter, IDataFigure } from '@interfaces/index';
+
+const staticDataUrl = process.env.STATIC_DATA_URL;
 
 type FesCastellsProps = {
     fesCastells: {
@@ -22,7 +25,7 @@ type FesCastellsProps = {
     mdFileContent: string;
 };
 
-const FesCastells: React.FC<FesCastellsProps> = ({ footer, routes, fesCastells }) => {
+const FesCastells: React.FC<FesCastellsProps> = ({ footer, routes, fesCastells, mdFileContent }) => {
     const { title, pageTitle, pageDescription, map, location } = fesCastells.meta;
     const { routes: footerLinks, supporters } = footer;
     const mainImage = fesCastells.images.mainImage;
@@ -37,14 +40,14 @@ const FesCastells: React.FC<FesCastellsProps> = ({ footer, routes, fesCastells }
         >
             <div className={`${styles.container} ${styles.withOverlay}`}>
                 <main className={`${styles.main} ${styles.withUnderlay}`}>
-                    <h1>Hem tornat!</h1>
-                    <h2
-                        className={styles.title}
-                        dangerouslySetInnerHTML={{
-                            __html: pageDescription,
-                        }}
-                    />
-                    <h3 className={styles.title}>
+                    <h1>Fes castells!</h1>
+                    <MDFileContent content={mdFileContent} />
+                    <p>
+                        {' '}
+                        Ens trobaràs a {location.alternateName}, {location.address.streetAddres},{' '}
+                        {location.address.postalCode} {location.address.addressLocality}
+                    </p>
+                    <h2 className={styles.title}>
                         <a
                             title={map.title}
                             target={'_blank'}
@@ -53,14 +56,7 @@ const FesCastells: React.FC<FesCastellsProps> = ({ footer, routes, fesCastells }
                         >
                             <FaMapSigns />
                         </a>
-                    </h3>
-                    <p>
-                        {' '}
-                        Ens trobaràs a {location.alternateName}, {location.address.streetAddres},{' '}
-                        {location.address.postalCode} {location.address.addressLocality}
-                    </p>
-
-                    <p>[la COVID-19 ha deixat gairebé d&apos;emprenyar ;-)]</p>
+                    </h2>
                 </main>
             </div>
             <Figure data={mainImage} quality={75} layout={'responsive'} />
@@ -74,10 +70,15 @@ export const getStaticProps: GetStaticProps = async () => {
         api.footer.getData(),
         api.routes.getData(),
     ]);
+
+    const res = await fetch(`${staticDataUrl}/content/fes-castells.md`);
+    const mdFileContent = await res.text();
+
     return {
         props: {
             footer: { ...footer[0] },
             fesCastells: { ...fesCastells[0] },
+            mdFileContent: mdFileContent,
             routes,
         },
     };
