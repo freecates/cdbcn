@@ -46,6 +46,7 @@ export const getStaticProps: GetStaticProps = async () => {
             juntaITecnica: { ...juntaITecnica[0] },
             routes,
         },
+        revalidate: 1,
     };
 };
 
