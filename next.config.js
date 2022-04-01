@@ -23,6 +23,7 @@ module.exports = withPWA({
             /_middleware.js$/,
             /_middleware.js.map$/,
             /middleware-build-manifest\.js$/,
+            /middleware-react-loadable-manifest\.js$/,
         ],
     },
     swcMinify: true,
