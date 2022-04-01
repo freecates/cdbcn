@@ -18,7 +18,7 @@ module.exports = withPWA({
         dest: 'public',
         runtimeCaching,
         disable: process.env.NODE_ENV === 'development',
-        buildExcludes: [/server\/pages\/_middleware\.js$/],
+        buildExcludes: [/middleware-manifest\.json$/, /_middleware.js$/, /_middleware.js.map$/],
     },
     swcMinify: true,
 });
