@@ -38,9 +38,11 @@
         color: $white;
         padding: 0.5rem;
         @media (min-width: 1024px) {
-            max-width: 60%;
+            max-width: 50%;
             margin: 0 auto;
             padding: 1rem;
+            display: flex;
+            justify-content: center;
         }
     }
 
