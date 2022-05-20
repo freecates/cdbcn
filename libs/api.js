@@ -85,6 +85,13 @@ const api = {
       return data;
     }
   },
+  calendari: {
+    async getData() {
+      const response = await fetch(`${staticDataUrl}/data/calendari.json`);
+      const data = await response.json();
+      return data;
+    }
+  },
   actuacions: {
     async getData() {
       const response = await fetch(`${staticDataUrl}/data/actuacions.json`);

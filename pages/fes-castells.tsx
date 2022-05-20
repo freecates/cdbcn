@@ -3,6 +3,7 @@ import styles from '@styles/Home.module.scss';
 import api from '@libs/api.js';
 import Figure from '@components/figure';
 import MDFileContent from '@components/mdncontentparser';
+import OtherRoutes from '@components/otherroutes';
 import { FaMapSigns } from 'react-icons/fa';
 import { GetStaticProps } from 'next';
 import { IMeta, IRoute, ISupporter, IDataFigure } from '@interfaces/index';
@@ -17,6 +18,7 @@ type FesCastellsProps = {
                 address: { addressLocality: string; postalCode: string; streetAddres: string };
                 alternateName: string;
             };
+            otherRoutes: IRoute[];
         };
         images: { mainImage: IDataFigure };
     };
@@ -26,7 +28,7 @@ type FesCastellsProps = {
 };
 
 const FesCastells: React.FC<FesCastellsProps> = ({ footer, routes, fesCastells, mdFileContent }) => {
-    const { title, pageTitle, pageDescription, map, location } = fesCastells.meta;
+    const { title, pageTitle, pageDescription, map, location, otherRoutes } = fesCastells.meta;
     const { routes: footerLinks, supporters } = footer;
     const mainImage = fesCastells.images.mainImage;
     return (
@@ -40,7 +42,10 @@ const FesCastells: React.FC<FesCastellsProps> = ({ footer, routes, fesCastells, 
         >
             <div className={`${styles.container} ${styles.withOverlay}`}>
                 <main className={`${styles.main} ${styles.withUnderlay}`}>
-                    <h1>Fes castells!</h1>
+                    <h1>{pageTitle}!</h1>
+                    <div className={styles.container}>
+                        <OtherRoutes routes={otherRoutes} />
+                    </div>
                     <MDFileContent content={mdFileContent} />
                     <p>
                         {' '}
