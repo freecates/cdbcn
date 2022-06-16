@@ -55,6 +55,7 @@ export const getStaticProps: GetStaticProps = async () => {
             footer: { ...footer[0] },
             routes,
         },
+        revalidate: 1,
     };
 };
 
