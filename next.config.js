@@ -1,5 +1,16 @@
-const withPWA = require('next-pwa');
 const runtimeCaching = require('next-pwa/cache');
+const withPWA = require('next-pwa')({
+    dest: 'public',
+    runtimeCaching,
+    disable: process.env.NODE_ENV === 'development',
+    buildExcludes: [
+        /middleware-manifest\.json$/,
+        /_middleware.js$/,
+        /_middleware.js.map$/,
+        /middleware-build-manifest\.js$/,
+        /middleware-react-loadable-manifest\.js$/,
+    ],
+});
 
 module.exports = withPWA({
     images: {
@@ -13,18 +24,6 @@ module.exports = withPWA({
     i18n: {
         locales: ['ca'],
         defaultLocale: 'ca',
-    },
-    pwa: {
-        dest: 'public',
-        runtimeCaching,
-        disable: process.env.NODE_ENV === 'development',
-        buildExcludes: [
-            /middleware-manifest\.json$/,
-            /_middleware.js$/,
-            /_middleware.js.map$/,
-            /middleware-build-manifest\.js$/,
-            /middleware-react-loadable-manifest\.js$/,
-        ],
     },
     swcMinify: true,
 });
