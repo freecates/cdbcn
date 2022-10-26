@@ -69,7 +69,7 @@ const Home: React.FC<HomeProps> = ({ noticiesData, home, contacte, footer, route
                         <br />
                         [La Colla Degana de la Ciutat -{' '}
                         <Link href={'/la-colla'}>
-                            <a>1969</a>
+                            1969
                         </Link>
                         ]
                         <br />
@@ -93,8 +93,8 @@ const Home: React.FC<HomeProps> = ({ noticiesData, home, contacte, footer, route
                         <br />
                         <a href={email.href}>{email.address}</a>
                         <br />
-                        <Link href={'/participa'}>
-                            <a className={styles.button}>CONTRACTA&apos;NS</a>
+                        <Link href={'/participa'} className={styles.button}>
+                            CONTRACTA&apos;NS
                         </Link>
                     </p>
                     <hr className={styles.hr} />

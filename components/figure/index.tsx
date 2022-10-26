@@ -32,8 +32,11 @@ const Figure: React.FC<Props> = ({ data, quality, layout, withType, withOverlay,
                                 height={d.height}
                                 loading='lazy'
                                 alt={d.alt}
+                                sizes="(max-width: 768px) 100vw,
+                                (max-width: 1200px) 50vw,
+                                33vw"
+                  
                                 src={`${staticDataUrl}/${d.src}`}
-                                layout={layout ? layout : null}
                             />
                             {d.imageCaption ? (
                                 <figcaption className={styles.figcaption}>
@@ -55,10 +58,14 @@ const Figure: React.FC<Props> = ({ data, quality, layout, withType, withOverlay,
                 >
                     <Image
                         quality={quality ? quality : null}
-                        width={data.width}
-                        height={data.height}
+                        width={Number(data.width)}
+                        height={Number(data.height)}
                         priority
                         alt={data.alt}
+                        sizes="(max-width: 768px) 100vw,
+                        (max-width: 1200px) 50vw,
+                        33vw"
+          
                         src={
                             withType
                                 ? type !== 'fotos'
@@ -69,7 +76,6 @@ const Figure: React.FC<Props> = ({ data, quality, layout, withType, withOverlay,
                                     : data.source
                                 : `${staticDataUrl}/${data.src}`
                         }
-                        layout={layout ? layout : null}
                     />
                     {data.imageCaption ? (
                         <figcaption className={styles.figcaption}>

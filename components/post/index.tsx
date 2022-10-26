@@ -189,7 +189,7 @@ const Post: React.FC<PostProps> = ({
                 <div className={styles.container}>
                     <SocialSharer type={type} id={id} slug={null} title={title} />
                     <h3>
-                        <Link href={`/${type}`}>
+                        <Link href={`/${type}`} legacyBehavior>
                             <a className={'button'}>&larr; Anar a &quot;{type}&quot;</a>
                         </Link>
                     </h3>
@@ -322,7 +322,7 @@ const Post: React.FC<PostProps> = ({
                 <div className={styles.container}>
                     <SocialSharer type={type} id={id} slug={null} title={title} />
                     <h3>
-                        <Link href={`/${type}`}>
+                        <Link href={`/${type}`} legacyBehavior>
                             <a className={'button'}>&larr; Anar a &quot;{type}&quot;</a>
                         </Link>
                     </h3>
@@ -464,7 +464,7 @@ const Post: React.FC<PostProps> = ({
                 <div className={styles.container}>
                     <SocialSharer type={type} id={id} slug={slug} title={title} />
                     <h3>
-                        <Link href={`/${type}`}>
+                        <Link href={`/${type}`} legacyBehavior>
                             <a className={'button'}>&larr; Anar a &quot;{type}&quot;</a>
                         </Link>
                     </h3>

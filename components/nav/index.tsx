@@ -23,7 +23,7 @@ const Nav: React.FC<NavProps> = ({ navRoutes, small }) => {
                                 }`}
                             >
                                 <Link href={r.route}>
-                                    <a>{r.name}</a>
+                                    {r.name}
                                 </Link>
                             </li>
                         ))}

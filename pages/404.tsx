@@ -24,7 +24,7 @@ export default function Custom404() {
                     <p>
                         Si us plau, torna a la pàgina d&apos;
                         <Link href='/'>
-                            <a>Inici</a>
+                            Inici
                         </Link>
                         .
                     </p>

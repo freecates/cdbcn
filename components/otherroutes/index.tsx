@@ -13,14 +13,15 @@ const OtherRoutes: React.FC<Props> = ({ routes, isButton }) => {
             <small>
                 {routes.map((r, id) =>
                     r.route ? (
-                        <Link href={r.route} key={id}>
-                            <a
-                                className={`${isButton ? styles.button : null}`}
-                                title={`Anar a ${r.name}`}
-                            >
-                                {r.name}
-                            </a>
-                        </Link>
+                        (<Link
+                            href={r.route}
+                            key={id}
+                            className={`${isButton ? styles.button : null}`}
+                            title={`Anar a ${r.name}`}>
+
+                            {r.name}
+
+                        </Link>)
                     ) : null
                 )}
             </small>

@@ -84,33 +84,36 @@ const Grid: React.FC<Props> = ({ data, isThree, isOne }) => {
                                 <div>
                                     <header>
                                         {!itemImg ? null : (
-                                            <Link href={itemUrl}>
-                                                <a title={`Veure la fitxa de: ${title}`}>
-                                                    <Image
-                                                        loading='lazy'
-                                                        src={imgSrc + '.webp'}
-                                                        alt={title}
-                                                        width={width}
-                                                        height={height}
-                                                        layout={'responsive'}
-                                                    />
-                                                </a>
-                                            </Link>
+                                            (<Link href={itemUrl} title={`Veure la fitxa de: ${title}`} passHref>
+
+                                                <Image
+                                                    loading='lazy'
+                                                    src={imgSrc + '.webp'}
+                                                    alt={title}
+                                                    width={width}
+                                                    height={height}
+                                                    sizes="(max-width: 768px) 100vw,
+                                                    (max-width: 1200px) 50vw,
+                                                    33vw"
+                                      
+                                                />
+
+                                            </Link>)
                                         )}
                                     </header>
                                     <main>
                                         <div>
-                                            <Link href={itemUrl}>
-                                                <a title={`Veure la fitxa de: ${title}`}>
-                                                    <h2 className={styles.cardTitle}>
-                                                        <span
-                                                            dangerouslySetInnerHTML={{
-                                                                __html: title,
-                                                            }}
-                                                        />
-                                                        &rarr;
-                                                    </h2>
-                                                </a>
+                                            <Link href={itemUrl} title={`Veure la fitxa de: ${title}`} passHref>
+
+                                                <h2 className={styles.cardTitle}>
+                                                    <span
+                                                        dangerouslySetInnerHTML={{
+                                                            __html: title,
+                                                        }}
+                                                    />
+                                                    &rarr;
+                                                </h2>
+
                                             </Link>
                                             <p className={styles.author}>
                                                 <small>
@@ -156,17 +159,17 @@ const Grid: React.FC<Props> = ({ data, isThree, isOne }) => {
                                         )}
                                     </header>
                                     <main>
-                                        <Link href={itemUrl}>
-                                            <a title={`Veure la fitxa de: ${title}`}>
-                                                <h2>
-                                                    <span
-                                                        dangerouslySetInnerHTML={{
-                                                            __html: title,
-                                                        }}
-                                                    />
-                                                    &rarr;
-                                                </h2>
-                                            </a>
+                                        <Link href={itemUrl} title={`Veure la fitxa de: ${title}`} passHref>
+
+                                            <h2>
+                                                <span
+                                                    dangerouslySetInnerHTML={{
+                                                        __html: title,
+                                                    }}
+                                                />
+                                                &rarr;
+                                            </h2>
+
                                         </Link>
                                         <p>
                                             <small>
@@ -199,21 +202,21 @@ const Grid: React.FC<Props> = ({ data, isThree, isOne }) => {
                                 <div>
                                     <header>
                                         {!imgSrc ? null : (
-                                            <Link href={itemUrl}>
-                                                <a
-                                                    href={itemUrl}
-                                                    title={`Veure la fitxa de: ${title}`}
-                                                >
-                                                    <Image
-                                                        loading='lazy'
-                                                        src={imgSrc}
-                                                        alt={title}
-                                                        width={width}
-                                                        height={height}
-                                                        layout={'responsive'}
-                                                    />
-                                                </a>
-                                            </Link>
+                                            (<Link href={itemUrl} title={`Veure la fitxa de: ${title}`} passHref>
+
+                                                <Image
+                                                    loading='lazy'
+                                                    src={imgSrc}
+                                                    alt={title}
+                                                    width={width}
+                                                    height={height}
+                                                    sizes="(max-width: 768px) 100vw,
+                                                    (max-width: 1200px) 50vw,
+                                                    33vw"
+                                      
+                                                />
+
+                                            </Link>)
                                         )}
                                     </header>
                                     <main>
