@@ -20,6 +20,7 @@ module.exports = withPWA({
             'i.ytimg.com',
             'live.staticflickr.com',
         ],
+        unoptimized: true,
     },
     i18n: {
         locales: ['ca'],
