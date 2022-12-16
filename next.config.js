@@ -1,4 +1,18 @@
-module.exports = {
+const runtimeCaching = require('next-pwa/cache');
+const withPWA = require('next-pwa')({
+    dest: 'public',
+    runtimeCaching,
+    disable: process.env.NODE_ENV === 'development',
+    buildExcludes: [
+        /middleware-manifest\.json$/,
+        /_middleware.js$/,
+        /_middleware.js.map$/,
+        /middleware-build-manifest\.js$/,
+        /middleware-react-loadable-manifest\.js$/,
+    ],
+});
+
+module.exports = withPWA({
     images: {
         domains: [
             'cdbdata.vercel.app',
@@ -11,4 +25,4 @@ module.exports = {
     experimental: {
         appDir: true,
       },
-};
+});
