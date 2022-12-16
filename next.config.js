@@ -7,10 +7,6 @@ module.exports = {
             'live.staticflickr.com',
         ],
     },
-    i18n: {
-        locales: ['ca'],
-        defaultLocale: 'ca',
-    },
     swcMinify: true,
     experimental: {
         appDir: true,
