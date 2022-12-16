@@ -590,17 +590,6 @@ em {
     text-align: center;
 }
 
-.container {
-    width: 100%;
-    margin: 0 auto;
-    max-width: 65rem;
-    padding: 0 1rem;
-
-    @media (min-width: 768px) {
-        padding: 2rem 1rem;
-    }
-}
-
 .wrapperLogo {
     width: 100%;
     max-width: 320px;
@@ -622,14 +611,14 @@ em {
     &.noPadding {
         padding: 0;
     }
-}
-@media (min-width: 768px) {
-    .container {
-        padding: 0 2rem;
-
-        &.withOverlay {
-            position: relative;
-            z-index: 1;
+    @media (min-width: 768px) {
+        .container {
+            padding: 0 2rem;
+    
+            &.withOverlay {
+                position: relative;
+                z-index: 1;
+            }
         }
     }
 }
