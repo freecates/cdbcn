@@ -1,0 +1,47 @@
+@import 'styles/colors';
+
+.title a:hover,
+.title a:focus,
+.title a:active {
+    text-decoration: underline;
+}
+
+.title {
+    margin: 0;
+    line-height: 1.15;
+    font-size: 4rem;
+    margin: 0 auto;
+}
+
+.title div {
+    margin: 0 auto;
+}
+
+.title,
+.description {
+    text-align: center;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 65rem;
+    padding: 0 1rem;
+
+    @media (min-width: 768px) {
+        padding: 2rem 1rem;
+    }
+}
+
+.wrapperLogo {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+.hr {
+    width: 50%;
+    margin: 0 auto 2rem;
+    height: 0;
+    border: 1px solid $gray;
+}

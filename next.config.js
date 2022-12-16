@@ -26,4 +26,7 @@ module.exports = withPWA({
         defaultLocale: 'ca',
     },
     swcMinify: true,
+    experimental: {
+        appDir: true,
+      },
 });

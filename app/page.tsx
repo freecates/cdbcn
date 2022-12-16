@@ -1,16 +1,12 @@
 import Grid from '@components/grid';
-import Layout from '@components/layout';
 import Video from '@components/video';
 import styles from '@styles/Home.module.scss';
 import api from '@libs/api.js';
 import Link from 'next/link';
-import { GetStaticProps } from 'next';
-import { IData, IRoute, ISupporter, IMeta } from '@interfaces/index';
-
+import { IData } from '@interfaces/index';
 
 type HomeProps = {
     home: {
-        meta: IMeta;
         videos: {
             mainVideo: {
                 width: string;
@@ -24,8 +20,6 @@ type HomeProps = {
         };
     };
     noticiesData: IData;
-    footer: { routes: IRoute[]; supporters: ISupporter[] };
-    routes: IRoute[];
     contacte: {
         meta: {
             name: string;
@@ -41,22 +35,12 @@ type HomeProps = {
     };
 };
 
-const Home: React.FC<HomeProps> = ({ noticiesData, home, contacte, footer, routes }) => {
-    const { title, pageTitle, pageDescription } = home.meta;
+const Home = async () => {
+    const { noticiesData, home, contacte }: HomeProps = await getData();
     const { name, address, phone, mobile, mobile2, mobile3, web, email, map } = contacte.meta;
-    const { routes: footerLinks, supporters } = footer;
     const mainVideo = home.videos.mainVideo;
     return (
-        <Layout
-            titlePage={title}
-            pageTitle={pageTitle}
-            pageDescription={pageDescription}
-            navRoutes={routes}
-            home
-            footerLinks={footerLinks}
-            supporters={supporters}
-            videoPreload={mainVideo}
-        >
+        <>
             <div className={styles.wrapperVideo}>
                 <Video data={mainVideo} />
             </div>
@@ -65,10 +49,7 @@ const Home: React.FC<HomeProps> = ({ noticiesData, home, contacte, footer, route
                     <p className={styles.description}>
                         <strong>{name}</strong>
                         <br />
-                        [La Colla Degana de la Ciutat -{' '}
-                        <Link href={'/la-colla'}>
-                            1969
-                        </Link>
+                        [La Colla Degana de la Ciutat - <Link href={'/la-colla'}>1969</Link>
                         ]
                         <br />
                         <br />
@@ -81,7 +62,8 @@ const Home: React.FC<HomeProps> = ({ noticiesData, home, contacte, footer, route
                             {address}
                         </a>
                         <br />
-                        T. <a href={phone.href}>{phone.number}</a> | M. <a href={mobile2.href}>{mobile2.number}</a>
+                        T. <a href={phone.href}>{phone.number}</a> | M.{' '}
+                        <a href={mobile2.href}>{mobile2.number}</a>
                         <br />
                         M. <a href={mobile3.href}>{mobile3.number}</a> [contractacions]
                         <br />
@@ -99,29 +81,23 @@ const Home: React.FC<HomeProps> = ({ noticiesData, home, contacte, footer, route
                     <Grid data={noticiesData} isThree />
                 </main>
             </div>
-        </Layout>
+        </>
     );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
-    
-    const [home, contacte, footer, routes, noticiesData] = await Promise.all([
+const getData = async () => {
+    const [home, contacte, noticiesData] = await Promise.all([
         api.cdbData.getData('home'),
         api.cdbData.getData('contacte'),
-        api.cdbData.getData('footer'),
-        api.cdbData.getData('routes'),
-        api.wpData.getData('noticies', 3, null),
+        api.wpData.getData('noticies', 3),
     ]);
     return {
-        props: {
-            noticiesData: noticiesData,
-            home: { ...home[0] },
-            contacte: { ...contacte[0] },
-            footer: { ...footer[0] },
-            routes,
-        },
-revalidate: 1,
+        noticiesData: noticiesData,
+        home: { ...home[0] },
+        contacte: { ...contacte[0] },
     };
 };
+
+export const revalidate = 30;
 
 export default Home;

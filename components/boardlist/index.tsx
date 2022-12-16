@@ -1,7 +1,8 @@
+import { IMember } from '@interfaces/index';
 import styles from './BoardList.module.scss';
 
 type Props = {
-    data: IData;
+    data: IMember[];
     title: string;
 };
 
@@ -20,11 +21,5 @@ const BoardList: React.FC<Props> = ({ title, data }) => {
         </div>
     );
 };
-
-interface IData {
-    map(arg0: (d: any, index: any) => JSX.Element): import('react').ReactNode;
-    name: string;
-    title: string;
-}
 
 export default BoardList;

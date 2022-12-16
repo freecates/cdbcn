@@ -1,39 +1,28 @@
-import Layout from '@components/layout';
 import styles from '@styles/Home.module.scss';
 import Figure from '@components/figure';
 import api from '@libs/api.js';
 import OtherRoutes from '@components/otherroutes';
 import MDFileContent from '@components/mdncontentparser';
-import { GetStaticProps } from 'next';
-import { IMeta, IRoute, ISupporter, IDataFigure } from '@interfaces/index';
+import { IRoute, IDataFigure } from '@interfaces/index';
 
 type LaCollaProps = {
     colla: {
-        meta: IMeta & { otherRoutes: IRoute[] };
+        meta: { newOtherRoutes: IRoute[] };
         images: { mainImage: IDataFigure };
     };
-    footer: { routes: IRoute[]; supporters: ISupporter[] };
-    routes: IRoute[];
     mdFileContent: string;
 };
 
-const LaColla: React.FC<LaCollaProps> = ({ colla, footer, routes, mdFileContent }) => {
-    const { title, pageTitle, pageDescription, otherRoutes } = colla.meta;
+const LaColla = async () => {
+    const { colla, mdFileContent }: LaCollaProps = await getData();
+    const { newOtherRoutes } = colla.meta;
     const mainImage = colla.images.mainImage;
-    const { routes: footerLinks, supporters } = footer;
     return (
-        <Layout
-            pageTitle={pageTitle}
-            titlePage={title}
-            pageDescription={pageDescription}
-            footerLinks={footerLinks}
-            navRoutes={routes}
-            supporters={supporters}
-        >
+        <>
             <h1 className={styles.title}>La Colla</h1>
 
             <div className={styles.container}>
-                <OtherRoutes routes={otherRoutes} />
+                <OtherRoutes routes={newOtherRoutes} />
             </div>
 
             <div className={`${styles.container} ${styles.withOverlay}`}>
@@ -58,26 +47,18 @@ const LaColla: React.FC<LaCollaProps> = ({ colla, footer, routes, mdFileContent 
                         , Barcelona, Espanya, Ajuntament de Barcelona.
                     </small>
                 </p>
-                <OtherRoutes routes={otherRoutes} isButton={false} />
+                <OtherRoutes routes={newOtherRoutes} isButton={false} />
             </div>
-        </Layout>
+        </>
     );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
-    const [colla, footer, routes, mdFileContent] = await Promise.all([
-        api.cdbData.getData('colla'),
-        api.cdbData.getData('footer'),
-        api.cdbData.getData('routes'),
-        api.mdContent.getData('colla'),
-    ]);
+const getData = async () => {
+    const colla = await api.cdbData.getData('colla');
+    const mdData = await api.mdContent.getData('colla');
     return {
-        props: {
-            colla: { ...colla[0] },
-            footer: { ...footer[0] },
-            mdFileContent: mdFileContent,
-            routes,
-        },
+        colla: { ...colla[0] },
+        mdFileContent: mdData,
     };
 };
 
