@@ -2,9 +2,8 @@ import '@styles/globals.scss';
 import api from '@libs/api.js';
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from './Layout.module.scss';
 import Footer from '@components/footer';
-import Nav from './Nav/index';
+import Nav from '@components/Nav';
 import { IRoute, ISupporter } from '@interfaces/index';
 
 const RootLayout = async ({ children }: { children: React.ReactNode }) => {
@@ -22,7 +21,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
         <html lang='ca'>
             <head />
             <body>
-                <h1 className={styles.wrapperLogo}>
+                <h1 className={'wrapperLogo'}>
                     <Link href={'/'} passHref>
                         <Image
                             width='320'
@@ -37,7 +36,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
 
                 <div>{children}</div>
 
-                <div className={styles.container}>
+                <div className={'container'}>
                     <Footer footerLinks={footerLinks} supporters={supporters} />
                     <Nav navRoutes={navRoutes} small />
                 </div>

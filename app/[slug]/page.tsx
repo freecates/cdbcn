@@ -1,6 +1,5 @@
 import { notFound } from 'next/navigation';
 import MDFileContent from '@components/mdncontentparser';
-import styles from '@styles/Home.module.scss';
 import api from '@libs/api.js';
 import { IMeta, IDataFigure, IRoute, IMember } from '@interfaces/index';
 import Figure from '@components/figure';
@@ -59,27 +58,27 @@ const SlugPage = async ({ params }) => {
         <>
             {otherRoutes && !location ? (
                 <>
-                    <div className={styles.container}>
+                    <div className={'container'}>
                         <OtherRoutes routes={otherRoutes} />
                     </div>
-                    <div className={`${styles.container} ${styles.withOverlay}`}>
-                        <main className={`${styles.main} ${styles.withUnderlay}`}>
+                    <div className={`${'container'} ${'withOverlay'}`}>
+                        <main className={`${'main'} ${'withUnderlay'}`}>
                             <p>{pageDescription}</p>
                         </main>
                     </div>
                     <Figure data={mainImage} quality={75} layout={'responsive'} />
-                    <div className={styles.container}>
+                    <div className={'container'}>
                         <OtherRoutes routes={otherRoutes} />
                     </div>
                 </>
             ) : null}
             {!mobile ? null : mobile && !phone ? (
                 <>
-                    <div className={`${styles.container} ${styles.withOverlay}`}>
-                        <main className={`${styles.main} ${styles.withUnderlay}`}>
+                    <div className={`${'container'} ${'withOverlay'}`}>
+                        <main className={`${'main'} ${'withUnderlay'}`}>
                             <h1>{pageTitle}</h1>
 
-                            <p className={styles.description}>
+                            <p className={'description'}>
                                 <strong>Contractacions</strong>:<br />
                                 <a href={mobile.href}>{mobile.number}</a> [{mobile.name}
                                 ]
@@ -88,7 +87,7 @@ const SlugPage = async ({ params }) => {
                                 <br />
                                 <br />
                                 <small
-                                    className={styles.title}
+                                    className={'title'}
                                     dangerouslySetInnerHTML={{
                                         __html: pageDescription,
                                     }}
@@ -102,9 +101,9 @@ const SlugPage = async ({ params }) => {
                 </>
             ) : (
                 <>
-                    <div className={`${styles.container} ${styles.withOverlay}`}>
-                        <main className={`${styles.main} ${styles.withUnderlay}`}>
-                            <p className={styles.description}>
+                    <div className={`${'container'} ${'withOverlay'}`}>
+                        <main className={`${'main'} ${'withUnderlay'}`}>
+                            <p className={'description'}>
                                 <strong>{name}</strong>
                                 <br />
                                 <br />
@@ -133,11 +132,11 @@ const SlugPage = async ({ params }) => {
                 </>
             )}
 
-            {!mobile || !otherRoutes ? null : <h1 className={styles.title}>{pageTitle}</h1>}
+            {!mobile || !otherRoutes ? null : <h1 className={'title'}>{pageTitle}</h1>}
 
             {mdFileContent && !location ? (
-                <div className={`${styles.container}`}>
-                    <main className={styles.main}>
+                <div className={`${'container'}`}>
+                    <main className={'main'}>
                         <MDFileContent content={mdFileContent} />
                     </main>
                 </div>
@@ -145,10 +144,10 @@ const SlugPage = async ({ params }) => {
 
             {location && mdFileContent && otherRoutes ? (
                 <>
-                    <div className={`${styles.container} ${styles.withOverlay}`}>
-                        <main className={`${styles.main} ${styles.withUnderlay}`}>
+                    <div className={`${'container'} ${'withOverlay'}`}>
+                        <main className={`${'main'} ${'withUnderlay'}`}>
                             <h1>{pageTitle}!</h1>
-                            <div className={styles.container}>
+                            <div className={'container'}>
                                 <OtherRoutes routes={otherRoutes} />
                             </div>
                             <MDFileContent content={mdFileContent} />
@@ -158,7 +157,7 @@ const SlugPage = async ({ params }) => {
                                 {location.address.streetAddres}, {location.address.postalCode}{' '}
                                 {location.address.addressLocality}
                             </p>
-                            <h2 className={styles.title}>
+                            <h2 className={'title'}>
                                 <a
                                     title={map.title}
                                     target={'_blank'}
@@ -175,7 +174,7 @@ const SlugPage = async ({ params }) => {
             ) : null}
 
             {calendarSrc ? (
-                <div className={`${styles.container}`}>
+                <div className={`${'container'}`}>
                     <main>
                         <h1>{pageTitle}</h1>
                         <ResponsiveCalendar src={calendarSrc} />
@@ -185,13 +184,13 @@ const SlugPage = async ({ params }) => {
 
             {boardMembers ? (
                 <>
-                    <div className={`${styles.container} ${styles.withOverlay}`}>
-                        <main className={`${styles.main} ${styles.withUnderlay}`}>
+                    <div className={`${'container'} ${'withOverlay'}`}>
+                        <main className={`${'main'} ${'withUnderlay'}`}>
                             <h1>{pageTitle}</h1>
                         </main>
                     </div>
                     <Figure data={mainImage} quality={75} layout={'responsive'} />
-                    <div className={styles.container}>
+                    <div className={'container'}>
                         <BoardList title={'Junta'} data={boardMembers} />
                         <BoardList title={'Tècnica'} data={techMembers} />
                     </div>

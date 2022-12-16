@@ -1,6 +1,4 @@
-import styles from '@styles/Home.module.scss';
 import api from '@libs/api.js';
-import OtherRoutes from '@components/otherroutes';
 import MDFileContent from '@components/mdncontentparser';
 import Figure from '@components/figure';
 import { IDataFigure } from '@interfaces/index';
@@ -25,8 +23,8 @@ const UnaCollaSingularIPionera = async () => {
         <>
             <Figure data={mainImage} quality={75} layout={'responsive'} />
 
-            <div className={`${styles.container}`}>
-                <main className={styles.main}>
+            <div className={`${'container'}`}>
+                <main className={'main'}>
                     <h1>{title}</h1>
                     <MDFileContent content={mdFileContent} />
                 </main>

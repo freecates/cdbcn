@@ -1,4 +1,3 @@
-import styles from '@styles/Home.module.scss';
 import Figure from '@components/figure';
 import api from '@libs/api.js';
 import OtherRoutes from '@components/otherroutes';
@@ -19,23 +18,23 @@ const LaColla = async () => {
     const mainImage = colla.images.mainImage;
     return (
         <>
-            <h1 className={styles.title}>La Colla</h1>
+            <h1 className={'title'}>La Colla</h1>
 
-            <div className={styles.container}>
+            <div className={'container'}>
                 <OtherRoutes routes={newOtherRoutes} />
             </div>
 
-            <div className={`${styles.container} ${styles.withOverlay}`}>
-                <main className={`${styles.main} ${styles.withUnderlay}`}>
+            <div className={`${'container'} ${'withOverlay'}`}>
+                <main className={`${'main'} ${'withUnderlay'}`}>
                     <MDFileContent content={mdFileContent} />
                 </main>
             </div>
 
             <Figure data={mainImage} quality={75} layout={'responsive'} />
 
-            <hr className={styles.hr} />
+            <hr className={'hr'} />
 
-            <div className={styles.container}>
+            <div className={'container'}>
                 <p>
                     <small>
                         Els textos i les imatges d&apos;aquestes seccions estan extrets del LLibre:

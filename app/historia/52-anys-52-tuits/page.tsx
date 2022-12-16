@@ -1,4 +1,3 @@
-import styles from '@styles/Home.module.scss';
 import Figure from '@components/figure';
 import api from '@libs/api.js';
 import MDFileContent from '@components/mdncontentparser';
@@ -18,8 +17,8 @@ const CinquantaDosAnys52Tuits = async () => {
     const imageGallery = anys52tuits.images.imageGallery;
     return (
         <>
-            <div className={`${styles.container}`}>
-                <main className={styles.main}>
+            <div className={`${'container'}`}>
+                <main className={'main'}>
                     <MDFileContent content={mdFileContent} />
                 </main>
             </div>

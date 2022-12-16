@@ -1,6 +1,5 @@
 import Grid from '@components/grid';
 import api from '@libs/api.js';
-import styles from '@styles/Home.module.scss';
 import { FaYoutube } from 'react-icons/fa';
 import { IData, IMeta } from '@interfaces/index';
 import Fallback from '@components/fallback';
@@ -19,9 +18,9 @@ const Videos = async () => {
     const { pageTitle } = videos.meta;
     return (
         <>
-            <h1 className={styles.title}>{pageTitle}</h1>
-            <div className={`${styles.container} ${styles.noPadding}`}>
-                <main className={styles.main}>
+            <h1 className={'title'}>{pageTitle}</h1>
+            <div className={`${'container'} ${'noPadding'}`}>
+                <main className={'main'}>
                     <Grid data={videosData} isThree />
                     <hr />
                     <p>

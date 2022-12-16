@@ -1,6 +1,5 @@
 import Grid from '@components/grid';
 import api from '@libs/api.js';
-import styles from '@styles/Home.module.scss';
 import Fallback from '@components/fallback';
 import { FaFlickr } from 'react-icons/fa';
 
@@ -13,9 +12,9 @@ const Fotos = async () => {
     const { pageTitle } = fotos.meta;
     return (
         <>
-            <h1 className={styles.title}>{pageTitle}</h1>
-            <div className={`${styles.container} ${styles.noPadding}`}>
-                <main className={styles.main}>
+            <h1 className={'title'}>{pageTitle}</h1>
+            <div className={`${'container'} ${'noPadding'}`}>
+                <main className={'main'}>
                     <Grid data={fotosData} isThree />
                     <hr />
                     <p>

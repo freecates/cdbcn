@@ -1,6 +1,5 @@
 import Grid from '@components/grid';
 import Video from '@components/video';
-import styles from '@styles/Home.module.scss';
 import api from '@libs/api.js';
 import Link from 'next/link';
 import { IData } from '@interfaces/index';
@@ -41,12 +40,12 @@ const Home = async () => {
     const mainVideo = home.videos.mainVideo;
     return (
         <>
-            <div className={styles.wrapperVideo}>
+            <div className={'wrapperVideo'}>
                 <Video data={mainVideo} />
             </div>
-            <div className={`${styles.container} ${styles.withOverlay} ${styles.noPadding}`}>
-                <main className={`${styles.main} ${styles.withOverlay}`}>
-                    <p className={styles.description}>
+            <div className={`${'container'} ${'withOverlay'} ${'noPadding'}`}>
+                <main className={`${'main'} ${'withOverlay'}`}>
+                    <p className={'description'}>
                         <strong>{name}</strong>
                         <br />
                         [La Colla Degana de la Ciutat - <Link href={'/la-colla'}>1969</Link>
@@ -73,11 +72,11 @@ const Home = async () => {
                         <br />
                         <a href={email.href}>{email.address}</a>
                         <br />
-                        <Link href={'/participa'} className={styles.button}>
+                        <Link href={'/participa'} className={'button'}>
                             CONTRACTA&apos;NS
                         </Link>
                     </p>
-                    <hr className={styles.hr} />
+                    <hr className={'hr'} />
                     <Grid data={noticiesData} isThree />
                 </main>
             </div>

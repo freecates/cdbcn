@@ -1,12 +1,11 @@
 import Link from 'next/link';
-import styles from '@styles/Home.module.scss';
 
 export default function NotFound() {
     return (
         <>
-            <div className={`${styles.container}`}>
-                <main className={styles.main}>
-                    <h1 className={styles.title}>
+            <div className={`${'container'}`}>
+                <main className={'main'}>
+                    <h1 className={'title'}>
                         S&apos;ha produït un error 404
                         <br />
                         <small>[Pàgina no trobada]</small>

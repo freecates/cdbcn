@@ -1,6 +1,5 @@
 import Grid from '@components/grid';
 import api from '@libs/api.js';
-import styles from '@styles/Home.module.scss';
 import { IData, IMeta } from '@interfaces/index';
 
 type WpTypeProps = {
@@ -14,9 +13,9 @@ const WpTypePage = async ({ params }) => {
     const { pageTitle } = cdbData.meta;
     return (
         <>
-            <h1 className={styles.title}>{pageTitle}</h1>
-            <div className={`${styles.container} ${styles.noPadding}`}>
-                <main className={styles.main}>
+            <h1 className={'title'}>{pageTitle}</h1>
+            <div className={`${'container'} ${'noPadding'}`}>
+                <main className={'main'}>
                     <Grid data={wpData} isThree />
                 </main>
             </div>

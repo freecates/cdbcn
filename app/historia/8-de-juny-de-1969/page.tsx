@@ -1,4 +1,3 @@
-import styles from '@styles/Home.module.scss';
 import Figure from '@components/figure';
 import api from '@libs/api.js';
 import MDFileContent from '@components/mdncontentparser';
@@ -21,8 +20,8 @@ const VuitDeJunyDe1969 = async () => {
         <>
             <Figure data={mainImage} quality={75} layout={'responsive'} />
 
-            <div className={`${styles.container}`}>
-                <main className={styles.main}>
+            <div className={`${'container'}`}>
+                <main className={'main'}>
                     <MDFileContent content={mdFileContent} />
                 </main>
             </div>
