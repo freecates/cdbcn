@@ -1,5 +1,4 @@
 import api from '@libs/api.js';
-import { notFound } from 'next/navigation';
 type Props = {
     headPageData: {
         pageTitle: string;

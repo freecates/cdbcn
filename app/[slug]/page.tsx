@@ -1,4 +1,3 @@
-import { notFound } from 'next/navigation';
 import MDFileContent from '@components/mdncontentparser';
 import api from '@libs/api.js';
 import { IMeta, IDataFigure, IRoute, IMember } from '@interfaces/index';
@@ -7,6 +6,7 @@ import OtherRoutes from '@components/otherroutes';
 import { FaMapSigns } from 'react-icons/fa';
 import ResponsiveCalendar from '@components/responsivecalendar';
 import BoardList from '@components/boardlist';
+import Fallback from '@components/fallback';
 
 type SlugPageProps = {
     pageData: {
@@ -35,7 +35,7 @@ const SlugPage = async ({ params }) => {
     const { slug } = params;
     const { pageData, mdFileContent }: SlugPageProps = await getData(slug);
     if (!pageData) {
-        notFound();
+        return <Fallback notFound />;
       }
     const {
         pageTitle,
