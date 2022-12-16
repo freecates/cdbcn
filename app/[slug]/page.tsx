@@ -225,7 +225,7 @@ export const generateStaticParams = async () => {
     ];
 };
 
-export const dynamicParams = true;
+export const dynamicParams = false;
 
 export const revalidate = 30;
 
