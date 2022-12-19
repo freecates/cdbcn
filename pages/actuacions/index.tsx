@@ -5,9 +5,6 @@ import styles from '@styles/Home.module.scss';
 import { GetStaticProps } from 'next';
 import { IData, IRoute, ISupporter, IMeta } from '@interfaces/index';
 
-const wordPressApiUrl = process.env.WORDPRESS_API_URL;
-const bearerToken = process.env.BEARER_TOKEN;
-
 type ActuacionsProps = {
     data: IData;
     actuacions: { meta: IMeta };
@@ -38,21 +35,18 @@ const Actuacions: React.FC<ActuacionsProps> = ({ data, actuacions, footer, route
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-    const res = await fetch(`${wordPressApiUrl}/wp/v2/actuacions?per_page=99&_embed`, {
-        headers: { 'Cache-Control': 'no-cache' },
-    });
-    const data = await res.json();
-    const [actuacions, footer, routes] = await Promise.all([
-        api.actuacions.getData(),
-        api.footer.getData(),
-        api.routes.getData(),
+    const [actuacions, footer, routes, data] = await Promise.all([
+        api.cdbData.getData('actuacions'),
+        api.cdbData.getData('footer'),
+        api.cdbData.getData('routes'),
+        api.wpData.getData('actuacions', 99, null),
     ]);
     return {
         props: {
-            data: data,
             actuacions: { ...actuacions[0] },
             footer: { ...footer[0] },
             routes,
+            data: data,
         },
         revalidate: 1,
     };

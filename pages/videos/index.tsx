@@ -7,10 +7,6 @@ import { FaYoutube } from 'react-icons/fa';
 import { GetStaticProps } from 'next';
 import { IData, IRoute, ISupporter, IMeta } from '@interfaces/index';
 
-const youtubeApiUrl = process.env.YOUTUBE_API_URL;
-const youtubeApiKey = process.env.YOUTUBE_API_KEY;
-const youtubeChannelId = process.env.YOUTUBE_CHANNEL_ID;
-const QUERY = `${youtubeApiUrl}/search?part=snippet&channelId=${youtubeChannelId}&maxResults=50&order=date&type=video&publishedAfter=2020-01-01T00:00:00Z&key=${youtubeApiKey}`;
 
 type VideosProps = {
     data: { items: IData };
@@ -59,19 +55,12 @@ const Videos: React.FC<VideosProps> = ({ data, footer, routes, videos }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-    const res = await fetch(QUERY);
-    const data = await res.json();
-    const [videos] = await Promise.all([api.videos.getData()]);
-    const [footer, routes] = await Promise.all([api.footer.getData(), api.routes.getData()]);
-
-    /* return {
-        props: {
-            data: { ...videos[0] },
-            footer: { ...footer[0] },
-            routes,
-        },
-        revalidate: 1,
-    }; */
+    const [data, videos, footer, routes] = await Promise.all([
+        api.youtubeData.getData('videos', null),
+        api.cdbData.getData('videos'), 
+        api.cdbData.getData('footer'), 
+        api.cdbData.getData('routes'),
+    ]);
 
     if (!data.error) {
         return {

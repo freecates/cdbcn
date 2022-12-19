@@ -6,9 +6,6 @@ import Link from 'next/link';
 import { GetStaticProps } from 'next';
 import { IData, IRoute, ISupporter } from '@interfaces/index';
 
-const wordPressApiUrl = process.env.WORDPRESS_API_URL;
-const bearerToken = process.env.BEARER_TOKEN;
-
 type ActualitatProps = {
     actuacionsData: IData;
     noticiesData: IData;
@@ -78,21 +75,18 @@ const Actualitat: React.FC<ActualitatProps> = ({
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-    const res = await fetch(`${wordPressApiUrl}/wp/v2/actuacions?per_page=2&_embed`, {
-        headers: { 'Cache-Control': 'no-cache' },
-    });
-    const actuacionsData = await res.json();
-    const res2 = await fetch(`${wordPressApiUrl}/wp/v2/noticies?per_page=2&_embed`, {
-        headers: { 'Cache-Control': 'no-cache' },
-    });
-    const noticiesData = await res2.json();
-    const [footer, routes] = await Promise.all([api.footer.getData(), api.routes.getData()]);
+    const [footer, routes, actuacionsData, noticiesData] = await Promise.all([
+        api.cdbData.getData('footer'), 
+        api.cdbData.getData('routes'),
+        api.wpData.getData('actuacions', 2, null),
+        api.wpData.getData('noticies', 2, null),
+    ]);
     return {
         props: {
-            actuacionsData: actuacionsData,
-            noticiesData: noticiesData,
             footer: { ...footer[0] },
             routes,
+            actuacionsData: actuacionsData,
+            noticiesData: noticiesData,
         },
         revalidate: 1,
     };

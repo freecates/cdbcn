@@ -8,7 +8,6 @@ import { FaMapSigns } from 'react-icons/fa';
 import { GetStaticProps } from 'next';
 import { IMeta, IRoute, ISupporter, IDataFigure } from '@interfaces/index';
 
-const staticDataUrl = process.env.STATIC_DATA_URL;
 
 type FesCastellsProps = {
     fesCastells: {
@@ -70,14 +69,12 @@ const FesCastells: React.FC<FesCastellsProps> = ({ footer, routes, fesCastells, 
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-    const [fesCastells, footer, routes] = await Promise.all([
-        api.fesCastells.getData(),
-        api.footer.getData(),
-        api.routes.getData(),
+    const [fesCastells, footer, routes, mdFileContent] = await Promise.all([
+        api.cdbData.getData('fesCastells'),
+        api.cdbData.getData('footer'),
+        api.cdbData.getData('routes'),
+        api.mdContent.getData('fes-castells'),
     ]);
-
-    const res = await fetch(`${staticDataUrl}/content/fes-castells.md`);
-    const mdFileContent = await res.text();
 
     return {
         props: {

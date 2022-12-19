@@ -7,8 +7,6 @@ import Link from 'next/link';
 import { GetStaticProps } from 'next';
 import { IData, IRoute, ISupporter, IMeta } from '@interfaces/index';
 
-const wordPressApiUrl = process.env.WORDPRESS_API_URL;
-const bearerToken = process.env.BEARER_TOKEN;
 
 type HomeProps = {
     home: {
@@ -106,16 +104,13 @@ const Home: React.FC<HomeProps> = ({ noticiesData, home, contacte, footer, route
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-    const res2 = await fetch(`${wordPressApiUrl}/wp/v2/noticies?per_page=3&_embed`, {
-        headers: { 'Cache-Control': 'no-cache' },
-    });
-    const noticiesData = await res2.json();
-
-    const [home, contacte, footer, routes] = await Promise.all([
-        api.home.getData(),
-        api.contacte.getData(),
-        api.footer.getData(),
-        api.routes.getData(),
+    
+    const [home, contacte, footer, routes, noticiesData] = await Promise.all([
+        api.cdbData.getData('home'),
+        api.cdbData.getData('contacte'),
+        api.cdbData.getData('footer'),
+        api.cdbData.getData('routes'),
+        api.wpData.getData('noticies', 3, null),
     ]);
     return {
         props: {

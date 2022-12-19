@@ -8,8 +8,6 @@ import { GetStaticProps } from 'next';
 import { IMeta, IRoute, ISupporter, IDataFigure } from '@interfaces/index';
 
 
-const staticDataUrl = process.env.STATIC_DATA_URL;
-
 type CinquantaDosAnys52TuitsProps = {
     anys52tuits: {
         meta: IMeta & { otherRoutes: IRoute[] };
@@ -50,13 +48,12 @@ const CinquantaDosAnys52Tuits: React.FC<CinquantaDosAnys52TuitsProps> = ({ anys5
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-    const [anys52tuits, footer, routes] = await Promise.all([
-        api.anys52tuits.getData(),
-        api.footer.getData(),
-        api.routes.getData(),
+    const [anys52tuits, footer, routes, mdFileContent] = await Promise.all([
+        api.cdbData.getData('anys52tuits'),
+        api.cdbData.getData('footer'),
+        api.cdbData.getData('routes'),
+        api.mdContent.getData('52-anys-52-tuits'),
     ]);
-    const res = await fetch(`${staticDataUrl}/content/52-anys-52-tuits.md`);
-    const mdFileContent = await res.text();
 
     return {
         props: {

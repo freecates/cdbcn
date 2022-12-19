@@ -5,9 +5,6 @@ import styles from '@styles/Home.module.scss';
 import { GetStaticProps } from 'next';
 import { IData, IRoute, ISupporter, IMeta } from '@interfaces/index';
 
-const wordPressApiUrl = process.env.WORDPRESS_API_URL;
-const bearerToken = process.env.BEARER_TOKEN;
-
 type NoticiesProps = {
     data: IData;
     noticies: { meta: IMeta };
@@ -38,15 +35,12 @@ const Noticies: React.FC<NoticiesProps> = ({ data, noticies, footer, routes }) =
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-    const res = await fetch(`${wordPressApiUrl}/wp/v2/noticies?per_page=99&_embed`, {
-        headers: { 'Cache-Control': 'no-cache' },
-    });
-    const data = await res.json();
 
-    const [noticies, footer, routes] = await Promise.all([
-        api.noticies.getData(),
-        api.footer.getData(),
-        api.routes.getData(),
+    const [data, noticies, footer, routes] = await Promise.all([
+        api.wpData.getData('noticies', 99, null),
+        api.cdbData.getData('noticies'),
+        api.cdbData.getData('footer'),
+        api.cdbData.getData('routes'),
     ]);
     return {
         props: {

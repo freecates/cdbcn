@@ -6,7 +6,6 @@ import MDFileContent from '@components/mdncontentparser';
 import { GetStaticProps } from 'next';
 import { IMeta, IRoute, ISupporter, IDataFigure } from '@interfaces/index';
 
-const staticDataUrl = process.env.STATIC_DATA_URL;
 
 type ParticipaProps = {
     participa: {
@@ -66,13 +65,12 @@ const Participa: React.FC<ParticipaProps> = ({ footer, routes, participa, mdFile
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-    const [participa, footer, routes] = await Promise.all([
-        api.participa.getData(),
-        api.footer.getData(),
-        api.routes.getData(),
+    const [participa, footer, routes, mdFileContent] = await Promise.all([
+        api.cdbData.getData('participa'),
+        api.cdbData.getData('footer'),
+        api.cdbData.getData('routes'),
+        api.mdContent.getData('participa'),
     ]);
-    const res = await fetch(`${staticDataUrl}/content/participa.md`);
-    const mdFileContent = await res.text();
     return {
         props: {
             footer: { ...footer[0] },

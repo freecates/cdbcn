@@ -7,7 +7,6 @@ import Figure from '@components/figure';
 import { GetStaticProps } from 'next';
 import { IMeta, IRoute, ISupporter, IDataFigure } from '@interfaces/index';
 
-const staticDataUrl = process.env.STATIC_DATA_URL;
 
 type UnaCollaSingularIPioneraProps = {
     unaCollaSingularIPionera: {
@@ -50,13 +49,12 @@ const UnaCollaSingularIPionera: React.FC<UnaCollaSingularIPioneraProps> = ({ una
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-    const [unaCollaSingularIPionera, footer, routes] = await Promise.all([
-        api.unaCollaSingularIPionera.getData(),
-        api.footer.getData(),
-        api.routes.getData(),
+    const [unaCollaSingularIPionera, footer, routes, mdFileContent] = await Promise.all([
+        api.cdbData.getData('unaCollaSingularIPionera'),
+        api.cdbData.getData('footer'),
+        api.cdbData.getData('routes'),
+        api.mdContent.getData('una-colla-singular-i-pionera'),
     ]);
-    const res = await fetch(`${staticDataUrl}/content/una-colla-singular-i-pionera.md`);
-    const mdFileContent = await res.text();
     return {
         props: {
             unaCollaSingularIPionera: { ...unaCollaSingularIPionera[0] },

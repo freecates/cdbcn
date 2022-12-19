@@ -7,9 +7,6 @@ import api from '@libs/api.js';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import { IContent, IRoute, ISupporter } from '@interfaces/index';
 
-const wordPressApiUrl = process.env.WORDPRESS_API_URL;
-const bearerToken = process.env.BEARER_TOKEN;
-
 type ActuacioProps = {
     post: {
         acf: IContent;
@@ -64,10 +61,7 @@ const Actuacio: React.FC<ActuacioProps> = ({ post, footer }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const res = await fetch(`${wordPressApiUrl}/wp/v2/actuacions?per_page=100`, {
-        headers: { 'Cache-Control': 'no-cache' },
-    });
-    const posts = await res.json();
+    const posts = await api.wpData.getData('actuacions', 100, null);
 
     const paths = posts.map((post) => `/${post.type}/${post.id}/${post.slug}`);
 
@@ -75,13 +69,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-    const res = await fetch(`${wordPressApiUrl}/wp/v2/actuacions/${params.id}?_embed`, {
-        headers: { 'Cache-Control': 'no-cache' },
-    });
-
-    const post = await res.json();
-
-    const [footer] = await Promise.all([api.footer.getData()]);
+    const [post, footer] = await Promise.all([
+        api.wpData.getData('actuacions', null, params.id),
+        api.footer.getData(),
+    ]);
 
     if (!post.data) {
         return { props: { post, footer: { ...footer[0] } }, revalidate: 1 };

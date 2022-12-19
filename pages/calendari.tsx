@@ -40,9 +40,9 @@ const Calendar: React.FC<CalendarProps> = ({ calendari, footer, routes }) => {
 
 export const getStaticProps: GetStaticProps = async () => {
     const [calendari, footer, routes] = await Promise.all([
-        api.calendari.getData(),
-        api.footer.getData(),
-        api.routes.getData(),
+        api.cdbData.getData('calendari'),
+        api.cdbData.getData('footer'),
+        api.cdbData.getData('routes'),
     ]);
 
     return {

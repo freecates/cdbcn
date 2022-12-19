@@ -6,10 +6,6 @@ import Fallback from '@components/fallback';
 import { FaFlickr } from 'react-icons/fa';
 import { GetStaticProps } from 'next';
 
-const flickrApiUrl = process.env.FLICKR_API_URL;
-const flickrApiKey = process.env.FLICKR_APY_KEY;
-const flickrApiUserId = process.env.FLICKR_API_USER_ID;
-const QUERY = `${flickrApiUrl}?method=flickr.photos.search&format=json&nojsoncallback=?&api_key=${flickrApiKey}&user_id=${flickrApiUserId}&extras=description,url_m,date_upload,date_taken,media&per_page=200&content_type=1`;
 
 const Fotos = ({ data, footer, routes, fotos }) => {
     if (data === 'error') {
@@ -51,19 +47,12 @@ const Fotos = ({ data, footer, routes, fotos }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-    const res = await fetch(QUERY);
-    const data = await res.json();
-    const [fotos] = await Promise.all([api.fotos.getData()]);
-    const [footer, routes] = await Promise.all([api.footer.getData(), api.routes.getData()]);
-
-    /* return {
-        props: {
-            data: { ...fotos[0] },
-            footer: { ...footer[0] },
-            routes,
-        },
-        revalidate: 1,
-    }; */
+    const [data, fotos, footer, routes] = await Promise.all([
+        api.flickrData.getData('photos', null),
+        api.cdbData.getData('fotos'),
+        api.cdbData.getData('footer'), 
+        api.cdbData.getData('routes'),
+    ]);
 
     if (!data.error) {
         return {

@@ -36,9 +36,9 @@ const JuntaITecnica = ({ footer, routes, juntaITecnica }) => {
 
 export const getStaticProps: GetStaticProps = async () => {
     const [juntaITecnica, footer, routes] = await Promise.all([
-        api.juntaITecnica.getData(),
-        api.footer.getData(),
-        api.routes.getData(),
+        api.cdbData.getData('juntaITecnica'),
+        api.cdbData.getData('footer'),
+        api.cdbData.getData('routes'),
     ]);
     return {
         props: {

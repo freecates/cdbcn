@@ -6,11 +6,7 @@ import { useRouter } from 'next/router';
 import Custom404 from '../404';
 import { GetStaticProps, GetStaticPaths } from 'next';
 
-const flickrApiUrl = process.env.FLICKR_API_URL;
-const flickrApiKey = process.env.FLICKR_APY_KEY;
-const flickrApiUserId = process.env.FLICKR_API_USER_ID;
 const type = 'fotos';
-const QUERY = `${flickrApiUrl}?method=flickr.photos.search&format=json&nojsoncallback=?&api_key=${flickrApiKey}&user_id=${flickrApiUserId}&extras=description,url_m,date_upload,date_taken,media&per_page=200&content_type=1`;
 
 const Foto = ({ post, fotoSizes, footer }) => {
     const { isFallback } = useRouter();
@@ -56,8 +52,7 @@ const Foto = ({ post, fotoSizes, footer }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const res = await fetch(QUERY);
-    const data = await res.json();
+    const data = await api.flickrData.getData('photos', null);
     const items = data.photos.photo;
 
     const paths = items.map((i) => `/${type}/${i.id}`);
@@ -67,17 +62,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
     const id = params.id;
-    const res = await fetch(
-        `${flickrApiUrl}/?method=flickr.photos.getInfo&format=json&nojsoncallback=?&api_key=${flickrApiKey}&photo_id=${id}`
-    );
-    const post = await res.json();
-    const res2 = await fetch(
-        `${flickrApiUrl}/?method=flickr.photos.getSizes&format=json&nojsoncallback=?&api_key=${flickrApiKey}&photo_id=${id}`
-    );
-    const fotoDetails = await res2.json();
+    const [post, fotoDetails, footer] = await Promise.all([
+        api.flickrData.getData('photo', id),
+        api.flickrData.getData('photoDetails', id),
+        api.footer.getData(),
+    ]);
     const fotoSizes = fotoDetails.sizes;
-
-    const [footer] = await Promise.all([api.footer.getData()]);
 
     if (!post.error && !fotoDetails.error) {
         return { props: { post, fotoSizes, footer: { ...footer[0] } }, revalidate: 3600 };

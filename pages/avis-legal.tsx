@@ -5,7 +5,6 @@ import api from '@libs/api.js';
 import { GetStaticProps } from 'next';
 import { IMeta, IRoute, ISupporter } from '@interfaces/index';
 
-const staticDataUrl = process.env.STATIC_DATA_URL;
 
 type AvisLegalProps = {
     avisLegal: {
@@ -39,10 +38,11 @@ const AvisLegal: React.FC<AvisLegalProps> = ({ avisLegal, footer, mdFileContent 
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-    const [avisLegal] = await Promise.all([api.avisLegal.getData()]);
-    const [footer] = await Promise.all([api.footer.getData()]);
-    const res = await fetch(`${staticDataUrl}/content/avis-legal.md`);
-    const mdFileContent = await res.text();
+    const [avisLegal, footer, mdFileContent] = await Promise.all([
+        api.cdbData.getData('avisLegal'),
+        api.cdbData.getData('footer'),
+        api.mdContent.getData('avis-legal'),
+    ]);
     return {
         props: {
             avisLegal: { ...avisLegal[0] },

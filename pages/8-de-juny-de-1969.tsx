@@ -7,7 +7,6 @@ import MDFileContent from '@components/mdncontentparser';
 import { GetStaticProps } from 'next';
 import { IMeta, IRoute, ISupporter, IDataFigure } from '@interfaces/index';
 
-const staticDataUrl = process.env.STATIC_DATA_URL;
 
 type VuitDeJunyDe1969Props = {
     vuitDeJuny1969: {
@@ -54,13 +53,12 @@ const VuitDeJunyDe1969: React.FC<VuitDeJunyDe1969Props> = ({
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-    const [vuitDeJuny1969, footer, routes] = await Promise.all([
-        api.vuitDeJuny1969.getData(),
-        api.footer.getData(),
-        api.routes.getData(),
+    const [vuitDeJuny1969, footer, routes, mdFileContent] = await Promise.all([
+        api.cdbData.getData('vuitDeJuny1969'),
+        api.cdbData.getData('footer'),
+        api.cdbData.getData('routes'),
+        api.mdContent.getData('1969'),
     ]);
-    const res = await fetch(`${staticDataUrl}/content/1969.md`);
-    const mdFileContent = await res.text();
     return {
         props: {
             vuitDeJuny1969: { ...vuitDeJuny1969[0] },

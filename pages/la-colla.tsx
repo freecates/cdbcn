@@ -7,8 +7,6 @@ import MDFileContent from '@components/mdncontentparser';
 import { GetStaticProps } from 'next';
 import { IMeta, IRoute, ISupporter, IDataFigure } from '@interfaces/index';
 
-const staticDataUrl = process.env.STATIC_DATA_URL;
-
 type LaCollaProps = {
     colla: {
         meta: IMeta & { otherRoutes: IRoute[] };
@@ -67,13 +65,12 @@ const LaColla: React.FC<LaCollaProps> = ({ colla, footer, routes, mdFileContent 
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-    const [colla, footer, routes] = await Promise.all([
-        api.colla.getData(),
-        api.footer.getData(),
-        api.routes.getData(),
+    const [colla, footer, routes, mdFileContent] = await Promise.all([
+        api.cdbData.getData('colla'),
+        api.cdbData.getData('footer'),
+        api.cdbData.getData('routes'),
+        api.mdContent.getData('colla'),
     ]);
-    const res = await fetch(`${staticDataUrl}/content/colla.md`);
-    const mdFileContent = await res.text();
     return {
         props: {
             colla: { ...colla[0] },

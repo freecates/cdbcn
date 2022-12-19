@@ -64,10 +64,7 @@ const Noticia: React.FC<ActuacioProps> = ({ post, footer }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const res = await fetch(`${wordPressApiUrl}/wp/v2/noticies?per_page=100`, {
-        headers: { 'Cache-Control': 'no-cache' },
-    });
-    const posts = await res.json();
+    const posts = await api.wpData.getData('noticies', 100, null);
 
     const paths = posts.map((post) => `/${post.type}/${post.id}/${post.slug}`);
 
@@ -75,13 +72,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-    const res = await fetch(`${wordPressApiUrl}/wp/v2/noticies/${params.id}?_embed`, {
-        headers: { 'Cache-Control': 'no-store, max-age=0' },
-    });
-
-    const post = await res.json();
-
-    const [footer] = await Promise.all([api.footer.getData()]);
+    const [post, footer] = await Promise.all([
+        api.wpData.getData('noticies', null, params.id),
+        api.footer.getData(),
+    ]);
 
     if (!post.data) {
         return { props: { post, footer: { ...footer[0] } }, revalidate: 1 };

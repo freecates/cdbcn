@@ -63,9 +63,9 @@ const Contacte = ({ contacte, footer, routes }) => {
 
 export const getStaticProps: GetStaticProps = async () => {
     const [contacte, footer, routes] = await Promise.all([
-        api.contacte.getData(),
-        api.footer.getData(),
-        api.routes.getData(),
+        api.cdbData.getData('contacte'),
+        api.cdbData.getData('footer'),
+        api.cdbData.getData('routes'),
     ]);
     return {
         props: {

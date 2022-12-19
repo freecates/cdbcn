@@ -46,9 +46,9 @@ const Galeria: React.FC<GaleriaProps> = ({ galeria, footer, routes }) => {
 
 export const getStaticProps: GetStaticProps = async () => {
     const [galeria, footer, routes] = await Promise.all([
-        api.galeria.getData(),
-        api.footer.getData(),
-        api.routes.getData(),
+        api.cdbData.getData('galeria'),
+        api.cdbData.getData('footer'),
+        api.cdbData.getData('routes'),
     ]);
     return {
         props: {
