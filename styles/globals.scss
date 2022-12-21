@@ -585,8 +585,7 @@ em {
     margin: 0 auto;
 }
 
-.title,
-.description {
+.title {
     text-align: center;
 }
 
@@ -612,13 +611,11 @@ em {
         padding: 0;
     }
     @media (min-width: 768px) {
-        .container {
-            padding: 0 2rem;
-    
-            &.withOverlay {
-                position: relative;
-                z-index: 1;
-            }
+        padding: 0 2rem;
+
+        &.withOverlay {
+            position: relative;
+            z-index: 1;
         }
     }
 }
@@ -649,6 +646,11 @@ em {
             color: $main-red;
         }
     }
+    .description {
+        .title {
+            font-size: 1rem;
+        }
+    }
 }
 
 .figure {
@@ -668,7 +670,6 @@ em {
     margin: 0 auto;
 }
 
-.title,
 .description,
 .figcaption {
     text-align: center;
