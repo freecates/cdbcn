@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Footer from '@components/footer';
 import Nav from '@components/Nav';
 import { IRoute, ISupporter } from '@interfaces/index';
+import ScrollToTop from '@components/scrolltotop';
 
 const RootLayout = async ({ children }: { children: React.ReactNode }) => {
     const {
@@ -33,6 +34,8 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
                     </Link>
                 </h1>
                 <Nav small={false} navRoutes={navRoutes} />
+
+                <ScrollToTop />
 
                 <div>{children}</div>
 
