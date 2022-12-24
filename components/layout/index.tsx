@@ -4,7 +4,7 @@ import Link from 'next/link';
 import styles from './Layout.module.scss';
 import Footer from '@components/footer';
 import Nav from '@components/nav';
-import { TinyButton as ScrollUpButton } from 'react-scroll-up-button';
+import ScrollToTop from '@components/scrolltotop';
 import { IRoute, ISupporter } from '@interfaces/index';
 
 const staticDataUrl = 'https://cdbdata.vercel.app';
@@ -74,18 +74,7 @@ const Layout: React.FC<Props> = ({
             </Link>
         </h1>
         {navRoutes ? <Nav small={false} navRoutes={navRoutes} /> : null}
-        <ScrollUpButton
-            style={{
-                backgroundColor: '#ffffff',
-                fill: 'rgb(217, 0, 29)',
-                right: '40px',
-                padding: '.25rem',
-                width: '30px',
-                height: '30px',
-                border: 'none',
-                bottom: '10px',
-            }}
-        />
+        <ScrollToTop />
 
         <div>{children}</div>
 
