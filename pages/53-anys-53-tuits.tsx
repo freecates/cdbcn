@@ -8,8 +8,8 @@ import { GetStaticProps } from 'next';
 import { IMeta, IRoute, ISupporter, IDataFigure } from '@interfaces/index';
 
 
-type CinquantaDosAnys52TuitsProps = {
-    anys52tuits: {
+type CinquantaTresAnys53TuitsProps = {
+    anys53tuits: {
         meta: IMeta & { otherRoutes: IRoute[] };
         images: { imageGallery: IDataFigure };
     };
@@ -18,10 +18,10 @@ type CinquantaDosAnys52TuitsProps = {
     mdFileContent: string;
 };
 
-const CinquantaDosAnys52Tuits: React.FC<CinquantaDosAnys52TuitsProps> = ({ anys52tuits, footer, mdFileContent, routes }) => {
-    const { title, pageTitle, pageDescription, otherRoutes } = anys52tuits.meta;
+const CinquantaTresAnys53Tuits: React.FC<CinquantaTresAnys53TuitsProps> = ({ anys53tuits, footer, mdFileContent, routes }) => {
+    const { title, pageTitle, pageDescription, otherRoutes } = anys53tuits.meta;
     const { routes: footerLinks, supporters } = footer;
-    const imageGallery = anys52tuits.images.imageGallery;
+    const imageGallery = anys53tuits.images.imageGallery;
     return (
         
             <Layout
@@ -48,16 +48,16 @@ const CinquantaDosAnys52Tuits: React.FC<CinquantaDosAnys52TuitsProps> = ({ anys5
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-    const [anys52tuits, footer, routes, mdFileContent] = await Promise.all([
-        api.cdbData.getData('anys52tuits'),
+    const [anys53tuits, footer, routes, mdFileContent] = await Promise.all([
+        api.cdbData.getData('anys53tuits'),
         api.cdbData.getData('footer'),
         api.cdbData.getData('routes'),
-        api.mdContent.getData('52-anys-52-tuits'),
+        api.mdContent.getData('53-anys-53-tuits'),
     ]);
 
     return {
         props: {
-            anys52tuits: { ...anys52tuits[0] },
+            anys53tuits: { ...anys53tuits[0] },
             footer: { ...footer[0] },
             mdFileContent: mdFileContent,
             routes,
@@ -66,4 +66,4 @@ export const getStaticProps: GetStaticProps = async () => {
     };
 };
 
-export default CinquantaDosAnys52Tuits;
+export default CinquantaTresAnys53Tuits;
