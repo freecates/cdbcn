@@ -54,6 +54,10 @@ const Head = async ({ params }) => {
                 rel='canonical'
                 href={`https://castellersdebarcelona.cat/${type}/${id}/${slug}`}
             />
+            <meta
+                name='viewport'
+                content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no'
+            />
         </>
     );
 };
