@@ -10,9 +10,10 @@ const Head = async () => {
     return (
         <>
             <title>{`${pageTitle} | ${title}`}</title>
+            <meta name='description' content={pageDescription + ' | ' + title} />
             <meta
-                name='description'
-                content={pageDescription + ' | ' + title}
+                name='viewport'
+                content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no'
             />
         </>
     );

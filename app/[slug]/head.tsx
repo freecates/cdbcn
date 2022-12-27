@@ -10,16 +10,25 @@ type Props = {
 const Head = async ({ params }) => {
     const { slug } = params;
     const headPageData: Props = await getData(slug);
-    if (!headPageData) return (
-        <>
-        <title>Not Found</title>
-        </>
-    )
+    if (!headPageData)
+        return (
+            <>
+                <title>Not Found</title>
+                <meta
+                    name='viewport'
+                    content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no'
+                />
+            </>
+        );
     const { pageTitle, title, pageDescription } = headPageData[0].meta;
     return (
         <>
             <title>{`${pageTitle} | ${title}`}</title>
             <meta name='description' content={pageDescription + ' | ' + title} />
+            <meta
+                name='viewport'
+                content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no'
+            />
         </>
     );
 };

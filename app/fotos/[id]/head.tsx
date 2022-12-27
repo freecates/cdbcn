@@ -33,10 +33,7 @@ const Head = async ({ params }) => {
             <meta name='description' content={`${description}...`} />
 
             <meta property='fb:app_id' content='1064356173625695' />
-            <meta
-                property='og:url'
-                content={`https://castellersdebarcelona.cat/${type}/${id}`}
-            />
+            <meta property='og:url' content={`https://castellersdebarcelona.cat/${type}/${id}`} />
             <meta property='og:type' content='article' />
             <meta property='og:title' content={pageTitle} />
             <meta property='og:description' content={`${description}...`} />
@@ -51,6 +48,10 @@ const Head = async ({ params }) => {
             <meta name='twitter:description' content={`${description}...`} />
 
             <link rel='canonical' href={`https://castellersdebarcelona.cat/${type}/${id}`} />
+            <meta
+                name='viewport'
+                content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no'
+            />
         </>
     );
 };

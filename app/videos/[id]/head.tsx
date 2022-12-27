@@ -50,6 +50,10 @@ const Head = async ({ params }) => {
             <meta name='twitter:player:height' content='360' />
 
             <link rel='canonical' href={`https://castellersdebarcelona.cat/${type}/${id}`} />
+            <meta
+                name='viewport'
+                content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no'
+            />
         </>
     );
 };
