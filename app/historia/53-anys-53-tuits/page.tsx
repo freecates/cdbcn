@@ -3,18 +3,16 @@ import api from '@libs/api.js';
 import MDFileContent from '@components/mdncontentparser';
 import { IDataFigure } from '@interfaces/index';
 
-const staticDataUrl = process.env.STATIC_DATA_URL;
-
-type CinquantaDosAnys52TuitsProps = {
-    anys52tuits: {
+type CinquantaTresAnys53TuitsProps = {
+    anys53tuits: {
         images: { imageGallery: IDataFigure };
     };
     mdFileContent: string;
 };
 
-const CinquantaDosAnys52Tuits = async () => {
-    const { anys52tuits, mdFileContent }: CinquantaDosAnys52TuitsProps = await getData();
-    const imageGallery = anys52tuits.images.imageGallery;
+const CinquantaTresAnys53Tuits = async () => {
+    const { anys53tuits, mdFileContent }: CinquantaTresAnys53TuitsProps = await getData();
+    const imageGallery = anys53tuits.images.imageGallery;
     return (
         <>
             <div className={`${'container'}`}>
@@ -28,15 +26,15 @@ const CinquantaDosAnys52Tuits = async () => {
 };
 
 const getData = async () => {
-    const anys52tuits = await api.cdbData.getData('anys52tuits');
-    const mdData = await api.mdContent.getData('52-anys-52-tuits');
+    const anys53tuits = await api.cdbData.getData('anys53tuits');
+    const mdData = await api.mdContent.getData('53-anys-53-tuits');
 
     return {
-        anys52tuits: { ...anys52tuits[0] },
+        anys53tuits: { ...anys53tuits[0] },
         mdFileContent: mdData,
     };
 };
 
 export const revalidate = 60;
 
-export default CinquantaDosAnys52Tuits;
+export default CinquantaTresAnys53Tuits;

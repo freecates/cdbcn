@@ -20,8 +20,8 @@ const Head = async () => {
 };
 
 const getData = async () => {
-    const anys52tuits = await api.cdbData.getData('anys52tuits');
-    return { ...anys52tuits[0].meta };
+    const anys53tuits = await api.cdbData.getData('anys53tuits');
+    return { ...anys53tuits[0].meta };
 };
 
 export default Head;
