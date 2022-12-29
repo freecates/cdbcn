@@ -57,4 +57,6 @@ const getData = async () => {
     }
 };
 
+export const revalidate = 3600;
+
 export default Videos;
