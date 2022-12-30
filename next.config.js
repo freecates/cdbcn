@@ -25,4 +25,23 @@ module.exports = withPWA({
     experimental: {
         appDir: true,
       },
+      async redirects() {
+        return [
+          {
+            source: '/8-de-juny-de-1969',
+            destination: '/historia/8-de-juny-de-1969',
+            permanent: true,
+          },
+          {
+            source: '/53-anys-53-tuits',
+            destination: '/historia/53-anys-53-tuits',
+            permanent: true,
+          },
+          {
+            source: '/una-colla-singular-i-pionera',
+            destination: '/historia/una-colla-singular-i-pionera',
+            permanent: true,
+          },
+        ]
+      },
 });
