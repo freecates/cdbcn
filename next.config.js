@@ -42,6 +42,11 @@ module.exports = withPWA({
             destination: '/historia/una-colla-singular-i-pionera',
             permanent: true,
           },
+          {
+            source: '/ca/videos/:id',
+            destination: '/videos/:id',
+            permanent: true,
+          },
         ]
       },
 });
