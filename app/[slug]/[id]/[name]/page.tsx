@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Post from '@components/post';
 import api from '@libs/api.js';
 import { IContent } from '@interfaces/index';
@@ -32,6 +33,7 @@ const ActualitatPost = async ({ params }) => {
     return (
         <>
             <Script
+                id={id}
                 type='application/ld+json'
                 dangerouslySetInnerHTML={{
                     __html: `
@@ -86,6 +88,52 @@ const getData = async (params) => {
     }
 };
 
+const generateMetadata = async ({ params }): Promise<Metadata> => {
+    const post = await api.wpData.getData(params.slug, null, params.id);
+    if (!post.data) {
+        const pageTitle =
+            post.acf[`${params.slug === 'noticies' ? 'titular_de_la_noticia' : 'titular'}`];
+        const mainImage = post.acf.imatge_destacada;
+        const description =
+            post.acf[
+                `${
+                    params.slug === 'noticies' ? 'cos_de_text_de_la_noticia' : 'cronica_de_la_diada'
+                }`
+            ];
+        const { type, id, slug } = post;
+        return {
+            title: `${pageTitle} - Castelllers de Barcelona - ${type}`,
+            description: `${description.substring(3, 240)}...`,
+            openGraph: {
+                title: pageTitle,
+                description: `${description.substring(3, 240)}...`,
+                url: `https://castellersdebarcelona.cat/${type}/${id}/${slug}`,
+                images: [
+                    {
+                        url: mainImage.sizes.large,
+                        width: 1024,
+                        height: 1024,
+                    },
+                ],
+                type: 'article',
+            },
+            twitter: {
+                card: 'summary_large_image',
+                title: pageTitle,
+                description: `${description.substring(3, 240)}...`,
+                site: '@cdbcn',
+                creator: 'Castellers de Barcelona',
+                images: [mainImage.sizes.large],
+            },
+            alternates: {
+                canonical: `https://castellersdebarcelona.cat/${type}/${id}/${slug}`,
+            },
+        };
+    } else {
+        return { title: 'Not found' };
+    }
+};
+
 export async function generateStaticParams() {
     const noticies = await api.wpData.getData('noticies', 100, null);
     const actuacions = await api.wpData.getData('actuacions', 100, null);
@@ -94,11 +142,13 @@ export async function generateStaticParams() {
         id: `${post.id}`,
         name: post.slug,
     }));
-    const staticParamsPerformances = actuacions.map((post: { type: string; id: number; slug: string }) => ({
-        slug: post.type,
-        id: `${post.id}`,
-        name: post.slug,
-    }));
+    const staticParamsPerformances = actuacions.map(
+        (post: { type: string; id: number; slug: string }) => ({
+            slug: post.type,
+            id: `${post.id}`,
+            name: post.slug,
+        }),
+    );
     return [...staticParamsNews, ...staticParamsPerformances];
 }
 
@@ -106,4 +156,5 @@ export const dynamicParams = true;
 
 export const revalidate = 30;
 
+export { generateMetadata };
 export default ActualitatPost;

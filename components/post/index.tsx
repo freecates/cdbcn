@@ -51,11 +51,11 @@ const Galeria: React.FC<GaleriaProps> = ({ urlFlickr, urlYoutube, title }) => {
 };
 
 type PostProps = {
-    content: IContent;
-    title: string;
-    author: string;
-    date: string;
-    description: string;
+    content: null | IContent;
+    title?: string;
+    author?: string;
+    date?: string;
+    description?: string;
     type: string;
     slug?: string;
     id: string;

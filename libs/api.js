@@ -45,7 +45,7 @@ const api = {
     cdbData: {
         async getData(fileName) {
             const response = await fetch(`${staticDataUrl}/data/${fileName}.json`);
-            const data = response.status === 200 ? await response.json() : null;
+            const data = response.status !== 200 ? null : await response.json();
             return data;
         },
     },
@@ -101,7 +101,8 @@ const api = {
     mdContent: {
         async getData(slug) {
             const response = await fetch(`${staticDataUrl}/content/${slug}.md`);
-            const data = response.status === 200 ? await response.text() : null;
+            const data = response.status !== 200 ? null : await response.text();
+            if (data?.includes('NOT_FOUND')) return null;
             return data;
         },
     },

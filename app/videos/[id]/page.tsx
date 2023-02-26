@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Post from '@components/post';
 import api from '@libs/api.js';
 import { IItem } from '@interfaces/index';
@@ -17,16 +18,16 @@ const Video = async ({ params }) => {
     }
 
     const videoPlayer = post.items[0].player;
-    const video = videoDetails.items[0].snippet;
-    const pageTitle = video.title;
-    const mainImage = video.thumbnails.maxres
-        ? video.thumbnails.maxres.url
-        : video.thumbnails.standard
-        ? video.thumbnails.standard.url
-        : video.thumbnails.high.url;
-    const author = video.channelTitle;
-    const date = video.publishedAt;
-    const description = video.description;
+    const video = videoDetails?.items[0].snippet;
+    const pageTitle = video?.title;
+    const mainImage = video?.thumbnails.maxres
+        ? video?.thumbnails.maxres.url
+        : video?.thumbnails.standard
+        ? video?.thumbnails.standard.url
+        : video?.thumbnails.high.url;
+    const author = video?.channelTitle;
+    const date = video?.publishedAt;
+    const description = video?.description;
     const { embedHtml } = videoPlayer;
     const id = post.items[0].id;
     return (
@@ -58,6 +59,62 @@ const getData = async (params) => {
     } else return { post, videoDetails };
 };
 
+const generateMetadata = async ({ params }): Promise<Metadata> => {
+    const id = params.id;
+    const [post, videoDetails] = await Promise.all([
+        api.flickrData.getData('video', id),
+        api.flickrData.getData('videoDetails', id),
+    ]);
+    if (!post.items.length && !videoDetails.items.length) {
+        return { title: 'Not found' };
+    } else {
+        const video = videoDetails.items[0].snippet;
+        const pageTitle = video.title;
+        const mainImage = video.thumbnails.maxres
+            ? video.thumbnails.maxres.url
+            : video.thumbnails.standard
+            ? video.thumbnails.standard.url
+            : video.thumbnails.high.url;
+        const description = video.description;
+        const id = post.items[0].id;
+        return {
+            title: `${pageTitle} - Castelllers de Barcelona - ${type}`,
+            description: `${description.substring(3, 240)}...`,
+            openGraph: {
+                title: pageTitle,
+                description: `${description.substring(3, 240)}...`,
+                url: `https://castellersdebarcelona.cat/${type}/${id}`,
+                images: [
+                    {
+                        url: mainImage,
+                        width: 1024,
+                        height: 1024,
+                    },
+                ],
+                type: 'article',
+            },
+            twitter: {
+                card: 'player',
+                title: pageTitle,
+                description: `${description.substring(3, 240)}...`,
+                site: '@cdbcn',
+                images: [mainImage],
+                players: [
+                    {
+                        playerUrl: `https://www.youtube.com/embed/${id}`,
+                        streamUrl: `https://www.youtube.com/embed/${id}`,
+                        width: 480,
+                        height: 360,
+                    },
+                ],
+            },
+            alternates: {
+                canonical: `https://castellersdebarcelona.cat/${type}/${id}`,
+            },
+        };
+    }
+};
+
 export async function generateStaticParams() {
     const data = await api.youtubeData.getData('videos');
     const { items } = data;
@@ -71,4 +128,5 @@ export const dynamicParams = true;
 
 export const revalidate = 3600;
 
+export { generateMetadata };
 export default Video;

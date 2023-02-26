@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Grid from '@components/grid';
 import api from '@libs/api.js';
 import { FaYoutube } from 'react-icons/fa';
@@ -5,8 +6,8 @@ import { IData, IMeta } from '@interfaces/index';
 import Fallback from '@components/fallback';
 
 type VideosProps = {
-    data?: { items: IData };
-    videos?: { meta: IMeta };
+    data?: null | { items: IData };
+    videos?: null | { meta: IMeta };
 };
 
 const Videos = async () => {
@@ -15,7 +16,7 @@ const Videos = async () => {
         return <Fallback notFound />;
     }
     const videosData = data.items;
-    const { pageTitle } = videos.meta;
+    const pageTitle = videos?.meta.pageTitle;
     return (
         <>
             <h1 className={'title'}>{pageTitle}</h1>
@@ -48,7 +49,7 @@ const getData = async () => {
     ]);
 
     if (!data) {
-        return { data: null };
+        return { data: null, videos: null };
     } else {
         return {
             data: data,
@@ -57,6 +58,17 @@ const getData = async () => {
     }
 };
 
+const generateMetadata = async (): Promise<Metadata> => {
+    const videos = await api.cdbData.getData('videos');
+    const meta = { ...videos[0].meta };
+    const { pageTitle, title, pageDescription } = meta;
+    return {
+        title: pageTitle,
+        description: `${pageDescription} | ${title}`,
+    };
+};
+
 export const revalidate = 3600;
 
+export { generateMetadata };
 export default Videos;

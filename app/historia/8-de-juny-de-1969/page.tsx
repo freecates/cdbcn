@@ -1,9 +1,8 @@
+import type { Metadata } from 'next';
 import Figure from '@components/figure';
 import api from '@libs/api.js';
 import MDFileContent from '@components/mdncontentparser';
 import { IDataFigure } from '@interfaces/index';
-
-const staticDataUrl = process.env.STATIC_DATA_URL;
 
 type VuitDeJunyDe1969Props = {
     vuitDeJuny1969: {
@@ -30,6 +29,16 @@ const VuitDeJunyDe1969 = async () => {
     );
 };
 
+const generateMetadata = async (): Promise<Metadata> => {
+    const vuitDeJuny1969 = await api.cdbData.getData('vuitDeJuny1969');
+    const meta = { ...vuitDeJuny1969[0].meta };
+    const { pageTitle, title, pageDescription } = meta;
+    return {
+        title: pageTitle,
+        description: `${pageDescription} | ${title}`,
+    };
+};
+
 const getData = async () => {
     const vuitDeJuny1969 = await api.cdbData.getData('vuitDeJuny1969');
     const mdData = await api.mdContent.getData('1969');
@@ -39,4 +48,5 @@ const getData = async () => {
     };
 };
 
+export { generateMetadata };
 export default VuitDeJunyDe1969;

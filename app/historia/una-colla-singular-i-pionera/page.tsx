@@ -1,9 +1,8 @@
+import type { Metadata } from 'next';
 import api from '@libs/api.js';
 import MDFileContent from '@components/mdncontentparser';
 import Figure from '@components/figure';
 import { IDataFigure } from '@interfaces/index';
-
-const staticDataUrl = process.env.STATIC_DATA_URL;
 
 type UnaCollaSingularIPioneraProps = {
     unaCollaSingularIPionera: {
@@ -34,6 +33,16 @@ const UnaCollaSingularIPionera = async () => {
     );
 };
 
+const generateMetadata = async (): Promise<Metadata> => {
+    const unaCollaSingularIPionera = await api.cdbData.getData('unaCollaSingularIPionera');
+    const meta = { ...unaCollaSingularIPionera[0].meta };
+    const { pageTitle, title, pageDescription } = meta;
+    return {
+        title: pageTitle,
+        description: `${pageDescription} | ${title}`,
+    };
+};
+
 const getData = async () => {
     const unaCollaSingularIPionera = await api.cdbData.getData('unaCollaSingularIPionera');
     const mdData = await api.mdContent.getData('una-colla-singular-i-pionera');
@@ -43,4 +52,5 @@ const getData = async () => {
     };
 };
 
+export { generateMetadata };
 export default UnaCollaSingularIPionera;

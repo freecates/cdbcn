@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Grid from '@components/grid';
 import api from '@libs/api.js';
 import Fallback from '@components/fallback';
@@ -51,6 +52,17 @@ const getData = async () => {
     }
 };
 
+const generateMetadata = async (): Promise<Metadata> => {
+    const fotos = await api.cdbData.getData('fotos');
+    const meta = { ...fotos[0].meta };
+    const { pageTitle, title, pageDescription } = meta;
+    return {
+        title: pageTitle,
+        description: `${pageDescription} | ${title}`,
+    };
+};
+
 export const revalidate = 3600;
 
+export { generateMetadata };
 export default Fotos;

@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import MDFileContent from '@components/mdncontentparser';
 import api from '@libs/api.js';
 import { IMeta, IDataFigure, IRoute, IMember } from '@interfaces/index';
@@ -36,7 +37,7 @@ const SlugPage = async ({ params }) => {
     const { pageData, mdFileContent }: SlugPageProps = await getData(slug);
     if (!pageData) {
         return <Fallback notFound />;
-      }
+    }
     const {
         pageTitle,
         pageDescription,
@@ -212,6 +213,21 @@ const getData = async (slug: string) => {
     };
 };
 
+const generateMetadata = async ({ params }): Promise<Metadata> => {
+    const { slug } = params;
+    const camelCased = slug.replace(/-([a-z])/g, function (g) {
+        return g[1].toUpperCase();
+    });
+    const data = await api.cdbData.getData(camelCased);
+    if (!data) return { title: 'Not Found' };
+    const meta = { ...data[0].meta };
+    const { pageTitle, title, pageDescription } = meta;
+    return {
+        title: pageTitle,
+        description: `${pageDescription} | ${title}`,
+    };
+};
+
 export const generateStaticParams = async () => {
     return [
         { slug: 'politica-de-cookies' },
@@ -228,5 +244,7 @@ export const generateStaticParams = async () => {
 export const dynamicParams = false;
 
 export const revalidate = 30;
+
+export { generateMetadata };
 
 export default SlugPage;

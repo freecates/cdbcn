@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Figure from '@components/figure';
 import api from '@libs/api.js';
 import MDFileContent from '@components/mdncontentparser';
@@ -25,6 +26,16 @@ const CinquantaTresAnys53Tuits = async () => {
     );
 };
 
+const generateMetadata = async (): Promise<Metadata> => {
+    const anys53tuits = await api.cdbData.getData('anys53tuits');
+    const meta = { ...anys53tuits[0].meta };
+    const { pageTitle, title, pageDescription } = meta;
+    return {
+        title: pageTitle,
+        description: `${pageDescription} | ${title}`,
+    };
+};
+
 const getData = async () => {
     const anys53tuits = await api.cdbData.getData('anys53tuits');
     const mdData = await api.mdContent.getData('53-anys-53-tuits');
@@ -37,4 +48,5 @@ const getData = async () => {
 
 export const revalidate = 60;
 
+export { generateMetadata };
 export default CinquantaTresAnys53Tuits;

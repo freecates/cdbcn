@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Figure from '@components/figure';
 import api from '@libs/api.js';
 import OtherRoutes from '@components/otherroutes';
@@ -52,6 +53,16 @@ const LaColla = async () => {
     );
 };
 
+const generateMetadata = async (): Promise<Metadata> => {
+    const colla = await api.cdbData.getData('colla');
+    const meta = { ...colla[0].meta };
+    const { pageTitle, title, pageDescription } = meta;
+    return {
+        title: pageTitle,
+        description: `${pageDescription} | ${title}`,
+    };
+};
+
 const getData = async () => {
     const colla = await api.cdbData.getData('colla');
     const mdData = await api.mdContent.getData('colla');
@@ -61,4 +72,5 @@ const getData = async () => {
     };
 };
 
+export { generateMetadata };
 export default LaColla;

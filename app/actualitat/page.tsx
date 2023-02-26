@@ -1,7 +1,12 @@
+import type { Metadata } from 'next';
 import Grid from '@components/grid';
 import api from '@libs/api.js';
 import Link from 'next/link';
 import { IData } from '@interfaces/index';
+
+const title = 'Actualitat dels Castellers de Barcelona';
+const pageDescription = "Recull de l'Actualitat dels Castellers de Barcelona";
+const pageTitle = 'Actualitat';
 
 type ActualitatProps = {
     actuacionsData: IData;
@@ -58,6 +63,11 @@ const getData = async () => {
         actuacionsData: actuacionsData,
         noticiesData: noticiesData,
     };
+};
+
+export const metadata : Metadata = {
+    title: `${pageTitle} | ${title}`,
+    description: `${pageDescription} | ${title}`,
 };
 
 export const revalidate = 30;

@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Grid from '@components/grid';
 import api from '@libs/api.js';
 import { IData, IMeta } from '@interfaces/index';
@@ -46,6 +47,17 @@ const getData = async (wpType: string) => {
     }
 };
 
+const generateMetadata = async ({ params }): Promise<Metadata> => {
+    const { wpType } = params;
+    const headPageData = await api.cdbData.getData(wpType);
+    const meta = { ...headPageData[0].meta };
+    const { pageTitle, title, pageDescription } = meta;
+    return {
+        title: pageTitle,
+        description: `${pageDescription} | ${title}`,
+    };
+};
+
 export const generateStaticParams = async () => {
     return [{ wpType: 'noticies' }, { wpType: 'actuacions' }];
 };
@@ -53,5 +65,7 @@ export const generateStaticParams = async () => {
 export const dynamicParams = true;
 
 export const revalidate = 30;
+
+export { generateMetadata };
 
 export default WpTypePage;
