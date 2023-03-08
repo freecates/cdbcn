@@ -58,6 +58,7 @@ const api = {
                 {
                     headers: { 'Cache-Control': 'no-cache' },
                 },
+                { next: { revalidate: 60 } },
             );
             const data = await response.json();
             return data;
@@ -65,14 +66,14 @@ const api = {
     },
     flickrData: {
         async getData(type, id) {
-            const response = await fetch(getByType(type, id));
+            const response = await fetch(getByType(type, id), { next: { revalidate: 60 } });
             const data = await response.json();
             return data;
         },
     },
     youtubeData: {
         async getData(type, id) {
-            const response = await fetch(getByType(type, id));
+            const response = await fetch(getByType(type, id), { next: { revalidate: 60 } });
             const data = response.status !== 200 ? null : await response.json();
             return data;
         },
