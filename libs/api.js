@@ -55,9 +55,6 @@ const api = {
                 `${wordPressApiUrl}/wp/v2/${type}${id ? '/' + id : ''}?${
                     amount ? 'per_page=' + amount + '&' : ''
                 }_embed`,
-                {
-                    headers: { 'Cache-Control': 'no-cache' },
-                },
                 { next: { revalidate: 60 } },
             );
             const data = await response.json();
