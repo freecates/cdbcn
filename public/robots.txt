@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://castellersdebarcelona.cat
+
+# Sitemaps
+Sitemap: https://castellersdebarcelona.cat/sitemap.xml

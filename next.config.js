@@ -1,5 +1,5 @@
-const runtimeCaching = require('next-pwa/cache');
-const withPWA = require('next-pwa')({
+const runtimeCaching = require('@ducanh2912/next-pwa');
+const withPWA = require('@ducanh2912/next-pwa').default({
     dest: 'public',
     runtimeCaching,
     disable: process.env.NODE_ENV === 'development',
@@ -21,9 +21,32 @@ module.exports = withPWA({
             'live.staticflickr.com',
         ],
     },
-    i18n: {
-        locales: ['ca'],
-        defaultLocale: 'ca',
-    },
     swcMinify: true,
+    experimental: {
+        appDir: true,
+      },
+      async redirects() {
+        return [
+          {
+            source: '/8-de-juny-de-1969',
+            destination: '/historia/8-de-juny-de-1969',
+            permanent: true,
+          },
+          {
+            source: '/53-anys-53-tuits',
+            destination: '/historia/53-anys-53-tuits',
+            permanent: true,
+          },
+          {
+            source: '/una-colla-singular-i-pionera',
+            destination: '/historia/una-colla-singular-i-pionera',
+            permanent: true,
+          },
+          {
+            source: '/ca/videos/:id',
+            destination: '/videos/:id',
+            permanent: true,
+          },
+        ]
+      },
 });

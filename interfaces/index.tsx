@@ -83,3 +83,17 @@ export interface IDataFigure {
     source: string;
     imageCaption: { title: string; description: string };
 }
+
+export interface IMember {
+    name: string;
+    title: string;
+}
+
+export interface IFlickrPhotoSize {
+    label: string;
+    width: number;
+    height: number;
+    source: string;
+    url: string;
+    media: string;
+}

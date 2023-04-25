@@ -45,7 +45,7 @@ const api = {
     cdbData: {
         async getData(fileName) {
             const response = await fetch(`${staticDataUrl}/data/${fileName}.json`);
-            const data = response.status === 200 ? await response.json() : null;
+            const data = response.status !== 200 ? null : await response.json();
             return data;
         },
     },
@@ -55,9 +55,7 @@ const api = {
                 `${wordPressApiUrl}/wp/v2/${type}${id ? '/' + id : ''}?${
                     amount ? 'per_page=' + amount + '&' : ''
                 }_embed`,
-                {
-                    headers: { 'Cache-Control': 'no-cache' },
-                },
+                { next: { revalidate: 60 } },
             );
             const data = await response.json();
             return data;
@@ -65,14 +63,14 @@ const api = {
     },
     flickrData: {
         async getData(type, id) {
-            const response = await fetch(getByType(type, id));
+            const response = await fetch(getByType(type, id), { next: { revalidate: 60 } });
             const data = await response.json();
             return data;
         },
     },
     youtubeData: {
         async getData(type, id) {
-            const response = await fetch(getByType(type, id));
+            const response = await fetch(getByType(type, id), { next: { revalidate: 60 } });
             const data = response.status !== 200 ? null : await response.json();
             return data;
         },
@@ -101,7 +99,8 @@ const api = {
     mdContent: {
         async getData(slug) {
             const response = await fetch(`${staticDataUrl}/content/${slug}.md`);
-            const data = response.status === 200 ? await response.text() : null;
+            const data = response.status !== 200 ? null : await response.text();
+            if (data?.includes('NOT_FOUND')) return null;
             return data;
         },
     },
