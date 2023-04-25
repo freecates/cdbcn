@@ -57,7 +57,7 @@ const ActualitatPost = async ({ params }) => {
  "url": "https://castellersdebarcelona.cat/logo-castellers-de-barcelona.png"
 }
 }, 
-"description": "${htmlToString(description.substring(3, 120))}...",
+"description": "${htmlToString(description.substring(0, 240))}...",
 "image": "${mainImage.sizes.large}",
 "datePublished": "${date}",
 "headline": "${pageTitle.replace(/['"]+/g, '')}"
@@ -101,14 +101,14 @@ const generateMetadata = async ({ params }): Promise<Metadata> => {
                     params.slug === 'noticies' ? 'cos_de_text_de_la_noticia' : 'cronica_de_la_diada'
                 }`
             ];
-        const noHTMLDescription = htmlToString(description);
+        const noHTMLDescription = htmlToString(description).substring(0, 240);
         const { type, id, slug } = post;
         return {
             title: `${pageTitle} - Castelllers de Barcelona - ${type}`,
-            description: `${noHTMLDescription.substring(3, 240)}...`,
+            description: `${noHTMLDescription}...`,
             openGraph: {
                 title: pageTitle,
-                description: `${noHTMLDescription.substring(3, 240)}...`,
+                description: `${noHTMLDescription}...`,
                 url: `https://castellersdebarcelona.cat/${type}/${id}/${slug}`,
                 images: [
                     {
@@ -122,7 +122,7 @@ const generateMetadata = async ({ params }): Promise<Metadata> => {
             twitter: {
                 card: 'summary_large_image',
                 title: pageTitle,
-                description: `${noHTMLDescription.substring(3, 240)}...`,
+                description: `${noHTMLDescription}...`,
                 site: '@cdbcn',
                 creator: 'Castellers de Barcelona',
                 images: [mainImage.sizes.large],
