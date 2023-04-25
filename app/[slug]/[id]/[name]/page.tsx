@@ -4,6 +4,7 @@ import api from '@libs/api.js';
 import { IContent } from '@interfaces/index';
 import Script from 'next/script';
 import Fallback from '@components/fallback';
+import { htmlToString } from '@utils/htmlToString';
 
 type ActuacioProps = {
     post: {
@@ -56,7 +57,7 @@ const ActualitatPost = async ({ params }) => {
  "url": "https://castellersdebarcelona.cat/logo-castellers-de-barcelona.png"
 }
 }, 
-"description": "${description.substring(3, 120)}...",
+"description": "${htmlToString(description.substring(3, 120))}...",
 "image": "${mainImage.sizes.large}",
 "datePublished": "${date}",
 "headline": "${pageTitle.replace(/['"]+/g, '')}"
@@ -100,13 +101,14 @@ const generateMetadata = async ({ params }): Promise<Metadata> => {
                     params.slug === 'noticies' ? 'cos_de_text_de_la_noticia' : 'cronica_de_la_diada'
                 }`
             ];
+        const noHTMLDescription = htmlToString(description);
         const { type, id, slug } = post;
         return {
             title: `${pageTitle} - Castelllers de Barcelona - ${type}`,
-            description: `${description.substring(3, 240)}...`,
+            description: `${noHTMLDescription.substring(3, 240)}...`,
             openGraph: {
                 title: pageTitle,
-                description: `${description.substring(3, 240)}...`,
+                description: `${noHTMLDescription.substring(3, 240)}...`,
                 url: `https://castellersdebarcelona.cat/${type}/${id}/${slug}`,
                 images: [
                     {
@@ -120,7 +122,7 @@ const generateMetadata = async ({ params }): Promise<Metadata> => {
             twitter: {
                 card: 'summary_large_image',
                 title: pageTitle,
-                description: `${description.substring(3, 240)}...`,
+                description: `${noHTMLDescription.substring(3, 240)}...`,
                 site: '@cdbcn',
                 creator: 'Castellers de Barcelona',
                 images: [mainImage.sizes.large],
