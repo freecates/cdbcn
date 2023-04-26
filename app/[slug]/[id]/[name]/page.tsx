@@ -22,7 +22,7 @@ const ActualitatPost = async ({ params }) => {
         return <Fallback notFound />;
     }
     const pageTitle =
-        post.acf[`${params.slug === 'noticies' ? 'titular_de_la_noticia' : 'titular'}`];
+        params.slug === 'noticies' ? post.acf['titular_de_la_noticia'] : `${post.acf['nom_de_la_diada']}: ${post.acf['titular']}`;
     const mainImage = post.acf.imatge_destacada;
     const author = post._embedded.author[0].name;
     const date = post.acf.data;
@@ -93,7 +93,7 @@ const generateMetadata = async ({ params }): Promise<Metadata> => {
     const post = await api.wpData.getData(params.slug, null, params.id);
     if (!post.data) {
         const pageTitle =
-            post.acf[`${params.slug === 'noticies' ? 'titular_de_la_noticia' : 'titular'}`];
+            params.slug === 'noticies' ? post.acf['titular_de_la_noticia'] : `${post.acf['nom_de_la_diada']}: ${post.acf['titular']}`;
         const mainImage = post.acf.imatge_destacada;
         const description =
             post.acf[
