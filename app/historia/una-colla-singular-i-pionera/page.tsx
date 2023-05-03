@@ -36,10 +36,13 @@ const UnaCollaSingularIPionera = async () => {
 const generateMetadata = async (): Promise<Metadata> => {
     const unaCollaSingularIPionera = await api.cdbData.getData('unaCollaSingularIPionera');
     const meta = { ...unaCollaSingularIPionera[0].meta };
-    const { pageTitle, title, pageDescription } = meta;
+    const { pageTitle, title, pageDescription, slug } = meta;
     return {
-        title: pageTitle,
-        description: `${pageDescription} | ${title}`,
+        title: title,
+        description: `${pageDescription} | ${pageTitle}`,
+        alternates: {
+            canonical: `https://castellersdebarcelona.cat/historia/${slug}`,
+        },
     };
 };
 

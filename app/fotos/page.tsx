@@ -59,6 +59,9 @@ const generateMetadata = async (): Promise<Metadata> => {
     return {
         title: pageTitle,
         description: `${pageDescription} | ${title}`,
+        alternates: {
+            canonical: `https://castellersdebarcelona.cat/fotos`,
+        },
     };
 };
 

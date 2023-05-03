@@ -68,6 +68,9 @@ const getData = async () => {
 export const metadata : Metadata = {
     title: `${pageTitle} | ${title}`,
     description: `${pageDescription} | ${title}`,
+    alternates: {
+        canonical: `https://castellersdebarcelona.cat/actualitat`,
+    },
 };
 
 export const revalidate = 30;

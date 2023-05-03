@@ -32,10 +32,13 @@ const VuitDeJunyDe1969 = async () => {
 const generateMetadata = async (): Promise<Metadata> => {
     const vuitDeJuny1969 = await api.cdbData.getData('vuitDeJuny1969');
     const meta = { ...vuitDeJuny1969[0].meta };
-    const { pageTitle, title, pageDescription } = meta;
+    const { pageTitle, title, pageDescription, slug } = meta;
     return {
-        title: pageTitle,
-        description: `${pageDescription} | ${title}`,
+        title: title,
+        description: `${pageDescription} | ${pageTitle}`,
+        alternates: {
+            canonical: `https://castellersdebarcelona.cat/historia/${slug}`,
+        },
     };
 };
 
