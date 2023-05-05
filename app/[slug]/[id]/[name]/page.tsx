@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
+import { NewsArticle, WithContext } from 'schema-dts';
 import Post from '@components/post';
 import api from '@libs/api.js';
 import { IContent } from '@interfaces/index';
-import Script from 'next/script';
 import Fallback from '@components/fallback';
 import { htmlToString } from '@utils/htmlToString';
 
@@ -22,7 +23,9 @@ const ActualitatPost = async ({ params }) => {
         return <Fallback notFound />;
     }
     const pageTitle =
-        params.slug === 'noticies' ? post.acf['titular_de_la_noticia'] : `${post.acf['nom_de_la_diada']}: ${post.acf['titular']}`;
+        params.slug === 'noticies'
+            ? post.acf['titular_de_la_noticia']
+            : `${post.acf['nom_de_la_diada']}: ${post.acf['titular']}`;
     const mainImage = post.acf.imatge_destacada;
     const author = post._embedded.author[0].name;
     const date = post.acf.data;
@@ -31,38 +34,37 @@ const ActualitatPost = async ({ params }) => {
             `${params.slug === 'noticies' ? 'cos_de_text_de_la_noticia' : 'cronica_de_la_diada'}`
         ];
     const { acf, type, id, slug } = post;
+
+    const jsonLd: WithContext<NewsArticle> = {
+        '@context': 'https://schema.org',
+        '@type': 'NewsArticle',
+        mainEntityOfPage: {
+            '@type': 'WebPage',
+            '@id': `https://castellersdebarcelona.cat/${type}/${id}/${slug}`,
+        },
+        author: {
+            '@type': 'Person',
+            name: author,
+        },
+        publisher: {
+            '@type': 'Organization',
+            name: 'Castellers de Barcelona',
+            logo: {
+                '@type': 'ImageObject',
+                url: 'https://castellersdebarcelona.cat/logo-castellers-de-barcelona.png',
+            },
+        },
+        description: `${htmlToString(description.substring(0, 240))}...`,
+        image: mainImage.sizes.large,
+        datePublished: date,
+        headline: pageTitle.replace(/['"]+/g, ''),
+    };
     return (
         <>
             <Script
                 id={id}
                 type='application/ld+json'
-                dangerouslySetInnerHTML={{
-                    __html: `
-{
-"@context": "http://schema.org",
-"@type": "NewsArticle",
-"mainEntityOfPage": {
-"@type": "WebPage",
-"@id": "${`https://castellersdebarcelona.cat/` + type + '/' + id + '/' + slug}"
-},
-"author": {
-"@type": "Person",
-"name": "${author}"
-},
-"publisher": {
-"@type": "Organization",
-"name": "Castellers de Barcelona",
-"logo": {
- "@type": "ImageObject",
- "url": "https://castellersdebarcelona.cat/logo-castellers-de-barcelona.png"
-}
-}, 
-"description": "${htmlToString(description.substring(0, 240))}...",
-"image": "${mainImage.sizes.large}",
-"datePublished": "${date}",
-"headline": "${pageTitle.replace(/['"]+/g, '')}"
-}`,
-                }}
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
             />
             <Post
                 title={pageTitle}
