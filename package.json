@@ -14,7 +14,7 @@
     "dependencies": {
         "@ducanh2912/next-pwa": "^7.2.0",
         "markdown-to-jsx": "^7.0.1",
-        "next": "^13.3.4",
+        "next": "^13.4.8",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-icons": "^4.7.1",
