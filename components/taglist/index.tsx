@@ -15,7 +15,7 @@ const TagList: React.FC<Props> = ({ title, data, url, isQuery }) => {
             <ul>
                 {data.map((d, index) => (
                     <li key={index + d}>
-                        <Link href={`${url}${isQuery ? '?q=' + d : '/' + d}`}>
+                        <Link href={`${url}${isQuery ? '?q=' + d : '/' + d}`} passHref>
                             <span className={'button'}>{d}</span>
                         </Link>
                     </li>
