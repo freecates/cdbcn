@@ -3,6 +3,8 @@ import Figure from '@components/figure';
 import api from '@libs/api.js';
 import MDFileContent from '@components/mdncontentparser';
 import { IDataFigure } from '@interfaces/index';
+import TagList from '@components/taglist';
+import { humanTowersAcronym } from '@utils/humanTowersAcronym';
 
 type VuitDeJunyDe1969Props = {
     vuitDeJuny1969: {
@@ -22,6 +24,9 @@ const VuitDeJunyDe1969 = async () => {
             <div className={`${'container'}`}>
                 <main className={'main'}>
                     <MDFileContent content={mdFileContent} />
+                    <hr />
+                        <TagList data={humanTowersAcronym} url={'/videos/historic'} title='Breu recull històric en vídeo' isQuery={false} />
+                    <hr />
                 </main>
             </div>
             <Figure data={imageGallery} />
