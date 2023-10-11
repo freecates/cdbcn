@@ -1,0 +1,20 @@
+@import 'styles/colors';
+
+.tagListComponent {
+    background: lighten($secondary-red, 80%);
+    p {
+        color: $main-red;
+        text-align: center;
+    }
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 1rem;
+
+        li {
+            list-style-type: none;
+            font-weight: 700;
+        }
+    }
+}

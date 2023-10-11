@@ -12,8 +12,9 @@ type VideosProps = {
     videos?: null | { meta: IMeta };
 };
 
-const Videos = async () => {
-    const { data, videos }: VideosProps = await getData();
+const Videos = async ({ params }) => {
+    const { type } = params;
+    const { data, videos }: VideosProps = await getData(type);
     if (!data) {
         return <Fallback notFound />;
     }
@@ -21,7 +22,7 @@ const Videos = async () => {
     const pageTitle = videos?.meta.pageTitle;
     return (
         <>
-            <h1 className={'title'}>{pageTitle}</h1>
+            <h1 className={'title'}>{pageTitle} de &quot;{type}&quot;</h1>
             <div className={`${'container'} ${'noPadding'}`}>
                 <main className={'main'}>
                     <Grid data={videosData} isThree />
@@ -46,10 +47,10 @@ const Videos = async () => {
     );
 };
 
-const getData = async () => {
+const getData = async (q) => {
     const [videos, data] = await Promise.all([
         api.cdbData.getData('videos'),
-        api.youtubeData.getData('videos'),
+        api.youtubeData.getData('videos', null, q),
     ]);
 
     if (!data) {
@@ -62,13 +63,14 @@ const getData = async () => {
     }
 };
 
-const generateMetadata = async (): Promise<Metadata> => {
+const generateMetadata = async ({ params }): Promise<Metadata> => {
+    const { type } = params
     const videos = await api.cdbData.getData('videos');
     const meta = { ...videos[0].meta };
-    const { pageTitle, title, pageDescription } = meta;
+    const { pageTitle, pageDescription } = meta;
     return {
-        title: pageTitle,
-        description: `${pageDescription} | ${title}`,
+        title: `${pageTitle} de '${type}'`,
+        description: `${pageDescription} | ${type}`,
         alternates: {
             canonical: `https://castellersdebarcelona.cat/videos`,
         },
