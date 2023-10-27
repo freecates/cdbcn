@@ -61,12 +61,13 @@ const generateMetadata = async ({ params }): Promise<Metadata> => {
         const description = photo.photo.description._content;
         const id = photo.photo.id;
         return {
+            metadataBase: new URL('https://castellersdebarcelona.cat'),
             title: `${pageTitle} - Castelllers de Barcelona - ${type}`,
             description: `${description.substring(3, 240)}...`,
             openGraph: {
                 title: pageTitle,
                 description: `${description.substring(3, 240)}...`,
-                url: `https://castellersdebarcelona.cat/${type}/${id}`,
+                url: `/${type}/${id}`,
                 images: [
                     {
                         url: mainImage[0].source,
@@ -85,7 +86,7 @@ const generateMetadata = async ({ params }): Promise<Metadata> => {
                 images: [mainImage[0].source],
             },
             alternates: {
-                canonical: `https://castellersdebarcelona.cat/${type}/${id}`,
+                canonical: `/${type}/${id}`,
             },
         };
     } else {

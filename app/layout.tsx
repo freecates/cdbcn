@@ -1,6 +1,6 @@
 import '@styles/globals.scss';
 import api from '@libs/api.js';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import Footer from '@components/footer';
@@ -79,16 +79,17 @@ const generateMetadata = async (): Promise<Metadata> => {
             shortcut: '/shortcut-icon.png',
             apple: '/icons/icon-192x192.png',
         },
-        viewport: {
-            width: 'device-width',
-            initialScale: 1,
-            minimumScale: 1,
-            maximumScale: 1,
-        },
         manifest: '/manifest.json',
-        themeColor: '#ffffff',
     };
 };
+
+const viewport: Viewport = {    
+    width: 'device-width',
+    initialScale: 1,
+    minimumScale: 1,
+    maximumScale: 1,
+    themeColor: '#ffffff',
+}
 
 const getData = async () => {
     const [footer, routes, home] = await Promise.all([
@@ -104,5 +105,5 @@ const getData = async () => {
     };
 };
 
-export { generateMetadata };
+export { generateMetadata, viewport };
 export default RootLayout;
