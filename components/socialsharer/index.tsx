@@ -5,7 +5,7 @@ import {
     FacebookShareButton,
     LinkedinIcon,
     LinkedinShareButton,
-    TwitterIcon,
+    XIcon,
     TwitterShareButton,
     WhatsappIcon,
     WhatsappShareButton,
@@ -27,7 +27,7 @@ const SocialSharer: React.FC<SocialShareProps> = ({ type, id, slug, title }) => 
                     <FacebookShareButton
                         url={`https://castellersdebarcelona.cat/${type}/${id}`}
                         className='Post__some-network__share-button'
-                        quote={title}
+                        title={title}
                         hashtag={'#BeneidaBogeria'}
                     >
                         <FacebookIcon size={25} round />
@@ -35,7 +35,7 @@ const SocialSharer: React.FC<SocialShareProps> = ({ type, id, slug, title }) => 
                 ) : (
                     <FacebookShareButton
                         url={`https://castellersdebarcelona.cat/${type}/${id}/${slug}`}
-                        quote={title}
+                        title={title}
                         hashtag={'#BeneidaBogeria'}
                         className='Post__some-network__share-button'
                     >
@@ -53,7 +53,7 @@ const SocialSharer: React.FC<SocialShareProps> = ({ type, id, slug, title }) => 
                         via='cdbcn'
                         className='Post__some-network__share-button'
                     >
-                        <TwitterIcon size={25} round />
+                        <XIcon size={25} round />
                     </TwitterShareButton>
                 ) : (
                     <TwitterShareButton
@@ -63,7 +63,7 @@ const SocialSharer: React.FC<SocialShareProps> = ({ type, id, slug, title }) => 
                         via='cdbcn'
                         className='Post__some-network__share-button'
                     >
-                        <TwitterIcon size={25} round />
+                        <XIcon size={25} round />
                     </TwitterShareButton>
                 )}
             </div>

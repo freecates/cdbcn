@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "dev": "next dev --turbo -p 3001",
+        "dev": "next dev --turbo -p 3001 --experimental-https",
         "dev:clean": "rm -rf .next && npm run dev",
         "build": "next build",
         "postbuild": "next-sitemap",
@@ -14,11 +14,11 @@
     "dependencies": {
         "@ducanh2912/next-pwa": "^7.2.0",
         "markdown-to-jsx": "^7.0.1",
-        "next": "^14.0.0",
+        "next": "^14.1.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-icons": "^4.7.1",
-        "react-share": "^4.1.0",
+        "react-share": "^5.0.3",
         "sass": "^1.29.0",
         "schema-dts": "^1.1.2",
         "sharp": "^0.31.2"
