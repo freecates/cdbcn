@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react';
 import '@styles/globals.scss';
 import api from '@libs/api.js';
 import type { Metadata, Viewport } from 'next';
@@ -56,6 +57,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
                     <Footer footerLinks={footerLinks} supporters={supporters} />
                     <Nav navRoutes={navRoutes} small />
                 </div>
+                <Analytics />
             </body>
         </html>
     );
