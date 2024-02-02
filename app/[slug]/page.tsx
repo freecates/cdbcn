@@ -13,6 +13,7 @@ type SlugPageProps = {
     pageData: {
         meta: IMeta & {
             mobile: { href: string; number: string; name?: string };
+            mobile2: { href: string; number: string; name?: string };
             email: { href: string; address: string };
             name: string;
             phone: { href: string; number: string };
@@ -45,6 +46,7 @@ const SlugPage = async ({ params }) => {
         address,
         phone,
         mobile,
+        mobile2,
         web,
         email,
         map,
@@ -81,8 +83,7 @@ const SlugPage = async ({ params }) => {
 
                             <p className={'description'}>
                                 <strong>Contractacions</strong>:<br />
-                                <a href={mobile.href}>{mobile.number}</a> [{mobile.name}
-                                ]
+                                <a href={mobile.href}>{mobile.number}</a> {mobile.name}
                                 <br />
                                 <a href={email.href}>{email.address}</a>
                                 <br />
@@ -110,9 +111,9 @@ const SlugPage = async ({ params }) => {
                                 <br />
                                 {address}
                                 <br />
-                                T. <a href={phone.href}>{phone.number}</a>
+                                <a href={mobile2.href}>{mobile2.number}</a> [WhatsApp]
                                 <br />
-                                M. <a href={mobile.href}>{mobile.number}</a> [premsa]
+                                <a href={mobile.href}>{mobile.number}</a> [només premsa - WhatsApp]
                                 <br />
                                 {web}
                                 <br />

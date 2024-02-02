@@ -36,7 +36,7 @@ type HomeProps = {
 
 const Home = async () => {
     const { noticiesData, home, contacte }: HomeProps = await getData();
-    const { name, address, phone, mobile, mobile2, mobile3, web, email, map } = contacte.meta;
+    const { name, address, mobile2, web, email, map } = contacte.meta;
     const mainVideo = home.videos.mainVideo;
     return (
         <>
@@ -61,12 +61,8 @@ const Home = async () => {
                             {address}
                         </a>
                         <br />
-                        T. <a href={phone.href}>{phone.number}</a> | M.{' '}
-                        <a href={mobile2.href}>{mobile2.number}</a>
-                        <br />
-                        M. <a href={mobile3.href}>{mobile3.number}</a> [contractacions]
-                        <br />
-                        M. <a href={mobile.href}>{mobile.number}</a> [premsa]
+                        M.{' '}
+                        <a href={mobile2.href}>{mobile2.number}</a> [WhatsApp]
                         <br />
                         {web}
                         <br />
