@@ -33,7 +33,6 @@ module.exports = withPWA({
             },
         ],
     },
-    swcMinify: true,
     async redirects() {
         return [
             {
