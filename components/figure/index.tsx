@@ -15,6 +15,7 @@ type Props = {
 };
 
 const Figure: React.FC<Props> = ({ data, quality, layout, withType, withOverlay, type, isOne }) => {
+    if (!data) return null;
     return (
         <div className={styles.figureComponent}>
             {Array.isArray(data) && (
@@ -53,8 +54,8 @@ const Figure: React.FC<Props> = ({ data, quality, layout, withType, withOverlay,
             )}
             {!Array.isArray(data) && (
                 <figure
-                    className={`${styles.figure}${withOverlay ? ' ' + styles.withOverlay : ''}`}
-                    style={type === 'fotos' ? { maxWidth: data.width } : null}
+                className={`${styles.figure}${withOverlay ? ' ' + styles.withOverlay : ''}`}
+                style={type === 'fotos' ? { maxWidth: data.width } : null}
                 >
                     <Image
                         quality={quality ? quality : null}
@@ -69,7 +70,7 @@ const Figure: React.FC<Props> = ({ data, quality, layout, withType, withOverlay,
                         src={
                             withType
                                 ? type !== 'fotos'
-                                    ? `${data.url.replace(
+                                    ? `${data?.url?.replace(
                                           '/uploads/',
                                           '/uploads-webpc/uploads/'
                                       )}.webp`
