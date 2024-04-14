@@ -68,7 +68,7 @@ const Grid: React.FC<Props> = ({ data, isThree, isOne }) => {
                         const slug = c.slug;
                         const author = c._embedded.author[0].name;
                         const itemImg = c.acf.imatge_destacada;
-                        const imgSrc = itemImg.url.replace('/uploads/', '/uploads-webpc/uploads/');
+                        const imgSrc = itemImg?.url?.replace('/uploads/', '/uploads-webpc/uploads/');
                         const width = itemImg.width;
                         const height = itemImg.height;
                         const type = c.type;

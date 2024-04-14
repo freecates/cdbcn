@@ -26,7 +26,7 @@ const ActualitatPost = async ({ params }) => {
         params.slug === 'noticies'
             ? post.acf['titular_de_la_noticia']
             : `${post.acf['nom_de_la_diada']}: ${post.acf['titular']}`;
-    const mainImage = post.acf.imatge_destacada;
+    const mainImage = post?.acf?.imatge_destacada;
     const author = post._embedded.author[0].name;
     const date = post.acf.data;
     const description =
@@ -55,7 +55,7 @@ const ActualitatPost = async ({ params }) => {
             },
         },
         description: `${htmlToString(description.substring(0, 240))}...`,
-        image: mainImage.sizes.large,
+        image: mainImage?.sizes?.large,
         datePublished: date,
         headline: pageTitle.replace(/['"]+/g, ''),
     };
@@ -115,7 +115,7 @@ const generateMetadata = async ({ params }): Promise<Metadata> => {
                 url: `/${type}/${id}/${slug}`,
                 images: [
                     {
-                        url: mainImage.sizes.large,
+                        url: mainImage?.sizes?.large,
                         width: 1024,
                         height: 1024,
                     },
@@ -128,7 +128,7 @@ const generateMetadata = async ({ params }): Promise<Metadata> => {
                 description: `${noHTMLDescription}...`,
                 site: '@cdbcn',
                 creator: 'Castellers de Barcelona',
-                images: [mainImage.sizes.large],
+                images: [mainImage?.sizes?.large],
             },
             alternates: {
                 canonical: `/${type}/${id}/${slug}`,
