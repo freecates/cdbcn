@@ -11,7 +11,7 @@ type CinquantaTresAnys53TuitsProps = {
     mdFileContent: string;
 };
 
-const CinquantaTresAnys53Tuits = async () => {
+const CinquantaQuatreAnys54Tuits = async () => {
     const { anys53tuits, mdFileContent }: CinquantaTresAnys53TuitsProps = await getData();
     const imageGallery = anys53tuits.images.imageGallery;
     return (
@@ -40,8 +40,8 @@ const generateMetadata = async (): Promise<Metadata> => {
 };
 
 const getData = async () => {
-    const anys53tuits = await api.cdbData.getData('anys53tuits');
-    const mdData = await api.mdContent.getData('53-anys-53-tuits');
+    const anys53tuits = await api.cdbData.getData('anys54tuits');
+    const mdData = await api.mdContent.getData('54-anys-54-tuits');
 
     return {
         anys53tuits: { ...anys53tuits[0] },
@@ -52,4 +52,4 @@ const getData = async () => {
 export const revalidate = 60;
 
 export { generateMetadata };
-export default CinquantaTresAnys53Tuits;
+export default CinquantaQuatreAnys54Tuits;
