@@ -27,7 +27,7 @@ const CinquantaQuatreAnys54Tuits = async () => {
 };
 
 const generateMetadata = async (): Promise<Metadata> => {
-    const anys53tuits = await api.cdbData.getData('anys53tuits');
+    const anys53tuits = await api.cdbData.getData('anys54tuits');
     const meta = { ...anys53tuits[0].meta };
     const { pageTitle, title, pageDescription, slug } = meta;
     return {
