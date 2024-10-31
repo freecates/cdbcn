@@ -17,7 +17,8 @@ type ActuacioProps = {
     };
 };
 
-const ActualitatPost = async ({ params }) => {
+const ActualitatPost = async props => {
+    const params = await props.params;
     const { post }: ActuacioProps = await getData(params);
     if (!post) {
         return <Fallback notFound />;
@@ -91,7 +92,8 @@ const getData = async (params) => {
     }
 };
 
-const generateMetadata = async ({ params }): Promise<Metadata> => {
+const generateMetadata = async (props): Promise<Metadata> => {
+    const params = await props.params;
     const post = await api.wpData.getData(params.slug, null, params.id);
     if (!post.data) {
         const pageTitle =

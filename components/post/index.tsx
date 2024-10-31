@@ -80,7 +80,7 @@ const Post: React.FC<PostProps> = ({
             <div className={styles.postComponent}>
                 
                 <Figure
-                    data={mainImage[0]}
+                    data={mainImage}
                     quality={100}
                     type={type}
                     layout={'responsive'}

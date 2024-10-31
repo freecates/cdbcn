@@ -4,6 +4,8 @@ import api from '@libs/api.js';
 import Link from 'next/link';
 import { IData } from '@interfaces/index';
 
+import type { JSX } from "react";
+
 type HomeProps = {
     home: {
         videos: {

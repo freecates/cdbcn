@@ -12,7 +12,8 @@ type VideosProps = {
     videos?: null | { meta: IMeta };
 };
 
-const Videos = async ({ params }) => {
+const Videos = async props => {
+    const params = await props.params;
     const { type } = params;
     const { data, videos }: VideosProps = await getData(type);
     if (!data) {
@@ -63,7 +64,8 @@ const getData = async (q) => {
     }
 };
 
-const generateMetadata = async ({ params }): Promise<Metadata> => {
+const generateMetadata = async (props): Promise<Metadata> => {
+    const params = await props.params;
     const { type } = params
     const videos = await api.cdbData.getData('videos');
     const meta = { ...videos[0].meta };

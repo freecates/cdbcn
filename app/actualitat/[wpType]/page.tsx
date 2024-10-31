@@ -9,7 +9,8 @@ type WpTypeProps = {
     cdbData: { meta: IMeta };
 };
 
-const WpTypePage = async ({ params }) => {
+const WpTypePage = async props => {
+    const params = await props.params;
     const { wpType } = params;
     const { wpData, cdbData }: WpTypeProps = await getData(wpType);
     if (!wpData) {
@@ -47,7 +48,8 @@ const getData = async (wpType: string) => {
     }
 };
 
-const generateMetadata = async ({ params }): Promise<Metadata> => {
+const generateMetadata = async (props): Promise<Metadata> => {
+    const params = await props.params;
     const { wpType } = params;
     const headPageData = await api.cdbData.getData(wpType);
     const meta = { ...headPageData[0].meta };
