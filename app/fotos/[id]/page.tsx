@@ -5,7 +5,8 @@ import api from '@libs/api.js';
 
 const type = 'fotos';
 
-const Foto = async ({ params }) => {
+const Foto = async props => {
+    const params = await props.params;
     const { photo, fotoSizes } = await getData(params);
     if (!photo) {
         return <Fallback notFound />;
@@ -27,7 +28,7 @@ const Foto = async ({ params }) => {
                 content={foto}
                 date={date}
                 author={author}
-                mainImage={mainImage}
+                mainImage={{ ...mainImage[0], alt: pageTitle }}
             />
         </>
     );
@@ -48,7 +49,8 @@ const getData = async (params) => {
     }
 };
 
-const generateMetadata = async ({ params }): Promise<Metadata> => {
+const generateMetadata = async (props): Promise<Metadata> => {
+    const params = await props.params;
     const id = params.id;
     const [photo, photoDetails] = await Promise.all([
         api.flickrData.getData('photo', id),

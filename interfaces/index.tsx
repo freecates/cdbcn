@@ -1,3 +1,4 @@
+import type { JSX } from "react";
 export interface IItem {
     kind: string;
     id: string;

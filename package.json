@@ -1,35 +1,38 @@
 {
-    "name": "cdbcn",
-    "version": "0.1.0",
-    "private": true,
-    "scripts": {
-        "dev": "next dev --turbo -p 3001 --experimental-https",
-        "dev:clean": "rm -rf .next && npm run dev",
-        "build": "next build",
-        "postbuild": "next-sitemap",
-        "start": "next start",
-        "lint": "next lint",
-        "lint:fix": "next lint --fix"
-    },
-    "dependencies": {
-        "@ducanh2912/next-pwa": "^7.2.0",
-        "@vercel/analytics": "^1.1.2",
-        "markdown-to-jsx": "^7.0.1",
-        "next": "^14.2.0",
-        "react": "^18.2.0",
-        "react-dom": "^18.2.0",
-        "react-icons": "^4.7.1",
-        "react-share": "^5.0.3",
-        "sass": "^1.29.0",
-        "schema-dts": "^1.1.2",
-        "sharp": "^0.31.2"
-    },
-    "devDependencies": {
-        "@types/node": "^14.14.33",
-        "@types/react": "^17.0.3",
-        "eslint": "^7.28.0",
-        "eslint-config-next": "^11.0.0",
-        "next-sitemap": "^1.4.17",
-        "typescript": "^4.3.2"
-    }
+  "name": "cdbcn",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack -p 3001 --experimental-https",
+    "dev:clean": "rm -rf .next && npm run dev",
+    "build": "next build",
+    "postbuild": "next-sitemap",
+    "start": "next start",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix"
+  },
+  "dependencies": {
+    "@ducanh2912/next-pwa": "^7.2.0",
+    "@vercel/analytics": "^1.1.2",
+    "markdown-to-jsx": "^7.0.1",
+    "next": "15.0.2",
+    "react": "19.0.0-rc-02c0e824-20241028",
+    "react-dom": "19.0.0-rc-02c0e824-20241028",
+    "react-icons": "^4.7.1",
+    "react-share": "^5.0.3",
+    "sass": "^1.29.0",
+    "schema-dts": "^1.1.2",
+    "sharp": "^0.31.2"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.33",
+    "@types/react": "npm:types-react@19.0.0-rc.1",
+    "eslint": "^7.28.0",
+    "eslint-config-next": "15.0.2",
+    "next-sitemap": "^1.4.17",
+    "typescript": "^4.3.2"
+  },
+  "overrides": {
+    "@types/react": "npm:types-react@19.0.0-rc.1"
+  }
 }

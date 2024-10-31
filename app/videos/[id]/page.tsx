@@ -11,7 +11,8 @@ type VideoProps = {
     videoDetails?: { items: IItem[] };
 };
 
-const Video = async ({ params }) => {
+const Video = async props => {
+    const params = await props.params;
     const { post, videoDetails }: VideoProps = await getData(params);
     if (!post) {
         return <Fallback notFound />;
@@ -59,7 +60,8 @@ const getData = async (params) => {
     } else return { post, videoDetails };
 };
 
-const generateMetadata = async ({ params }): Promise<Metadata> => {
+const generateMetadata = async (props): Promise<Metadata> => {
+    const params = await props.params;
     const id = params.id;
     const [post, videoDetails] = await Promise.all([
         api.flickrData.getData('video', id),
