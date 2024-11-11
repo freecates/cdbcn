@@ -11,11 +11,19 @@ type Props = {
 const TagList: React.FC<Props> = ({ title, data, url, isQuery }) => {
     return (
         <div className={styles.tagListComponent}>
-            {title && <p><small>{title}</small></p>}
+            {title && (
+                <p>
+                    <small>{title}</small>
+                </p>
+            )}
             <ul>
                 {data.map((d, index) => (
                     <li key={index + d}>
-                        <Link href={`${url}${isQuery ? '?q=' + d : '/' + d}`} passHref>
+                        <Link
+                            prefetch={true}
+                            href={`${url}${isQuery ? '?q=' + d : '/' + d}`}
+                            passHref
+                        >
                             <span className={'button'}>{d}</span>
                         </Link>
                     </li>

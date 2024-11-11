@@ -78,14 +78,7 @@ const Post: React.FC<PostProps> = ({
     if (type === 'fotos') {
         return (
             <div className={styles.postComponent}>
-                
-                <Figure
-                    data={mainImage}
-                    quality={100}
-                    type={type}
-                    layout={'responsive'}
-                    withType
-                />
+                <Figure data={mainImage} quality={100} type={type} layout={'responsive'} withType />
                 <div className={`${styles.container}`}>
                     <main className={`${styles.main}`}>
                         <SocialSharer type={type} id={id} slug={null} title={title} />
@@ -129,7 +122,7 @@ const Post: React.FC<PostProps> = ({
                 <div className={styles.container}>
                     <SocialSharer type={type} id={id} slug={null} title={title} />
                     <h3>
-                        <Link href={`/${type}`} legacyBehavior>
+                        <Link prefetch={true} href={`/${type}`} legacyBehavior>
                             <a className={'button'}>&larr; Anar a &quot;{type}&quot;</a>
                         </Link>
                     </h3>
@@ -141,7 +134,6 @@ const Post: React.FC<PostProps> = ({
 
         return (
             <div className={styles.postComponent}>
-                
                 {player && (
                     <div className={'root'}>
                         <div
@@ -193,7 +185,7 @@ const Post: React.FC<PostProps> = ({
                 <div className={styles.container}>
                     <SocialSharer type={type} id={id} slug={null} title={title} />
                     <h3>
-                        <Link href={`/${type}`} legacyBehavior>
+                        <Link prefetch={true} href={`/${type}`} legacyBehavior>
                             <a className={'button'}>&larr; Anar a &quot;{type}&quot;</a>
                         </Link>
                     </h3>
@@ -215,7 +207,6 @@ const Post: React.FC<PostProps> = ({
         } = content;
         return (
             <div className={styles.postComponent}>
-                
                 <Figure data={mainImage} withType withOverlay layout={'responsive'} />
 
                 <div className={`${styles.container} ${styles.withOverlay}`}>
@@ -263,7 +254,7 @@ const Post: React.FC<PostProps> = ({
                 <div className={styles.container}>
                     <SocialSharer type={type} id={id} slug={slug} title={title} />
                     <h3>
-                        <Link href={`/actualitat/${type}`} legacyBehavior>
+                        <Link prefetch={true} href={`/actualitat/${type}`} legacyBehavior>
                             <a className={'button'}>&larr; Anar a &quot;{type}&quot;</a>
                         </Link>
                     </h3>

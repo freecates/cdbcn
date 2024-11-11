@@ -13,16 +13,16 @@ const OtherRoutes: React.FC<Props> = ({ routes, isButton }) => {
             <small>
                 {routes.map((r, id) =>
                     r.route ? (
-                        (<Link
+                        <Link
+                            prefetch={true}
                             href={r.route}
                             key={id}
                             className={`${isButton ? styles.button : null}`}
-                            title={`Anar a ${r.name}`}>
-
+                            title={`Anar a ${r.name}`}
+                        >
                             {r.name}
-
-                        </Link>)
-                    ) : null
+                        </Link>
+                    ) : null,
                 )}
             </small>
         </p>

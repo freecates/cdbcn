@@ -16,6 +16,7 @@ type Props = {
 
 const Figure: React.FC<Props> = ({ data, quality, layout, withType, withOverlay, type, isOne }) => {
     if (!data) return null;
+    let imageCount = 0;
     return (
         <div className={styles.figureComponent}>
             {Array.isArray(data) && (
@@ -31,12 +32,11 @@ const Figure: React.FC<Props> = ({ data, quality, layout, withType, withOverlay,
                                 quality={quality ? quality : null}
                                 width={d.width}
                                 height={d.height}
-                                loading='lazy'
+                                loading={imageCount++ < 15 ? 'eager' : 'lazy'}
                                 alt={d.alt}
-                                sizes="(max-width: 768px) 100vw,
+                                sizes='(max-width: 768px) 100vw,
                                 (max-width: 1200px) 50vw,
-                                33vw"
-                  
+                                33vw'
                                 src={`${staticDataUrl}/${d.src}`}
                             />
                             {d.imageCaption ? (
@@ -54,8 +54,8 @@ const Figure: React.FC<Props> = ({ data, quality, layout, withType, withOverlay,
             )}
             {!Array.isArray(data) && (
                 <figure
-                className={`${styles.figure}${withOverlay ? ' ' + styles.withOverlay : ''}`}
-                style={type === 'fotos' ? { maxWidth: data.width } : null}
+                    className={`${styles.figure}${withOverlay ? ' ' + styles.withOverlay : ''}`}
+                    style={type === 'fotos' ? { maxWidth: data.width } : null}
                 >
                     <Image
                         quality={quality ? quality : null}
@@ -63,16 +63,15 @@ const Figure: React.FC<Props> = ({ data, quality, layout, withType, withOverlay,
                         height={Number(data.height)}
                         priority
                         alt={data.alt}
-                        sizes="(max-width: 768px) 100vw,
+                        sizes='(max-width: 768px) 100vw,
                         (max-width: 1200px) 50vw,
-                        33vw"
-          
+                        33vw'
                         src={
                             withType
                                 ? type !== 'fotos'
                                     ? `${data?.url?.replace(
                                           '/uploads/',
-                                          '/uploads-webpc/uploads/'
+                                          '/uploads-webpc/uploads/',
                                       )}.webp`
                                     : data.source
                                 : `${staticDataUrl}/${data.src}`
