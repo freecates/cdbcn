@@ -37,7 +37,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
             </head>
             <body>
                 <h1 className={'wrapperLogo'}>
-                    <Link href={'/'} passHref>
+                    <Link prefetch={true} href={'/'} passHref>
                         <Image
                             width='320'
                             height='128'

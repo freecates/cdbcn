@@ -50,7 +50,10 @@ const Home = async () => {
                     <p className={'description'}>
                         <strong>{name}</strong>
                         <br />
-                        [La Colla Degana de la Ciutat - <Link href={'/la-colla'}>1969</Link>
+                        [La Colla Degana de la Ciutat -{' '}
+                        <Link prefetch={true} href={'/la-colla'}>
+                            1969
+                        </Link>
                         ]
                         <br />
                         <br />
@@ -63,14 +66,13 @@ const Home = async () => {
                             {address}
                         </a>
                         <br />
-                        M.{' '}
-                        <a href={mobile2.href}>{mobile2.number}</a> [WhatsApp]
+                        M. <a href={mobile2.href}>{mobile2.number}</a> [WhatsApp]
                         <br />
                         {web}
                         <br />
                         <a href={email.href}>{email.address}</a>
                         <br />
-                        <Link href={'/participa'} className={'button'}>
+                        <Link prefetch={true} href={'/participa'} className={'button'}>
                             CONTRACTA&apos;NS
                         </Link>
                     </p>

@@ -15,20 +15,18 @@ const Nav: React.FC<NavProps> = ({ navRoutes, small }) => {
 
     return (
         <nav className={`${styles.nav} ${small ? styles.small : ''}`}>
-                    <ul className={styles.secondary}>
-                        {routesNav.map((r, index) => (
-                            <li
-                                key={index}
-                                className={`${
-                                    pathname.includes(r.route) ? styles.active : ''
-                                }`}
-                            >
-                                <Link href={r.route}>
-                                    {r.name}
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
+            <ul className={styles.secondary}>
+                {routesNav.map((r, index) => (
+                    <li
+                        key={index}
+                        className={`${pathname.includes(r.route) ? styles.active : ''}`}
+                    >
+                        <Link prefetch={true} href={r.route}>
+                            {r.name}
+                        </Link>
+                    </li>
+                ))}
+            </ul>
         </nav>
     );
 };

@@ -22,11 +22,14 @@ const Actualitat = async () => {
             <div className={`${'container'} ${'noPadding'}`}>
                 <main className={'main'}>
                     <h2>
-                        <Link href={`/actualitat/${noticiesData[0].type}`}>[{noticiesData[0].type}]</Link>
+                        <Link prefetch={true} href={`/actualitat/${noticiesData[0].type}`}>
+                            [{noticiesData[0].type}]
+                        </Link>
                     </h2>
                     <Grid data={noticiesData} />
                     <p>
                         <Link
+                            prefetch={true}
                             href={`/actualitat/${noticiesData[0].type}`}
                             className={'more'}
                             title={`Anar a "${noticiesData[0].type}"`}
@@ -36,11 +39,14 @@ const Actualitat = async () => {
                     </p>
                     <hr className={'hr'} />
                     <h2>
-                        <Link href={`/actualitat/${actuacionsData[0].type}`}>[{actuacionsData[0].type}]</Link>
+                        <Link prefetch={true} href={`/actualitat/${actuacionsData[0].type}`}>
+                            [{actuacionsData[0].type}]
+                        </Link>
                     </h2>
                     <Grid data={actuacionsData} />
                     <p>
                         <Link
+                            prefetch={true}
                             href={`/actualitat/${actuacionsData[0].type}`}
                             className={'more'}
                             title={`Anar a "${actuacionsData[0].type}"`}

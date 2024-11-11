@@ -13,6 +13,7 @@ type Props = {
 };
 
 const Grid: React.FC<Props> = ({ data, isThree, isOne }) => {
+    let imageCount = 0;
     return (
         <div className={styles.gridComponent}>
             {data
@@ -84,27 +85,33 @@ const Grid: React.FC<Props> = ({ data, isThree, isOne }) => {
                                 <div>
                                     <header>
                                         {!itemImg ? null : (
-                                            (<Link href={itemUrl} title={`Veure la fitxa de: ${title}`} passHref>
-
+                                            <Link
+                                                prefetch={true}
+                                                href={itemUrl}
+                                                title={`Veure la fitxa de: ${title}`}
+                                                passHref
+                                            >
                                                 <Image
-                                                    loading='lazy'
+                                                    loading={imageCount++ < 15 ? 'eager' : 'lazy'}
                                                     src={imgSrc + '.webp'}
                                                     alt={title}
                                                     width={width}
                                                     height={height}
-                                                    sizes="(max-width: 768px) 100vw,
+                                                    sizes='(max-width: 768px) 100vw,
                                                     (max-width: 1200px) 50vw,
-                                                    33vw"
-                                      
+                                                    33vw'
                                                 />
-
-                                            </Link>)
+                                            </Link>
                                         )}
                                     </header>
                                     <main>
                                         <div>
-                                            <Link href={itemUrl} title={`Veure la fitxa de: ${title}`} passHref>
-
+                                            <Link
+                                                prefetch={true}
+                                                href={itemUrl}
+                                                title={`Veure la fitxa de: ${title}`}
+                                                passHref
+                                            >
                                                 <h2 className={styles.cardTitle}>
                                                     <span
                                                         dangerouslySetInnerHTML={{
@@ -113,7 +120,6 @@ const Grid: React.FC<Props> = ({ data, isThree, isOne }) => {
                                                     />
                                                     &rarr;
                                                 </h2>
-
                                             </Link>
                                             <p className={styles.author}>
                                                 <small>
@@ -159,8 +165,12 @@ const Grid: React.FC<Props> = ({ data, isThree, isOne }) => {
                                         )}
                                     </header>
                                     <main>
-                                        <Link href={itemUrl} title={`Veure la fitxa de: ${title}`} passHref>
-
+                                        <Link
+                                            prefetch={true}
+                                            href={itemUrl}
+                                            title={`Veure la fitxa de: ${title}`}
+                                            passHref
+                                        >
                                             <h2>
                                                 <span
                                                     dangerouslySetInnerHTML={{
@@ -169,7 +179,6 @@ const Grid: React.FC<Props> = ({ data, isThree, isOne }) => {
                                                 />
                                                 &rarr;
                                             </h2>
-
                                         </Link>
                                         <p>
                                             <small>
@@ -202,21 +211,23 @@ const Grid: React.FC<Props> = ({ data, isThree, isOne }) => {
                                 <div>
                                     <header>
                                         {!imgSrc ? null : (
-                                            (<Link href={itemUrl} title={`Veure la fitxa de: ${title}`} passHref>
-
+                                            <Link
+                                                prefetch={true}
+                                                href={itemUrl}
+                                                title={`Veure la fitxa de: ${title}`}
+                                                passHref
+                                            >
                                                 <Image
-                                                    loading='lazy'
+                                                    loading={imageCount++ < 15 ? 'eager' : 'lazy'}
                                                     src={imgSrc}
                                                     alt={title}
                                                     width={width}
                                                     height={height}
-                                                    sizes="(max-width: 768px) 100vw,
+                                                    sizes='(max-width: 768px) 100vw,
                                                     (max-width: 1200px) 50vw,
-                                                    33vw"
-                                      
+                                                    33vw'
                                                 />
-
-                                            </Link>)
+                                            </Link>
                                         )}
                                     </header>
                                     <main>
