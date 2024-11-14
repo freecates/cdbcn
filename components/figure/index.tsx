@@ -61,6 +61,7 @@ const Figure: React.FC<Props> = ({ data, quality, layout, withType, withOverlay,
                         quality={quality ? quality : null}
                         width={Number(data.width)}
                         height={Number(data.height)}
+                        loading='eager'
                         priority
                         alt={data.alt}
                         sizes='(max-width: 768px) 100vw,
