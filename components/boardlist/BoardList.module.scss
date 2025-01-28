@@ -1,8 +1,8 @@
-@import 'styles/colors';
+@use '../../styles/colors.scss';
 
 .boardListComponent {
     h2 {
-        color: $main-red;
+        color: colors.$main-red;
         text-align: center;
     }
     dl {
@@ -24,7 +24,7 @@
         }
 
         dd {
-            color: $main-red;
+            color: colors.$main-red;
             margin: 0 0 0 .5rem;
         }
     }

@@ -1,4 +1,4 @@
-@import 'styles/colors';
+@use '../../styles/colors.scss';
 
 .nav {
     max-width: 100%;
@@ -26,7 +26,7 @@
         flex-direction: column;
         align-items: center;
         margin: 0;
-        background: $white;
+        background: colors.$white;
         z-index: 3000;
         padding: 0;
         flex-wrap: wrap;
@@ -52,7 +52,7 @@
             &.active {
                 margin-bottom: 0.5rem;
                 a {
-                    color: $main-red;
+                    color: colors.$main-red;
                     border-bottom: 0.25rem solid;
                 }
             }
@@ -76,7 +76,7 @@
                 }
 
                 &:hover {
-                    color: $main-red;
+                    color: colors.$main-red;
                     border-bottom: 0.25rem solid;
                 }
             }
@@ -90,7 +90,7 @@
         align-items: center;
         margin: 0;
         padding: 0 0 1rem;
-        background: $white;
+        background: colors.$white;
         z-index: 3000;
 
         @media (min-width: 768px) {
@@ -109,7 +109,7 @@
                 flex-direction: row;
                 align-items: center;
                 margin: 0;
-                background: $white;
+                background: colors.$white;
                 z-index: 3000;
                 padding: 0;
                 flex-wrap: wrap;
@@ -129,7 +129,7 @@
 
                     &.active {
                         a {
-                            color: $main-red;
+                            color: colors.$main-red;
                             border-bottom: 0.25rem solid;
                         }
                     }
@@ -144,7 +144,7 @@
                         }
 
                         &:hover {
-                            color: $main-red;
+                            color: colors.$main-red;
                             border-bottom: 0.25rem solid;
                         }
                     }
