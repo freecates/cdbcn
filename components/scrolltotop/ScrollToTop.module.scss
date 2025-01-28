@@ -1,4 +1,4 @@
-@import 'styles/colors';
+@use '../../styles/colors.scss';
 
 @keyframes movebtn {
     0% {
@@ -30,7 +30,7 @@
         bottom: 30px;
         right: 15px;
         z-index: 20;
-        background-color: $main-red;
+        background-color: colors.$main-red;
         border: 2px solid #fff;
         border-radius: 50%;
         height: 30px;
@@ -43,8 +43,8 @@
         &:hover {
             animation: none;
             background: #fff;
-            color: $main-red;
-            border: 2px solid $main-red;
+            color: colors.$main-red;
+            border: 2px solid colors.$main-red;
         }
     }
 

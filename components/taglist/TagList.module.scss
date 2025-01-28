@@ -1,9 +1,10 @@
-@import 'styles/colors';
+@use "sass:color";
+@use '../../styles/colors.scss';
 
 .tagListComponent {
-    background: lighten($secondary-red, 80%);
+    background: color.adjust(colors.$secondary-red, $lightness: 80%);
     p {
-        color: $main-red;
+        color: colors.$main-red;
         text-align: center;
     }
     ul {

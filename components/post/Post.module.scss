@@ -1,4 +1,4 @@
-@import 'styles/colors';
+@use '../../styles/colors.scss';
 
 .postComponent {
     .container {
@@ -27,15 +27,15 @@
         @media (min-width: 768px) {
             &.withOverlay {
                 margin-top: -3rem;
-                background-color: $white;
+                background-color: colors.$white;
                 border-radius: 5px;
             }
         }
     }
 
     .summary {
-        background-color: $main-red;
-        color: $white;
+        background-color: colors.$main-red;
+        color: colors.$white;
         padding: 0.5rem;
         @media (min-width: 1024px) {
             max-width: 50%;

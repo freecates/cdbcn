@@ -1,4 +1,4 @@
-@import 'styles/colors';
+@use 'colors';
 
 /*fonts */
 
@@ -512,7 +512,7 @@ body {
     padding: 0;
     margin: 0;
     font-family: 'Nunito Sans', sans-serif;
-    color: $black;
+    color: colors.$black;
     font-size: 20px;
 }
 body {
@@ -528,9 +528,9 @@ h1,
 h2,
 h3,
 nav {
-    color: $black;
+    color: colors.$black;
     span {
-        color: $main-red;
+        color: colors.$main-red;
     }
 }
 
@@ -550,8 +550,8 @@ img {
 
 blockquote {
     font-style: oblique;
-    color: $main-red;
-    border-left: 5px solid $secondary-red;
+    color: colors.$main-red;
+    border-left: 5px solid colors.$secondary-red;
     margin: 1.5em 10px;
     padding: 0.5em 10px;
 }
@@ -599,7 +599,7 @@ em {
     width: 50%;
     margin: 0 auto 2rem;
     height: 0;
-    border: 1px solid $gray;
+    border: 1px solid colors.$gray;
 }
 
 .container {
@@ -630,11 +630,11 @@ em {
     @media (min-width: 768px) {
         &.withOverlay {
             margin-top: -3rem;
-            background-color: $white;
+            background-color: colors.$white;
         }
         &.withUnderlay {
             margin-bottom: -3rem;
-            background-color: $white;
+            background-color: colors.$white;
             padding: 0 1rem;
         }
     }
@@ -643,7 +643,7 @@ em {
         color: inherit;
         transition: color ease 1s;
         &:hover {
-            color: $main-red;
+            color: colors.$main-red;
         }
     }
     .description {
@@ -731,8 +731,8 @@ em {
 }
 
 .summary {
-    background-color: $main-red;
-    color: $white;
+    background-color: colors.$main-red;
+    color: colors.$white;
     padding: 0.5rem;
     @media (min-width: 1024px) {
         max-width: 60%;
@@ -751,7 +751,7 @@ em {
     width: 50%;
     margin: 0 auto 2rem;
     height: 0;
-    border: 1px solid $gray;
+    border: 1px solid colors.$gray;
 }
 .gridWrapper {
     display: flex;
@@ -768,12 +768,12 @@ a, span {
         transition: color ease 1s;
         text-decoration: none;
         font-size: 0.65rem;
-        background-color: $black;
-        color: $white;
+        background-color: colors.$black;
+        color: colors.$white;
         margin: 0.5rem;
         transition: background-color ease 1s;
         &:hover {
-            background-color: $main-red;
+            background-color: colors.$main-red;
         }
     }
 }
