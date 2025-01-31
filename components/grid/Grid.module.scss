@@ -1,4 +1,5 @@
-@import '../../styles/colors.scss';
+@use "sass:color";
+@use '../../styles/colors.scss';
 
 .gridComponent {
     display: flex;
@@ -26,7 +27,7 @@
 
         header {
             img {
-                background: lighten($black, 95%);
+                background: color.adjust(colors.$black, $lightness: 95%);
             }
         }
 
@@ -34,22 +35,22 @@
             margin-top: -0.5rem;
 
             div {
-                background: $secondary-red;
+                background: colors.$secondary-red;
                 padding: 1rem;
                 border-bottom: 10px solid;
                 border-image-slice: 1;
                 border-width: 5px;
-                border-image-source: linear-gradient(to left, $black, $main-red);
+                border-image-source: linear-gradient(to left, colors.$black, colors.$main-red);
             }
         }
         .cardTitle {
-            color: $white;
+            color: colors.$white;
             span {
-                color: $white;
+                color: colors.$white;
             }
         }
         .author {
-            color: $white;
+            color: colors.$white;
         }
         &.one {
             flex-basis: 100%;
