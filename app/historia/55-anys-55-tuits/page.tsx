@@ -41,7 +41,7 @@ const generateMetadata = async (): Promise<Metadata> => {
 
 const getData = async () => {
     const anys53tuits = await api.cdbData.getData('anys54tuits');
-    const mdData = await api.mdContent.getData('54-anys-54-tuits');
+    const mdData = await api.mdContent.getData('55-anys-55-tuits');
 
     return {
         anys53tuits: { ...anys53tuits[0] },
