@@ -88,7 +88,7 @@ const getData = async () => {
     const [home, contacte, noticiesData] = await Promise.all([
         api.cdbData.getData('home'),
         api.cdbData.getData('contacte'),
-        api.wpData.getData('noticies', 3),
+        api.wpData.getData('actuacions', 3),
     ]);
     return {
         noticiesData: noticiesData,
