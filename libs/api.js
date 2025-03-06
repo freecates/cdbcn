@@ -1,5 +1,5 @@
 const staticDataUrl = process.env.STATIC_DATA_URL;
-const wordPressApiUrl = process.env.WORDPRESS_API_URL;
+const wordPressApiUrl = process.env.WORDPRESS2_API_URL;
 const flickrApiUrl = process.env.FLICKR_API_URL;
 const flickrApiKey = process.env.FLICKR_APY_KEY;
 const flickrApiUserId = process.env.FLICKR_API_USER_ID;

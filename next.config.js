@@ -21,7 +21,7 @@ module.exports = withPWA({
             },
             {
                 protocol: 'https',
-                hostname: 'cms.castellersdebarcelona.cat',
+                hostname: 'cms2.castellersdebarcelona.cat',
             },
             {
                 protocol: 'https',
